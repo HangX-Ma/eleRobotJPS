@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/contour/ws_catkin_elephant/devel/setup.sh

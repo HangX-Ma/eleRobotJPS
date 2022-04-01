@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/contour/ws_catkin_elephant/devel -DCMAKE_INSTALL_PREFIX=/home/contour/ws_catkin_elephant/install -G Unix Makefiles
