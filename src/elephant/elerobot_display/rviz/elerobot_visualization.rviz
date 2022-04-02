@@ -1,0 +1,229 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 70
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /RobotModel1
+        - /RobotModel1/Links1
+      Splitter Ratio: 0.3959183692932129
+    Tree Height: 383
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+      - /Orbit1
+      - /Orbit1/Focal Point1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz_visual_tools/RvizVisualToolsGui
+    Name: RvizVisualToolsGui
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /Interact1
+    Name: Tool Properties
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: ""
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Selection
+    Name: Selection
+Preferences:
+  PromptSaveOnExit: true
+Toolbars:
+  toolButtonStyle: 2
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: visualization_marker_array
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: false
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        elerobot_link0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        elerobot_link1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        elerobot_link2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        elerobot_link3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        elerobot_link4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        elerobot_link5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Name: RobotModel
+      Robot Description: robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        elerobot_link0:
+          Value: true
+        elerobot_link1:
+          Value: true
+        elerobot_link2:
+          Value: true
+        elerobot_link3:
+          Value: true
+        elerobot_link4:
+          Value: true
+        elerobot_link5:
+          Value: true
+        world:
+          Value: true
+      Marker Scale: 0.5
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        world:
+          elerobot_link0:
+            elerobot_link1:
+              elerobot_link2:
+                elerobot_link3:
+                  elerobot_link4:
+                    elerobot_link5:
+                      {}
+      Update Interval: 0
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Default Light: true
+    Fixed Frame: world
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/MoveCamera
+    - Class: rviz_visual_tools/KeyTool
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 0.9812121987342834
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: -0.1597580909729004
+        Y: 0.03196204453706741
+        Z: 0.5017578601837158
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 1.2653981447219849
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 6.098560333251953
+    Saved:
+      - Class: rviz/Orbit
+        Distance: 3.737853765487671
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Focal Point:
+          X: 0
+          Y: 0
+          Z: 0
+        Focal Shape Fixed Size: true
+        Focal Shape Size: 0.05000000074505806
+        Invert Z Axis: false
+        Name: Orbit
+        Near Clip Distance: 0.009999999776482582
+        Pitch: 0.24020375311374664
+        Target Frame: <Fixed Frame>
+        Value: Orbit (rviz)
+        Yaw: 5.719996929168701
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1020
+  Hide Left Dock: false
+  Hide Right Dock: false
+  QMainWindow State: 000000ff00000000fd0000000100000000000001f3000003a2fc020000000afb000000100044006900730070006c006100790073010000003d00000202000000c900fffffffb0000000a00560069006500770073010000024500000121000000a400fffffffb00000024005200760069007a00560069007300750061006c0054006f006f006c0073004700750069010000036c000000730000004100fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000316000000c90000005c00fffffffb0000000800540069006d006500000003a6000000390000003900fffffffb0000001200530065006c0065006300740069006f006e0000000357000000880000005c00fffffffb0000001200530065006c0065006300740069006f006e02000002240000004c00000164000000acfb0000000c00430061006d0065007200610100000315000000ca0000000000000000fb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067000000025700000188000000000000000000000374000003a200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  RvizVisualToolsGui:
+    collapsed: false
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: false
+  Width: 1389
+  X: 309
+  Y: 27

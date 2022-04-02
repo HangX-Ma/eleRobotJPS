@@ -64,10 +64,14 @@ CMAKE_BINARY_DIR = /home/contour/ws_catkin_elephant/build
 
 # The main recursive "all" target.
 all: gtest/all
+all: elephant/elerobot_description/all
+all: elephant/elerobot_display/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: gtest/preinstall
+preinstall: elephant/elerobot_description/preinstall
+preinstall: elephant/elerobot_display/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
@@ -77,7 +81,39 @@ clean: CMakeFiles/run_tests.dir/clean
 clean: CMakeFiles/clean_test_results.dir/clean
 clean: CMakeFiles/doxygen.dir/clean
 clean: gtest/clean
+clean: elephant/elerobot_description/clean
+clean: elephant/elerobot_display/clean
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory elephant/elerobot_description
+
+# Recursive "all" directory target.
+elephant/elerobot_description/all:
+.PHONY : elephant/elerobot_description/all
+
+# Recursive "preinstall" directory target.
+elephant/elerobot_description/preinstall:
+.PHONY : elephant/elerobot_description/preinstall
+
+# Recursive "clean" directory target.
+elephant/elerobot_description/clean: elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/clean
+.PHONY : elephant/elerobot_description/clean
+
+#=============================================================================
+# Directory level rules for directory elephant/elerobot_display
+
+# Recursive "all" directory target.
+elephant/elerobot_display/all:
+.PHONY : elephant/elerobot_display/all
+
+# Recursive "preinstall" directory target.
+elephant/elerobot_display/preinstall:
+.PHONY : elephant/elerobot_display/preinstall
+
+# Recursive "clean" directory target.
+elephant/elerobot_display/clean:
+.PHONY : elephant/elerobot_display/clean
 
 #=============================================================================
 # Directory level rules for directory gtest
@@ -360,6 +396,32 @@ gtest_main: gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/rule
 gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/clean:
 	$(MAKE) $(MAKESILENT) -f gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/clean
 .PHONY : gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/clean
+
+#=============================================================================
+# Target rules for target elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir
+
+# All Build rule for target.
+elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/all:
+	$(MAKE) $(MAKESILENT) -f elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/build.make elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/depend
+	$(MAKE) $(MAKESILENT) -f elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/build.make elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/contour/ws_catkin_elephant/build/CMakeFiles --progress-num= "Built target _catkin_empty_exported_target"
+.PHONY : elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/all
+
+# Build rule for subdir invocation for target.
+elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/contour/ws_catkin_elephant/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/contour/ws_catkin_elephant/build/CMakeFiles 0
+.PHONY : elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/rule
+
+# Convenience name for target.
+_catkin_empty_exported_target: elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/rule
+.PHONY : _catkin_empty_exported_target
+
+# clean rule for target.
+elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/clean:
+	$(MAKE) $(MAKESILENT) -f elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/build.make elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/clean
+.PHONY : elephant/elerobot_description/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

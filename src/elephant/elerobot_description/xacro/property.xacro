@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="elerobot">
+
+  <!-- mesh -->
+  <xacro:property name="mesh_file_path" value="package://elerobot_description/mesh/"/>
+  <xacro:property name="mesh_prefix" value="ERP03D_LINK"/>
+  <xacro:property name="mesh_suffix" value=".STL"/>
+
+  <!-- property -->
+  <xacro:property name="PI" value="3.1415926535"/>
+
+  <!-- link mass -->
+  <xacro:property name="link0_mass" value="1.171"/>
+  <xacro:property name="link1_mass" value="2.488"/>
+  <xacro:property name="link2_mass" value="6.628"/>
+  <xacro:property name="link3_mass" value="3.88"/>
+  <xacro:property name="link4_mass" value="1.42"/>
+  <xacro:property name="link5_mass" value="1.417"/>
+  <xacro:property name="link6_mass" value="0.3158"/>
+
+  <!-- link position -->
+  <xacro:property name="joint0_z" value="0.107"/>
+  <xacro:property name="joint1_y" value="0.05"/>
+  <xacro:property name="joint2_x" value="0.265"/>
+  <xacro:property name="joint3_x" value="0.238"/>
+  <xacro:property name="joint3_z" value="0.063"/>
+  <xacro:property name="joint4_y" value="-0.097"/>
+
+  
+  <!-- MACRO: transmission of the joint-->
+  <![CDATA[ 
+  Arm_Part: Actuator, Joint, etc
+  Effort ${Arm_Part} Interface - for commanding effort-based joints. 
+  Velocity ${Arm_Part} Interface - for commanding velocity-based joints.
+  Position ${Arm_Part} Interface - for commanding position-based joints.
+  ]]>
+  <xacro:macro name="gazebo-joint" params="joint transmission:=hardware_interface/PositionJointInterface">
+    <gazebo reference="${joint}">
+      <!-- Needed for ODE to output external wrenches on joints -->
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+
+    <transmission name="${joint}_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint}">
+        <hardwareInterface>${transmission}</hardwareInterface>
+      </joint>
+      <actuator name="${joint}_motor">
+        <hardwareInterface>${transmission}</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+  
+</robot>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="elerobot">
+
+
+  <!-- Is the robot being simulated in gazebo?" -->
+  <xacro:arg name="gazebo" default="true" /> 
+  <!-- Intel RealSense i435 -->
+  <xacro:arg name="with_camera" default="false" />
+  <!-- Robot name -->
+  <xacro:property name="arm_id" value="elerobot" />
+
+  <xacro:include filename="$(find elerobot_description)/xacro/elerobot.xacro"/>
+
+  <xacro:if value="$(arg gazebo)">
+    <xacro:elerobot arm_id="${arm_id}" with_camera="$(arg with_camera)"/>
+
+    <!-- Gazebo plugin for ROS control -->
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/${arm_id}</robotNamespace>
+        <controlPeriod>0.001</controlPeriod>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        <legacyModeNS>true</legacyModeNS>
+      </plugin>
+      <self_collide>true</self_collide>
+      
+      <plugin filename="libgazebo_ros_moveit_planning_scene.so" name="gazebo_ros_moveit_planning_scene">
+        <topicName>/planning_scene</topicName>
+        <sceneName>factory</sceneName>
+        <robotName>/${arm_id}</robotName>
+        <updatePeriod>0.5</updatePeriod>
+      </plugin>
+
+      <plugin name="gravity_compensation" filename="libGravityCompensationPlugin.so"/>
+    </gazebo>
+  </xacro:if>
+
+</robot>

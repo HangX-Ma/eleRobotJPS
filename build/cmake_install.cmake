@@ -136,6 +136,8 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/contour/ws_catkin_elephant/build/gtest/cmake_install.cmake")
+  include("/home/contour/ws_catkin_elephant/build/elephant/elerobot_description/cmake_install.cmake")
+  include("/home/contour/ws_catkin_elephant/build/elephant/elerobot_display/cmake_install.cmake")
 
 endif()
 
