@@ -6,6 +6,8 @@ Panels:
       Expanded:
         - /RobotModel1
         - /RobotModel1/Links1
+        - /RobotModel1/Links1/elerobot_link11
+        - /RobotModel1/Links1/elerobot_link31
       Splitter Ratio: 0.3959183692932129
     Tree Height: 383
   - Class: rviz/Views
@@ -80,7 +82,7 @@ Visualization Manager:
           Show Trail: false
           Value: true
         elerobot_link1:
-          Alpha: 1
+          Alpha: 0.5
           Show Axes: false
           Show Trail: false
           Value: true
@@ -88,7 +90,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
+          Value: false
         elerobot_link3:
           Alpha: 1
           Show Axes: false
@@ -103,7 +105,17 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
+          Value: false
+        elerobot_link6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        elerobot_link7:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
         world:
           Alpha: 1
           Show Axes: false
@@ -131,6 +143,10 @@ Visualization Manager:
           Value: true
         elerobot_link5:
           Value: true
+        elerobot_link6:
+          Value: true
+        elerobot_link7:
+          Value: true
         world:
           Value: true
       Marker Scale: 0.5
@@ -146,7 +162,9 @@ Visualization Manager:
                 elerobot_link3:
                   elerobot_link4:
                     elerobot_link5:
-                      {}
+                      elerobot_link6:
+                        elerobot_link7:
+                          {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -167,25 +185,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.9812121987342834
+      Distance: 0.5379244685173035
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.1597580909729004
-        Y: 0.03196204453706741
-        Z: 0.5017578601837158
+        X: -0.09840867668390274
+        Y: 0.0061079044826328754
+        Z: 0.191692516207695
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.2653981447219849
+      Pitch: -0.034600675106048584
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 6.098560333251953
+      Yaw: 3.118511438369751
     Saved:
       - Class: rviz/Orbit
         Distance: 3.737853765487671
