@@ -5,9 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /RobotModel1
-        - /RobotModel1/Links1
-        - /RobotModel1/Links1/elerobot_link11
-        - /RobotModel1/Links1/elerobot_link31
       Splitter Ratio: 0.3959183692932129
     Tree Height: 383
   - Class: rviz/Views
@@ -71,7 +68,7 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
-        All Links Enabled: false
+        All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
@@ -82,7 +79,7 @@ Visualization Manager:
           Show Trail: false
           Value: true
         elerobot_link1:
-          Alpha: 0.5
+          Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
@@ -90,32 +87,97 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         elerobot_link3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         elerobot_link4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         elerobot_link5:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         elerobot_link6:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         elerobot_link7:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
+        vacuum_gripper_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_10:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_11:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_12:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_13:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_7:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_8:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper_9:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         world:
           Alpha: 1
           Show Axes: false
@@ -127,46 +189,19 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        elerobot_link0:
-          Value: true
-        elerobot_link1:
-          Value: true
-        elerobot_link2:
-          Value: true
-        elerobot_link3:
-          Value: true
-        elerobot_link4:
-          Value: true
-        elerobot_link5:
-          Value: true
-        elerobot_link6:
-          Value: true
-        elerobot_link7:
-          Value: true
-        world:
-          Value: true
       Marker Scale: 0.5
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        world:
-          elerobot_link0:
-            elerobot_link1:
-              elerobot_link2:
-                elerobot_link3:
-                  elerobot_link4:
-                    elerobot_link5:
-                      elerobot_link6:
-                        elerobot_link7:
-                          {}
+        {}
       Update Interval: 0
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -185,25 +220,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.5379244685173035
+      Distance: 2.9364004135131836
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.09840867668390274
-        Y: 0.0061079044826328754
-        Z: 0.191692516207695
+        X: -0.07862748205661774
+        Y: -0.2791890799999237
+        Z: 0.5399979948997498
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.034600675106048584
+      Pitch: -0.009600937366485596
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.118511438369751
+      Yaw: 1.548506736755371
     Saved:
       - Class: rviz/Orbit
         Distance: 3.737853765487671

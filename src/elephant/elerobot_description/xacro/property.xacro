@@ -23,6 +23,10 @@
   <xacro:property name="link7_r" value="0.05"/>
   <xacro:property name="link7_h" value="0.08"/>
 
+  <!-- vaccum property -->
+  <xacro:property name="vacuum_radius" value="0.005"/>
+  <xacro:property name="vacuum_length" value="0.005"/>
+
 
   <!-- joint position -->
   <xacro:property name="joint0_z" value="0.107"/>

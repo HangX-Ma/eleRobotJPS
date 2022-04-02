@@ -4,6 +4,7 @@
   <!-- module -->
   <xacro:include filename="$(find elerobot_description)/xacro/color.xacro"/>
   <xacro:include filename="$(find elerobot_description)/xacro/property.xacro"/>
+  <xacro:include filename="$(find elerobot_description)/xacro/vacuum_group.xacro"/>
 
   <!-- elephant panda robot p3 type description-->
   <xacro:macro name="elerobot" params="arm_id:='elerobot' with_camera:='false'">
@@ -286,7 +287,22 @@
       <parent link="${arm_id}_link6"/>
       <child link="${arm_id}_link7"/>
     </joint>   
-
+    
+    <!-- vacuum gripper -->
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="1" vacuum_x="0"                    vacuum_y="0"                   vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="2" vacuum_x="${vacuum_radius*3}"   vacuum_y="0"                   vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="3" vacuum_x="${-vacuum_radius*3}"  vacuum_y="0"                   vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="4" vacuum_x="0"                    vacuum_y="${vacuum_radius*3}"  vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="5" vacuum_x="0"                    vacuum_y="${-vacuum_radius*3}" vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="6" vacuum_x="${vacuum_radius*6}"   vacuum_y="0"                   vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="7" vacuum_x="${-vacuum_radius*6}"  vacuum_y="0"                   vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="8" vacuum_x="0"                    vacuum_y="${vacuum_radius*6}"  vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="9" vacuum_x="0"                    vacuum_y="${-vacuum_radius*6}" vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="10" vacuum_x="${vacuum_radius*4}"  vacuum_y="${vacuum_radius*4}"  vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="11" vacuum_x="${-vacuum_radius*4}" vacuum_y="${-vacuum_radius*4}" vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="12" vacuum_x="${-vacuum_radius*4}" vacuum_y="${vacuum_radius*4}"  vacuum_z="${vacuum_length/2}"/>
+    <xacro:vacuum_group parent_link="${arm_id}_link7" index="13" vacuum_x="${vacuum_radius*4}"  vacuum_y="${-vacuum_radius*4}" vacuum_z="${vacuum_length/2}"/>
+ 
   </xacro:macro>
 
 </robot>
