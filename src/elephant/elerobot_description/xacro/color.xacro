@@ -8,9 +8,15 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="gazebo_black" params="link">
+  <xacro:macro name="gazebo_grey" params="link">
     <gazebo reference="${link}">
-      <material>Gazebo/Black</material>
+      <material>Gazebo/Grey</material>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:macro name="gazebo_red" params="link">
+    <gazebo reference="${link}">
+      <material>Gazebo/Red</material>
       <mu1>0.61</mu1>
       <mu2>0.47</mu2>
     </gazebo>

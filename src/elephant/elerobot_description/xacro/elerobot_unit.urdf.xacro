@@ -14,6 +14,24 @@
   <xacro:if value="$(arg gazebo)">
     <xacro:elerobot arm_id="${arm_id}" with_camera="$(arg with_camera)"/>
 
+    <!-- gazebo color -->
+    <xacro:gazebo_white link="${arm_id}_link0"/>
+    <xacro:gazebo_white link="${arm_id}_link1"/>
+    <xacro:gazebo_white link="${arm_id}_link2"/>
+    <xacro:gazebo_white link="${arm_id}_link3"/>
+    <xacro:gazebo_white link="${arm_id}_link4"/>
+    <xacro:gazebo_white link="${arm_id}_link5"/>
+    <xacro:gazebo_grey  link="${arm_id}_link6"/>
+    <xacro:gazebo_red   link="${arm_id}_link6"/>
+
+    <!-- gazebo joint hardware interface -->
+    <xacro:gazebo-joint joint="${arm_id}_joint0" transmission="hardware_interface/PositionJointInterface" />
+    <xacro:gazebo-joint joint="${arm_id}_joint1" transmission="hardware_interface/PositionJointInterface" />
+    <xacro:gazebo-joint joint="${arm_id}_joint2" transmission="hardware_interface/PositionJointInterface" />
+    <xacro:gazebo-joint joint="${arm_id}_joint3" transmission="hardware_interface/PositionJointInterface" />
+    <xacro:gazebo-joint joint="${arm_id}_joint4" transmission="hardware_interface/PositionJointInterface" />
+    <xacro:gazebo-joint joint="${arm_id}_joint5" transmission="hardware_interface/PositionJointInterface" />
+
     <!-- Gazebo plugin for ROS control -->
     <gazebo>
       <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
