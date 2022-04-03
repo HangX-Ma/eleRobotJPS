@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="rqt_control" default="false"/>
+
+    <!-- If we want to use Moveit to control the robot, we need to use 'JointTrajectoryAction' to which the messages collected -->
+     <!-- Load joint controller configurations from YAML file to parameter server -->
+     <rosparam file="$(find elerobot_moveit_config)/config/ros_controllers.yaml" command="load"/>
+    
+    <!-- load the controllers -->
+    <node name="arm_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" 
+    output="screen" args="manipulator_controller"/>
+
+    <!-- load vacuum grasper controllers -->
+    <node name="vacuum_gripper" pkg="rokae_pick_place_with_vacuum_gripper" type="vacuum_gripper_control_server" output="screen" respawn="true"/>
+    
+
+    <!-- Load teleop -->
+    <group if="$(arg rqt_control)">
+      <node name="rqt_joint_trajectory_controller" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller"/>
+    </group>
+
+</launch>

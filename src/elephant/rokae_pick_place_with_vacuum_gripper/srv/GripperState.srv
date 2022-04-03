@@ -1,0 +1,7 @@
+# content of GripperState.srv
+
+#request fields
+bool switch_state
+---
+#response fields
+string feedback

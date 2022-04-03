@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Velocity control need to close 'rqt_control' -->
+  <!-- <arg name="rqt_control" value="false"/>  -->
+  <arg name="rqt_control" value="true"/>
+  <arg name="with_camera" value="false"/>
+  <arg name="use_gui" value="true"/> <!-- don't open it when gazebo gui state on-->
+
+  <!-- load local octomap file-->
+  <group ns="move_group">
+    <param name="octomap_resolution" type="double" value="0.01" />
+    <param name="octomap_frame" type="string" value="world" /> 
+  </group>
+
+  <!-- <include file="$(find rokae_octomap_unit)/launch/load_octomap.launch" /> -->
+
+  <!-- Launch Gazebo  -->
+  <include file="$(find elerobot_simple_control)/launch/elerobot_gazebo_world.launch" >
+    <arg name="with_camera" value="$(arg with_camera)"/>
+  </include>
+
+  <!-- ros_control arm launch file -->
+  <include file="$(find elerobot_simple_control)/launch/elerobot_gazebo_states.launch" > 
+    <arg name="use_gui" value="$(arg use_gui)"/>
+  </include> 
+
+  <!-- ros_control trajectory control dof arm launch file -->
+  <include file="$(find elerobot_simple_control)/launch/elerobot_trajectory_controller.launch">
+    <arg name="rqt_control" value="$(arg rqt_control)"/>
+  </include>
+
+  <!-- moveit launch file -->
+  <include file="$(find elerobot_moveit_config)/launch/moveit_planning_execution.launch"/>
+
+  <node name="map_world_broadcater" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map world  5" />
+
+  <!-- A-star Planner -->
+  <!-- <include file="$(find rokae_arm_navigation)/launch/rokae_arm_navigation.launch"/> -->
+
+  <!-- JPS Planner -->
+  <!-- <include file="$(find rokae_jps_navigation)/launch/rokae_arm_navigation_JPS.launch"/> -->
+  
+</launch>

@@ -152,8 +152,156 @@ Copy the `realsense_gazebo_description` and `realsense_gazebo_plugin` packages f
       </xacro:if>
   ```
 - Use display package to ensure the camera is adjust to the appropriate position and pose.
-
-<center class="half">
+<center>
+<figure>
   <img src="./README_pic/elerobot_with_camera.png" alt="elerobot_with_camera" width="200" align="center" />
+  
   <img src="./README_pic/elerobot_realsense_i435.png" alt="elerobot_with_camera" width="200" align="center" />
+</figure>
 </center>
+
+- Now we need to make the camera work. 
+  - Find `elerobot_moveit_config/config/sensors_3d.yaml` file and you will find nothing. That is appropriate. We didn't configure it when we use `moveit_setup_assistant`.
+  - Copy the `rokae_arm_moveit_config/config/sensors_3d_point_cloud.yaml` content to `sensor_3d.yaml` and then we rename the `sensor_3d.yaml` to `sensors_3d_point_cloud.yaml`.
+  - Next you need to find the `elerobot_moveit_config/launch/move_group.launch`. If you want to open sensor function, what you need to do is re-annotate the **Sensors Functionality** part. We can find the **Sensors Functionality** use the `sensor_manager.launch.xml` file.
+  - Modified the code below **Params for the octomap monitor**:
+    ```xml
+      <!-- Params for the octomap monitor -->
+      <param name="octomap_resolution" type="double" value="0.01" />
+      <param name="octomap_frame" type="string" value="world" />
+      <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
+        <!-- The frame_id of the point cloud has to be the sensor frame -->
+        <param name="resolution" type="double" value="0.01"/>
+        
+        <param name="frame_id" type="string" value="world" />
+        <!-- maximum range to integrate (speedup!) -->
+        <param name="sensor_model/max_range" value="3.0" />
+        <param name="latch" value="false"/>
+        <!-- data source to integrate (PointCloud2) -->
+        <!-- <remap from="cloud_in" to="/$(arg camera_name)/depth/color/points" /> -->
+        <remap from="cloud_in" to="/move_group/filter_cloud" />
+        <remap from="octomap_point_cloud_centers" to="/$(arg camera_name)/octomap_point_cloud_centers"/>
+      </node>
+    ```
+    And you need to change the 3D sensor config file name to what you have changed. In `elerobot`, these codes are:
+    ```xml
+    <rosparam command="load" file="$(find elerobot_moveit_config)/config/sensors_3d_point_cloud.yaml" />
+    ```
+    And you need to add the following codes at beginning:
+    ```xml
+    <arg name="camera_name" default="D435i_camera"/>
+    ```
+
+## 6.Rviz and Gazebo
+
+In this session we will connect the **Rviz** and **Gazebo**. 
+Please see the [README.md](elerobot_moveit_config/README.md) in `elerobot_moveit_config` package first and create the necessary files. But I find the new version `Moveit` modified some files name.
+
+---
+#### 1. Trajectory Execution Functionality
+In `elerobot_moveit_config/launch/move_group.launch`, the **Trajectory Execution Functionality** write:
+```xml
+  <!-- Trajectory Execution Functionality -->
+  <include ns="move_group" file="$(dirname)/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
+    <arg name="moveit_manage_controllers" value="true" />
+    <arg name="moveit_controller_manager" value="$(arg moveit_controller_manager)" />
+    <arg name="fake_execution_type" value="$(arg fake_execution_type)" />
+  </include>
+```
+- The `moveit_controller_manager` argument becomes `simple`. 
+- Next, I check the `trajectory_execution.launch.xml` file, I find that the original `<ROBOT_NAME>_moveit_controller_manager.launch.xml` file becomes `simple_moveit_controller_manager.launch.xml`.
+- When digging out the `simple_moveit_controller_manager.launch.xml` I find:
+  ```xml
+  <rosparam file="$(find elerobot_moveit_config)/config/simple_moveit_controllers.yaml" />
+  <rosparam file="$(find elerobot_moveit_config)/config/ros_controllers.yaml" />
+  ```
+  becomes 
+  ```xml
+  <rosparam file="$(find rokae_arm_moveit_config)/config/controllers_gazebo.yaml"/>
+  ```
+  `controllers_gazebo.yaml` corresponds to `simple_moveit_controllers.yaml`. So we modified `simple_moveit_controllers.yaml` to be the same as the `controllers_gazebo.yaml`.
+- The `ros_controllers.yaml` corresponds to the file that will be introduced later.
+
+#### 2. ros_controllers.yaml 
+
+---
+Copy the `ros_controllers.yaml` in `rokae` moveit configuration package under `config` folder. And you need to change some parameters in it.I find the **Moveit** updates it as well! So let us to dig out the where the `ros_controllers.yaml` used.
+
+- In current version Moveit, I find the `gazebo.launch` contains it:
+  ```xml
+  <!-- Load ROS controllers -->
+  <include file="$(dirname)/ros_controllers.launch"/>
+  ```
+  The `ros_controllers.launch` uses the `ros_controllers.yaml`. `gazebo.launch` is used in `demo_gazebo.launch`
+
+#### 3. _rokae_simple_control_ package
+
+---
+Copy the `rokae_simple_control` package. 
+
+##### 1.rokae_arm_trajectory_controller.launch
+I check the `rokae_arm_trajectory_controller.launch` first.
+
+The following command loads the trajectory controller. 
+```xml
+<rosparam file="$(find rokae_simple_control)/config/rokae_arm_trajectory_control.yaml" command="load"/>
+```
+
+And this configuration file has been created by Moveit in `elerobot_moveit_config/config/simple_moveit_controllers.yaml`. If we do not set the prefix namespace like `rokae_arm` in `rokae_arm_trajectory_control.yaml` before `manipulator_controller`, we can write the `simple_moveit_controller_manager.launch.xml` like this:
+
+```yaml
+controller_manager_ns: controller_manager
+controller_list:
+  - name: manipulator_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - elerobot_joint0
+      - elerobot_joint1
+      - elerobot_joint2
+      - elerobot_joint3
+      - elerobot_joint4
+      - elerobot_joint5
+```
+
+- This file `rokae_arm_trajectory_control.yaml` actually corresponds to `elerobot_moveit_config/config/ros_controllers.yaml`. So change the controller to position controller and then do nothing! So we can adjust the codes above to this:
+  ```xml
+  <rosparam file="$(find elerobot_moveit_config)/config/ros_controllers.yaml" command="load"/>
+  ```
+- And we have to delete the `ns` in the following codes:
+  ```xml
+  <node name="arm_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" 
+  output="screen" ns="/rokae_arm" args="manipulator_controller"/>
+  ```
+- And now we can copy the `rokae_pick_place_with_vacuum_gripper` and don't change anything.
+
+##### 2. rokae_arm_gazebo_states.launch
+
+  ```xml
+    <rosparam file="$(find rokae_simple_control)/config/rokae_arm_gazebo_joint_states.yaml" command="load"/>
+  ```
+- The code above will load the `rokae_arm_gazebo_joint_states.yaml` in `config` folder. But it is identical with the `elerobot_moveit_config/config/gazebo_controllers.yaml`. So we change it like this:
+
+  ```xml
+    <rosparam file="$(find elerobot_moveit_config)/config/gazebo_controllers.yaml" command="load"/>
+  ```
+- Delete the `ns` in:
+  ```xml
+    <node name="joint_controller_spawner" pkg="controller_manager" type="spawner" respawn="true"
+  output="screen" ns="/rokae_arm" args="joint_state_controller" />
+  ```
+- Delete
+  ```xml
+  <rosparam param="source_list">[/rokae_arm/joint_states]</rosparam>
+  xml
+
+##### 3.rokae_arm_gazebo_world.launch
+- Delete `tf2_ros`.
+- Modify the necessary parameters.
+
+##### 4.rokae_arm_toplevel_moveit.launch
+- Modify the necessary parameters.
+- We have not created `octomap`, so annotate it first. If we want to load a local `octomap` annotate it again.
+- 
+- Copy the `moveit_planning_execution.launch` and paste it in `elerobot_moveit_config/launch` and modify some parameters to fit the name of current robot configuration.

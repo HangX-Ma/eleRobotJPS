@@ -1,8 +1,0 @@
-prefix=/home/contour/ws_catkin_elephant/install
-
-Name: elerobot_unit_moveit_config
-Description: Description of elerobot_unit_moveit_config
-Version: 0.3.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

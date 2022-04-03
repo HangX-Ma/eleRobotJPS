@@ -1,25 +1,25 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_272f4/fast && /usr/bin/make  -f CMakeFiles/cmTC_272f4.dir/build.make CMakeFiles/cmTC_272f4.dir/build
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_b8fb3/fast && /usr/bin/make  -f CMakeFiles/cmTC_b8fb3.dir/build.make CMakeFiles/cmTC_b8fb3.dir/build
 make[1]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_272f4.dir/src.c.o
-/usr/lib/ccache/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_272f4.dir/src.c.o -c /home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_272f4
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_272f4.dir/link.txt --verbose=1
-/usr/lib/ccache/cc -rdynamic CMakeFiles/cmTC_272f4.dir/src.c.o -o cmTC_272f4 
-CMakeFiles/cmTC_272f4.dir/src.c.o: In function `main':
+Building C object CMakeFiles/cmTC_b8fb3.dir/src.c.o
+/usr/lib/ccache/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_b8fb3.dir/src.c.o -c /home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_b8fb3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b8fb3.dir/link.txt --verbose=1
+/usr/lib/ccache/cc -rdynamic CMakeFiles/cmTC_b8fb3.dir/src.c.o -o cmTC_b8fb3 
+CMakeFiles/cmTC_b8fb3.dir/src.c.o: In function `main':
 src.c:(.text+0x3e): undefined reference to `pthread_create'
 src.c:(.text+0x4a): undefined reference to `pthread_detach'
 src.c:(.text+0x56): undefined reference to `pthread_cancel'
 src.c:(.text+0x67): undefined reference to `pthread_join'
 src.c:(.text+0x7b): undefined reference to `pthread_atfork'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_272f4.dir/build.make:98: recipe for target 'cmTC_272f4' failed
-make[1]: *** [cmTC_272f4] Error 1
+CMakeFiles/cmTC_b8fb3.dir/build.make:98: recipe for target 'cmTC_b8fb3' failed
+make[1]: *** [cmTC_b8fb3] Error 1
 make[1]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-Makefile:127: recipe for target 'cmTC_272f4/fast' failed
-make: *** [cmTC_272f4/fast] Error 2
+Makefile:127: recipe for target 'cmTC_b8fb3/fast' failed
+make: *** [cmTC_b8fb3/fast] Error 2
 
 
 Source file was:
@@ -46,67 +46,61 @@ int main(void)
 Determining if the function sgemm_ exists failed with the following output:
 Change Dir: /home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_618b0/fast && make[1]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-/usr/bin/make  -f CMakeFiles/cmTC_618b0.dir/build.make CMakeFiles/cmTC_618b0.dir/build
-make[2]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_618b0.dir/CheckFunctionExists.c.o
-/usr/lib/ccache/cc   -DCHECK_FUNCTION_EXISTS=sgemm_ -o CMakeFiles/cmTC_618b0.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
-Linking C executable cmTC_618b0
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_618b0.dir/link.txt --verbose=1
-/usr/lib/ccache/cc  -DCHECK_FUNCTION_EXISTS=sgemm_ -rdynamic CMakeFiles/cmTC_618b0.dir/CheckFunctionExists.c.o -o cmTC_618b0 
-CMakeFiles/cmTC_618b0.dir/CheckFunctionExists.c.o: In function `main':
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_4e128/fast && /usr/bin/make  -f CMakeFiles/cmTC_4e128.dir/build.make CMakeFiles/cmTC_4e128.dir/build
+make[1]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4e128.dir/CheckFunctionExists.c.o
+/usr/lib/ccache/cc   -DCHECK_FUNCTION_EXISTS=sgemm_ -o CMakeFiles/cmTC_4e128.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_4e128
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4e128.dir/link.txt --verbose=1
+/usr/lib/ccache/cc  -DCHECK_FUNCTION_EXISTS=sgemm_ -rdynamic CMakeFiles/cmTC_4e128.dir/CheckFunctionExists.c.o -o cmTC_4e128 
+CMakeFiles/cmTC_4e128.dir/CheckFunctionExists.c.o: In function `main':
 CheckFunctionExists.c:(.text+0x10): undefined reference to `sgemm_'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_618b0.dir/build.make:98: recipe for target 'cmTC_618b0' failed
-make[2]: *** [cmTC_618b0] Error 1
-make[2]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-Makefile:127: recipe for target 'cmTC_618b0/fast' failed
-make[1]: *** [cmTC_618b0/fast] Error 2
+CMakeFiles/cmTC_4e128.dir/build.make:98: recipe for target 'cmTC_4e128' failed
+make[1]: *** [cmTC_4e128] Error 1
 make[1]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_4e128/fast' failed
+make: *** [cmTC_4e128/fast] Error 2
 
 
 
 Determining if the function cheev_ exists failed with the following output:
 Change Dir: /home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_95fd1/fast && make[1]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-/usr/bin/make  -f CMakeFiles/cmTC_95fd1.dir/build.make CMakeFiles/cmTC_95fd1.dir/build
-make[2]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_95fd1.dir/CheckFunctionExists.c.o
-/usr/lib/ccache/cc   -DCHECK_FUNCTION_EXISTS=cheev_ -o CMakeFiles/cmTC_95fd1.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
-Linking C executable cmTC_95fd1
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95fd1.dir/link.txt --verbose=1
-/usr/lib/ccache/cc  -DCHECK_FUNCTION_EXISTS=cheev_ -rdynamic CMakeFiles/cmTC_95fd1.dir/CheckFunctionExists.c.o -o cmTC_95fd1  /usr/lib/x86_64-linux-gnu/libblas.so -pthread -lm -ldl 
-CMakeFiles/cmTC_95fd1.dir/CheckFunctionExists.c.o: In function `main':
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_909c2/fast && /usr/bin/make  -f CMakeFiles/cmTC_909c2.dir/build.make CMakeFiles/cmTC_909c2.dir/build
+make[1]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_909c2.dir/CheckFunctionExists.c.o
+/usr/lib/ccache/cc   -DCHECK_FUNCTION_EXISTS=cheev_ -o CMakeFiles/cmTC_909c2.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_909c2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_909c2.dir/link.txt --verbose=1
+/usr/lib/ccache/cc  -DCHECK_FUNCTION_EXISTS=cheev_ -rdynamic CMakeFiles/cmTC_909c2.dir/CheckFunctionExists.c.o -o cmTC_909c2  /usr/lib/x86_64-linux-gnu/libblas.so -pthread -lm -ldl 
+CMakeFiles/cmTC_909c2.dir/CheckFunctionExists.c.o: In function `main':
 CheckFunctionExists.c:(.text+0x10): undefined reference to `cheev_'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_95fd1.dir/build.make:99: recipe for target 'cmTC_95fd1' failed
-make[2]: *** [cmTC_95fd1] Error 1
-make[2]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-Makefile:127: recipe for target 'cmTC_95fd1/fast' failed
-make[1]: *** [cmTC_95fd1/fast] Error 2
+CMakeFiles/cmTC_909c2.dir/build.make:99: recipe for target 'cmTC_909c2' failed
+make[1]: *** [cmTC_909c2] Error 1
 make[1]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_909c2/fast' failed
+make: *** [cmTC_909c2/fast] Error 2
 
 
 
 Determining if the function cheev_ exists failed with the following output:
 Change Dir: /home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_ec80d/fast && make[1]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-/usr/bin/make  -f CMakeFiles/cmTC_ec80d.dir/build.make CMakeFiles/cmTC_ec80d.dir/build
-make[2]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_ec80d.dir/CheckFunctionExists.c.o
-/usr/lib/ccache/cc   -DCHECK_FUNCTION_EXISTS=cheev_ -o CMakeFiles/cmTC_ec80d.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
-Linking C executable cmTC_ec80d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec80d.dir/link.txt --verbose=1
-/usr/lib/ccache/cc  -DCHECK_FUNCTION_EXISTS=cheev_ -rdynamic CMakeFiles/cmTC_ec80d.dir/CheckFunctionExists.c.o -o cmTC_ec80d  /usr/lib/x86_64-linux-gnu/liblapack.so /usr/lib/x86_64-linux-gnu/libblas.so -fortranlibs 
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_5fce3/fast && /usr/bin/make  -f CMakeFiles/cmTC_5fce3.dir/build.make CMakeFiles/cmTC_5fce3.dir/build
+make[1]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5fce3.dir/CheckFunctionExists.c.o
+/usr/lib/ccache/cc   -DCHECK_FUNCTION_EXISTS=cheev_ -o CMakeFiles/cmTC_5fce3.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5fce3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5fce3.dir/link.txt --verbose=1
+/usr/lib/ccache/cc  -DCHECK_FUNCTION_EXISTS=cheev_ -rdynamic CMakeFiles/cmTC_5fce3.dir/CheckFunctionExists.c.o -o cmTC_5fce3  /usr/lib/x86_64-linux-gnu/liblapack.so /usr/lib/x86_64-linux-gnu/libblas.so -fortranlibs 
 cc: error: unrecognized command line option ‘-fortranlibs’; did you mean ‘-fltrans’?
-CMakeFiles/cmTC_ec80d.dir/build.make:100: recipe for target 'cmTC_ec80d' failed
-make[2]: *** [cmTC_ec80d] Error 1
-make[2]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
-Makefile:127: recipe for target 'cmTC_ec80d/fast' failed
-make[1]: *** [cmTC_ec80d/fast] Error 2
+CMakeFiles/cmTC_5fce3.dir/build.make:100: recipe for target 'cmTC_5fce3' failed
+make[1]: *** [cmTC_5fce3] Error 1
 make[1]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_5fce3/fast' failed
+make: *** [cmTC_5fce3/fast] Error 2
 
 
 

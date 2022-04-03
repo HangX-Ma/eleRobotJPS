@@ -9,7 +9,7 @@
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <!-- <arg name="world_name" value="$(find elerobot_gazebo_world)/world/elerobot_test.world"/> -->
+    <arg name="world_name" value="$(find elerobot_gazebo_world)/world/elerobot_test_no_collision.world"/>
     <arg name="debug" value="$(arg debug)" />
     <arg name="gui" value="$(arg gui)" />
     <arg name="paused" value="$(arg paused)"/>
@@ -18,13 +18,13 @@
   </include>
   
   <!-- if you want to display the robot in the gazebo world, annotate the 'CDATA' sign -->
-  <!-- <![CDATA[ -->
+  <![CDATA[
   <!-- Load the URDF into the ROS Parameter Server -->
   <param name="robot_description"
     command="$(find xacro)/xacro --inorder '$(find elerobot_description)/xacro/elerobot.urdf.xacro'" />
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-    args="-urdf -model rokae -param robot_description"/>
-    <!-- ]]> -->
+    args="-urdf -model elerobot -param robot_description"/>
+    ]]>
 </launch>

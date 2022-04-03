@@ -1,14 +1,27 @@
 <launch>
 
+  <arg name="camera_name" default="D435i_camera"/>
   <!-- This file makes it easy to include the settings for sensor managers -->
 
   <!-- Params for 3D sensors config -->
-  <rosparam command="load" file="$(find elerobot_moveit_config)/config/sensors_3d.yaml" />
+  <rosparam command="load" file="$(find elerobot_moveit_config)/config/sensors_3d_point_cloud.yaml" />
 
   <!-- Params for the octomap monitor -->
   <!--  <param name="octomap_frame" type="string" value="some frame in which the robot moves" /> -->
-  <param name="octomap_resolution" type="double" value="0.025" />
-  <param name="max_range" type="double" value="5.0" />
+  <param name="octomap_resolution" type="double" value="0.01" />
+  <param name="octomap_frame" type="string" value="world" />
+  <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
+    <!-- The frame_id of the point cloud has to be the sensor frame -->
+    <param name="resolution" type="double" value="0.01"/>
+    <param name="frame_id" type="string" value="world" />
+    <!-- maximum range to integrate (speedup!) -->
+    <param name="sensor_model/max_range" value="3.0" />
+    <param name="latch" value="false"/>
+    <!-- data source to integrate (PointCloud2) -->
+    <!-- <remap from="cloud_in" to="/$(arg camera_name)/depth/color/points" /> -->
+    <remap from="cloud_in" to="/move_group/filter_cloud" />
+    <remap from="octomap_point_cloud_centers" to="/$(arg camera_name)/octomap_point_cloud_centers"/>
+  </node>
 
   <!-- Load the robot specific sensor manager; this sets the moveit_sensor_manager ROS parameter -->
   <arg name="moveit_sensor_manager" default="elerobot" />

@@ -906,7 +906,8 @@ elerobot_gazebo_world_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/ele
 //Value Computed by CMake
 elerobot_ikfast_manipulator_plugin_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elerobot_ikfast_manipulator_plugin
 
-elerobot_ikfast_manipulator_plugin_DIR:PATH=
+//The directory containing a CMake configuration file for elerobot_ikfast_manipulator_plugin.
+elerobot_ikfast_manipulator_plugin_DIR:PATH=elerobot_ikfast_manipulator_plugin_DIR-NOTFOUND
 
 //Value Computed by CMake
 elerobot_ikfast_manipulator_plugin_IS_TOP_LEVEL:STATIC=OFF
@@ -936,22 +937,13 @@ elerobot_moveit_demo_IS_TOP_LEVEL:STATIC=OFF
 elerobot_moveit_demo_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/elerobot_moveit_demo
 
 //Value Computed by CMake
-elerobot_unit_ikfast_manipulator_plugin_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elerobot_unit_ikfast_manipulator_plugin
+elerobot_simple_control_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/elerobot_simple_control
 
 //Value Computed by CMake
-elerobot_unit_ikfast_manipulator_plugin_IS_TOP_LEVEL:STATIC=OFF
+elerobot_simple_control_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-elerobot_unit_ikfast_manipulator_plugin_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elerobot_unit_ikfast_manipulator_plugin
-
-//Value Computed by CMake
-elerobot_unit_moveit_config_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/elerobot_moveit_config
-
-//Value Computed by CMake
-elerobot_unit_moveit_config_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-elerobot_unit_moveit_config_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/elerobot_moveit_config
+elerobot_simple_control_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/elerobot_simple_control
 
 //The directory containing a CMake configuration file for gazebo.
 gazebo_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/gazebo
@@ -1235,6 +1227,24 @@ realsense_gazebo_plugin_LIB_DEPENDS:STATIC=general;/opt/ros/melodic/lib/libgazeb
 
 //Value Computed by CMake
 realsense_gazebo_plugin_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/realsense_gazebo_plugin
+
+//Value Computed by CMake
+rokae_arm_pick_place_with_vacuum_gripper_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/rokae_arm_pick_place_with_vacuum_gripper
+
+//Value Computed by CMake
+rokae_arm_pick_place_with_vacuum_gripper_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+rokae_arm_pick_place_with_vacuum_gripper_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/rokae_arm_pick_place_with_vacuum_gripper
+
+//Value Computed by CMake
+rokae_pick_place_with_vacuum_gripper_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/rokae_pick_place_with_vacuum_gripper
+
+//Value Computed by CMake
+rokae_pick_place_with_vacuum_gripper_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+rokae_pick_place_with_vacuum_gripper_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/rokae_pick_place_with_vacuum_gripper
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/melodic/share/rosconsole/cmake
@@ -1720,7 +1730,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=11
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=13
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
