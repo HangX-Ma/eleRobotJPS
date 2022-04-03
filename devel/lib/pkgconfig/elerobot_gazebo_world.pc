@@ -1,0 +1,8 @@
+prefix=/home/contour/ws_catkin_elephant/devel
+
+Name: elerobot_gazebo_world
+Description: Description of elerobot_gazebo_world
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<library path="lib/libelerobot_manipulator_moveit_ikfast_plugin">
+  <class base_class_type="kinematics::KinematicsBase" name="elerobot_manipulator/IKFastKinematicsPlugin" type="elerobot_manipulator::IKFastKinematicsPlugin">
+    <description>IKFast61 plugin for closed-form kinematics of elerobot manipulator</description>
+  </class>
+</library>

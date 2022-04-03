@@ -1,0 +1,17 @@
+controller_list:
+  - name: fake_manipulator_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - elerobot_joint0
+      - elerobot_joint1
+      - elerobot_joint2
+      - elerobot_joint3
+      - elerobot_joint4
+      - elerobot_joint5
+  - name: fake_hand_controller
+    type: $(arg fake_execution_type)
+    joints:
+      []
+initial:  # Define initial robot poses per group
+  - group: manipulator
+    pose: home

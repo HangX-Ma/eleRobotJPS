@@ -1,0 +1,8 @@
+prefix=/home/contour/ws_catkin_elephant/devel
+
+Name: elerobot_unit_ikfast_manipulator_plugin
+Description: Description of elerobot_unit_ikfast_manipulator_plugin
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

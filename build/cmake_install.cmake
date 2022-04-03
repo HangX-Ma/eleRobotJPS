@@ -138,6 +138,11 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/contour/ws_catkin_elephant/build/gtest/cmake_install.cmake")
   include("/home/contour/ws_catkin_elephant/build/elephant/elerobot_description/cmake_install.cmake")
   include("/home/contour/ws_catkin_elephant/build/elephant/elerobot_display/cmake_install.cmake")
+  include("/home/contour/ws_catkin_elephant/build/elephant/elerobot_gazebo_world/cmake_install.cmake")
+  include("/home/contour/ws_catkin_elephant/build/elerobot_ikfast_manipulator_plugin/cmake_install.cmake")
+  include("/home/contour/ws_catkin_elephant/build/elephant/elerobot_moveit_config/cmake_install.cmake")
+  include("/home/contour/ws_catkin_elephant/build/elephant/realsense_gazebo_plugin/cmake_install.cmake")
+  include("/home/contour/ws_catkin_elephant/build/elephant/realsense_gazebo_description/cmake_install.cmake")
 
 endif()
 

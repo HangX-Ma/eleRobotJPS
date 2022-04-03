@@ -43,3 +43,70 @@ int main(void)
   return 0;
 }
 
+Determining if the function sgemm_ exists failed with the following output:
+Change Dir: /home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_618b0/fast && make[1]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+/usr/bin/make  -f CMakeFiles/cmTC_618b0.dir/build.make CMakeFiles/cmTC_618b0.dir/build
+make[2]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_618b0.dir/CheckFunctionExists.c.o
+/usr/lib/ccache/cc   -DCHECK_FUNCTION_EXISTS=sgemm_ -o CMakeFiles/cmTC_618b0.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_618b0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_618b0.dir/link.txt --verbose=1
+/usr/lib/ccache/cc  -DCHECK_FUNCTION_EXISTS=sgemm_ -rdynamic CMakeFiles/cmTC_618b0.dir/CheckFunctionExists.c.o -o cmTC_618b0 
+CMakeFiles/cmTC_618b0.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `sgemm_'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_618b0.dir/build.make:98: recipe for target 'cmTC_618b0' failed
+make[2]: *** [cmTC_618b0] Error 1
+make[2]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_618b0/fast' failed
+make[1]: *** [cmTC_618b0/fast] Error 2
+make[1]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function cheev_ exists failed with the following output:
+Change Dir: /home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_95fd1/fast && make[1]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+/usr/bin/make  -f CMakeFiles/cmTC_95fd1.dir/build.make CMakeFiles/cmTC_95fd1.dir/build
+make[2]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_95fd1.dir/CheckFunctionExists.c.o
+/usr/lib/ccache/cc   -DCHECK_FUNCTION_EXISTS=cheev_ -o CMakeFiles/cmTC_95fd1.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_95fd1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95fd1.dir/link.txt --verbose=1
+/usr/lib/ccache/cc  -DCHECK_FUNCTION_EXISTS=cheev_ -rdynamic CMakeFiles/cmTC_95fd1.dir/CheckFunctionExists.c.o -o cmTC_95fd1  /usr/lib/x86_64-linux-gnu/libblas.so -pthread -lm -ldl 
+CMakeFiles/cmTC_95fd1.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `cheev_'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_95fd1.dir/build.make:99: recipe for target 'cmTC_95fd1' failed
+make[2]: *** [cmTC_95fd1] Error 1
+make[2]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_95fd1/fast' failed
+make[1]: *** [cmTC_95fd1/fast] Error 2
+make[1]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function cheev_ exists failed with the following output:
+Change Dir: /home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ec80d/fast && make[1]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+/usr/bin/make  -f CMakeFiles/cmTC_ec80d.dir/build.make CMakeFiles/cmTC_ec80d.dir/build
+make[2]: Entering directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ec80d.dir/CheckFunctionExists.c.o
+/usr/lib/ccache/cc   -DCHECK_FUNCTION_EXISTS=cheev_ -o CMakeFiles/cmTC_ec80d.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ec80d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec80d.dir/link.txt --verbose=1
+/usr/lib/ccache/cc  -DCHECK_FUNCTION_EXISTS=cheev_ -rdynamic CMakeFiles/cmTC_ec80d.dir/CheckFunctionExists.c.o -o cmTC_ec80d  /usr/lib/x86_64-linux-gnu/liblapack.so /usr/lib/x86_64-linux-gnu/libblas.so -fortranlibs 
+cc: error: unrecognized command line option ‘-fortranlibs’; did you mean ‘-fltrans’?
+CMakeFiles/cmTC_ec80d.dir/build.make:100: recipe for target 'cmTC_ec80d' failed
+make[2]: *** [cmTC_ec80d] Error 1
+make[2]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_ec80d/fast' failed
+make[1]: *** [cmTC_ec80d/fast] Error 2
+make[1]: Leaving directory '/home/contour/ws_catkin_elephant/build/CMakeFiles/CMakeTmp'
+
+
+

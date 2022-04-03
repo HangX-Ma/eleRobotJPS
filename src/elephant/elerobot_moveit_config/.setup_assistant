@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: elerobot_description
+    relative_path: xacro/elerobot.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/elerobot.srdf
+  CONFIG:
+    author_name: m-contour
+    author_email: m-contour@qq.com
+    generated_timestamp: 1648973008

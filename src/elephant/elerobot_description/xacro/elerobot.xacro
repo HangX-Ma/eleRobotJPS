@@ -9,6 +9,14 @@
   <!-- elephant panda robot p3 type description-->
   <xacro:macro name="elerobot" params="arm_id:='elerobot' with_camera:='false'">
     
+    <!-- di435  frame definition can be found at https://github.com/IntelRealSense/librealsense/blob/master/doc/d435i.md -->
+    <xacro:if value="${with_camera}">
+      <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro"/>
+      <xacro:sensor_d435i  parent="${arm_id}_link7" name="D435i_camera" topics_ns="D435i_camera" enable_pointCloud="true" align_depth="false">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/2}"/>
+      </xacro:sensor_d435i> 
+    </xacro:if>
+
     <!-- LINK DESCRIPTION -->
     <!-- Gazebo requires a joint to a link called "world" for statically mounted robots -->
     <link name="world" />
@@ -53,7 +61,7 @@
         <material name="white"/>
       </visual>
       <collision>
-        <origin xyz="-0.051 -0.051 -0.07" rpy="0.0 0.0 0.0"/>
+        <origin xyz="-0.0528 -0.0528 -0.07" rpy="0.0 0.0 0.0"/>
         <geometry>
           <mesh filename="${mesh_file_path}${mesh_prefix}1${mesh_suffix}" scale="0.001 0.001 0.001"/>
         </geometry>
@@ -202,7 +210,7 @@
         <material name="red"/>
       </visual>
       <collision>
-        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.0 0.0 ${-link7_h/2}" rpy="0.0 0.0 0.0"/>
         <geometry>
           <cylinder radius="${link7_r}" length="${link7_h}"/>
         </geometry>
@@ -215,11 +223,12 @@
     </link>
 
     <!-- JOINT DESCRIPTION -->
-    <!-- joint0 -->
+    <!-- joint0 Locked -->
     <joint name="${arm_id}_joint0" type="revolute">
       <axis xyz="0 0 1"/>
       <origin xyz="0.0 0.0 ${joint0_z}" rpy="0.0 0.0 0.0"/>
-      <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*360/180}" soft_upper_limit="${PI*360/180}"/>
+      <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*0.01/180}" soft_upper_limit="${PI*0.01/180}"/>
+      <!-- <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*360/180}" soft_upper_limit="${PI*360/180}"/> -->
       <limit acceleration="15" effort="500.0" lower="${-PI*360/180}" upper="${PI*360/180}" velocity="${180/180*PI}"/>
       <parent link="${arm_id}_link0"/>
       <child link="${arm_id}_link1"/>
@@ -253,7 +262,7 @@
       <axis xyz="0 0 1"/>
       <origin xyz="${joint3_x} 0.0 ${joint3_z}" rpy="0.0 0.0 ${PI/2}"/>
       <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*360/180}" soft_upper_limit="${PI*360/180}"/>
-      <limit acceleration="15" effort="500.0" lower="${-PI*360/180}" upper="${PI*360/180}" velocity="${180/180*PI}"/>
+      <limit acceleration="15" effort="500.0" lower="${-PI*360/180}" upper="${PI*360/180}" velocity="${208/180*PI}"/>
       <parent link="${arm_id}_link3"/>
       <child link="${arm_id}_link4"/>
       <dynamics D="1" K="7000" mu_coulomb="0" mu_viscous="16" damping="0.003" friction="0.01"/>
@@ -263,19 +272,20 @@
     <joint name="${arm_id}_joint4" type="revolute">
       <axis xyz="0 0 1"/>
       <origin xyz="0.0 ${joint4_y} 0.0" rpy="0.0 ${-PI/2} ${PI/2}"/>
-      <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*360/180}" soft_upper_limit="${PI*360/180}"/>
-      <limit acceleration="15" effort="500.0" lower="${-PI*360/180}" upper="${PI*360/180}" velocity="${180/180*PI}"/>
+      <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*0.01/180}" soft_upper_limit="${PI*0.01/180}"/>
+      <!-- <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*360/180}" soft_upper_limit="${PI*360/180}"/> -->
+      <limit acceleration="15" effort="500.0" lower="${-PI*360/180}" upper="${PI*360/180}" velocity="${208/180*PI}"/>
       <parent link="${arm_id}_link4"/>
       <child link="${arm_id}_link5"/>
       <dynamics D="1" K="7000" mu_coulomb="0" mu_viscous="16" damping="0.003" friction="0.01"/>
     </joint>
 
-    <!-- joint5 -->
+    <!-- joint5 Locked -->
     <joint name="${arm_id}_joint5" type="revolute">
       <axis xyz="0 0 1"/>
       <origin xyz="0.0 ${joint5_y} 0.0" rpy="${-PI/2} 0.0 0.0"/>
       <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*360/180}" soft_upper_limit="${PI*360/180}"/>
-      <limit acceleration="15" effort="500.0" lower="${-PI*360/180}" upper="${PI*360/180}" velocity="${180/180*PI}"/>
+      <limit acceleration="15" effort="500.0" lower="${-PI*360/180}" upper="${PI*360/180}" velocity="${208/180*PI}"/>
       <parent link="${arm_id}_link5"/>
       <child link="${arm_id}_link6"/>
       <dynamics D="1" K="7000" mu_coulomb="0" mu_viscous="16" damping="0.003" friction="0.01"/>

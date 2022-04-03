@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <launch>
-  <arg name="model" default="$(find elerobot_description)/xacro/elerobot_unit.urdf.xacro"/>
+  <arg name="model" default="$(find elerobot_description)/xacro/elerobot.urdf.xacro"/>
   <arg name="gui" default="true" />
   
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
