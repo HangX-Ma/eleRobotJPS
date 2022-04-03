@@ -33,9 +33,9 @@
     <xacro:gazebo-joint joint="${arm_id}_joint5" transmission="hardware_interface/PositionJointInterface" />
 
     <!-- Gazebo plugin for ROS control -->
-    <gazebo>
+    <gazebo> <!-- controller -->
       <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-        <robotNamespace>/${arm_id}</robotNamespace>
+        <robotNamespace></robotNamespace>
         <controlPeriod>0.001</controlPeriod>
         <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
         <legacyModeNS>true</legacyModeNS>

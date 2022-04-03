@@ -6,7 +6,7 @@
   <rosparam file="$(find elerobot_moveit_config)/config/gazebo_controllers.yaml" command="load"/>
 
   <node name="joint_controller_spawner" pkg="controller_manager" type="spawner" respawn="true"
-  output="screen" args="joint_state_controller" />
+  output="screen" args="joint_state_controller"/>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen" >
   </node>

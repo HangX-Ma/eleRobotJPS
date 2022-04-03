@@ -2,14 +2,15 @@
   <!--The planning and execution components of MoveIt! configured to 
       publish the current configuration of the robot (simulated or real) 
       and the current state of the world as seen by the planner-->
-
+  <arg name="debug" default="false" />
+  
   <include file="$(find elerobot_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />
   </include>
-  
+
   <include file="$(find elerobot_moveit_config)/launch/moveit_rviz.launch">
     <arg name="rviz_config" value="$(find elerobot_moveit_config)/launch/moveit.rviz" />
-    <arg name="debug" value="false"/>
+    <arg name="debug" default="$(arg debug)"/>
   </include>
 
 </launch>

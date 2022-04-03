@@ -294,7 +294,11 @@ controller_list:
 - Delete
   ```xml
   <rosparam param="source_list">[/rokae_arm/joint_states]</rosparam>
-  xml
+  ```
+- Oh~ If you forget to delete the `namespace` parameters in `elerobot_description/xacro/elerobot.urdf.xacro` for `gazebo_ros_control` plugin, following warning will come up!
+  ```shell
+  [ WARN] [1648998058.818776808, 194.134000000]: Waiting for manipulator_controller/follow_joint_trajectory to come up
+  ```
 
 ##### 3.rokae_arm_gazebo_world.launch
 - Delete `tf2_ros`.
@@ -303,5 +307,33 @@ controller_list:
 ##### 4.rokae_arm_toplevel_moveit.launch
 - Modify the necessary parameters.
 - We have not created `octomap`, so annotate it first. If we want to load a local `octomap` annotate it again.
-- 
+##### 5. moveit_planning_execution.launch
 - Copy the `moveit_planning_execution.launch` and paste it in `elerobot_moveit_config/launch` and modify some parameters to fit the name of current robot configuration.
+
+#### USAGE:
+You can enter the following command in terminal to test the function of the robot. When you move the robot by `rqt_control` in Gazebo, you will find the `Rviz` planning scene will move simultaneously.
+
+```shell
+roslaunch elerobot_simple_control elerobot_toplevel_moveit.launch
+```
+Some **ERRORs** may occur but if they corrispond to the following types, there's no need to worry. **Moveit,Gazebo** will solve them. Additionally, `chomp` isn't contained in regular **source** `Moveit`.
+
+##### pid
+```shell
+[ERROR] [1648998494.282049465, 184.746000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/elerobot_joint0
+[ERROR] [1648998494.283032980, 184.746000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/elerobot_joint1
+[ERROR] [1648998494.283846344, 184.746000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/elerobot_joint2
+[ERROR] [1648998494.284757288, 184.746000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/elerobot_joint3
+[ERROR] [1648998494.286070755, 184.746000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/elerobot_joint4
+[ERROR] [1648998494.286879432, 184.746000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/elerobot_joint5
+```
+
+##### chomp
+```shell
+[ERROR] [1648998498.766554584, 188.533000000]: Exception while loading planner 'chomp_interface/CHOMPPlanner': According to the loaded plugin descriptions the class chomp_interface/CHOMPPlanner with base class type planning_interface::PlannerManager does not exist. Declared types are  lerp_interface/LERPPlanner ompl_interface/OMPLPlanner pilz_industrial_motion_planner::CommandPlanner
+Available plugins: lerp_interface/LERPPlanner, ompl_interface/OMPLPlanner, pilz_industrial_motion_planner::CommandPlanner
+[ERROR] [1648998498.778495155, 188.533000000]: Failed to initialize planning pipeline 'chomp'.
+```
+
+![rviz_gazebo](README_pic/rviz_gazebo.png#set_center)
+
