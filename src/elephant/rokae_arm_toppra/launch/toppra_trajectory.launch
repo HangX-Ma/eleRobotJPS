@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node name="toppra" pkg="rokae_arm_toppra" type="rokae_toppra_server" output="screen"/>
+
+</launch>

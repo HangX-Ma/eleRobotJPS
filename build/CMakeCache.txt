@@ -426,6 +426,9 @@ EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
 //Empy script
 EMPY_SCRIPT:STRING=/usr/bin/empy
 
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=/usr/lib/cmake/eigen3
+
 //Path to a file.
 FreeImage_INCLUDE_DIRS:PATH=/usr/include
 
@@ -741,6 +744,15 @@ PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2
 
+//Path to a file.
+PYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7
+
+//Path to a library.
+PYTHON_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libpython2.7.so
+
+//Path to a library.
+PYTHON_LIBRARY_DEBUG:FILEPATH=PYTHON_LIBRARY_DEBUG-NOTFOUND
+
 //Specify specific Python version to use ('major.minor' or 'major')
 PYTHON_VERSION:STRING=2
 
@@ -849,12 +861,6 @@ actionlib_DIR:PATH=/opt/ros/melodic/share/actionlib/cmake
 //The directory containing a CMake configuration file for actionlib_msgs.
 actionlib_msgs_DIR:PATH=/opt/ros/melodic/share/actionlib_msgs/cmake
 
-//The directory containing a CMake configuration file for bond.
-bond_DIR:PATH=/opt/ros/melodic/share/bond/cmake
-
-//The directory containing a CMake configuration file for bondcpp.
-bondcpp_DIR:PATH=/opt/ros/melodic/share/bondcpp/cmake
-
 //The directory containing a CMake configuration file for camera_calibration_parsers.
 camera_calibration_parsers_DIR:PATH=/opt/ros/melodic/share/camera_calibration_parsers/cmake
 
@@ -906,9 +912,6 @@ elerobot_gazebo_world_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/ele
 //Value Computed by CMake
 elerobot_ikfast_manipulator_plugin_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elerobot_ikfast_manipulator_plugin
 
-//The directory containing a CMake configuration file for elerobot_ikfast_manipulator_plugin.
-elerobot_ikfast_manipulator_plugin_DIR:PATH=elerobot_ikfast_manipulator_plugin_DIR-NOTFOUND
-
 //Value Computed by CMake
 elerobot_ikfast_manipulator_plugin_IS_TOP_LEVEL:STATIC=OFF
 
@@ -926,15 +929,6 @@ elerobot_moveit_config_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 elerobot_moveit_config_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/elerobot_moveit_config
-
-//Value Computed by CMake
-elerobot_moveit_demo_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/elerobot_moveit_demo
-
-//Value Computed by CMake
-elerobot_moveit_demo_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-elerobot_moveit_demo_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/elerobot_moveit_demo
 
 //Value Computed by CMake
 elerobot_simple_control_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/elerobot_simple_control
@@ -1008,6 +1002,9 @@ googletest-distribution_IS_TOP_LEVEL:STATIC=OFF
 //Value Computed by CMake
 googletest-distribution_SOURCE_DIR:STATIC=/usr/src/googletest
 
+//The directory containing a CMake configuration file for graph_msgs.
+graph_msgs_DIR:PATH=/opt/ros/melodic/share/graph_msgs/cmake
+
 //Value Computed by CMake
 gtest_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/gtest/googlemock/gtest
 
@@ -1060,6 +1057,9 @@ ignition-transport4_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/ignition-transport4
 //The directory containing a CMake configuration file for image_transport.
 image_transport_DIR:PATH=/opt/ros/melodic/share/image_transport/cmake
 
+//The directory containing a CMake configuration file for interactive_markers.
+interactive_markers_DIR:PATH=/opt/ros/melodic/share/interactive_markers/cmake
+
 //The directory containing a CMake configuration file for jsoncpp.
 jsoncpp_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/jsoncpp
 
@@ -1093,9 +1093,6 @@ moveit_ros_move_group_DIR:PATH=/home/contour/ws_moveit/devel/share/moveit_ros_mo
 //The directory containing a CMake configuration file for moveit_ros_occupancy_map_monitor.
 moveit_ros_occupancy_map_monitor_DIR:PATH=/home/contour/ws_moveit/devel/share/moveit_ros_occupancy_map_monitor/cmake
 
-//The directory containing a CMake configuration file for moveit_ros_perception.
-moveit_ros_perception_DIR:PATH=/home/contour/ws_moveit/devel/share/moveit_ros_perception/cmake
-
 //The directory containing a CMake configuration file for moveit_ros_planning.
 moveit_ros_planning_DIR:PATH=/home/contour/ws_moveit/devel/share/moveit_ros_planning/cmake
 
@@ -1105,11 +1102,14 @@ moveit_ros_planning_interface_DIR:PATH=/home/contour/ws_moveit/devel/share/movei
 //The directory containing a CMake configuration file for moveit_ros_warehouse.
 moveit_ros_warehouse_DIR:PATH=/home/contour/ws_moveit/devel/share/moveit_ros_warehouse/cmake
 
-//The directory containing a CMake configuration file for nodelet.
-nodelet_DIR:PATH=/opt/ros/melodic/share/nodelet/cmake
+//The directory containing a CMake configuration file for moveit_visual_tools.
+moveit_visual_tools_DIR:PATH=/home/contour/ws_moveit/devel/share/moveit_visual_tools/cmake
 
 //The directory containing a CMake configuration file for object_recognition_msgs.
 object_recognition_msgs_DIR:PATH=/opt/ros/melodic/share/object_recognition_msgs/cmake
+
+//The directory containing a CMake configuration file for octomap.
+octomap_DIR:PATH=/opt/ros/melodic/share/octomap
 
 //The directory containing a CMake configuration file for octomap_msgs.
 octomap_msgs_DIR:PATH=/opt/ros/melodic/share/octomap_msgs/cmake
@@ -1229,13 +1229,37 @@ realsense_gazebo_plugin_LIB_DEPENDS:STATIC=general;/opt/ros/melodic/lib/libgazeb
 realsense_gazebo_plugin_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/realsense_gazebo_plugin
 
 //Value Computed by CMake
-rokae_arm_pick_place_with_vacuum_gripper_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/rokae_arm_pick_place_with_vacuum_gripper
+rokae_arm_toppra_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/rokae_arm_toppra
 
 //Value Computed by CMake
-rokae_arm_pick_place_with_vacuum_gripper_IS_TOP_LEVEL:STATIC=OFF
+rokae_arm_toppra_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-rokae_arm_pick_place_with_vacuum_gripper_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/rokae_arm_pick_place_with_vacuum_gripper
+rokae_arm_toppra_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/rokae_arm_toppra
+
+//Dependencies for the target
+rokae_graph_search_LIB_DEPENDS:STATIC=general;/opt/ros/melodic/lib/liboctomap.so;general;/opt/ros/melodic/lib/liboctomath.so;
+
+//Dependencies for the target
+rokae_ikfast_wrapper_LIB_DEPENDS:STATIC=general;/opt/ros/melodic/lib/liboctomap.so;general;/opt/ros/melodic/lib/liboctomath.so;
+
+//Value Computed by CMake
+rokae_jps_navigation_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/rokae_jps_navigation
+
+//Value Computed by CMake
+rokae_jps_navigation_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+rokae_jps_navigation_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation
+
+//Value Computed by CMake
+rokae_octomap_unit_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/rokae_octomap_unit
+
+//Value Computed by CMake
+rokae_octomap_unit_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+rokae_octomap_unit_SOURCE_DIR:STATIC=/home/contour/ws_catkin_elephant/src/elephant/rokae_octomap_unit
 
 //Value Computed by CMake
 rokae_pick_place_with_vacuum_gripper_BINARY_DIR:STATIC=/home/contour/ws_catkin_elephant/build/elephant/rokae_pick_place_with_vacuum_gripper
@@ -1279,14 +1303,14 @@ rospy_DIR:PATH=/opt/ros/melodic/share/rospy/cmake
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/melodic/share/rostime/cmake
 
+//The directory containing a CMake configuration file for rviz_visual_tools.
+rviz_visual_tools_DIR:PATH=/home/contour/ws_moveit/devel/share/rviz_visual_tools/cmake
+
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/melodic/share/sensor_msgs/cmake
 
 //The directory containing a CMake configuration file for shape_msgs.
 shape_msgs_DIR:PATH=/opt/ros/melodic/share/shape_msgs/cmake
-
-//The directory containing a CMake configuration file for smclib.
-smclib_DIR:PATH=/opt/ros/melodic/share/smclib/cmake
 
 //The directory containing a CMake configuration file for srdfdom.
 srdfdom_DIR:PATH=/opt/ros/melodic/share/srdfdom/cmake
@@ -1320,6 +1344,9 @@ tf2_ros_DIR:PATH=/opt/ros/melodic/share/tf2_ros/cmake
 
 //The directory containing a CMake configuration file for tf.
 tf_DIR:PATH=/opt/ros/melodic/share/tf/cmake
+
+//The directory containing a CMake configuration file for toppra.
+toppra_DIR:PATH=/usr/local/lib/cmake/toppra
 
 //The directory containing a CMake configuration file for trajectory_msgs.
 trajectory_msgs_DIR:PATH=/opt/ros/melodic/share/trajectory_msgs/cmake
@@ -1730,7 +1757,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=13
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=16
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -1819,6 +1846,8 @@ FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.1()]
 FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[/usr/lib/x86_64-linux-gnu/libprotobuf.so;-pthread][/usr/include][v3.0.0(2.3.0)]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python2][v2.7.17()]
+//Details about finding PythonLibs
+FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/usr/lib/x86_64-linux-gnu/libpython2.7.so][/usr/include/python2.7][v2.7.17()]
 //Details about finding SWSCALE
 FIND_PACKAGE_MESSAGE_DETAILS_SWSCALE:INTERNAL=[true][v()]
 //Details about finding Simbody
@@ -2191,10 +2220,16 @@ PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_INCLUDE_DIR
+PYTHON_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
+//ADVANCED property for variable: PYTHON_LIBRARY
+PYTHON_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_LIBRARY_DEBUG
+PYTHON_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Protobuf_INCLUDE_DIR
 Protobuf_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Protobuf_LIBRARY_DEBUG

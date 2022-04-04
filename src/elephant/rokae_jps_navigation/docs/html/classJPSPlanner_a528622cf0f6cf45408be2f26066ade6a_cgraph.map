@@ -1,0 +1,6 @@
+<map id="JPSPlanner::checkAvailability" name="JPSPlanner::checkAvailability">
+<area shape="rect" id="node1" title="Check if current point is avaliable." alt="" coords="5,56,203,83"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#ae2cbbf18f600afc723b8cb3e7a12dfc2" title="Check if (x, y, z) is free." alt="" coords="265,5,400,32"/>
+<area shape="rect" id="node3" href="$classJPSPlanner.html#ac2e00d599fee99965a6fdbcb82ce24f9" title="Check if (x, y, z) is occupied." alt="" coords="251,56,415,83"/>
+<area shape="rect" id="node4" href="$classJPSPlanner.html#a6272866f45ec5cc13c168e688a117645" title="Check if current coords is outside of the searching region." alt="" coords="255,107,410,133"/>
+</map>

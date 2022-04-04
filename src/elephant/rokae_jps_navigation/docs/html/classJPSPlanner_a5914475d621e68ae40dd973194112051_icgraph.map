@@ -1,0 +1,8 @@
+<map id="JPSPlanner::generateColor" name="JPSPlanner::generateColor">
+<area shape="rect" id="node1" title="generate color for marker &#39;POINTS&#39;" alt="" coords="495,81,675,108"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#a76254b6de422931d27ebbe70461d218e" title="visualize the expansion process" alt="" coords="228,5,447,32"/>
+<area shape="rect" id="node4" href="$classJPSPlanner.html#a97ebd0b6bb9b9c55876438b0ed97d135" title="visualize the searched way points" alt="" coords="249,56,426,83"/>
+<area shape="rect" id="node5" href="$classJPSPlanner.html#a63c221be9cfca6e205bdf718dcb4b117" title="visualize a specific point" alt="" coords="247,107,427,133"/>
+<area shape="rect" id="node6" href="$classJPSPlanner.html#a32d286fdb27a28782c95abbcd2c78af9" title="visualize the octomap tree" alt="" coords="249,157,425,184"/>
+<area shape="rect" id="node3" href="$classJPSPlanner.html#ada86ed5a167acd2f9bcfd8f111d0f904" title="action operation server" alt="" coords="5,56,180,83"/>
+</map>

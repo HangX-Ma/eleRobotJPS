@@ -1,0 +1,8 @@
+std_msgs/Float32 joint0
+std_msgs/Float32 joint1
+std_msgs/Float32 joint2
+std_msgs/Float32 joint3
+std_msgs/Float32 joint4
+std_msgs/Float32 joint5
+bool ifVerbose
+---

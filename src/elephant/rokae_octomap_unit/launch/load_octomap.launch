@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="path" default="$(find rokae_octomap_unit)/share/mapfile_obstacle.bt"/>
+
+  <node pkg="octomap_server" name="octomap_talker" type="octomap_server_node"  output="screen" args="$(arg path)" />
+
+  <node pkg="rokae_octomap_unit" name="moveit_octomap_handler" type="rokae_static_octomap_publish_node"  output="screen" /> 
+  <!-- <node pkg="rokae_octomap_unit" name="moveit_octomap_handler" type="octoload.py"  output="screen" /> -->
+</launch>

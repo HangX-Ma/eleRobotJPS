@@ -1,0 +1,13 @@
+geometry_msgs/Pose[] goal_pose
+bool ifback
+---
+string message
+bool success
+float64[] pos
+float64[] vel
+float64[] acc
+float64[] t
+float64[] back_pos
+float64[] back_vel
+float64[] back_acc
+float64[] back_t

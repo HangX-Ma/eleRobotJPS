@@ -1,0 +1,2 @@
+set(rokae_jps_navigation_MESSAGE_FILES "")
+set(rokae_jps_navigation_SERVICE_FILES "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/Goto.srv;/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/eefState.srv;/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv;/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/CheckCollision.srv")

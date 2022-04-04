@@ -1,0 +1,6 @@
+<map id="JPSPlanner::resamplePath" name="JPSPlanner::resamplePath">
+<area shape="rect" id="node1" title="resample way points with desired pose" alt="" coords="639,13,817,39"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#aab095aaa2f78d19553fe4ccf8e6fd1a6" title="collision detection client, if a certain node is detected as an obstacle, this function will change t..." alt="" coords="444,5,591,47"/>
+<area shape="rect" id="node3" href="$classJPSPlanner.html#ada86ed5a167acd2f9bcfd8f111d0f904" title="action operation server" alt="" coords="221,13,396,39"/>
+<area shape="rect" id="node4" href="$classJPSPlanner.html#afcbcd59fe54c1207b03d879f200d4b05" title=" " alt="" coords="5,13,173,39"/>
+</map>

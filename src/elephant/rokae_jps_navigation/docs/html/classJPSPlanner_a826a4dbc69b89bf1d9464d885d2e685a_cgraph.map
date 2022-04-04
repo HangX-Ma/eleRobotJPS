@@ -1,0 +1,5 @@
+<map id="JPSPlanner::removeCornerPts" name="JPSPlanner::removeCornerPts">
+<area shape="rect" id="node1" title="Remove some corner waypoints." alt="" coords="5,5,207,32"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#a9a0320d9795145f5b0fbfc665fdee221" title="find a path between two points straightly" alt="" coords="255,5,448,32"/>
+<area shape="rect" id="node3" href="$classJPSPlanner.html#ac2e00d599fee99965a6fdbcb82ce24f9" title="Check if (x, y, z) is occupied." alt="" coords="496,5,660,32"/>
+</map>

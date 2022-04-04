@@ -1,0 +1,3 @@
+bool ifVerbose
+---
+geometry_msgs/Pose eef_pose

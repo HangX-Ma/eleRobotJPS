@@ -207,7 +207,7 @@
         <geometry>
           <cylinder radius="${link7_r}" length="${link7_h}"/>
         </geometry>
-        <material name="red"/>
+        <material name="orange"/>
       </visual>
       <collision>
         <origin xyz="0.0 0.0 ${-link7_h/2}" rpy="0.0 0.0 0.0"/>

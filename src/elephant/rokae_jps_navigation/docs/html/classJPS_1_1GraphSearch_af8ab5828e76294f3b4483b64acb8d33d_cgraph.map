@@ -1,0 +1,13 @@
+<map id="JPS::GraphSearch::plan" name="JPS::GraphSearch::plan">
+<area shape="rect" id="node1" title="start 3D planning thread" alt="" coords="5,122,168,149"/>
+<area shape="rect" id="node2" href="$classJPS_1_1GraphSearch.html#a558de178785d62e710bcf9104c22a7f1" title="get the path keys from from to to" alt="" coords="222,5,418,47"/>
+<area shape="rect" id="node3" href="$classJPS_1_1GraphSearch.html#a3e0937fe5e617c23eb5de575fc3b8537" title="calculate euclidean distance from p1 to p2" alt="" coords="701,217,919,243"/>
+<area shape="rect" id="node4" href="$classJPS_1_1GraphSearch.html#ab58fd8a007c25ac623da4de979e178f3" title="heuristic function, calculate heuristic cost from key1 to key2" alt="" coords="472,122,653,149"/>
+<area shape="rect" id="node5" href="$classJPS_1_1GraphSearch.html#adcd833accf5030c48d6812df72b1cfc2" title="Get the Jps Succ object for JPS planning." alt="" coords="216,223,424,250"/>
+<area shape="rect" id="node10" href="$classJPS_1_1GraphSearch.html#a7d3d17e51c0094f49eb81d1ed5bf14aa" title="transfer Key value to Coordinate value with central bias" alt="" coords="967,489,1177,531"/>
+<area shape="rect" id="node6" href="$classJPS_1_1GraphSearch.html#a90b7e5d5ca13179f65661312784bd4c8" title="update current key to next point key" alt="" coords="981,318,1163,345"/>
+<area shape="rect" id="node7" href="$classJPS_1_1GraphSearch.html#abb557676b06da6ad7fdbbbd83b8447b0" title="Check if (x, y, z) is occupied." alt="" coords="970,391,1174,418"/>
+<area shape="rect" id="node8" href="$classJPS_1_1GraphSearch.html#a659858c708ab2384cbd419f930cd3af0" title="recursively call the jump() function to do &#39;jump&#39;. If the jump satisfies one of the following conditi..." alt="" coords="479,311,646,338"/>
+<area shape="rect" id="node9" href="$classJPS_1_1GraphSearch.html#afc0c40b5260a870ce3e747cdb3178748" title="calculate if current node has Forced Neighbors" alt="" coords="710,369,910,395"/>
+<area shape="rect" id="node11" href="$classJPS_1_1GraphSearch.html#a9920cf97161c69a9d9813cc117dd516a" title="Check if (x, y, z) is free." alt="" coords="723,267,897,294"/>
+</map>

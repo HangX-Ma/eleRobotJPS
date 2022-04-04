@@ -1,0 +1,7 @@
+geometry_msgs/Pose path_pose
+float32[] prev_joints
+bool ifVerbose
+---
+bool isCollide
+bool getSolution
+float32[] curr_joints

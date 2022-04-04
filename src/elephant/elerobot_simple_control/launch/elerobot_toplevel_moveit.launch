@@ -12,7 +12,7 @@
     <param name="octomap_frame" type="string" value="world" /> 
   </group>
 
-  <!-- <include file="$(find rokae_octomap_unit)/launch/load_octomap.launch" /> -->
+  <include file="$(find rokae_octomap_unit)/launch/load_octomap.launch" />
 
   <!-- Launch Gazebo  -->
   <include file="$(find elerobot_simple_control)/launch/elerobot_gazebo_world.launch" >
@@ -38,6 +38,6 @@
   <!-- <include file="$(find rokae_arm_navigation)/launch/rokae_arm_navigation.launch"/> -->
 
   <!-- JPS Planner -->
-  <!-- <include file="$(find rokae_jps_navigation)/launch/rokae_arm_navigation_JPS.launch"/> -->
+  <include file="$(find rokae_jps_navigation)/launch/rokae_arm_navigation_JPS.launch"/>
   
 </launch>

@@ -1,0 +1,4 @@
+<map id="JPSPlanner::collision_detection_client" name="JPSPlanner::collision_detection_client">
+<area shape="rect" id="node1" title="collision detection client, if a certain node is detected as an obstacle, this function will change t..." alt="" coords="228,5,375,47"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#ada86ed5a167acd2f9bcfd8f111d0f904" title="action operation server" alt="" coords="5,13,180,39"/>
+</map>

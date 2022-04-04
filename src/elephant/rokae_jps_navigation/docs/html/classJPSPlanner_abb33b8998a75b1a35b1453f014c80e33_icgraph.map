@@ -1,0 +1,4 @@
+<map id="JPSPlanner::setSearchRegion" name="JPSPlanner::setSearchRegion">
+<area shape="rect" id="node1" title="Set the Search region object." alt="" coords="279,5,477,32"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#aaca4134658cc2cf06fa4b34aace20bd7" title="interatively compute a path that can drive the original path away from the obstacle" alt="" coords="5,5,231,32"/>
+</map>

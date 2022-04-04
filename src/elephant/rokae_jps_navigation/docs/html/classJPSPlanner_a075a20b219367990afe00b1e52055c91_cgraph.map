@@ -1,0 +1,17 @@
+<map id="JPSPlanner::plan" name="JPSPlanner::plan">
+<area shape="rect" id="node1" title="iterative path optimization process" alt="" coords="5,216,128,243"/>
+<area shape="rect" id="node2" href="$classJPS_1_1GraphSearch.html#a2a5b5cb539d1578bdf72d7c642dcb280" title="This is a function used to do distance potential field planning to drive the original path away from ..." alt="" coords="184,115,383,141"/>
+<area shape="rect" id="node10" href="$classJPS_1_1GraphSearch.html#a666450ba9af8778e43799bfe84498c61" title="Get the optimal path." alt="" coords="176,165,391,192"/>
+<area shape="rect" id="node11" href="$classJPSPlanner.html#a958cac487fe85cf1f9d98d1ae01a8f39" title="keys to coordinate &lt;vector&gt; type" alt="" coords="191,216,375,243"/>
+<area shape="rect" id="node12" href="$classJPSPlanner.html#a826a4dbc69b89bf1d9464d885d2e685a" title="Remove some corner waypoints (in a triangle, the third_edge &lt; first_edge + second_edge)" alt="" coords="183,267,384,293"/>
+<area shape="rect" id="node15" href="$classJPSPlanner.html#a73e175cf65ca025aa936e29a128289ee" title="This function is used to filter waypoints, removing redundant points on the same line...." alt="" coords="190,317,377,344"/>
+<area shape="rect" id="node3" href="$classJPS_1_1GraphSearch.html#a558de178785d62e710bcf9104c22a7f1" title="get the path keys from from to to" alt="" coords="439,107,635,149"/>
+<area shape="rect" id="node4" href="$classJPS_1_1GraphSearch.html#a3e0937fe5e617c23eb5de575fc3b8537" title="calculate euclidean distance from p1 to p2" alt="" coords="683,224,900,251"/>
+<area shape="rect" id="node5" href="$classJPS_1_1GraphSearch.html#ab58fd8a007c25ac623da4de979e178f3" title="heuristic function, calculate heuristic cost from key1 to key2" alt="" coords="701,5,882,32"/>
+<area shape="rect" id="node6" href="$classJPS_1_1GraphSearch.html#a3a38c99add5d2838afa62c14e1797f70" title="Get the Succ objects for A&#45;star distance potential field planning." alt="" coords="443,173,630,200"/>
+<area shape="rect" id="node9" href="$classJPS_1_1GraphSearch.html#a7d3d17e51c0094f49eb81d1ed5bf14aa" title="transfer Key value to Coordinate value with central bias" alt="" coords="686,57,897,98"/>
+<area shape="rect" id="node7" href="$classJPS_1_1GraphSearch.html#a90b7e5d5ca13179f65661312784bd4c8" title="update current key to next point key" alt="" coords="701,123,882,149"/>
+<area shape="rect" id="node8" href="$classJPS_1_1GraphSearch.html#abb557676b06da6ad7fdbbbd83b8447b0" title="Check if (x, y, z) is occupied." alt="" coords="689,173,893,200"/>
+<area shape="rect" id="node13" href="$classJPSPlanner.html#a9a0320d9795145f5b0fbfc665fdee221" title="find a path between two points straightly" alt="" coords="440,275,633,301"/>
+<area shape="rect" id="node14" href="$classJPSPlanner.html#ac2e00d599fee99965a6fdbcb82ce24f9" title="Check if (x, y, z) is occupied." alt="" coords="709,275,873,301"/>
+</map>

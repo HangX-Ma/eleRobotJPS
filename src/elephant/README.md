@@ -337,3 +337,65 @@ Available plugins: lerp_interface/LERPPlanner, ompl_interface/OMPLPlanner, pilz_
 
 ![rviz_gazebo](README_pic/rviz_gazebo.png#set_center)
 
+## 7. Octomap
+
+If you have create a gazebo world and the next step is to create an **octomap**. `roslaunch elerobot_simple_control elerobot_toplevel_moveit` and use the `rqt` to control the robot to abtain the `octomap`. Guarantee your `octomap` scan as much space as posible, otherwise the robot cannot move to a place signed _unknown_.
+
+```shell
+rosrun octomap_server octomap_saver mapfile_obstacle.bt octomap_binary:=/move_group/octomap_binary
+```
+The command above will save the octomap to your local disk and the name is `mapfile_obstacle.bt`.
+
+- Now copy the `rokae_octomap_unit` package and move the `mapfile_obstacle.bt` file into the `share` folder. You need to modified the `launch` file to determine the **octomap** you want to load.
+- Afterwards, find your **<ROBOT>_description** package to make `with_camera` **false** in `xacro`.
+- Find your **<ROBOT>_moveit_config** package to annote the codes in `move_group.launch` below **Sensors Functionality** to turn off the sensor function.
+- Move to the root folder of this workspace, run `catkin_make` to make sure the `rokae_octomap_unit` can work correctly.
+- Don't forget to find your `elerobot_simple_control` package and annotate
+  ```xml
+    <include file="$(find rokae_octomap_unit)/launch/load_octomap.launch" />
+  ```
+  to load the octomap.
+- In `Rviz` **Planning Scene**, **OccupancyGrid** may be useful.
+
+## 8. JPS and TOPP-RA
+
+Now copy the `rokae_jps_navigation` and `rokae_arm_toppra` packages. In `rokae_jps_navigation` pakcage, some files needs to be paid attention.
+
+---
+#### 1. config/rokae_config_JPS.yaml
+In this file you can change the parameters for **JPS** planner, setting `planning_timeout`, `JPS_timeout` etc.
+- **planning_tree_resolution** needs to be correspond to your octomap resolution.
+- **planner_verbose** is recommended to be `true` because it will print out some useful information.
+- **xDim, yDim, zDim** limits the search region for the manipulator, which may save your searching time.
+- **eps** is the heuristic coefficient.
+- **heu_type** is the heuristic cost calculation type.
+- **JPS_max_iteration** is the search depth for JPS planner.
+- Under `visualization` is the marker size for visulization.
+#### 2. include/JPS_Modules/ikfast.h
+You need to replace this file to `~/ws_catkin_elephant/src/elerobot_ikfast_manipulator_plugin/include/ikfast.h` that you have generated for current robot.
+#### 3. rokae_joint2pose.cpp
+This file realize a function that can help you convert the a group of joints'value to the robot pose. It's useful when you want to choose the planning goal for current robot.
+
+![joint2pose_1](README_pic/joint2pose_1.png)![joint2pose_2](README_pic/joint2pose_2.png)
+#### 4. rokae_arm_main.cpp
+In this file you can wirte the goal poses and realize the function you want.
+
+The `toppra` trajectory info is store in `rokae_arm_toppra/share`. If you want to load this data, find the identifier for that specific folder, and change the value in `rokae_arm_main.cpp`. Please check to ensure that `local config` does not work when you want online planning.
+
+#### USAGE:
+- You need to annotate the following codes in `elerobot_simple_control/launch/elerobot_toplevel_moveit.launch` to make sure the JPS planner can work correctly.
+  ```xml
+  <!-- JPS Planner -->
+  <include file="$(find rokae_jps_navigation)/launch/rokae_arm_navigation_JPS.launch"/>
+  ```
+  Please ingnore the **Astar Planner**.
+- You need to use `catkin_make` firt. But If you can not pass the compile, please annotate the `CMakeLists.txt` targets in `rokae_jps_navigation` package.
+- If you have write the correct parameters in `rokae_arm_main.cpp` you can run JPS Planner like this.
+  ```shell
+  # Open the planning scene
+  roslaunch elerobot_simple_control elerobot_toplevel_moveit
+  # Open JPS Planner
+  rosrun rokae_jps_navigation rokae_arm_main
+  ```
+
+

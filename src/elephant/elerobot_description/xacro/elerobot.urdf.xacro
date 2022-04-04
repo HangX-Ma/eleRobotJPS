@@ -5,7 +5,9 @@
   <!-- Is the robot being simulated in gazebo?" -->
   <xacro:arg name="gazebo" default="true" /> 
   <!-- Intel RealSense i435 -->
-  <xacro:arg name="with_camera" default="true" />
+  <!-- <xacro:arg name="with_camera" default="true" /> -->
+  <xacro:arg name="with_camera" default="false" />
+
   <!-- Robot name -->
   <xacro:property name="arm_id" value="elerobot" />
 

@@ -1,0 +1,4 @@
+<map id="JPSPlanner::visualizePath" name="JPSPlanner::visualizePath">
+<area shape="rect" id="node1" title="visualize the searched way points" alt="" coords="5,5,183,32"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#a5914475d621e68ae40dd973194112051" title="generate color for marker &#39;POINTS&#39;" alt="" coords="231,5,411,32"/>
+</map>

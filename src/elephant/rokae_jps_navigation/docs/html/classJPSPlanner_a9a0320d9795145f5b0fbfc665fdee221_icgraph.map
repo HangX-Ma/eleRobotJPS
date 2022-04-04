@@ -1,0 +1,6 @@
+<map id="JPSPlanner::freeStraightPath" name="JPSPlanner::freeStraightPath">
+<area shape="rect" id="node1" title="find a path between two points straightly" alt="" coords="477,31,671,57"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#a826a4dbc69b89bf1d9464d885d2e685a" title="Remove some corner waypoints." alt="" coords="228,5,429,32"/>
+<area shape="rect" id="node4" href="$classJPSPlanner.html#a73e175cf65ca025aa936e29a128289ee" title="This function is used to filter waypoints, removing redundant points on the same line...." alt="" coords="235,56,422,83"/>
+<area shape="rect" id="node3" href="$classJPSPlanner.html#ada86ed5a167acd2f9bcfd8f111d0f904" title="action operation server" alt="" coords="5,5,180,32"/>
+</map>

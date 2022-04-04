@@ -2,7 +2,7 @@
 <package format="2">
   <name>elerobot_simple_control</name>
   <version>0.0.0</version>
-  <description>The rokae_simple_control package</description>
+  <description>The elerobot_simple_control package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

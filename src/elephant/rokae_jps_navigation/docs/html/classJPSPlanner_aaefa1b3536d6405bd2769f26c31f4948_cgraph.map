@@ -1,0 +1,8 @@
+<map id="JPSPlanner::setSearchRegion" name="JPSPlanner::setSearchRegion">
+<area shape="rect" id="node1" title="set search region for distance potential field" alt="" coords="5,107,204,133"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#aeb4a00d63dc9ce764380e67bd22f69de" title="get the new key values of the neighbors" alt="" coords="267,5,408,32"/>
+<area shape="rect" id="node3" href="$classJPSPlanner.html#a8d4c5264db8098c9d38668064e516b87" title="get the neighbors&#39;increment at certain direction" alt="" coords="260,56,415,83"/>
+<area shape="rect" id="node4" href="$classJPSPlanner.html#ac2e00d599fee99965a6fdbcb82ce24f9" title="Check if (x, y, z) is occupied." alt="" coords="255,107,419,133"/>
+<area shape="rect" id="node5" href="$classJPSPlanner.html#a6272866f45ec5cc13c168e688a117645" title="Check if current coords is outside of the searching region." alt="" coords="260,157,415,184"/>
+<area shape="rect" id="node6" href="$classJPSPlanner.html#a43a70715e3ed4371d6bc2392f40ada04" title="key to coordinate type" alt="" coords="252,209,423,250"/>
+</map>

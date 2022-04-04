@@ -1,0 +1,4 @@
+<map id="self_detector::m_collision_detection" name="self_detector::m_collision_detection">
+<area shape="rect" id="node1" title="To check if current joint configuration is valid or not." alt="" coords="180,5,351,47"/>
+<area shape="rect" id="node2" href="$classself__detector.html#ac86da1a04fc3e3f876b7d9ad6fa4c510" title="Construct a new self detector object." alt="" coords="5,5,132,47"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="JPSPlanner::removeLinePts" name="JPSPlanner::removeLinePts">
+<area shape="rect" id="node1" title="This function is used to filter waypoints, removing redundant points on the same line...." alt="" coords="5,5,192,32"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#a9a0320d9795145f5b0fbfc665fdee221" title="find a path between two points straightly" alt="" coords="240,5,433,32"/>
+<area shape="rect" id="node3" href="$classJPSPlanner.html#ac2e00d599fee99965a6fdbcb82ce24f9" title="Check if (x, y, z) is occupied." alt="" coords="481,5,645,32"/>
+</map>

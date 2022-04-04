@@ -1,0 +1,12 @@
+<map id="JPSPlanner::isOccupied" name="JPSPlanner::isOccupied">
+<area shape="rect" id="node1" title="Check if (x, y, z) is occupied." alt="" coords="1459,61,1623,88"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#a528622cf0f6cf45408be2f26066ade6a" title="Check if current point is avaliable." alt="" coords="717,5,915,32"/>
+<area shape="rect" id="node5" href="$classJPSPlanner.html#a9a0320d9795145f5b0fbfc665fdee221" title="find a path between two points straightly" alt="" coords="1215,61,1408,88"/>
+<area shape="rect" id="node10" href="$classJPSPlanner.html#abb33b8998a75b1a35b1453f014c80e33" title="Set the Search region object." alt="" coords="1212,137,1411,164"/>
+<area shape="rect" id="node3" href="$classJPSPlanner.html#ada86ed5a167acd2f9bcfd8f111d0f904" title="action operation server" alt="" coords="221,68,396,95"/>
+<area shape="rect" id="node4" href="$classJPSPlanner.html#afcbcd59fe54c1207b03d879f200d4b05" title=" " alt="" coords="5,68,173,95"/>
+<area shape="rect" id="node6" href="$classJPSPlanner.html#a826a4dbc69b89bf1d9464d885d2e685a" title="Remove some corner waypoints (in a triangle, the third_edge &lt; first_edge + second_edge)" alt="" coords="963,49,1164,76"/>
+<area shape="rect" id="node9" href="$classJPSPlanner.html#a73e175cf65ca025aa936e29a128289ee" title="This function is used to filter waypoints, removing redundant points on the same line...." alt="" coords="970,100,1157,127"/>
+<area shape="rect" id="node7" href="$classJPSPlanner.html#a075a20b219367990afe00b1e52055c91" title="iterative path optimization process" alt="" coords="755,93,877,120"/>
+<area shape="rect" id="node8" href="$classJPSPlanner.html#abd8c0879f46f3c0b2ee84059d2e5c43c" title="interatively compute a path that can drive the original path away from the obstacle" alt="" coords="444,93,669,120"/>
+</map>

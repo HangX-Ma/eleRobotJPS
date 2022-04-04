@@ -1,0 +1,6 @@
+<map id="JPSPlanner::collision_detection_client" name="JPSPlanner::collision_detection_client">
+<area shape="rect" id="node1" title="collision detection client, if a certain node is detected as an obstacle, this function will change t..." alt="" coords="5,64,152,105"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#a43a70715e3ed4371d6bc2392f40ada04" title="key to coordinate type" alt="" coords="213,5,384,47"/>
+<area shape="rect" id="node3" href="$classJPSPlanner.html#ad091851432ec18d4216ab8e93672b32e" title="set current node property to obstacle" alt="" coords="200,71,397,98"/>
+<area shape="rect" id="node4" href="$classJPSPlanner.html#a7fe090a07e860c68f9b348923c914ea2" title="visualize a specific voxel" alt="" coords="207,122,390,149"/>
+</map>

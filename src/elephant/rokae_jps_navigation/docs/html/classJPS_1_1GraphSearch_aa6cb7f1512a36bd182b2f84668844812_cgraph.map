@@ -1,0 +1,4 @@
+<map id="JPS::GraphSearch::SetHeuristic" name="JPS::GraphSearch::SetHeuristic">
+<area shape="rect" id="node1" title="set Heuristic type for heuristic function" alt="" coords="5,13,216,39"/>
+<area shape="rect" id="node2" href="$classJPS_1_1GraphSearch.html#a56013821fb9518129cda4b744eef6b44" title="This is a function used to load paraments from the .yaml file." alt="" coords="264,5,435,47"/>
+</map>

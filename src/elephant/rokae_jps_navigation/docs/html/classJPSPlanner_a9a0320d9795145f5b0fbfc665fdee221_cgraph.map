@@ -1,0 +1,4 @@
+<map id="JPSPlanner::freeStraightPath" name="JPSPlanner::freeStraightPath">
+<area shape="rect" id="node1" title="find a path between two points straightly" alt="" coords="5,5,199,32"/>
+<area shape="rect" id="node2" href="$classJPSPlanner.html#ac2e00d599fee99965a6fdbcb82ce24f9" title="Check if (x, y, z) is occupied." alt="" coords="247,5,411,32"/>
+</map>
