@@ -263,33 +263,33 @@ void operation::planner_test()
   geometry_msgs::Pose pose;
 
   // backward
-  pose.position.x = 0.993687;
-  pose.position.y = 0.0;
-  pose.position.z = 1.46627;
-  pose.orientation.w = 0.0;
-  pose.orientation.x = 0.707107;
-  pose.orientation.y = 0.0;
-  pose.orientation.z = 0.707107;
+  pose.position.x = 0.0925104;
+  pose.position.y = 0.113;
+  pose.position.z = 0.456101;
+  pose.orientation.w = -0.5;
+  pose.orientation.x = 0.5;
+  pose.orientation.y = 0.5;
+  pose.orientation.z = -0.5;
   planner_srv.request.goal_pose.push_back(pose);
 
   // forward
-  pose.position.x = -0.338878;
-  pose.position.y = 0.0;
-  pose.position.z = 0.924559;
-  pose.orientation.w = -0.0606324;
-  pose.orientation.x = 0.767739;
-  pose.orientation.y = -0.633643;
-  pose.orientation.z = 0.0734639;
+  pose.position.x = -0.665872;
+  pose.position.y = 0.113;
+  pose.position.z = 0.297389;
+  pose.orientation.w = -0.5;
+  pose.orientation.x = 0.5;
+  pose.orientation.y = 0.5;
+  pose.orientation.z = -0.5;
   planner_srv.request.goal_pose.push_back(pose);
 
   // put
-  pose.position.x = -0.338878;
-  pose.position.y = 0.0;
-  pose.position.z = 0.924559;
-  pose.orientation.w = 0.00950949;
-  pose.orientation.x = 0.99048;
-  pose.orientation.y = -0.0993795;
-  pose.orientation.z = 0.0947777;
+  pose.position.x = -0.587285;
+  pose.position.y = 0.113;
+  pose.position.z = 0.0295223;
+  pose.orientation.w = 0.00325398;
+  pose.orientation.x = 0.707099;
+  pose.orientation.y = 0.707099;
+  pose.orientation.z = 0.00325398;
   planner_srv.request.goal_pose.push_back(pose);
 
   if (planner_client.call(planner_srv)) {

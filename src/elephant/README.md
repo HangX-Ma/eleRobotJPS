@@ -377,7 +377,23 @@ You need to replace this file to `~/ws_catkin_elephant/src/elerobot_ikfast_manip
 This file realize a function that can help you convert the a group of joints'value to the robot pose. It's useful when you want to choose the planning goal for current robot.
 
 ![joint2pose_1](README_pic/joint2pose_1.png)![joint2pose_2](README_pic/joint2pose_2.png)
-#### 4. rokae_arm_main.cpp
+#### 4. rokae_arm_manipulator_ikfast_solver.cpp
+Copy the `elerobot_manipulator_ikfast_solver.cpp` in `elerobot_ikfast_manipulator_plugin` and rename it to `rokae_arm_manipulator_ikfast_solver.cpp`. Afterwards modifed its include path.
+
+**[Note]:** In `CMakeLists.txt` in `rokae_jps_navigation` modify the following codes, otherwise the complie will failed. 
+  ```cmake
+  add_executable(rokae_collision_detection src/JPS_Modules/rokae_collision_detection.cpp)
+  target_link_libraries(rokae_collision_detection ${catkin_LIBRARIES} ${ROKAE_IKFAST_WRAPPER} -llapack)
+
+  add_executable(rokae_joint2pose src/JPS_Modules/rokae_joint2pose.cpp)
+  target_link_libraries(rokae_joint2pose ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${ROKAE_IKFAST_WRAPPER} -llapack)
+  ```
+![ikfast_complie_failed](README_pic/ikfast_complie_failed.png)
+[REF](https://github.com/ros-industrial-consortium/reuleaux/issues/44)
+
+
+
+#### 5. rokae_arm_main.cpp
 In this file you can wirte the goal poses and realize the function you want.
 
 The `toppra` trajectory info is store in `rokae_arm_toppra/share`. If you want to load this data, find the identifier for that specific folder, and change the value in `rokae_arm_main.cpp`. Please check to ensure that `local config` does not work when you want online planning.

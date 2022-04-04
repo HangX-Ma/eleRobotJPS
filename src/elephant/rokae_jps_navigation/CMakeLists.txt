@@ -65,10 +65,10 @@ add_executable(rokae_arm_eef_state src/JPS_Modules/rokae_arm_eef_state.cpp)
 target_link_libraries(rokae_arm_eef_state ${catkin_LIBRARIES})
 
 add_executable(rokae_collision_detection src/JPS_Modules/rokae_collision_detection.cpp)
-target_link_libraries(rokae_collision_detection ${catkin_LIBRARIES} ${ROKAE_IKFAST_WRAPPER})
+target_link_libraries(rokae_collision_detection ${catkin_LIBRARIES} ${ROKAE_IKFAST_WRAPPER} -llapack)
 
 add_executable(rokae_joint2pose src/JPS_Modules/rokae_joint2pose.cpp)
-target_link_libraries(rokae_joint2pose ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${ROKAE_IKFAST_WRAPPER})
+target_link_libraries(rokae_joint2pose ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${ROKAE_IKFAST_WRAPPER} -llapack)
 
 
 set(ROKAE_GRAPH_SEARCH rokae_graph_search)
