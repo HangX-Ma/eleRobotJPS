@@ -202,6 +202,7 @@ bool GraphSearch::plan(const octomap::OcTree &tree, int maxExpand /* = -1*/)
       if(verbose_) {
         printf(ANSI_COLOR_CYAN "[JPS]: Minimum heap is empty!" ANSI_COLOR_RESET "\n\n");
       }
+      // TODO
       planning_status_ = PlanningState::ERROR;
 
       return false;
@@ -558,12 +559,12 @@ bool GraphSearch::hasForced(const int &dx, const int &dy, const int &dz, const o
 bool GraphSearch::isOccupied(octomap::OcTreeNode* currNode, octomap::point3d &point) {
   // default occupancy probability threshold is set to 0.7
   // the `value` store the log-odds value, so getOccupancy run probability() function to do type transfer
-  return (currNode!=NULL && currNode->getOccupancy() >= 0.7) && (point.x() < xDim_ && point.x() > -xDim_ 
+  return (currNode!=NULL && currNode->getOccupancy() > 0.5) && (point.x() < xDim_ && point.x() > -xDim_ 
                   && point.y() < yDim_ && point.y() > -yDim_ && point.z() < zDim_ && point.z() >= 0);
 }
 
 bool GraphSearch::isFree(octomap::OcTreeNode* currNode, octomap::point3d &point) {
-  return (currNode!=NULL && currNode->getOccupancy() <= 0.4) 
+  return (currNode!=NULL && currNode->getOccupancy() <= 0.5) 
           && (point.x() < xDim_ && point.x() > -xDim_ && point.y() < yDim_ && point.y() > -yDim_ && point.z() < zDim_ && point.z() >= 0);
 }
 

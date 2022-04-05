@@ -7,7 +7,9 @@ You need to create your own robot description package to describe the robot that
 
 You need to use `Solidworks` to build the 3D model of the robot, and create the `DH` model. `Solidworks` will assist to getting the robot links'interia and generate `STL` type files included in `mesh` folder. 
 
-**[Note]:** You need to take attention that the `unit` in `SolidWorks` often to be `mm`, but in `rviz` and `gazebo` often `m`. Generally we need to scale the `STL` file `0.001` times.
+**[Note]:** 
+- You need to take attention that the `unit` in `SolidWorks` often to be `mm`, but in `rviz` and `gazebo` often `m`. Generally we need to scale the `STL` file `0.001` times.
+- When you describe the robot, make sure the `TF` using a unit that fit the resolution of your Octomap resolution, otherwise your manipulator cannot locate at the gird.
 
 ##### USAGE:
 I have create a ros package named `elerobot_display`. You can change the codes in the launch file corresponding to what you modified in other folders. Generally you can use `elerobot_display` to debug you robot model, building `TF` relation, improving model, adding new modules etc.
@@ -137,6 +139,19 @@ Copy the `rokae_moveit_demo` package from `rokae` project. You can change the pa
 
 `rosrun <PACKAGE_NAME> <TYPE_NAME>` after you have launch the `demo.launch` in moveit config file.
 
+### Obstacle Padding
+---
+
+- Move `padding.yaml` to `elerobot_moveit_config/config` from `rokae` project.
+- Add following codes in `elerobot_moveit_config/planning_context.launch`.
+  ```xml
+  <!-- Load padding -->
+  <group ns="move_group">
+    <group ns="$(arg robot_description)_planning">
+      <rosparam command="load" file="$(find <robot>_moveit_config)/config/padding.yaml" />
+    </group>
+  </group>
+  ```
 ## 5. Intel RealSense i435
 Copy the `realsense_gazebo_description` and `realsense_gazebo_plugin` packages from `rokae` project. Now we need to create our sensor camera for manipulator.
 
@@ -391,9 +406,13 @@ Copy the `elerobot_manipulator_ikfast_solver.cpp` in `elerobot_ikfast_manipulato
 ![ikfast_complie_failed](README_pic/ikfast_complie_failed.png)
 [REF](https://github.com/ros-industrial-consortium/reuleaux/issues/44)
 
+#### 5. rokae_arm_eef_state.cpp
+Change the end-effector name from `rokae_arm_link7` to `elerobot_link7`.
 
+#### 6. rokae_ikfast_wrapper.cpp
+You need to change the `rokae_upper_limits` and `rokae_lower_limits` according to your robot `urdf` description file.
 
-#### 5. rokae_arm_main.cpp
+#### 6. rokae_arm_main.cpp
 In this file you can wirte the goal poses and realize the function you want.
 
 The `toppra` trajectory info is store in `rokae_arm_toppra/share`. If you want to load this data, find the identifier for that specific folder, and change the value in `rokae_arm_main.cpp`. Please check to ensure that `local config` does not work when you want online planning.

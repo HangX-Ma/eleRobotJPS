@@ -68,6 +68,21 @@ bool joint2pose(rokae_jps_navigation::joint2pose::Request &req, rokae_jps_naviga
     std::cout << ANSI_COLOR_MAGENTA "convert to pose: (x, y, z, w, i, j, k): (" << transl.at(0) << "," << transl.at(1) << "," << 
                                     transl.at(2) << "," << q.w() << "," << q.x() << "," << q.y() << "," << q.z() << ")" ANSI_COLOR_RESET << std::endl;
 
+    // std::vector<float> pose {transl.at(0), transl.at(1), transl.at(2), q.w(), q.x(), q.y(), q.z()};
+    // std::vector<float> pose {-0.66, 0.113, 0.30, -0.5, 0.5, 0.5, -0.5};
+    // std::vector<float> pose {0.090, 0.113, 0.48, -0.5, 0.5, 0.5, -0.5};
+    // std::vector<float> pose {-0.17, 0.11, 0.7, -0.5, 0.5, 0.5, -0.5};
+    // std::vector<float> joint = _IKSolver->inverse(pose);
+    // if (joint.size() == 0) {
+    //   ROS_INFO("ERROR");
+    // }
+    // ROS_INFO("Inverse result: (%f, %f, %f, %f, %f, %f)", joint[0], joint[1], joint[2], joint[3], joint[4], joint[5]);
+
+    // std::vector<float>  prev_joint_configs {0,0,0,0,0,0};
+    // std::pair<std::vector<std::vector<float>>, std::pair<std::vector<int>, int>> ik_result = _IKSolver->getClosestIK(joint, prev_joint_configs);
+    // int min_index = ik_result.second.second;
+    // ROS_INFO("Inverse result: (%f, %f, %f, %f, %f, %f)", ik_result.first[min_index][0], ik_result.first[min_index][1], ik_result.first[min_index][2], ik_result.first[min_index][3], ik_result.first[min_index][4], ik_result.first[min_index][5]);
+
     ROS_INFO(ANSI_COLOR_MAGENTA "done" ANSI_COLOR_RESET);
   }
 

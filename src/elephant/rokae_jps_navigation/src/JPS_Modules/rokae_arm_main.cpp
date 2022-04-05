@@ -261,36 +261,45 @@ void operation::planner_test()
   printf(ANSI_COLOR_CYAN "[rokae_jps_operation]: Begin planner_test() process" ANSI_COLOR_RESET "\n");
   rokae_jps_navigation::Goto planner_srv;
   geometry_msgs::Pose pose;
+  // // backward
+  // pose.position.x = -0.122612;
+  // pose.position.y = 0.11;
+  // pose.position.z = 0.687445;
+  // pose.orientation.w = -0.5;
+  // pose.orientation.x = 0.5;
+  // pose.orientation.y = 0.5;
+  // pose.orientation.z = -0.5;
+  // planner_srv.request.goal_pose.push_back(pose);
 
-  // backward
-  pose.position.x = 0.0925104;
-  pose.position.y = 0.113;
-  pose.position.z = 0.456101;
-  pose.orientation.w = -0.5;
-  pose.orientation.x = 0.5;
-  pose.orientation.y = 0.5;
-  pose.orientation.z = -0.5;
-  planner_srv.request.goal_pose.push_back(pose);
+  // // backward
+  // pose.position.x = -0.19918;
+  // pose.position.y = 0.11;
+  // pose.position.z = 0.400675;
+  // pose.orientation.w = -0.5;
+  // pose.orientation.x = 0.5;
+  // pose.orientation.y = 0.5;
+  // pose.orientation.z = -0.5;
+  // planner_srv.request.goal_pose.push_back(pose);
 
   // forward
-  pose.position.x = -0.665872;
-  pose.position.y = 0.113;
-  pose.position.z = 0.297389;
+  pose.position.x = -0.62161;
+  pose.position.y = 0.11;
+  pose.position.z = 0.32052;
   pose.orientation.w = -0.5;
   pose.orientation.x = 0.5;
   pose.orientation.y = 0.5;
   pose.orientation.z = -0.5;
   planner_srv.request.goal_pose.push_back(pose);
 
-  // put
-  pose.position.x = -0.587285;
-  pose.position.y = 0.113;
-  pose.position.z = 0.0295223;
-  pose.orientation.w = 0.00325398;
-  pose.orientation.x = 0.707099;
-  pose.orientation.y = 0.707099;
-  pose.orientation.z = 0.00325398;
-  planner_srv.request.goal_pose.push_back(pose);
+  // put (invalid)
+  // pose.position.x = -0.57;
+  // pose.position.y = 0.113;
+  // pose.position.z = 0.07;
+  // pose.orientation.w = 0.00;
+  // pose.orientation.x = 0.7071;
+  // pose.orientation.y = 0.7071;
+  // pose.orientation.z = 0.00;
+  // planner_srv.request.goal_pose.push_back(pose);
 
   if (planner_client.call(planner_srv)) {
     if(planner_srv.response.success) {

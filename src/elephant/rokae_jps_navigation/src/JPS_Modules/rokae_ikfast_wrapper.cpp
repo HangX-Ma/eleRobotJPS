@@ -358,12 +358,12 @@ namespace robots {
     // joint upper limits for work
     void Kinematics::GetUpperLimits()
     {
-      rokae_upper_limits.push_back(0.008226646);
-      rokae_upper_limits.push_back(2.268428027);
-      rokae_upper_limits.push_back(1.133964013);
-      rokae_upper_limits.push_back(0.008726646);
-      rokae_upper_limits.push_back(1.594395102);
-      rokae_upper_limits.push_back(6.282685307);
+      rokae_upper_limits.push_back(6.283185307);
+      rokae_upper_limits.push_back(6.283185307);
+      rokae_upper_limits.push_back(6.283185307);
+      rokae_upper_limits.push_back(6.283185307);
+      rokae_upper_limits.push_back(6.283185307);
+      rokae_upper_limits.push_back(6.283185307);
       // ROS_INFO_STREAM("rokae_upper_limits: " << rokae_upper_limits.at(0) << ", " << rokae_upper_limits.at(1) << ", " << rokae_upper_limits.at(2)
       //                                       << ", " << rokae_upper_limits.at(3) << ", " << rokae_upper_limits.at(4) << ", " << rokae_upper_limits.at(5));
     }
@@ -371,12 +371,12 @@ namespace robots {
     // joint lower limits for work
     void Kinematics::GetLowerLimits()
     {
-      rokae_lower_limits.push_back(-0.008226646);
-      rokae_lower_limits.push_back(-1.675016081);
-      rokae_lower_limits.push_back(-3.402892041);
-      rokae_lower_limits.push_back(-0.008726646);
-      rokae_lower_limits.push_back(-1.594395102);
-      rokae_lower_limits.push_back(-6.282685307);
+      rokae_lower_limits.push_back(-6.283185307);
+      rokae_lower_limits.push_back(-6.283185307);
+      rokae_lower_limits.push_back(-6.283185307);
+      rokae_lower_limits.push_back(-6.283185307);
+      rokae_lower_limits.push_back(-6.283185307);
+      rokae_lower_limits.push_back(-6.283185307);
       // ROS_INFO_STREAM("rokae_upper_limits: " << rokae_lower_limits.at(0) << ", " << rokae_lower_limits.at(1) << ", " << rokae_lower_limits.at(2)
       //                                       << ", " << rokae_lower_limits.at(3) << ", " << rokae_lower_limits.at(4) << ", " << rokae_lower_limits.at(5));
     }
@@ -435,11 +435,11 @@ namespace robots {
 
       if ((int)effective_index.size() == 0)
       {
-        // TODO ROS_WARN_STREAM("current pose has no effective joint values to reach.");
+        // ROS_WARN_STREAM("current pose has no effective joint values to reach.");
         return false;
       }
 
-      // TODO ROS_INFO_STREAM("effective solution index: " << ros_info); 
+      // ROS_INFO_STREAM("effective solution index: " << ros_info); 
 
       return true;
     } // store the joint configs in 2D vector[solution_number][joint_number]
@@ -449,11 +449,11 @@ namespace robots {
     std::pair<std::vector<std::vector<float>>, std::pair<std::vector<int>, int>> Kinematics::getClosestIK(const std::vector<float> joint_configs, const std::vector<float> previous_solution)
     {
       double PENALTY_JOINT0 = 1.0;
-      double PENALTY_JOINT1 = 100.0;
-      double PENALTY_JOINT2 = 100.0;
+      double PENALTY_JOINT1 = 1.0;
+      double PENALTY_JOINT2 = 1.0;
       double PENALTY_JOINT3 = 1.0;
-      double PENALTY_JOINT4 = 10.0;
-      double PENALTY_JOINT5 = 5.0;
+      double PENALTY_JOINT4 = 1.0;
+      double PENALTY_JOINT5 = 1.0;
       double min_err = FLT_MAX;
       int min_index;
 

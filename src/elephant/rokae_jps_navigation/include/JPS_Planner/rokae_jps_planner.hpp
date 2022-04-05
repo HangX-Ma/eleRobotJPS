@@ -85,7 +85,7 @@ class JPSPlanner
      * @param[in] point target point needs to be modified
      * @return modified octomap::point3d
      */
-    octomap::point3d modified_goal(octomap::point3d &point);
+    octomap::point3d suit_coordinate(octomap::point3d &point);
 
     //! Get the optimized path
     std::vector<octomap::point3d> getPath() const;

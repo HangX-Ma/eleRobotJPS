@@ -1,0 +1,12 @@
+# parameters for padded robot (not used for self collision checks)
+
+default_robot_padding: 0.01
+default_robot_scale: 1.0
+default_object_padding: 0.05
+# default_attached_padding:
+# default_robot_link_padding:
+# default_robot_link_scale:
+
+
+# [ref - github] https://github.com/ros-planning/moveit/blob/kinetic-devel/moveit_ros/planning/planning_scene_monitor/src/planning_scene_monitor.cpp#L1412
+# [ref - Moveit planning scene collision padding] https://answers.ros.org/question/261681/moveit-planning-scene-collision-padding/

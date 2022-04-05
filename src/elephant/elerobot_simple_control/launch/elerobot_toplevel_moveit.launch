@@ -11,7 +11,6 @@
     <param name="octomap_resolution" type="double" value="0.01" />
     <param name="octomap_frame" type="string" value="world" /> 
   </group>
-
   <include file="$(find rokae_octomap_unit)/launch/load_octomap.launch" />
 
   <!-- Launch Gazebo  -->

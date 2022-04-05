@@ -79,14 +79,14 @@
     <!-- link2 -->
     <link name="${arm_id}_link2">
       <visual>
-        <origin xyz="-0.054 -0.053 0.154" rpy="${-PI/2} 0.0 0.0"/>
+        <origin xyz="-0.054 -0.053 0.155" rpy="${-PI/2} 0.0 0.0"/>
         <geometry>
           <mesh filename="${mesh_file_path}${mesh_prefix}2${mesh_suffix}" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="white"/>
       </visual>
       <collision>
-        <origin xyz="-0.054 -0.053 0.154" rpy="${-PI/2} 0.0 0.0"/>
+        <origin xyz="-0.054 -0.053 0.155" rpy="${-PI/2} 0.0 0.0"/>
         <geometry>
           <mesh filename="${mesh_file_path}${mesh_prefix}2${mesh_suffix}" scale="0.001 0.001 0.001"/>
         </geometry>
@@ -104,14 +104,14 @@
     <!-- link3 -->
     <link name="${arm_id}_link3">
       <visual>
-        <origin xyz="0.2815 0.078 0.024" rpy="${-PI/2} 0.0 ${PI}"/>
+        <origin xyz="0.2815 0.078 0.022" rpy="${-PI/2} 0.0 ${PI}"/>
         <geometry>
           <mesh filename="${mesh_file_path}${mesh_prefix}3${mesh_suffix}" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="white"/>
       </visual>
       <collision>
-        <origin xyz="0.2815 0.078 0.024" rpy="${-PI/2} 0.0 ${PI}"/>
+        <origin xyz="0.2815 0.078 0.022" rpy="${-PI/2} 0.0 ${PI}"/>
         <geometry>
           <mesh filename="${mesh_file_path}${mesh_prefix}3${mesh_suffix}" scale="0.001 0.001 0.001"/>
         </geometry>
@@ -129,14 +129,14 @@
     <!-- link4 -->
     <link name="${arm_id}_link4">
       <visual>
-        <origin xyz="-0.0772 -0.0596 0.044" rpy="${-PI/2} 0.0 0.0"/>
+        <origin xyz="-0.0772 -0.055 0.046" rpy="${-PI/2} 0.0 0.0"/>
         <geometry>
           <mesh filename="${mesh_file_path}${mesh_prefix}4${mesh_suffix}" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="white"/>
       </visual>
       <collision>
-        <origin xyz="-0.0772 -0.0596 0.044" rpy="${-PI/2} 0.0 0.0"/>
+        <origin xyz="-0.0772 -0.055 0.046" rpy="${-PI/2} 0.0 0.0"/>
         <geometry>
           <mesh filename="${mesh_file_path}${mesh_prefix}4${mesh_suffix}" scale="0.001 0.001 0.001"/>
         </geometry>
@@ -227,8 +227,8 @@
     <joint name="${arm_id}_joint0" type="revolute">
       <axis xyz="0 0 1"/>
       <origin xyz="0.0 0.0 ${joint0_z}" rpy="0.0 0.0 0.0"/>
-      <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*0.01/180}" soft_upper_limit="${PI*0.01/180}"/>
-      <!-- <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*360/180}" soft_upper_limit="${PI*360/180}"/> -->
+      <!-- <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*0.001/180}" soft_upper_limit="${PI*0.001/180}"/> -->
+      <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*360/180}" soft_upper_limit="${PI*360/180}"/>
       <limit acceleration="15" effort="500.0" lower="${-PI*360/180}" upper="${PI*360/180}" velocity="${180/180*PI}"/>
       <parent link="${arm_id}_link0"/>
       <child link="${arm_id}_link1"/>
@@ -272,8 +272,8 @@
     <joint name="${arm_id}_joint4" type="revolute">
       <axis xyz="0 0 1"/>
       <origin xyz="0.0 ${joint4_y} 0.0" rpy="0.0 ${-PI/2} ${PI/2}"/>
-      <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*0.01/180}" soft_upper_limit="${PI*0.01/180}"/>
-      <!-- <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*360/180}" soft_upper_limit="${PI*360/180}"/> -->
+      <!-- <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*0.001/180}" soft_upper_limit="${PI*0.001/180}"/> -->
+      <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*360/180}" soft_upper_limit="${PI*360/180}"/>
       <limit acceleration="15" effort="500.0" lower="${-PI*360/180}" upper="${PI*360/180}" velocity="${208/180*PI}"/>
       <parent link="${arm_id}_link4"/>
       <child link="${arm_id}_link5"/>

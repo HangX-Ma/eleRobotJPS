@@ -3,7 +3,8 @@ Panels:
     Help Height: 0
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /PlanningScene1/Scene Robot1
       Splitter Ratio: 0.5
     Tree Height: 874
   - Class: rviz/Help
@@ -69,115 +70,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          elerobot_link0:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link5:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link6:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link7:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_10:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_11:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_12:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_13:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_5:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_6:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_7:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_8:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_9:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          world:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
         Loop Animation: true
         Robot Alpha: 0.5
         Robot Color: 150; 50; 150
@@ -200,7 +92,7 @@ Visualization Manager:
         Goal State Color: 250; 128; 0
         Interactive Marker Size: 0
         Joint Violation Color: 255; 0; 255
-        Planning Group: hand
+        Planning Group: manipulator
         Query Goal State: true
         Query Start State: false
         Show Workspace: false
@@ -223,115 +115,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          elerobot_link0:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link5:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link6:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link7:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_10:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_11:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_12:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_13:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_5:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_6:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_7:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_8:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_9:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          world:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
         Robot Alpha: 0.5
         Show Robot Collision: false
         Show Robot Visual: true
@@ -339,9 +122,9 @@ Visualization Manager:
       Velocity_Scaling_Factor: 0.1
     - Class: octomap_rviz_plugin/OccupancyGrid
       Enabled: false
-      Max. Height Display: inf
+      Max. Height Display: 3.4028234663852886e+38
       Max. Octree Depth: 16
-      Min. Height Display: -inf
+      Min. Height Display: -3.4028234663852886e+38
       Name: OccupancyGrid
       Octomap Topic: /octomap_binary
       Queue Size: 5
@@ -483,6 +266,133 @@ Visualization Manager:
         Show Robot Collision: false
         Show Robot Visual: true
       Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /rokae_arm/point_marker_out
+      Name: Marker
+      Namespaces:
+        point: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /rokae_arm/voxel_marker_out
+      Name: Marker
+      Namespaces:
+        obs: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /rokae_arm/path_markers_out
+      Name: Marker
+      Namespaces:
+        path: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        elerobot_link0:
+          Value: true
+        elerobot_link1:
+          Value: true
+        elerobot_link2:
+          Value: true
+        elerobot_link3:
+          Value: true
+        elerobot_link4:
+          Value: true
+        elerobot_link5:
+          Value: true
+        elerobot_link6:
+          Value: true
+        elerobot_link7:
+          Value: true
+        map:
+          Value: true
+        vacuum_gripper_1:
+          Value: true
+        vacuum_gripper_10:
+          Value: true
+        vacuum_gripper_11:
+          Value: true
+        vacuum_gripper_12:
+          Value: true
+        vacuum_gripper_13:
+          Value: true
+        vacuum_gripper_2:
+          Value: true
+        vacuum_gripper_3:
+          Value: true
+        vacuum_gripper_4:
+          Value: true
+        vacuum_gripper_5:
+          Value: true
+        vacuum_gripper_6:
+          Value: true
+        vacuum_gripper_7:
+          Value: true
+        vacuum_gripper_8:
+          Value: true
+        vacuum_gripper_9:
+          Value: true
+        world:
+          Value: true
+      Marker Scale: 0.10000000149011612
+      Name: TF
+      Show Arrows: false
+      Show Axes: true
+      Show Names: false
+      Tree:
+        map:
+          world:
+            elerobot_link0:
+              elerobot_link1:
+                elerobot_link2:
+                  elerobot_link3:
+                    elerobot_link4:
+                      elerobot_link5:
+                        elerobot_link6:
+                          elerobot_link7:
+                            vacuum_gripper_1:
+                              {}
+                            vacuum_gripper_10:
+                              {}
+                            vacuum_gripper_11:
+                              {}
+                            vacuum_gripper_12:
+                              {}
+                            vacuum_gripper_13:
+                              {}
+                            vacuum_gripper_2:
+                              {}
+                            vacuum_gripper_3:
+                              {}
+                            vacuum_gripper_4:
+                              {}
+                            vacuum_gripper_5:
+                              {}
+                            vacuum_gripper_6:
+                              {}
+                            vacuum_gripper_7:
+                              {}
+                            vacuum_gripper_8:
+                              {}
+                            vacuum_gripper_9:
+                              {}
+      Update Interval: 0
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /rokae_arm/expansion_markers_out
+      Name: Marker
+      Namespaces:
+        expansions: true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -499,25 +409,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.951926231384277
+      Distance: 0.6187933683395386
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.5159664154052734
-        Y: -0.07085511833429337
-        Z: 0.5754706263542175
+        X: -0.08742143958806992
+        Y: 0.10903843492269516
+        Z: 0.6231372952461243
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.26499995589256287
+      Pitch: 0.2997959554195404
       Target Frame: world
       Value: Orbit (rviz)
-      Yaw: 4.9349446296691895
+      Yaw: 3.054948329925537
     Saved: ~
 Window Geometry:
   Displays:

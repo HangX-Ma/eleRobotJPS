@@ -21,7 +21,7 @@
 
   <!-- link property -->
   <xacro:property name="link7_r" value="0.05"/>
-  <xacro:property name="link7_h" value="0.08"/>
+  <xacro:property name="link7_h" value="0.04"/>
 
   <!-- vaccum property -->
   <xacro:property name="vacuum_radius" value="0.005"/>
@@ -29,14 +29,14 @@
 
 
   <!-- joint position -->
-  <xacro:property name="joint0_z" value="0.107"/>
+  <xacro:property name="joint0_z" value="0.11"/>
   <xacro:property name="joint1_y" value="0.05"/>
   <xacro:property name="joint2_x" value="0.265"/>
-  <xacro:property name="joint3_x" value="0.238"/>
-  <xacro:property name="joint3_z" value="0.063"/>
+  <xacro:property name="joint3_x" value="0.24"/>
+  <xacro:property name="joint3_z" value="0.06"/>
   <xacro:property name="joint4_y" value="-0.095"/>
   <xacro:property name="joint5_y" value="0.06"/>
-  <xacro:property name="joint6_z" value="${link7_h+0.032}"/>
+  <xacro:property name="joint6_z" value="${link7_h+0.03}"/>
 
   <!-- inertia -->
   <xacro:macro name="cylinder_inertia" params="m r h">

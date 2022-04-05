@@ -189,19 +189,97 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        elerobot_link0:
+          Value: true
+        elerobot_link1:
+          Value: true
+        elerobot_link2:
+          Value: true
+        elerobot_link3:
+          Value: true
+        elerobot_link4:
+          Value: true
+        elerobot_link5:
+          Value: true
+        elerobot_link6:
+          Value: true
+        elerobot_link7:
+          Value: true
+        vacuum_gripper_1:
+          Value: true
+        vacuum_gripper_10:
+          Value: true
+        vacuum_gripper_11:
+          Value: true
+        vacuum_gripper_12:
+          Value: true
+        vacuum_gripper_13:
+          Value: true
+        vacuum_gripper_2:
+          Value: true
+        vacuum_gripper_3:
+          Value: true
+        vacuum_gripper_4:
+          Value: true
+        vacuum_gripper_5:
+          Value: true
+        vacuum_gripper_6:
+          Value: true
+        vacuum_gripper_7:
+          Value: true
+        vacuum_gripper_8:
+          Value: true
+        vacuum_gripper_9:
+          Value: true
+        world:
+          Value: true
       Marker Scale: 0.5
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        {}
+        world:
+          elerobot_link0:
+            elerobot_link1:
+              elerobot_link2:
+                elerobot_link3:
+                  elerobot_link4:
+                    elerobot_link5:
+                      elerobot_link6:
+                        elerobot_link7:
+                          vacuum_gripper_1:
+                            {}
+                          vacuum_gripper_10:
+                            {}
+                          vacuum_gripper_11:
+                            {}
+                          vacuum_gripper_12:
+                            {}
+                          vacuum_gripper_13:
+                            {}
+                          vacuum_gripper_2:
+                            {}
+                          vacuum_gripper_3:
+                            {}
+                          vacuum_gripper_4:
+                            {}
+                          vacuum_gripper_5:
+                            {}
+                          vacuum_gripper_6:
+                            {}
+                          vacuum_gripper_7:
+                            {}
+                          vacuum_gripper_8:
+                            {}
+                          vacuum_gripper_9:
+                            {}
       Update Interval: 0
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -220,25 +298,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.9364004135131836
+      Distance: 0.7944074869155884
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.07862748205661774
-        Y: -0.2791890799999237
-        Z: 0.5399979948997498
+        X: -0.2212829291820526
+        Y: 0.11999327689409256
+        Z: 0.2469617873430252
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.009600937366485596
+      Pitch: 0.3353992700576782
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.548506736755371
+      Yaw: 6.221692085266113
     Saved:
       - Class: rviz/Orbit
         Distance: 3.737853765487671

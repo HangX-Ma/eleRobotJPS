@@ -53,8 +53,8 @@ state_report::state_report()
 bool state_report::getState_Callback(rokae_jps_navigation::eefState::Request& req, rokae_jps_navigation::eefState::Response& res)
 {
   robot_state::RobotStatePtr kinematic_state(new robot_state::RobotState(kinematic_model));
-
-  const Eigen::Isometry3d& manipulator_end = kinematic_state->getGlobalLinkTransform("rokae_arm_link7");
+  // [Affine ]https://blog.csdn.net/qq_36013249/article/details/103263143
+  const Eigen::Affine3d& manipulator_end = kinematic_state->getGlobalLinkTransform("elerobot_link7");
   Eigen::Matrix3f          rotationMatrix  = static_cast<Eigen::Matrix3f>(manipulator_end.rotation().cast<float>());
   Eigen::Quaternionf       q               = rotationMatrix2Quaterniond(rotationMatrix);
 
