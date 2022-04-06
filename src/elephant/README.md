@@ -1,6 +1,54 @@
 # Module Manual
 This manual will introduce how to use the JPS planning module if you want to change the robot that the original project default model. You need to check the robot type to ensure satisfying `6-DOF` requirement.
 
+- [Module Manual](#module-manual)
+  - [1. robot description](#1-robot-description)
+        - [USAGE](#usage)
+  - [2. gazebo world](#2-gazebo-world)
+        - [USAGE](#usage-1)
+  - [3. IKFast](#3-ikfast)
+        - [Generate .dae file](#generate-dae-file)
+        - [Generate IK Solver](#generate-ik-solver)
+        - [Create Plugin](#create-plugin)
+  - [4.Moveit](#4moveit)
+    - [moveiet_setup_assistant](#moveiet_setup_assistant)
+        - [Self-Collision](#self-collision)
+        - [Virtual Joints](#virtual-joints)
+        - [Planning Group](#planning-group)
+        - [Robot Poses](#robot-poses)
+        - [End Effector](#end-effector)
+        - [Passive Joints](#passive-joints)
+        - [Controllers](#controllers)
+        - [Author Information](#author-information)
+      - [Update Solver](#update-solver)
+    - [Function test](#function-test)
+    - [Obstacle Padding](#obstacle-padding)
+  - [5. Intel RealSense i435](#5-intel-realsense-i435)
+  - [6.Rviz and Gazebo](#6rviz-and-gazebo)
+      - [1. Trajectory Execution Functionality](#1-trajectory-execution-functionality)
+      - [2. ros_controllers.yaml](#2-ros_controllersyaml)
+      - [3. _rokae_simple_control_ package](#3-rokae_simple_control-package)
+        - [1.rokae_arm_trajectory_controller.launch](#1rokae_arm_trajectory_controllerlaunch)
+        - [2. rokae_arm_gazebo_states.launch](#2-rokae_arm_gazebo_stateslaunch)
+        - [3.rokae_arm_gazebo_world.launch](#3rokae_arm_gazebo_worldlaunch)
+        - [4.rokae_arm_toplevel_moveit.launch](#4rokae_arm_toplevel_moveitlaunch)
+        - [5. moveit_planning_execution.launch](#5-moveit_planning_executionlaunch)
+      - [USAGE:](#usage-2)
+        - [pid](#pid)
+        - [chomp](#chomp)
+  - [7. Octomap](#7-octomap)
+      - [dynamicEDT3D](#dynamicedt3d)
+      - [USAGE NOTE](#usage-note)
+  - [8. JPS and TOPP-RA](#8-jps-and-topp-ra)
+      - [1. config/rokae_config_JPS.yaml](#1-configrokae_config_jpsyaml)
+      - [2. include/JPS_Modules/ikfast.h](#2-includejps_modulesikfasth)
+      - [3. rokae_joint2pose.cpp](#3-rokae_joint2posecpp)
+      - [4. rokae_arm_manipulator_ikfast_solver.cpp](#4-rokae_arm_manipulator_ikfast_solvercpp)
+      - [5. rokae_arm_eef_state.cpp](#5-rokae_arm_eef_statecpp)
+      - [6. rokae_ikfast_wrapper.cpp](#6-rokae_ikfast_wrappercpp)
+      - [7. rokae_arm_main.cpp](#7-rokae_arm_maincpp)
+        - [Action Service](#action-service)
+      - [USAGE](#usage-3)
 ---
 ## 1. robot description
 You need to create your own robot description package to describe the robot that you want to use in `URDF` file. `xacro` is a macro assisting to describe the robot more efficiently.
@@ -11,7 +59,7 @@ You need to use `Solidworks` to build the 3D model of the robot, and create the 
 - You need to take attention that the `unit` in `SolidWorks` often to be `mm`, but in `rviz` and `gazebo` often `m`. Generally we need to scale the `STL` file `0.001` times.
 - When you describe the robot, make sure the `TF` using a unit that fit the resolution of your Octomap resolution, otherwise your manipulator cannot locate at the gird.
 
-##### USAGE:
+##### USAGE
 I have create a ros package named `elerobot_display`. You can change the codes in the launch file corresponding to what you modified in other folders. Generally you can use `elerobot_display` to debug you robot model, building `TF` relation, improving model, adding new modules etc.
 ```shell
   roslaunch elerobot_display display_xacro
@@ -22,7 +70,7 @@ gazebo world is a simulated physical world. I have create the `elerobot_gazebo_w
 
 Bear in mind if you want to use the world out of debugging conditions, the world need to be clean without any robot you want to control.
 
-##### USAGE:
+##### USAGE
 ```shell
   roslaunch elerobot_gazebo_world elerobot_world.launch 
 ```
@@ -72,7 +120,7 @@ This [tutorial](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/set
 roslaunch moveit_setup_assistant setup_assistant.launch
 ```
 ### moveiet_setup_assistant
----
+
 ##### Self-Collision
 Higher density leads to more accurate self-collision checking matrix.
 
@@ -133,7 +181,7 @@ Then you can run `roslaunch elerobot_moveit_config demo.launch` to check if the 
 ![Example](./README_pic/moveit_demo_test_ikfast.png)
 
 ### Function test
----
+
 Copy the `rokae_moveit_demo` package from `rokae` project. You can change the package name but remember change the parameters in **CMakeLists.txt** and **package.xml**. 
 - delete `rokae_msgs` and change the `rokae_arm_ikfast_manipulator_plugin` to `elerobot_ikfast_manipulator_plugin` in `find_package` and `catkin_package` space in **CMakeLists.txt** and **package.xml**.
 - If you change the package name, change the **<name>** in both files mentioned above.
@@ -141,7 +189,6 @@ Copy the `rokae_moveit_demo` package from `rokae` project. You can change the pa
 `rosrun <PACKAGE_NAME> <TYPE_NAME>` after you have launch the `demo.launch` in moveit config file.
 
 ### Obstacle Padding
----
 
 - Move `padding.yaml` to `elerobot_moveit_config/config` from `rokae` project.
 - Add following codes in `elerobot_moveit_config/planning_context.launch`.
@@ -374,7 +421,7 @@ The command above will save the octomap to your local disk and the name is `mapf
 #### dynamicEDT3D
 I use `dynamicEDT3D` in current version codes to solve the problem that the node infomation can not be used normally or upated correctly. 
 
-#### USAGE NOTE:
+#### USAGE NOTE
 I find a mistake that I misunderstand the point position definition in **Octomap**. In octomap, the point have a bias that will move the original input position to fit the gird voxel center automatically. I had checked the original codes before but I ever thought this bias should be eliminated artificially. Howerver, when debugging the new `Elephant` robot model, I found that If I use the point position that I had eliminated the bias, the JPS algorithm will failed! But the automaically process may not match what I think, so I need to rewrite a new function to solve it.
 
 
@@ -447,7 +494,7 @@ Don't delete **_/rokae_arm_** in **JPS_PLANNING** and **VACUUM_GRIPPER**.
 
 What is more, don't forget to change the joints' name in `move_config` function.
 
-#### USAGE:
+#### USAGE
 - You need to annotate the following codes in `elerobot_simple_control/launch/elerobot_toplevel_moveit.launch` to make sure the JPS planner can work correctly.
   ```xml
   <!-- JPS Planner -->
