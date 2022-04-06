@@ -2,10 +2,10 @@
 
 using namespace execution;
 
-operation::operation(ros::NodeHandle *nodehandle):nh_(*nodehandle), trajectory_action_client_("/rokae_arm/manipulator_controller/follow_joint_trajectory", true)
+operation::operation(ros::NodeHandle *nodehandle):nh_(*nodehandle), trajectory_action_client_("/manipulator_controller/follow_joint_trajectory", true)
 {
   // publisher
-  command_pub_   = nh_.advertise<trajectory_msgs::JointTrajectory>("/rokae_arm/manipulator_controller/command", 1);
+  command_pub_   = nh_.advertise<trajectory_msgs::JointTrajectory>("/manipulator_controller/command", 1);
   // service client
   JPS_PLANNING   = "/rokae_arm/goto_trigger";
   VACUUM_GRIPPER = "/rokae_arm/vaccum_gripper_control_server";
@@ -89,12 +89,12 @@ void operation::move_config(std::vector<double> &position_, std::vector<double> 
 void operation::pick()
 {
   if (ifconfig_) {
-    printf(ANSI_COLOR_RED "[operation error]: Cannot use the 'pick' function, configurations had been loaded." ANSI_COLOR_RESET "\n");
+    printf(ANSI_COLOR_RED "[operation error]: Cannot use the <pick> function, configurations had been loaded." ANSI_COLOR_RESET "\n");
 
     return;
   }
 
-  printf(ANSI_COLOR_CYAN "[rokae_jps_operation]: begin [pick] process" ANSI_COLOR_RESET "\n");
+  printf(ANSI_COLOR_CYAN "[rokae_jps_operation]: begin <pick> process" ANSI_COLOR_RESET "\n");
 
   rokae_jps_navigation::Goto                         planner_srv;
   rokae_pick_place_with_vacuum_gripper::GripperState gripper_srv;
@@ -180,11 +180,11 @@ void operation::pick()
 void operation::place()
 {
   if (ifconfig_) {
-    printf(ANSI_COLOR_RED "[rokae_jps_operation]: Cannot use the 'place' function, configurations had been loaded." ANSI_COLOR_RESET "\n");
+    printf(ANSI_COLOR_RED "[rokae_jps_operation]: Cannot use the <place> function, configurations had been loaded." ANSI_COLOR_RESET "\n");
     return;
   }
 
-  printf(ANSI_COLOR_CYAN "[rokae_jps_operation]: begin [place] process" ANSI_COLOR_RESET "\n");
+  printf(ANSI_COLOR_CYAN "[rokae_jps_operation]: begin <place> process" ANSI_COLOR_RESET "\n");
 
   rokae_jps_navigation::Goto planner_srv;
   rokae_pick_place_with_vacuum_gripper::GripperState gripper_srv;
@@ -254,52 +254,23 @@ void operation::place()
 void operation::planner_test()
 {
   if (ifconfig_) {
-    printf(ANSI_COLOR_RED "[operation error]: Cannot use the 'planner_test' function, configurations had been loaded." ANSI_COLOR_RESET "\n");
+    printf(ANSI_COLOR_RED "[operation error]: Cannot use the <planner_test> function, configurations had been loaded." ANSI_COLOR_RESET "\n");
     return;
   }
 
-  printf(ANSI_COLOR_CYAN "[rokae_jps_operation]: Begin planner_test() process" ANSI_COLOR_RESET "\n");
+  printf(ANSI_COLOR_CYAN "[rokae_jps_operation]: Begin <planner_test> process" ANSI_COLOR_RESET "\n");
   rokae_jps_navigation::Goto planner_srv;
   geometry_msgs::Pose pose;
-  // // backward
-  // pose.position.x = -0.122612;
-  // pose.position.y = 0.11;
-  // pose.position.z = 0.687445;
-  // pose.orientation.w = -0.5;
-  // pose.orientation.x = 0.5;
-  // pose.orientation.y = 0.5;
-  // pose.orientation.z = -0.5;
-  // planner_srv.request.goal_pose.push_back(pose);
-
-  // // backward
-  // pose.position.x = -0.19918;
-  // pose.position.y = 0.11;
-  // pose.position.z = 0.400675;
-  // pose.orientation.w = -0.5;
-  // pose.orientation.x = 0.5;
-  // pose.orientation.y = 0.5;
-  // pose.orientation.z = -0.5;
-  // planner_srv.request.goal_pose.push_back(pose);
 
   // forward
-  pose.position.x = -0.62161;
-  pose.position.y = 0.11;
-  pose.position.z = 0.32052;
+  pose.position.x = -0.62792;
+  pose.position.y = 0.115;
+  pose.position.z = 0.255789;
   pose.orientation.w = -0.5;
   pose.orientation.x = 0.5;
   pose.orientation.y = 0.5;
   pose.orientation.z = -0.5;
   planner_srv.request.goal_pose.push_back(pose);
-
-  // put (invalid)
-  // pose.position.x = -0.57;
-  // pose.position.y = 0.113;
-  // pose.position.z = 0.07;
-  // pose.orientation.w = 0.00;
-  // pose.orientation.x = 0.7071;
-  // pose.orientation.y = 0.7071;
-  // pose.orientation.z = 0.00;
-  // planner_srv.request.goal_pose.push_back(pose);
 
   if (planner_client.call(planner_srv)) {
     if(planner_srv.response.success) {
@@ -316,11 +287,11 @@ void operation::planner_test()
 void operation::plan_with_move()
 {
   if (ifconfig_) {
-    printf(ANSI_COLOR_RED "[operation error]: Cannot use the 'planner_test' function, configurations had been loaded." ANSI_COLOR_RESET "\n");
+    printf(ANSI_COLOR_RED "[operation error]: Cannot use the <planner_with_move> function, configurations had been loaded." ANSI_COLOR_RESET "\n");
     return;
   }
 
-  printf(ANSI_COLOR_CYAN "[rokae_jps_operation]: begin 'planner_test()' process" ANSI_COLOR_RESET "\n");
+  printf(ANSI_COLOR_CYAN "[rokae_jps_operation]: begin <planner_with_move> process" ANSI_COLOR_RESET "\n");
   rokae_jps_navigation::Goto planner_srv;
   geometry_msgs::Pose pose;
   
@@ -328,25 +299,15 @@ void operation::plan_with_move()
   planner_srv.request.goal_pose.clear();
   planner_srv.request.ifback = ifMoveback_;
 
-  // forward_pose2
-  pose.position.x = 0.950148;
-  pose.position.y = 0.0;
-  pose.position.z = 1.29606;
-  pose.orientation.w = 0.0;
-  pose.orientation.x = 0.7071;
-  pose.orientation.y = 0.0;
-  pose.orientation.z = 0.7071;
+  // forward
+  pose.position.x = -0.62792;
+  pose.position.y = 0.115;
+  pose.position.z = 0.255789;
+  pose.orientation.w = -0.5;
+  pose.orientation.x = 0.5;
+  pose.orientation.y = 0.5;
+  pose.orientation.z = -0.5;
   planner_srv.request.goal_pose.push_back(pose);
-
-  // joint2 = 0.09
-  // pose.position.x    = 0.62;
-  // pose.position.y    = 0.0;
-  // pose.position.z    = 1.1;
-  // pose.orientation.w = 0.0;
-  // pose.orientation.x = 0.7071;
-  // pose.orientation.y = 0.0;
-  // pose.orientation.z = 0.7071;
-  // planner_srv.request.goal_pose.push_back(pose);
 
 
   if (planner_client.call(planner_srv)) {
@@ -487,10 +448,10 @@ int main(int argc, char** argv)
   execution::operation controller(&nh);
 
   /* ------------------------- planner test module ------------------------- */
-  controller.planner_test();
+  // controller.planner_test();
 
   /* ------------------------- planner and movement actionlib test module ------------------------- */
-  // controller.plan_with_move();
+  controller.plan_with_move();
 
   /* ------------------------- pick module ------------------------- */
   // controller.setBack(true);
@@ -510,33 +471,3 @@ int main(int argc, char** argv)
   return 0;
 
 }
-
-
-  // joint2 = 0.09
-  // pose.position.x = 0.555703;
-  // pose.position.y = 0.0;
-  // pose.position.z = 1.10029;
-  // pose.orientation.w = 0.0;
-  // pose.orientation.x = 1.0;
-  // pose.orientation.y = 0.0;
-  // pose.orientation.z = 0.0;
-  // srv.request.goal_pose.push_back(pose);
-
-  // home
-  // pose.position.x = 0.56;
-  // pose.position.y = 0.0;
-  // pose.position.z = 1.06;
-  // pose.orientation.w = 0.0;
-  // pose.orientation.x = 0.7071;
-  // pose.orientation.y = 0.0;
-  // pose.orientation.z = 0.7071;
-  // srv.request.goal_pose.push_back(pose);
-
-  // backward
-  // srv.request.goal_pose.position.x = 0.137625;
-  // srv.request.goal_pose.position.y = 0.0;
-  // srv.request.goal_pose.position.z = 1.11849;
-  // srv.request.goal_pose.orientation.w = 0.0;
-  // srv.request.goal_pose.orientation.x = 0.999946;
-  // srv.request.goal_pose.orientation.y = 0.0;
-  // srv.request.goal_pose.orientation.z = 0.010398;

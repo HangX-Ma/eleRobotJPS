@@ -193,6 +193,7 @@ rokae_jps_planner_EXTERNAL_OBJECTS =
 /home/contour/ws_catkin_elephant/devel/lib/rokae_jps_navigation/rokae_jps_planner: /opt/ros/melodic/lib/liboctomap.so
 /home/contour/ws_catkin_elephant/devel/lib/rokae_jps_navigation/rokae_jps_planner: /opt/ros/melodic/lib/liboctomath.so
 /home/contour/ws_catkin_elephant/devel/lib/rokae_jps_navigation/rokae_jps_planner: /home/contour/ws_catkin_elephant/devel/lib/librokae_graph_search.so
+/home/contour/ws_catkin_elephant/devel/lib/rokae_jps_navigation/rokae_jps_planner: /opt/ros/melodic/lib/libdynamicedt3d.so
 /home/contour/ws_catkin_elephant/devel/lib/rokae_jps_navigation/rokae_jps_planner: /opt/ros/melodic/lib/liboctomap.so
 /home/contour/ws_catkin_elephant/devel/lib/rokae_jps_navigation/rokae_jps_planner: /opt/ros/melodic/lib/liboctomath.so
 /home/contour/ws_catkin_elephant/devel/lib/rokae_jps_navigation/rokae_jps_planner: elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/link.txt

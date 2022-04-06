@@ -87,6 +87,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
 {
   auto time_start = std::chrono::high_resolution_clock::now();
 
+  // wait for initialization
   if (!is_initialized_) 
   {
     res.message = "Goto rejected, node not initialized.";
@@ -98,6 +99,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
     return false;
   }
 
+  // wait for octomap message
   if (!getting_octomap_) 
   {
     res.message = "Goto rejected, octomap not received.";
@@ -107,11 +109,6 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
     }
 
     return false;
-  }
-
-  // turn off the octomap subscriber
-  if (octree_ != nullptr) {
-    octomap_subscriber_.shutdown();
   }
   
   // check octomap status
@@ -138,25 +135,29 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   check_status_ = false;
   setInitialJoints(0, 0, 0, 0, 0, 0);
 
-  printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Received Goal, checking..." ANSI_COLOR_RESET "\n");
+  printf(ANSI_COLOR_CYAN "[rokae_JPS_planner]: Received Goal, checking..." ANSI_COLOR_RESET "\n");
   
-  // saving target poses 
-  // tarPose_buffer_.assign(req.goal_pose.begin(), req.goal_pose.end());
   for (auto &pose : req.goal_pose)
   {
+    // store the goal rotation infomation
     Eigen::Vector4f  posture;
-    octomap::point3d point(pose.position.x, pose.position.y, pose.position.z);
     posture[0] = pose.orientation.x;
     posture[1] = pose.orientation.y;
     posture[2] = pose.orientation.z;
     posture[3] = pose.orientation.w;
 
-    // octomap::OcTreeKey t_key = octree_->coordToKey(point);
-    // point = keyToCoord_modified(t_key, *octree_);
+    // store the goal translation infomation
+    octomap::point3d point(pose.position.x, pose.position.y, pose.position.z);
+
+    // subtly change the goals'position to fit the coordinate limitation, moving them to central voxel
     point = suit_coordinate(point);
+
+    // now check the modifed position validity, isExist? isOutSide? isOccupied?
     if (checkAvailability(point)) {
       tarPoints_bufferIn.push_back(point);
       tarPoints_pose_.push_back(posture);
+
+      // store the poses and points information for further validity
       geometry_msgs::Pose modified_pose;
       modified_pose.position.x    = point.x();
       modified_pose.position.y    = point.y();
@@ -177,7 +178,6 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
       return false;
     }
   }
-  printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: All goal positions are valid!" ANSI_COLOR_RESET "\n");
   
   // no goal point received
   if (currGoal_id_ >= (int)tarPoints_bufferIn.size() || tarPoints_bufferIn.empty()) 
@@ -190,6 +190,8 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
     
     return false;
   }
+  printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: All goal positions are valid!" ANSI_COLOR_RESET "\n");
+
 
   if(!tarPoseAvalability_client(tarPose_buffer_)) {
     planning_status_ = PlanningState::ERROR;
@@ -199,17 +201,17 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   }
   printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: All goal poses are valid!" ANSI_COLOR_RESET "\n");
 
+
   // receive current end effector pose
   prevPose_ = eef_state_client();
+  printf(ANSI_COLOR_CYAN "[rokae_JPS_planner]: Received Start, checking..." ANSI_COLOR_RESET "\n");
   octomap::point3d tmpPoint(prevPose_.position.x, prevPose_.position.y, prevPose_.position.z);
-  // octomap::OcTreeKey t_key2 = octree_->coordToKey(tmpPoint);
-  // prevGoal_ = keyToCoord_modified(t_key2, *octree_);
-  ROS_INFO("(x,y,z): %f,%f,%f\n",tmpPoint.x(), tmpPoint.y(), tmpPoint.z());
   prevGoal_ = suit_coordinate(tmpPoint);
-  ROS_INFO("(x,y,z): %f,%f,%f\n",tmpPoint.x(), tmpPoint.y(), tmpPoint.z());
 
+  // visualize the start point
   int tmp_msg_id = 100;
   visualizePoint(prevGoal_, tmp_msg_id);
+
   if (!checkAvailability(prevGoal_)) {
     if(planner_verbose_) {
       printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Start point is invalid." ANSI_COLOR_RESET "\n");
@@ -238,9 +240,9 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   res.success = true;
 
   if(planner_verbose_) {
-    printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Waypoint [%.2f, %.2f, %.2f] set as original point position." ANSI_COLOR_RESET "\n",
+    printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Waypoint [%.3f, %.3f, %.3f] set as original point position." ANSI_COLOR_RESET "\n",
                                                                               prevGoal_.x(), prevGoal_.y(), prevGoal_.z());
-    printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Pose (x,y,z,w) = [%.2f, %.2f, %.2f, %.2f] set as a original orientation." ANSI_COLOR_RESET "\n",
+    printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Pose (x,y,z,w) = [%.3f, %.3f, %.3f, %.3f] set as a original orientation." ANSI_COLOR_RESET "\n",
                               prevPose_.orientation.x, prevPose_.orientation.y, prevPose_.orientation.z, prevPose_.orientation.w);
   }
 
@@ -261,12 +263,10 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
     octomap::point3d planning_goal  = currGoal_;
 
     if(planner_verbose_) {
-      // printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Waypoint [%.2f, %.2f, %.2f] set as a next start position." ANSI_COLOR_RESET "\n",
-      //                                                                          planning_start.x(), planning_start.y(), planning_start.z());
-      printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Waypoint [%.2f, %.2f, %.2f] set as a next goal position." ANSI_COLOR_RESET "\n",
+      printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Waypoint [%.3f, %.3f, %.3f] set as a next goal position." ANSI_COLOR_RESET "\n",
                                                                                planning_goal.x(), planning_goal.y(), planning_goal.z());
-      printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Pose (x,y,z,w) = [%.2f, %.2f, %.2f, %.2f] set as a next orientation." ANSI_COLOR_RESET "\n",
-                              tarPoints_pose_[currGoal_id_].x(), tarPoints_pose_[currGoal_id_].y(), tarPoints_pose_[currGoal_id_].z(), tarPoints_pose_[currGoal_id_].w());
+      printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Pose (w,x,y,z) = [%.3f, %.3f, %.3f, %.3f] set as a next orientation." ANSI_COLOR_RESET "\n",
+                              tarPoints_pose_[currGoal_id_].w(), tarPoints_pose_[currGoal_id_].x(), tarPoints_pose_[currGoal_id_].y(), tarPoints_pose_[currGoal_id_].z());
     }
     visualizePoint(planning_goal, currGoal_id_);
 
@@ -299,6 +299,9 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         // store the original path
         std::vector<octomap::OcTreeKey> path_keys = JPS_BasePtr->getPathKeys(); 
         raw_path_ = keysToCoords(path_keys, *octree_);
+        // for (auto &p: raw_path_) {
+        //   ROS_INFO("waypoint info: (x,y,z)=(%f,%f,%f)", p.x(), p.y(), p.z());
+        // }
 
         // REMOVE LINE POINTS
         // std::vector<octomap::point3d> rmLPts_Path = removeLinePts(raw_path_, *octree_);
@@ -311,7 +314,6 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         /*******************************************************************/
         octomap::KeyRay ray;
         std::vector<octomap::OcTreeKey> keys;
-
         for (int i = 0; i < (int)raw_path_.size() - 1; ++i) {
           octree_->computeRayKeys(raw_path_.at(i), raw_path_.at(i+1), ray);
           keys.insert(keys.end(), ray.begin(), ray.end());
@@ -321,9 +323,10 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         /*******************************************************************/
 
         // REMOVE CORNER POINTS
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < 1; i++) {
           optimal_path_ = removeCornerPts(optimal_path_, *octree_);
         }
+        // optimal_path_ = raw_path_;
 
         // visualize the optimal path
         visualizePath(optimal_path_);
@@ -436,6 +439,16 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
 
 }
 
+DynamicEDTOctomap JPSPlanner::euclideanDistanceTransform(std::shared_ptr<octomap::OcTree> tree) 
+{
+  octomap::point3d metric_min(-xDim_, -yDim_, 0.0);
+  octomap::point3d metric_max(xDim_, yDim_, zDim_);
+  DynamicEDTOctomap edf(planning_tree_resolution_*8, tree.get(), metric_min,
+                        metric_max, false);
+  edf.update();
+  return edf;
+}
+
 void JPSPlanner::octomapCallback(const octomap_msgs::Octomap &msg) 
 {
   parent_frame_    = msg.header.frame_id;
@@ -444,13 +457,38 @@ void JPSPlanner::octomapCallback(const octomap_msgs::Octomap &msg)
   }
 
   octomap::AbstractOcTree* treePtr = octomap_msgs::msgToMap(msg);
+  std::shared_ptr<octomap::OcTree> binary_tree;
+
+  // ros::Duration(2);
 
   if (!treePtr) {
     if (planner_verbose_) {
       printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Octomap message is empty!" ANSI_COLOR_RESET "\n");
     }
   } else {
-    octree_ = std::shared_ptr<octomap::OcTree>(dynamic_cast<octomap::OcTree *>(treePtr));
+    binary_tree = std::shared_ptr<octomap::OcTree>(dynamic_cast<octomap::OcTree *>(treePtr));
+  }
+
+  printf(ANSI_COLOR_CYAN "[rokae_JPS_planner]: DynamicEDTOctomap generating ... " ANSI_COLOR_RESET "\n");
+
+  // mtx_.lock();
+  auto edf = euclideanDistanceTransform(binary_tree);
+  octree_ = std::make_shared<octomap::OcTree>(planning_tree_resolution_);
+  binary_tree->expand();
+  for (auto it = binary_tree->begin(); it != binary_tree->end(); it++) {
+    if (edf.getDistance(it.getCoordinate()) <= 0.02) {
+      octree_->setNodeValue(it.getCoordinate(), binary_tree->getClampingThresMaxLog()); // obstacle or close to obstacle
+    } else {
+      octree_->setNodeValue(it.getCoordinate(), binary_tree->getClampingThresMinLog()); // free and safe
+    }
+  }
+  // mtx_.unlock();
+
+  printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: DynamicEDTOctomap generated." ANSI_COLOR_RESET "\n");
+
+  // turn off the octomap subscriber
+  if (octree_ != nullptr) {
+    octomap_subscriber_.shutdown();
   }
 
   getting_octomap_ = true;
@@ -468,13 +506,13 @@ geometry_msgs::Pose JPSPlanner::eef_state_client()
   if (eef_state_client_.call(srv))
   {
     if (planner_verbose_) {
-     printf(ANSI_COLOR_MAGENTA "[rokae_eef_state]: end_effector position (x,y,z) = (%.2f,%.2f,%.2f)" ANSI_COLOR_RESET "\n", 
+     printf(ANSI_COLOR_MAGENTA "[rokae_eef_state]: end_effector position (x,y,z) = (%.3f,%.3f,%.3f)" ANSI_COLOR_RESET "\n", 
                                                 srv.response.eef_pose.position.x, srv.response.eef_pose.position.y, srv.response.eef_pose.position.z);
     }
 
     if (planner_verbose_) {
-     printf(ANSI_COLOR_MAGENTA "[rokae_eef_state]: end_effector orientation (x,y,z,w) = (%.2f,%.2f,%.2f,%.2f)" ANSI_COLOR_RESET "\n", 
-                                                srv.response.eef_pose.orientation.x, srv.response.eef_pose.orientation.y, srv.response.eef_pose.orientation.z, srv.response.eef_pose.orientation.w);
+     printf(ANSI_COLOR_MAGENTA "[rokae_eef_state]: end_effector orientation (w,x,y,z) = (%.3f,%.3f,%.3f,%.3f)" ANSI_COLOR_RESET "\n", 
+                                                srv.response.eef_pose.orientation.w, srv.response.eef_pose.orientation.x, srv.response.eef_pose.orientation.y, srv.response.eef_pose.orientation.z);
     }
 
     return srv.response.eef_pose;
@@ -503,9 +541,10 @@ void JPSPlanner::collision_detection_client(std::vector<octomap::point3d> &waypo
 
   // ROS_INFO("original joint configs size: %d", (int)joint_configs.size());
   // ROS_INFO("target point pose messages size: %d",(int)tarPoints_pose_msg_.size());
-
+  
   for (auto &pose_msg: tarPoints_pose_msg_)
   {
+    // ROS_INFO("(x,y,z)=(%f,%f,%f); (w,i,j,k)=(%f,%f,%f,%f) ",pose_msg.position.x, pose_msg.position.y, pose_msg.position.z, pose_msg.orientation.w, pose_msg.orientation.x, pose_msg.orientation.y, pose_msg.orientation.z );
     rokae_jps_navigation::CheckCollision collision_detection_srv;
     collision_detection_srv.request.path_pose = pose_msg;
     collision_detection_srv.request.ifVerbose = debug_verbose_;
@@ -515,7 +554,7 @@ void JPSPlanner::collision_detection_client(std::vector<octomap::point3d> &waypo
     iteration++;
     // ROS_INFO("curr_joints size is %d", (int)curr_joint_configs_.size());
     // ROS_INFO("prev_joints size is %d", (int)collision_detection_srv.request.prev_joints.size());
-    // printf(ANSI_COLOR_MAGENTA "previous joint configs=(%.2f,%.2f,%.2f,%.2f,%.2f,%.2f); iteration=%d" ANSI_COLOR_RESET "\n",prev_joint_configs_.at(0), prev_joint_configs_.at(1), prev_joint_configs_.at(2), prev_joint_configs_.at(3), prev_joint_configs_.at(4), prev_joint_configs_.at(5), iteration);
+    // printf(ANSI_COLOR_MAGENTA "previous joint configs=(%.3f,%.3f,%.3f,%.3f,%.3f,%.3f); iteration=%d" ANSI_COLOR_RESET "\n",prev_joint_configs_.at(0), prev_joint_configs_.at(1), prev_joint_configs_.at(2), prev_joint_configs_.at(3), prev_joint_configs_.at(4), prev_joint_configs_.at(5), iteration);
 
     // if (isOccupied(tree->search(currNodeKey))) {
     //   printf(ANSI_COLOR_RED "CHECK STATUS OCCUPIED" ANSI_COLOR_RESET "\n");
@@ -531,7 +570,7 @@ void JPSPlanner::collision_detection_client(std::vector<octomap::point3d> &waypo
             printf(ANSI_COLOR_RED "manipulator collision" ANSI_COLOR_RESET "\n");
           }
           setCurrNodeObs(currNodeKey, tree);
-          visualizeVoxel(keyToCoord_modified(currNodeKey, *tree));
+          visualizeVoxel(tree->keyToCoord(currNodeKey));
           obs_iter_id_++;
           planning_status_ = PlanningState::NEED_REPLANNING;
         } 
@@ -549,21 +588,13 @@ void JPSPlanner::collision_detection_client(std::vector<octomap::point3d> &waypo
           printf(ANSI_COLOR_RED "violated state" ANSI_COLOR_RESET "\n");
         }
         setCurrNodeObs(currNodeKey, tree);
-        visualizeVoxel(keyToCoord_modified(currNodeKey, *tree));
+        visualizeVoxel(tree->keyToCoord(currNodeKey));
         obs_iter_id_++;
         // violated_iter++;
         planning_status_ = PlanningState::NEED_REPLANNING;
       }
     }
   }
-
-  // if (violated_iter >= iteration - 2) {
-  //   planning_status_ = PlanningState::ERROR;
-  //   if (planner_verbose_) {
-  //     printf(ANSI_COLOR_RED "No effective solution." ANSI_COLOR_RESET "\n");
-  //   }
-  //   return;
-  // }
 
   if (planning_status_ != PlanningState::NEED_REPLANNING) {
     joint_configs_.insert(joint_configs_.end(), joint_configs.begin(), joint_configs.end());
@@ -590,7 +621,7 @@ bool JPSPlanner::tarPoseAvalability_client(std::vector<geometry_msgs::Pose> &tar
   bool status    = true;
   for (auto &pose_msg: tarPoseSet) {
     rokae_jps_navigation::CheckCollision collision_detection_srv;
-    ROS_INFO("tarpose: (x,y,z,w,i,j,k): (%f,%f,%f,%f,%f,%f,%f)", pose_msg.position.x, pose_msg.position.y, pose_msg.position.z, pose_msg.orientation.w, pose_msg.orientation.x, pose_msg.orientation.y, pose_msg.orientation.z);
+    // ROS_INFO("tarpose: (x,y,z,w,i,j,k): (%f,%f,%f,%f,%f,%f,%f)", pose_msg.position.x, pose_msg.position.y, pose_msg.position.z, pose_msg.orientation.w, pose_msg.orientation.x, pose_msg.orientation.y, pose_msg.orientation.z);
     collision_detection_srv.request.path_pose = pose_msg;
     collision_detection_srv.request.ifVerbose = planner_verbose_;
     collision_detection_srv.request.prev_joints.assign(prev_joint_configs_.begin(), prev_joint_configs_.end());
@@ -1037,7 +1068,7 @@ void JPSPlanner::setSearchRegion(std::vector<octomap::point3d> &path, const int 
   for (auto &key: dist_path_keys_) {
     for (auto &sd: SEARCH_REGION_NEIGHBORS_SET) {
       octomap::OcTreeKey new_key   = expand(key, sd);
-      octomap::point3d   new_coord = keyToCoord_modified(new_key, tree);
+      octomap::point3d   new_coord = tree.keyToCoord(new_key);
       // if the new_coord violate the edge limitation, planner will continue to process the next node and will not add this node to the region_set.
       if (isOutside(new_coord)) {
         continue;
@@ -1052,7 +1083,7 @@ void JPSPlanner::setSearchRegion(std::vector<octomap::point3d> &path, const int 
           dist_map[new_key] = mask_gain_; // current 'new_key' node is occupied, so we assigned 'mask_gain_' value to it.
           for (auto &od: OBS_DPF_NEIGHBORS_SET) {
             octomap::OcTreeKey new_newKey   = expand(new_key, od);
-            octomap::point3d   new_newCoord = keyToCoord_modified(new_newKey, tree); 
+            octomap::point3d   new_newCoord = tree.keyToCoord(new_newKey);
             // if the neighbor around the occupied node is outside of the whole map limitation, we abandon this node to process the next neighbor node
             if (isOutside(new_newCoord)) {
               continue;
@@ -1109,7 +1140,7 @@ void JPSPlanner::setSearchRegion(std::vector<octomap::OcTreeKey> &keys, const in
   for (auto &key: dist_path_keys_) {
     for (auto &sd: SEARCH_REGION_NEIGHBORS_SET) {
       octomap::OcTreeKey new_key   = expand(key, sd);
-      octomap::point3d   new_coord = keyToCoord_modified(new_key, tree);
+      octomap::point3d   new_coord =tree.keyToCoord(new_key);
       // if the new_coord violate the edge limitation, planner will continue to process the next node and will not add this node to the region_set.
       if (isOutside(new_coord)) {
         continue;
@@ -1124,7 +1155,7 @@ void JPSPlanner::setSearchRegion(std::vector<octomap::OcTreeKey> &keys, const in
           dist_map[new_key] = mask_gain_; // current 'new_key' node is occupied, so we assigned 'mask_gain_' value to it.
           for (auto &od: OBS_DPF_NEIGHBORS_SET) {
             octomap::OcTreeKey new_newKey   = expand(new_key, od);
-            octomap::point3d   new_newCoord = keyToCoord_modified(new_newKey, tree); 
+            octomap::point3d   new_newCoord = tree.keyToCoord(new_newKey);
             // if the neighbor around the occupied node is outside of the whole map limitation, we abandon this node to process the next neighbor node
             if (isOutside(new_newCoord)) {
               continue;
@@ -1281,12 +1312,31 @@ std::vector<octomap::point3d> JPSPlanner::removeCornerPts(const std::vector<octo
 std::vector<octomap::point3d> JPSPlanner::keysToCoords(std::vector<octomap::OcTreeKey> &keys, octomap::OcTree &tree) 
 {
   std::vector<octomap::point3d> coords;
-
+  float compenstate_offset = planning_tree_resolution_/2;
+  
   for (auto &k : keys) {
     octomap::point3d temp_point = tree.keyToCoord(k);
-    float compenstate_offset = planning_tree_resolution_/2;
-    octomap::point3d modified_point (temp_point.x() - compenstate_offset, temp_point.y() - compenstate_offset, temp_point.z() - compenstate_offset);
-    coords.push_back(modified_point);
+    // float modified_x, modified_y, modified_z;
+    // if (temp_point.x() < 0) {
+    //   modified_x = temp_point.x() + compenstate_offset;
+    // } else {
+    //   modified_x = temp_point.x() - compenstate_offset;
+    // }
+
+    // if (temp_point.y() < 0) {
+    //   modified_y = temp_point.y() + compenstate_offset;
+    // } else {
+    //   modified_y = temp_point.y() - compenstate_offset;
+    // }
+
+    // if (temp_point.z() < 0) {
+    //   modified_z = temp_point.z() + compenstate_offset;
+    // } else {
+    //   modified_z = temp_point.z() - compenstate_offset;
+    // }
+    // octomap::point3d modified_point (modified_x, modified_y, modified_z);
+    // coords.push_back(modified_point);
+    coords.push_back(temp_point);
   }
 
   return coords;
@@ -1304,14 +1354,34 @@ std::vector<octomap::OcTreeKey> JPSPlanner::coordsToKeys(std::vector<octomap::po
   return keys;
 }
 
-octomap::point3d JPSPlanner::keyToCoord_modified(octomap::OcTreeKey &key, octomap::OcTree &tree)
-{
-  octomap::point3d temp_point = tree.keyToCoord(key);
-  float compenstate_offset    = planning_tree_resolution_/2;
-  octomap::point3d modified_point (temp_point.x() - compenstate_offset, temp_point.y() - compenstate_offset, temp_point.z() - compenstate_offset);
+// octomap::point3d JPSPlanner::keyToCoord_modified(octomap::OcTreeKey &key, octomap::OcTree &tree)
+// {
+//   float modified_x, modified_y, modified_z;
+//   float compenstate_offset    = planning_tree_resolution_/2;
 
-  return modified_point;
-}
+//   octomap::point3d temp_point = tree.keyToCoord(key);
+//   if (temp_point.x() < 0) {
+//     modified_x = temp_point.x() + compenstate_offset;
+//   } else {
+//     modified_x = temp_point.x() - compenstate_offset;
+//   }
+
+//   if (temp_point.y() < 0) {
+//     modified_y = temp_point.y() + compenstate_offset;
+//   } else {
+//     modified_y = temp_point.y() - compenstate_offset;
+//   }
+
+//   if (temp_point.z() < 0) {
+//     modified_z = temp_point.z() + compenstate_offset;
+//   } else {
+//     modified_z = temp_point.z() - compenstate_offset;
+//   }
+
+//   octomap::point3d modified_point (modified_x, modified_y, modified_z);
+
+//   return modified_point;
+// }
 
 
 bool JPSPlanner::freeStraightPath(const octomap::point3d p1, const octomap::point3d p2, octomap::OcTree &tree)
@@ -1353,8 +1423,9 @@ bool JPSPlanner::setCurrNodeObs(octomap::OcTreeKey &key, std::shared_ptr<octomap
     // }
     // ROS_INFO("occupancy value0: %f",reNode->getOccupancy());
     // ROS_INFO("Current Node State0: %s", isOccupied(reNode)?"Occupied":"Free"); 
-    reNode->setLogOdds(tree->getClampingThresMaxLog());
-    tree->updateInnerOccupancy();
+    tree->setNodeValue(key, tree->getClampingThresMaxLog());
+    // reNode->setLogOdds(tree->getClampingThresMaxLog());
+    // tree->updateInnerOccupancy();
     // ROS_INFO("occupancy value1: %f",reNode->getOccupancy());
     // ROS_INFO("Current Node State1: %s", isOccupied(reNode)?"Occupied":"Free"); 
     return true;
@@ -1375,10 +1446,12 @@ bool JPSPlanner::isOccupied(octomap::OcTreeNode* currNode) {
   // TODO isOccupied
   // ROS_INFO("current Node Occupancy: %f", currNode->getOccupancy());
   return currNode!=NULL && currNode->getOccupancy() > 0.5;
+  // return currNode!=NULL && !octree_->isNodeOccupied(currNode);
 }
 
 bool JPSPlanner::isFree(octomap::OcTreeNode* currNode) {
   return currNode!=NULL && currNode->getOccupancy() <= 0.5;
+  // return currNode!=NULL && octree_->isNodeOccupied(currNode);
 }
 
 bool JPSPlanner::isOutside(const octomap::point3d point)  {
@@ -1392,48 +1465,67 @@ octomap::point3d JPSPlanner::suit_coordinate(octomap::point3d &point)
   int integral_x = (int)(point.x()/planning_tree_resolution_);
   int integral_y = (int)(point.y()/planning_tree_resolution_);
   int integral_z = (int)(point.z()/planning_tree_resolution_);
-  printf("x, y, z: %d, %d, %d", integral_x, integral_y, integral_z);
+  // printf("x, y, z: %d, %d, %d", integral_x, integral_y, integral_z);
 
   // ROS_INFO_STREAM("integral_x: " << integral_x);
   // ROS_INFO_STREAM("integral_z: " << integral_z);
 
   if ( std::fabs(point.x() - integral_x * planning_tree_resolution_) >= planning_tree_resolution_ / 2) {
     if (integral_x > 0) {
-      x = (integral_x + 1) * planning_tree_resolution_;
+      x = (integral_x + 0.5) * planning_tree_resolution_;
     } else if (integral_x < 0) {
-      x = (integral_x - 1) * planning_tree_resolution_;
+      x = (integral_x - 0.5) * planning_tree_resolution_;
     } else {
       x = point.x();
     }
   } else {
-    x = integral_x * planning_tree_resolution_;
+    if (integral_x > 0) {
+      x = (integral_x - 0.5) * planning_tree_resolution_;
+    } else if (integral_x < 0) {
+      x = (integral_x + 0.5) * planning_tree_resolution_;
+    } else {
+      x = point.x();
+    }
   }
 
   if ( std::fabs(point.y() - integral_y * planning_tree_resolution_) >= planning_tree_resolution_ / 2) {
     if (integral_y > 0) {
-      y = (integral_y + 1) * planning_tree_resolution_;
+      y = (integral_y + 0.5) * planning_tree_resolution_;
     } else if (integral_y < 0) {
-      y = (integral_y - 1) * planning_tree_resolution_;
+      y = (integral_y - 0.5) * planning_tree_resolution_;
     } else {
       y = point.y();
     }
   } else {
-    y = integral_y * planning_tree_resolution_;
+    if (integral_y > 0) {
+      y = (integral_y - 0.5) * planning_tree_resolution_;
+    } else if (integral_y < 0) {
+      y = (integral_y + 0.5) * planning_tree_resolution_;
+    } else {
+      y = point.y();
+    }
   }
 
   if ( std::fabs(point.z() - integral_z * planning_tree_resolution_) >= planning_tree_resolution_ / 2) {
     if (integral_z > 0) {
-      z = (integral_z + 1) * planning_tree_resolution_;
+      z = (integral_z + 0.5) * planning_tree_resolution_;
     } else if (integral_z < 0) {
-      z = (integral_z - 1) * planning_tree_resolution_;
+      z = (integral_z - 0.5) * planning_tree_resolution_;
     } else {
       z = point.z();
     }
   } else {
-    z = integral_z * planning_tree_resolution_;
+    if (integral_z > 0) {
+      z = (integral_z - 0.5) * planning_tree_resolution_;
+    } else if (integral_z < 0) {
+      z = (integral_z + 0.5) * planning_tree_resolution_;
+    } else {
+      z = point.z();
+    }
   }
   octomap::point3d re_point(x, y, z);
   // ROS_INFO_STREAM("x, y, z : " << re_point.x() << ", " << re_point.y() << ", " << re_point.z() );
+
   return re_point;
 }
 

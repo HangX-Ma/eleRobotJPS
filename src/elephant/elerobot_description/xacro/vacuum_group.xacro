@@ -40,7 +40,18 @@
       <limit effort="50" velocity="50" lower="0" upper="0" />
       <dynamics damping="0.0" friction="10"/>
     </joint>
- 
+
+    <![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>
+    
     <gazebo>
       <plugin name="gazebo_ros_vacuum_gripper_${index}" filename="libgazebo_ros_vacuum_gripper.so">
         <robotNamespace>/rokae_arm/${vacuum_gripper}</robotNamespace>

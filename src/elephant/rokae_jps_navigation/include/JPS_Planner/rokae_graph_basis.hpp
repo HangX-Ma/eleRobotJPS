@@ -288,8 +288,12 @@ class GraphSearch
     //! Check if (x, y, z) is free
     bool isFree(octomap::OcTreeNode* currNode, octomap::point3d &point);
 
-    //! transfer Key value to Coordinate value with central bias
-    octomap::point3d keyToCoord_modified(const octomap::OcTreeKey &NodeKey, const octomap::OcTree &tree);
+    /** 
+     * @brief Key value to Coordinate value with central bias
+     * 
+     * @warning (wrong! the bias is correct)
+     */
+    octomap::point3d keyToCoord_modified(const octomap::OcTreeKey &NodeKey, const octomap::OcTree &tree) = delete;
 
     /**
      * @brief get the path keys from \c from to \c to

@@ -50,57 +50,10 @@
     <end_effector name="hand" parent_link="elerobot_link6" group="hand" parent_group="manipulator" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="elerobot_link0" link2="elerobot_link1" reason="Adjacent" />
-    <disable_collisions link1="elerobot_link0" link2="elerobot_link2" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="elerobot_link5" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="elerobot_link6" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_1" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_10" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_11" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_12" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_13" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_2" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_3" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_4" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_5" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_6" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_7" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_8" reason="Never" />
-    <disable_collisions link1="elerobot_link0" link2="vacuum_gripper_9" reason="Never" />
     <disable_collisions link1="elerobot_link1" link2="elerobot_link2" reason="Adjacent" />
     <disable_collisions link1="elerobot_link1" link2="elerobot_link4" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="elerobot_link5" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="elerobot_link6" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="elerobot_link7" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_1" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_10" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_11" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_12" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_13" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_2" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_3" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_4" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_5" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_6" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_7" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_8" reason="Never" />
-    <disable_collisions link1="elerobot_link1" link2="vacuum_gripper_9" reason="Never" />
     <disable_collisions link1="elerobot_link2" link2="elerobot_link3" reason="Adjacent" />
     <disable_collisions link1="elerobot_link3" link2="elerobot_link4" reason="Adjacent" />
-    <disable_collisions link1="elerobot_link3" link2="elerobot_link5" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="elerobot_link6" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_1" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_10" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_11" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_12" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_13" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_2" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_3" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_4" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_5" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_6" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_7" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_8" reason="Never" />
-    <disable_collisions link1="elerobot_link3" link2="vacuum_gripper_9" reason="Never" />
     <disable_collisions link1="elerobot_link4" link2="elerobot_link5" reason="Adjacent" />
     <disable_collisions link1="elerobot_link4" link2="elerobot_link6" reason="Never" />
     <disable_collisions link1="elerobot_link4" link2="elerobot_link7" reason="Never" />

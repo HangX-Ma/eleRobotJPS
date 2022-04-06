@@ -17,7 +17,6 @@
 #include <octomap_msgs/Octomap.h>
 #include <octomap_msgs/conversions.h>
 
-
 // https://www.youtube.com/watch?v=Ib1ISnLlD38
 // https://answers.ros.org/question/214386/how-to-publish-a-message-in-a-callback-function/
 
@@ -40,7 +39,7 @@ private:
 octomap_load::octomap_load(ros::NodeHandle* noodehandle):nh_(*noodehandle)
 {
   // publisher for the planning scene
-  octomap_pub_1 = nh_.advertise<moveit_msgs::PlanningScene>("move_group/monitored_planning_scene", 1);
+  octomap_pub_1 = nh_.advertise<moveit_msgs::PlanningScene>("/move_group/monitored_planning_scene", 1);
   octomap_pub_2 = nh_.advertise<moveit_msgs::PlanningScene>("planning_scene", 1);
   // subscriber for octomap information
   octomap_sub = nh_.subscribe<octomap_msgs::Octomap>("octomap_binary", 1, &octomap_load::msgs_callback, this);

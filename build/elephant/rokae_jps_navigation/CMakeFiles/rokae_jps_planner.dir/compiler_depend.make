@@ -4,42 +4,45 @@
 elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/rokae_jps_planner.cpp.o: /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/src/JPS_Planner/rokae_jps_planner.cpp \
   /usr/include/stdc-predef.h \
   /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/include/JPS_Planner/rokae_jps_planner.hpp \
-  /opt/ros/melodic/include/octomap_msgs/conversions.h \
-  /opt/ros/melodic/include/octomap/octomap.h \
-  /opt/ros/melodic/include/octomap/octomap_types.h \
-  /usr/include/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/c++/7/mutex \
+  /usr/include/c++/7/tuple \
+  /usr/include/c++/7/utility \
+  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
   /usr/include/features.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
-  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
-  /usr/include/x86_64-linux-gnu/bits/types.h \
-  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/libio.h \
-  /usr/include/x86_64-linux-gnu/bits/_G_config.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
-  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
-  /usr/include/c++/7/vector \
-  /usr/include/c++/7/bits/stl_algobase.h \
-  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
-  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
   /usr/include/x86_64-linux-gnu/c++/7/bits/cpu_defines.h \
-  /usr/include/c++/7/bits/functexcept.h \
-  /usr/include/c++/7/bits/exception_defines.h \
-  /usr/include/c++/7/bits/cpp_type_traits.h \
-  /usr/include/c++/7/ext/type_traits.h \
-  /usr/include/c++/7/ext/numeric_traits.h \
+  /usr/include/c++/7/bits/stl_relops.h \
   /usr/include/c++/7/bits/stl_pair.h \
   /usr/include/c++/7/bits/move.h \
   /usr/include/c++/7/bits/concept_check.h \
   /usr/include/c++/7/type_traits \
+  /usr/include/c++/7/initializer_list \
+  /usr/include/c++/7/array \
+  /usr/include/c++/7/stdexcept \
+  /usr/include/c++/7/exception \
+  /usr/include/c++/7/bits/exception.h \
+  /usr/include/c++/7/bits/exception_ptr.h \
+  /usr/include/c++/7/bits/exception_defines.h \
+  /usr/include/c++/7/bits/cxxabi_init_exception.h \
+  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
+  /usr/include/c++/7/typeinfo \
+  /usr/include/c++/7/bits/hash_bytes.h \
+  /usr/include/c++/7/new \
+  /usr/include/c++/7/bits/nested_exception.h \
+  /usr/include/c++/7/string \
+  /usr/include/c++/7/bits/stringfwd.h \
+  /usr/include/c++/7/bits/memoryfwd.h \
+  /usr/include/c++/7/bits/char_traits.h \
+  /usr/include/c++/7/bits/stl_algobase.h \
+  /usr/include/c++/7/bits/functexcept.h \
+  /usr/include/c++/7/bits/cpp_type_traits.h \
+  /usr/include/c++/7/ext/type_traits.h \
+  /usr/include/c++/7/ext/numeric_traits.h \
   /usr/include/c++/7/bits/stl_iterator_base_types.h \
   /usr/include/c++/7/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/7/debug/assertions.h \
@@ -47,61 +50,37 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/c++/7/bits/ptr_traits.h \
   /usr/include/c++/7/debug/debug.h \
   /usr/include/c++/7/bits/predefined_ops.h \
-  /usr/include/c++/7/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h \
-  /usr/include/c++/7/ext/new_allocator.h \
-  /usr/include/c++/7/new \
-  /usr/include/c++/7/exception \
-  /usr/include/c++/7/bits/exception.h \
-  /usr/include/c++/7/bits/exception_ptr.h \
-  /usr/include/c++/7/bits/cxxabi_init_exception.h \
-  /usr/include/c++/7/typeinfo \
-  /usr/include/c++/7/bits/hash_bytes.h \
-  /usr/include/c++/7/bits/nested_exception.h \
-  /usr/include/c++/7/bits/memoryfwd.h \
-  /usr/include/c++/7/bits/stl_construct.h \
-  /usr/include/c++/7/ext/alloc_traits.h \
-  /usr/include/c++/7/bits/alloc_traits.h \
-  /usr/include/c++/7/bits/stl_uninitialized.h \
-  /usr/include/c++/7/bits/stl_vector.h \
-  /usr/include/c++/7/initializer_list \
-  /usr/include/c++/7/bits/stl_bvector.h \
-  /usr/include/c++/7/bits/functional_hash.h \
-  /usr/include/c++/7/bits/range_access.h \
-  /usr/include/c++/7/bits/vector.tcc \
-  /usr/include/c++/7/list \
-  /usr/include/c++/7/bits/stl_list.h \
-  /usr/include/c++/7/bits/allocated_ptr.h \
-  /usr/include/c++/7/ext/aligned_buffer.h \
-  /usr/include/c++/7/bits/list.tcc \
-  /usr/include/inttypes.h \
-  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h \
-  /usr/include/stdint.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar.h \
-  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
-  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
-  /opt/ros/melodic/include/octomap/math/Vector3.h \
-  /usr/include/c++/7/iostream \
-  /usr/include/c++/7/ostream \
-  /usr/include/c++/7/ios \
-  /usr/include/c++/7/iosfwd \
-  /usr/include/c++/7/bits/stringfwd.h \
   /usr/include/c++/7/bits/postypes.h \
   /usr/include/c++/7/cwchar \
   /usr/include/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
-  /usr/include/c++/7/bits/char_traits.h \
   /usr/include/c++/7/cstdint \
+  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/c++/7/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h \
+  /usr/include/c++/7/ext/new_allocator.h \
   /usr/include/c++/7/bits/localefwd.h \
   /usr/include/x86_64-linux-gnu/c++/7/bits/c++locale.h \
   /usr/include/c++/7/clocale \
   /usr/include/locale.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
+  /usr/include/c++/7/iosfwd \
   /usr/include/c++/7/cctype \
   /usr/include/ctype.h \
   /usr/include/endian.h \
@@ -109,7 +88,12 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/c++/7/bits/ios_base.h \
+  /usr/include/c++/7/bits/ostream_insert.h \
+  /usr/include/c++/7/bits/cxxabi_forced.h \
+  /usr/include/c++/7/bits/stl_function.h \
+  /usr/include/c++/7/backward/binders.h \
+  /usr/include/c++/7/bits/range_access.h \
+  /usr/include/c++/7/bits/basic_string.h \
   /usr/include/c++/7/ext/atomicity.h \
   /usr/include/x86_64-linux-gnu/c++/7/bits/gthr.h \
   /usr/include/x86_64-linux-gnu/c++/7/bits/gthr-default.h \
@@ -133,13 +117,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h \
-  /usr/include/c++/7/bits/locale_classes.h \
-  /usr/include/c++/7/string \
-  /usr/include/c++/7/bits/ostream_insert.h \
-  /usr/include/c++/7/bits/cxxabi_forced.h \
-  /usr/include/c++/7/bits/stl_function.h \
-  /usr/include/c++/7/backward/binders.h \
-  /usr/include/c++/7/bits/basic_string.h \
+  /usr/include/c++/7/ext/alloc_traits.h \
+  /usr/include/c++/7/bits/alloc_traits.h \
   /usr/include/c++/7/ext/string_conversions.h \
   /usr/include/c++/7/cstdlib \
   /usr/include/stdlib.h \
@@ -156,6 +135,11 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   /usr/include/c++/7/bits/std_abs.h \
   /usr/include/c++/7/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/libio.h \
+  /usr/include/x86_64-linux-gnu/bits/_G_config.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
   /usr/include/c++/7/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -163,11 +147,40 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/x86_64-linux-gnu/asm/errno.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm-generic/errno-base.h \
+  /usr/include/c++/7/bits/functional_hash.h \
   /usr/include/c++/7/bits/basic_string.tcc \
-  /usr/include/c++/7/bits/locale_classes.tcc \
+  /usr/include/c++/7/bits/uses_allocator.h \
+  /usr/include/c++/7/bits/invoke.h \
+  /usr/include/c++/7/chrono \
+  /usr/include/c++/7/ratio \
+  /usr/include/c++/7/limits \
+  /usr/include/c++/7/ctime \
+  /usr/include/c++/7/bits/parse_numbers.h \
   /usr/include/c++/7/system_error \
   /usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h \
-  /usr/include/c++/7/stdexcept \
+  /usr/include/c++/7/bits/std_mutex.h \
+  /opt/ros/melodic/include/octomap_msgs/conversions.h \
+  /opt/ros/melodic/include/octomap/octomap.h \
+  /opt/ros/melodic/include/octomap/octomap_types.h \
+  /usr/include/c++/7/vector \
+  /usr/include/c++/7/bits/stl_construct.h \
+  /usr/include/c++/7/bits/stl_uninitialized.h \
+  /usr/include/c++/7/bits/stl_vector.h \
+  /usr/include/c++/7/bits/stl_bvector.h \
+  /usr/include/c++/7/bits/vector.tcc \
+  /usr/include/c++/7/list \
+  /usr/include/c++/7/bits/stl_list.h \
+  /usr/include/c++/7/bits/allocated_ptr.h \
+  /usr/include/c++/7/ext/aligned_buffer.h \
+  /usr/include/c++/7/bits/list.tcc \
+  /usr/include/inttypes.h \
+  /opt/ros/melodic/include/octomap/math/Vector3.h \
+  /usr/include/c++/7/iostream \
+  /usr/include/c++/7/ostream \
+  /usr/include/c++/7/ios \
+  /usr/include/c++/7/bits/ios_base.h \
+  /usr/include/c++/7/bits/locale_classes.h \
+  /usr/include/c++/7/bits/locale_classes.tcc \
   /usr/include/c++/7/streambuf \
   /usr/include/c++/7/bits/streambuf.tcc \
   /usr/include/c++/7/bits/basic_ios.h \
@@ -206,7 +219,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/c++/7/stdlib.h \
   /opt/ros/melodic/include/octomap/octomap_utils.h \
   /opt/ros/melodic/include/octomap/OcTreeBaseImpl.h \
-  /usr/include/c++/7/limits \
   /usr/include/c++/7/iterator \
   /usr/include/c++/7/bits/stream_iterator.h \
   /usr/include/c++/7/stack \
@@ -214,14 +226,11 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/c++/7/bits/stl_deque.h \
   /usr/include/c++/7/bits/deque.tcc \
   /usr/include/c++/7/bits/stl_stack.h \
-  /usr/include/c++/7/bits/uses_allocator.h \
   /usr/include/c++/7/bitset \
   /opt/ros/melodic/include/octomap/OcTreeKey.h \
   /usr/include/c++/7/ciso646 \
   /usr/include/assert.h \
   /usr/include/c++/7/tr1/unordered_set \
-  /usr/include/c++/7/utility \
-  /usr/include/c++/7/bits/stl_relops.h \
   /usr/include/c++/7/tr1/type_traits \
   /usr/include/c++/7/tr1/functional_hash.h \
   /usr/include/c++/7/tr1/hashtable.h \
@@ -242,9 +251,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/c++/7/map \
   /usr/include/c++/7/bits/stl_tree.h \
   /usr/include/c++/7/bits/stl_map.h \
-  /usr/include/c++/7/tuple \
-  /usr/include/c++/7/array \
-  /usr/include/c++/7/bits/invoke.h \
   /usr/include/c++/7/bits/stl_multimap.h \
   /opt/ros/melodic/include/octomap/OcTreeNode.h \
   /opt/ros/melodic/include/octomap/OcTreeDataNode.h \
@@ -434,7 +440,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/c++/7/iomanip \
   /usr/include/c++/7/locale \
   /usr/include/c++/7/bits/locale_facets_nonio.h \
-  /usr/include/c++/7/ctime \
   /usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h \
   /usr/include/libintl.h \
@@ -857,6 +862,16 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /opt/ros/melodic/include/octomap/ColorOcTree.h \
   /opt/ros/melodic/include/octomap/OcTreeNode.h \
   /opt/ros/melodic/include/octomap/OccupancyOcTreeBase.h \
+  /opt/ros/melodic/include/dynamicEDT3D/dynamicEDTOctomap.h \
+  /opt/ros/melodic/include/dynamicEDT3D/dynamicEDT3D.h \
+  /usr/include/c++/7/queue \
+  /usr/include/c++/7/bits/stl_queue.h \
+  /opt/ros/melodic/include/dynamicEDT3D/bucketedqueue.h \
+  /opt/ros/melodic/include/dynamicEDT3D/point.h \
+  /opt/ros/melodic/include/dynamicEDT3D/bucketedqueue.hxx \
+  /opt/ros/melodic/include/octomap/OcTree.h \
+  /opt/ros/melodic/include/octomap/OcTreeStamped.h \
+  /opt/ros/melodic/include/dynamicEDT3D/dynamicEDTOctomap.hxx \
   /home/contour/ws_moveit/src/moveit/moveit_core/planning_interface/include/moveit/planning_interface/planning_interface.h \
   /home/contour/ws_moveit/src/moveit/moveit_core/macros/include/moveit/macros/class_forward.h \
   /home/contour/ws_moveit/src/moveit/moveit_core/macros/include/moveit/macros/declare_ptr.h \
@@ -1435,17 +1450,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/c++/7/bits/unordered_map.h \
   /usr/include/c++/7/unordered_set \
   /usr/include/c++/7/bits/unordered_set.h \
-  /usr/include/c++/7/queue \
-  /usr/include/c++/7/bits/stl_queue.h \
-  /usr/include/c++/7/chrono \
-  /usr/include/c++/7/ratio \
-  /usr/include/c++/7/bits/parse_numbers.h \
   /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/include/JPS_Basis/rokae_jps_basis.hpp
 
-
-/usr/include/c++/7/bits/parse_numbers.h:
-
-/usr/include/c++/7/chrono:
 
 /usr/include/c++/7/bits/hashtable_policy.h:
 
@@ -1649,10 +1655,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/integer/static_log2.hpp:
 
-/usr/include/c++/7/queue:
-
-/usr/include/boost/random/detail/seed_impl.hpp:
-
 /usr/include/boost/random/uniform_real_distribution.hpp:
 
 /usr/include/boost/random/detail/ptr_helper.hpp:
@@ -1789,10 +1791,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/preprocessor/seq/for_each_i.hpp:
 
-/usr/include/c++/7/ratio:
-
-/usr/include/boost/concept/detail/concept_def.hpp:
-
 /usr/include/boost/type_traits/conversion_traits.hpp:
 
 /usr/include/boost/concept/detail/backward_compatibility.hpp:
@@ -1820,8 +1818,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/range/config.hpp:
 
 /usr/include/boost/range/functions.hpp:
-
-/usr/include/boost/type_traits/add_pointer.hpp:
 
 /usr/include/boost/utility/addressof.hpp:
 
@@ -1900,8 +1896,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/function/detail/maybe_include.hpp:
 
 /usr/include/boost/function/detail/function_iterate.hpp:
-
-/usr/include/boost/preprocessor/iteration/detail/bounds/upper1.hpp:
 
 /usr/include/eigen3/Eigen/Jacobi:
 
@@ -2090,6 +2084,26 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /opt/ros/melodic/include/moveit_msgs/MotionPlanRequest.h:
 
 /home/contour/ws_moveit/src/moveit/moveit_core/macros/include/moveit/macros/declare_ptr.h:
+
+/usr/include/boost/type_traits/add_pointer.hpp:
+
+/opt/ros/melodic/include/dynamicEDT3D/dynamicEDTOctomap.hxx:
+
+/opt/ros/melodic/include/octomap/OcTreeStamped.h:
+
+/opt/ros/melodic/include/dynamicEDT3D/bucketedqueue.hxx:
+
+/usr/include/boost/preprocessor/iteration/detail/bounds/upper1.hpp:
+
+/opt/ros/melodic/include/dynamicEDT3D/point.h:
+
+/usr/include/boost/random/detail/seed_impl.hpp:
+
+/usr/include/c++/7/queue:
+
+/opt/ros/melodic/include/dynamicEDT3D/dynamicEDT3D.h:
+
+/opt/ros/melodic/include/dynamicEDT3D/dynamicEDTOctomap.h:
 
 /opt/ros/melodic/include/octomap/ColorOcTree.h:
 
@@ -2339,7 +2353,21 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/mpl/vector/aux_/O1_size.hpp:
 
-/usr/include/boost/predef/compiler/hp_acc.h:
+/usr/include/boost/mpl/prior.hpp:
+
+/usr/include/boost/mpl/distance_fwd.hpp:
+
+/usr/include/eigen3/Eigen/src/LU/arch/Inverse_SSE.h:
+
+/usr/include/boost/mpl/advance_fwd.hpp:
+
+/usr/include/boost/lexical_cast/detail/lcast_unsigned_converters.hpp:
+
+/usr/include/boost/preprocessor/iteration/iterate.hpp:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/minus.hpp:
+
+/usr/include/boost/mpl/minus.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h:
 
@@ -2402,6 +2430,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/config/detail/select_stdlib_config.hpp:
 
 /usr/include/boost/mpl/tag.hpp:
+
+/opt/ros/melodic/include/dynamicEDT3D/bucketedqueue.h:
 
 /usr/include/boost/mpl/at.hpp:
 
@@ -2475,18 +2505,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
-/usr/include/c++/7/tuple:
-
-/usr/include/x86_64-linux-gnu/bits/libio.h:
-
-/usr/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp:
-
-/usr/include/boost/type_traits/is_fundamental.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
-
-/usr/include/boost/mpl/aux_/arg_typedef.hpp:
-
 /usr/include/x86_64-linux-gnu/c++/7/bits/c++io.h:
 
 /opt/ros/melodic/include/ros/console.h:
@@ -2494,12 +2512,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/mpl/aux_/preprocessed/gcc/apply_fwd.hpp:
 
 /opt/ros/melodic/include/ros/types.h:
-
-/usr/include/boost/type_traits/remove_cv.hpp:
-
-/usr/include/c++/7/bits/locale_classes.h:
-
-/usr/include/boost/mpl/aux_/numeric_op.hpp:
 
 /usr/include/c++/7/bits/unordered_map.h:
 
@@ -2535,18 +2547,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/mpl/aux_/config/has_apply.hpp:
 
-/usr/include/boost/config/user.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h:
-
-/usr/include/boost/predef/architecture/mips.h:
-
-/usr/include/c++/7/bits/stl_relops.h:
-
-/usr/include/stdint.h:
-
-/usr/include/boost/predef/os/aix.h:
-
 /usr/include/boost/random/normal_distribution.hpp:
 
 /usr/include/boost/predef/architecture/ppc.h:
@@ -2556,12 +2556,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /opt/ros/melodic/include/octomap/OcTreeBaseImpl.h:
 
 /usr/include/boost/preprocessor/cat.hpp:
-
-/usr/include/boost/predef/compiler/ekopath.h:
-
-/usr/include/c++/7/bits/codecvt.h:
-
-/usr/include/c++/7/tr1/unordered_set:
 
 /usr/include/boost/predef/os/irix.h:
 
@@ -2624,8 +2618,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/c++/7/deque:
 
 /usr/include/c++/7/iterator:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h:
 
 /usr/include/c++/7/bits/fstream.tcc:
 
@@ -2695,9 +2687,9 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/x86_64-linux-gnu/c++/7/bits/ctype_base.h:
 
-/usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h:
-
 /usr/include/c++/7/bits/locale_classes.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h:
 
 /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h:
 
@@ -2715,21 +2707,15 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/mpl/aux_/config/preprocessor.hpp:
 
-/usr/include/boost/lexical_cast/detail/lcast_unsigned_converters.hpp:
+/usr/include/boost/type_traits/remove_cv.hpp:
 
-/usr/include/boost/preprocessor/iteration/iterate.hpp:
+/usr/include/boost/mpl/aux_/numeric_op.hpp:
 
-/usr/include/boost/mpl/aux_/preprocessed/gcc/minus.hpp:
+/usr/include/c++/7/bits/locale_classes.h:
 
-/usr/include/c++/7/bits/stl_tree.h:
+/usr/include/c++/7/iostream:
 
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
-
-/usr/include/eigen3/Eigen/SVD:
-
-/usr/include/boost/mpl/same_as.hpp:
-
-/usr/include/c++/7/tr1/hashtable_policy.h:
+/usr/include/boost/predef/library/c/uc.h:
 
 /usr/include/boost/utility.hpp:
 
@@ -2745,161 +2731,85 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/c++/7/bits/stl_list.h:
 
-/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h:
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
-/opt/ros/melodic/include/ros/roscpp_serialization_macros.h:
+/usr/include/c++/7/bits/vector.tcc:
 
-/home/contour/ws_moveit/src/moveit/moveit_core/kinematics_base/include/moveit/kinematics_base/kinematics_base.h:
+/usr/include/boost/random/detail/seed.hpp:
 
-/usr/include/c++/7/bits/ostream_insert.h:
+/usr/include/boost/mpl/comparison.hpp:
 
-/usr/include/c++/7/bits/functional_hash.h:
+/usr/include/x86_64-linux-gnu/c++/7/bits/c++locale.h:
 
-/usr/include/boost/mpl/vector/vector0.hpp:
+/usr/include/boost/config/user.hpp:
 
-/usr/include/eigen3/Eigen/src/Core/util/Memory.h:
+/usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h:
 
-/usr/include/c++/7/bits/stl_stack.h:
+/usr/include/boost/predef/architecture/mips.h:
 
-/usr/include/c++/7/bits/basic_ios.tcc:
+/usr/include/c++/7/bits/stl_relops.h:
 
-/usr/include/x86_64-linux-gnu/bits/_G_config.h:
+/usr/include/stdint.h:
 
-/usr/include/boost/predef/library/std/cxx.h:
+/usr/include/boost/predef/os/aix.h:
 
-/usr/include/boost/predef/library/std/stlport.h:
+/usr/include/boost/predef.h:
 
-/usr/include/log4cxx/logstring.h:
+/usr/include/boost/range/const_iterator.hpp:
 
-/usr/include/boost/mpl/empty_fwd.hpp:
+/usr/include/boost/mpl/aux_/config/lambda.hpp:
 
-/usr/include/c++/7/initializer_list:
+/usr/include/boost/mpl/aux_/template_arity.hpp:
 
-/usr/include/c++/7/bits/exception_defines.h:
+/usr/include/x86_64-linux-gnu/bits/time.h:
 
-/opt/ros/melodic/include/moveit_msgs/OrientationConstraint.h:
+/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
-/usr/include/x86_64-linux-gnu/c++/7/bits/basic_file.h:
+/usr/include/boost/predef/architecture/sparc.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h:
+/usr/include/boost/mpl/vector/aux_/include_preprocessed.hpp:
 
-/usr/include/boost/predef/compiler/gcc.h:
+/usr/include/alloca.h:
 
-/usr/include/c++/7/stdexcept:
-
-/usr/include/c++/7/bits/stl_vector.h:
-
-/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
-
-/usr/include/x86_64-linux-gnu/bits/floatn.h:
-
-/usr/include/pthread.h:
+/usr/include/boost/mpl/aux_/lambda_spec.hpp:
 
 /usr/include/c++/7/tr1/unordered_map:
 
 /usr/include/c++/7/bits/basic_ios.h:
 
+/usr/include/pthread.h:
+
 /usr/include/boost/mpl/vector/aux_/clear.hpp:
 
-/usr/include/c++/7/ext/alloc_traits.h:
+/usr/include/c++/7/mutex:
 
-/usr/include/c++/7/bits/vector.tcc:
+/opt/ros/melodic/include/octomap/octomap_types.h:
 
-/usr/include/c++/7/bits/stringfwd.h:
+/usr/include/boost/predef/compiler/borland.h:
 
-/usr/include/boost/mpl/list/aux_/item.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
-
-/usr/include/boost/mpl/pop_front_fwd.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types.h:
-
-/usr/include/boost/core/checked_delete.hpp:
-
-/usr/include/boost/mpl/vector/aux_/empty.hpp:
-
-/usr/include/boost/predef/compiler/intel.h:
-
-/usr/include/eigen3/Eigen/src/Geometry/RotationBase.h:
-
-/usr/include/boost/preprocessor/list/fold_left.hpp:
-
-/usr/include/boost/type_traits/add_const.hpp:
-
-/usr/include/c++/7/bits/nested_exception.h:
-
-/opt/ros/melodic/include/octomap/AbstractOcTree.h:
-
-/usr/include/c++/7/bits/stl_iterator_base_types.h:
-
-/usr/include/c++/7/new:
-
-/usr/include/boost/random/detail/config.hpp:
-
-/usr/include/boost/mpl/vector/aux_/push_back.hpp:
-
-/opt/ros/melodic/include/octomap/octomap.h:
-
-/usr/include/c++/7/iostream:
-
-/usr/include/c++/7/bits/cxxabi_init_exception.h:
-
-/usr/include/boost/detail/iterator.hpp:
-
-/usr/include/x86_64-linux-gnu/sys/select.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
-
-/usr/include/math.h:
-
-/usr/include/c++/7/bits/exception_ptr.h:
-
-/usr/include/boost/type_traits/is_copy_constructible.hpp:
-
-/usr/include/boost/smart_ptr/detail/sp_noexcept.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
-
-/usr/include/boost/predef/compiler/tendra.h:
-
-/usr/include/boost/preprocessor/seq/size.hpp:
-
-/usr/include/c++/7/exception:
-
-/usr/include/boost/predef/library/std/libcomo.h:
-
-/usr/include/boost/mpl/quote.hpp:
-
-/usr/include/boost/detail/sp_typeinfo.hpp:
-
-/usr/include/ctype.h:
-
-/usr/include/c++/7/bits/hash_bytes.h:
-
-/usr/include/boost/preprocessor/logical/bitand.hpp:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/include/boost/mpl/distance_fwd.hpp:
+/usr/include/boost/predef/hardware/simd/x86.h:
 
 /usr/include/c++/7/bitset:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
-/usr/include/c++/7/utility:
+/usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp:
 
-/usr/include/boost/lexical_cast/bad_lexical_cast.hpp:
+/usr/include/c++/7/ostream:
 
-/usr/include/boost/predef/os/qnxnto.h:
+/usr/include/c++/7/math.h:
 
-/usr/include/boost/mpl/always.hpp:
+/usr/include/c++/7/array:
 
-/usr/include/eigen3/Eigen/src/Core/SolverBase.h:
+/usr/include/boost/predef/architecture/arm.h:
 
-/usr/include/boost/range/distance.hpp:
+/usr/include/c++/7/bits/streambuf_iterator.h:
 
-/usr/include/x86_64-linux-gnu/bits/select.h:
+/usr/include/c++/7/bits/ios_base.h:
+
+/usr/include/c++/7/bits/invoke.h:
+
+/usr/include/c++/7/tr1/hashtable_policy.h:
 
 /usr/include/boost/predef/architecture.h:
 
@@ -2935,9 +2845,229 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/mpl/aux_/preprocessor/default_params.hpp:
 
-/opt/ros/melodic/include/octomap/octomap_types.h:
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
-/usr/include/c++/7/bits/stl_construct.h:
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+
+/usr/include/boost/mpl/void.hpp:
+
+/usr/include/c++/7/bits/stl_function.h:
+
+/usr/include/c++/7/bits/functexcept.h:
+
+/usr/include/boost/predef/os/solaris.h:
+
+/usr/include/boost/preprocessor/array/data.hpp:
+
+/usr/include/boost/utility/base_from_member.hpp:
+
+/usr/include/c++/7/bits/stl_algobase.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/boost/mpl/pop_front_fwd.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/boost/core/checked_delete.hpp:
+
+/usr/include/boost/mpl/vector/aux_/empty.hpp:
+
+/usr/include/boost/predef/compiler/intel.h:
+
+/usr/include/eigen3/Eigen/src/Geometry/RotationBase.h:
+
+/usr/include/boost/preprocessor/list/fold_left.hpp:
+
+/usr/include/boost/type_traits/add_const.hpp:
+
+/usr/include/c++/7/bits/nested_exception.h:
+
+/usr/include/boost/bind/bind_cc.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/c++/7/bits/move.h:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/apply.hpp:
+
+/usr/include/math.h:
+
+/usr/include/c++/7/bits/exception_ptr.h:
+
+/usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/c++/7/ext/numeric_traits.h:
+
+/usr/include/locale.h:
+
+/usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h:
+
+/usr/include/boost/range/difference_type.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/usr/include/c++/7/bits/stl_queue.h:
+
+/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/include/JPS_Planner/rokae_jps_planner.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/libio.h:
+
+/usr/include/c++/7/tuple:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp:
+
+/usr/include/boost/type_traits/is_fundamental.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/boost/mpl/aux_/arg_typedef.hpp:
+
+/usr/include/boost/predef/os.h:
+
+/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
+
+/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+
+/usr/include/boost/move/detail/config_begin.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
+/usr/include/boost/type_traits/is_copy_constructible.hpp:
+
+/usr/include/boost/smart_ptr/detail/sp_noexcept.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/boost/predef/compiler/tendra.h:
+
+/usr/include/boost/preprocessor/seq/size.hpp:
+
+/usr/include/c++/7/exception:
+
+/usr/include/boost/predef/library/std/libcomo.h:
+
+/usr/include/boost/mpl/quote.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
+/usr/include/boost/mpl/vector/aux_/iterator.hpp:
+
+/usr/include/c++/7/bits/stl_heap.h:
+
+/usr/include/boost/detail/sp_typeinfo.hpp:
+
+/usr/include/ctype.h:
+
+/usr/include/boost/math/special_functions/detail/round_fwd.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
+
+/opt/ros/melodic/include/octomap/OcTreeDataNode.h:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/cpu_defines.h:
+
+/usr/include/c++/7/bits/stl_tree.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/eigen3/Eigen/src/Core/EigenBase.h:
+
+/usr/include/boost/predef/architecture/alpha.h:
+
+/usr/include/boost/mpl/aux_/msvc_eti_base.hpp:
+
+/usr/include/eigen3/Eigen/SVD:
+
+/usr/include/boost/mpl/same_as.hpp:
+
+/opt/ros/melodic/include/ros/platform.h:
+
+/usr/include/boost/smart_ptr/detail/sp_convertible.hpp:
+
+/usr/include/c++/7/ext/atomicity.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h:
+
+/usr/include/c++/7/bits/hash_bytes.h:
+
+/usr/include/boost/preprocessor/logical/bitand.hpp:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/boost/preprocessor/enum_params.hpp:
+
+/usr/include/c++/7/ios:
+
+/usr/include/boost/predef/library/std/stdcpp3.h:
+
+/opt/ros/melodic/include/geometry_msgs/Vector3.h:
+
+/usr/include/c++/7/bits/stl_iterator.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h:
+
+/usr/include/c++/7/bits/localefwd.h:
+
+/opt/ros/melodic/include/octomap_msgs/conversions.h:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/c++/7/bits/stl_map.h:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h:
+
+/usr/include/c++/7/bits/std_mutex.h:
+
+/usr/include/c++/7/unordered_set:
+
+/opt/ros/melodic/include/geometry_msgs/Quaternion.h:
+
+/usr/include/boost/mpl/size_fwd.hpp:
+
+/usr/include/boost/preprocessor/repetition/detail/for.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+/usr/include/boost/preprocessor/facilities/expand.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/floatn.h:
+
+/usr/include/inttypes.h:
+
+/usr/include/c++/7/ext/aligned_buffer.h:
+
+/usr/include/c++/7/bits/parse_numbers.h:
+
+/usr/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h:
+
+/usr/include/c++/7/stdexcept:
+
+/usr/include/c++/7/bits/stl_vector.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
+
+/opt/ros/melodic/include/octomap/OcTreeIterator.hxx:
+
+/usr/include/c++/7/cstdint:
+
+/usr/include/boost/random/detail/const_mod.hpp:
+
+/usr/include/boost/random/mersenne_twister.hpp:
+
+/usr/include/stdc-predef.h:
+
+/usr/include/c++/7/bits/memoryfwd.h:
+
+/usr/include/tinyxml.h:
+
+/opt/ros/melodic/include/ros/duration.h:
+
+/usr/include/boost/mpl/aux_/has_size.hpp:
 
 /usr/include/boost/concept/assert.hpp:
 
@@ -2947,9 +3077,11 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h:
 
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+/usr/include/c++/7/iosfwd:
+
+/usr/include/boost/mpl/vector/aux_/back.hpp:
 
 /usr/include/c++/7/bits/concept_check.h:
 
@@ -2957,35 +3089,25 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
-/opt/ros/melodic/include/ros/platform.h:
+/usr/include/boost/mpl/aux_/config/msvc_typename.hpp:
 
-/usr/include/boost/smart_ptr/detail/sp_convertible.hpp:
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h:
+/usr/include/boost/mpl/clear.hpp:
 
-/usr/include/c++/7/ext/atomicity.h:
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
-/usr/include/boost/predef/compiler/borland.h:
+/usr/include/log4cxx/logstring.h:
 
-/usr/include/c++/7/bits/stl_heap.h:
+/usr/include/boost/mpl/empty_fwd.hpp:
 
-/usr/include/boost/mpl/vector/aux_/iterator.hpp:
+/usr/include/c++/7/initializer_list:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+/usr/include/c++/7/bits/exception_defines.h:
 
-/usr/include/boost/predef/hardware/simd/x86.h:
+/opt/ros/melodic/include/moveit_msgs/OrientationConstraint.h:
 
-/usr/include/boost/predef.h:
-
-/usr/include/boost/range/const_iterator.hpp:
-
-/usr/include/boost/mpl/aux_/config/lambda.hpp:
-
-/usr/include/boost/mpl/aux_/template_arity.hpp:
-
-/usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+/usr/include/x86_64-linux-gnu/c++/7/bits/basic_file.h:
 
 /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/floating_joint_model.h:
 
@@ -3011,207 +3133,49 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/sched.h:
 
-/usr/include/boost/bind/bind_cc.hpp:
+/usr/include/c++/7/bits/cxxabi_init_exception.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+/usr/include/boost/detail/iterator.hpp:
 
-/usr/include/c++/7/bits/move.h:
+/usr/include/x86_64-linux-gnu/sys/select.h:
 
-/usr/include/boost/mpl/aux_/preprocessed/gcc/apply.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
-/usr/include/stdio.h:
+/usr/include/c++/7/typeinfo:
 
-/usr/include/boost/iterator.hpp:
+/usr/include/boost/mpl/apply.hpp:
 
-/opt/ros/melodic/include/ros/static_assert.h:
+/opt/ros/melodic/include/octomap/AbstractOcTree.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+/usr/include/c++/7/bits/stl_iterator_base_types.h:
 
-/opt/ros/melodic/include/octomap_msgs/conversions.h:
+/usr/include/c++/7/new:
 
-/usr/include/c++/7/bits/localefwd.h:
+/usr/include/boost/random/detail/config.hpp:
 
-/usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h:
+/usr/include/boost/mpl/vector/aux_/push_back.hpp:
 
-/usr/include/boost/range/difference_type.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
-
-/usr/include/c++/7/bits/stl_queue.h:
-
-/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/include/JPS_Planner/rokae_jps_planner.hpp:
-
-/usr/include/c++/7/bits/functexcept.h:
-
-/usr/include/boost/predef/os/solaris.h:
-
-/usr/include/boost/preprocessor/array/data.hpp:
-
-/usr/include/boost/predef/library/c/uc.h:
-
-/usr/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h:
-
-/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
-
-/usr/include/x86_64-linux-gnu/bits/time.h:
-
-/usr/include/boost/predef/architecture/sparc.h:
-
-/usr/include/inttypes.h:
-
-/usr/include/c++/7/ext/aligned_buffer.h:
-
-/usr/include/boost/move/detail/config_begin.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
-
-/usr/include/boost/mpl/void.hpp:
-
-/usr/include/c++/7/bits/stl_function.h:
-
-/usr/include/c++/7/bits/alloc_traits.h:
-
-/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h:
-
-/usr/include/boost/predef/os/android.h:
-
-/usr/include/boost/mpl/aux_/lambda_spec.hpp:
+/opt/ros/melodic/include/octomap/octomap.h:
 
 /usr/include/boost/math/special_functions/round.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/usr/include/c++/7/bits/stl_map.h:
-
-/usr/include/boost/preprocessor/repetition/detail/for.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/include/boost/preprocessor/facilities/expand.hpp:
-
-/usr/include/boost/utility/base_from_member.hpp:
-
-/usr/include/c++/7/bits/stl_algobase.h:
-
-/usr/include/boost/predef/architecture/convex.h:
-
-/usr/include/c++/7/bits/stl_uninitialized.h:
-
-/usr/include/eigen3/Eigen/src/Core/EigenBase.h:
-
-/usr/include/boost/mpl/aux_/msvc_eti_base.hpp:
-
-/usr/include/boost/predef/architecture/alpha.h:
-
-/usr/include/boost/math/special_functions/detail/round_fwd.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
-
-/opt/ros/melodic/include/octomap/OcTreeDataNode.h:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/cpu_defines.h:
-
 /usr/include/boost/type_traits/detail/has_binary_operator.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/gthr.h:
 
 /usr/include/boost/mpl/push_front_fwd.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/sysmacros.h:
 
-/usr/include/x86_64-linux-gnu/c++/7/bits/gthr.h:
+/usr/include/c++/7/bits/stringfwd.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+/usr/include/boost/mpl/list/aux_/item.hpp:
 
-/usr/include/c++/7/bits/predefined_ops.h:
-
-/usr/include/boost/preprocessor/seq/cat.hpp:
-
-/usr/include/c++/7/vector:
-
-/usr/include/c++/7/bits/unordered_set.h:
-
-/opt/ros/melodic/include/octomap/OcTreeNode.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
-
-/usr/include/c++/7/ext/numeric_traits.h:
-
-/usr/include/c++/7/iosfwd:
-
-/usr/include/boost/mpl/vector/aux_/back.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
-
-/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
-
-/usr/include/boost/mpl/clear.hpp:
-
-/usr/include/c++/7/array:
-
-/usr/include/boost/predef/architecture/arm.h:
-
-/usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp:
-
-/usr/include/c++/7/ostream:
-
-/usr/include/c++/7/math.h:
-
-/opt/ros/melodic/include/octomap/OcTreeIterator.hxx:
-
-/usr/include/c++/7/bits/memoryfwd.h:
-
-/usr/include/tinyxml.h:
-
-/opt/ros/melodic/include/ros/duration.h:
-
-/usr/include/boost/mpl/aux_/has_size.hpp:
-
-/usr/include/boost/random/detail/const_mod.hpp:
-
-/usr/include/boost/random/mersenne_twister.hpp:
-
-/usr/include/stdc-predef.h:
-
-/usr/include/c++/7/cstdint:
-
-/usr/include/boost/mpl/vector/aux_/include_preprocessed.hpp:
-
-/usr/include/alloca.h:
-
-/usr/include/boost/mpl/apply.hpp:
-
-/usr/include/c++/7/typeinfo:
-
-/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
-
-/opt/ros/melodic/include/geometry_msgs/Vector3.h:
-
-/usr/include/c++/7/bits/stl_iterator.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h:
-
-/usr/include/boost/preprocessor/enum_params.hpp:
-
-/usr/include/c++/7/ios:
-
-/usr/include/boost/predef/library/std/stdcpp3.h:
-
-/usr/include/boost/random/detail/seed.hpp:
-
-/usr/include/boost/mpl/comparison.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/c++locale.h:
-
-/usr/include/locale.h:
-
-/usr/include/c++/7/bits/invoke.h:
+/usr/include/c++/7/ext/alloc_traits.h:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
 /usr/include/c++/7/bits/locale_facets.h:
-
-/usr/include/boost/predef/compiler/gcc_xml.h:
 
 /usr/include/boost/config/detail/select_compiler_config.hpp:
 
@@ -3231,21 +3195,47 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/preprocessor/facilities/identity.hpp:
 
-/usr/include/boost/predef/os.h:
+/home/contour/ws_moveit/src/moveit/moveit_core/kinematics_base/include/moveit/kinematics_base/kinematics_base.h:
 
-/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
+/usr/include/c++/7/bits/ostream_insert.h:
 
-/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h:
 
-/usr/include/boost/mpl/aux_/config/msvc_typename.hpp:
+/opt/ros/melodic/include/ros/roscpp_serialization_macros.h:
 
-/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+/usr/include/boost/predef/library/std/stlport.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/Memory.h:
+
+/usr/include/c++/7/bits/stl_stack.h:
+
+/usr/include/c++/7/bits/basic_ios.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/_G_config.h:
+
+/usr/include/boost/predef/library/std/cxx.h:
 
 /usr/include/c++/7/string:
 
-/usr/include/c++/7/bits/streambuf_iterator.h:
+/usr/include/c++/7/utility:
 
-/usr/include/c++/7/bits/ios_base.h:
+/usr/include/eigen3/Eigen/src/Core/SolverBase.h:
+
+/usr/include/boost/range/distance.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/boost/lexical_cast/bad_lexical_cast.hpp:
+
+/usr/include/boost/predef/os/qnxnto.h:
+
+/usr/include/boost/mpl/always.hpp:
+
+/usr/include/c++/7/bits/alloc_traits.h:
+
+/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h:
+
+/usr/include/boost/predef/os/android.h:
 
 /usr/include/eigen3/Eigen/src/Geometry/Transform.h:
 
@@ -3309,9 +3299,9 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/lexical_cast/detail/converter_lexical.hpp:
 
-/usr/include/c++/7/bits/cxxabi_forced.h:
-
 /opt/ros/melodic/include/octomap/math/Vector3.h:
+
+/usr/include/c++/7/bits/cxxabi_forced.h:
 
 /usr/include/c++/7/bits/streambuf.tcc:
 
@@ -3339,37 +3329,13 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/mpl/identity.hpp:
 
-/opt/ros/melodic/include/octomap_msgs/Octomap.h:
-
-/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
-
-/usr/include/eigen3/Eigen/src/Core/CoreIterators.h:
-
-/usr/include/boost/type_traits/has_left_shift.hpp:
-
-/usr/include/boost/predef/hardware.h:
-
-/usr/include/boost/mpl/aux_/msvc_never_true.hpp:
-
-/usr/include/boost/type_traits/is_member_pointer.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/sched.h:
-
-/usr/include/boost/predef/library/c/vms.h:
-
-/usr/include/boost/bind/bind.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/boost/mpl/aux_/config/ttp.hpp:
-
-/usr/include/boost/predef/os/bsd/open.h:
-
 /usr/include/c++/7/atomic:
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
 
 /usr/include/c++/7/istream:
+
+/usr/include/c++/7/chrono:
 
 /usr/include/c++/7/climits:
 
@@ -3394,10 +3360,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/predef/language/objc.h:
 
 /usr/include/boost/predef/platform/windows_runtime.h:
-
-/usr/include/c++/7/cerrno:
-
-/usr/include/c++/7/bits/uses_allocator.h:
 
 /usr/include/c++/7/ext/type_traits.h:
 
@@ -3431,11 +3393,29 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/plus.hpp:
 
+/usr/include/boost/iterator.hpp:
+
+/opt/ros/melodic/include/ros/static_assert.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+
+/usr/include/stdio.h:
+
 /usr/include/boost/get_pointer.hpp:
 
 /usr/include/features.h:
 
 /usr/include/boost/preprocessor/control/while.hpp:
+
+/usr/include/c++/7/bits/unordered_set.h:
+
+/opt/ros/melodic/include/octomap/OcTreeNode.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+
+/usr/include/boost/preprocessor/seq/cat.hpp:
+
+/usr/include/c++/7/vector:
 
 /usr/include/c++/7/bits/std_abs.h:
 
@@ -3453,6 +3433,40 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/c++/7/cstdio:
 
+/usr/include/boost/concept/detail/concept_def.hpp:
+
+/usr/include/c++/7/ratio:
+
+/usr/include/c++/7/bits/list.tcc:
+
+/usr/include/asm-generic/errno-base.h:
+
+/opt/ros/melodic/include/octomap_msgs/Octomap.h:
+
+/usr/include/boost/type_traits/is_member_pointer.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/sched.h:
+
+/usr/include/boost/predef/library/c/vms.h:
+
+/usr/include/boost/bind/bind.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/boost/mpl/aux_/config/ttp.hpp:
+
+/usr/include/boost/predef/os/bsd/open.h:
+
+/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
+
+/usr/include/eigen3/Eigen/src/Core/CoreIterators.h:
+
+/usr/include/boost/type_traits/has_left_shift.hpp:
+
+/usr/include/boost/predef/hardware.h:
+
+/usr/include/boost/mpl/aux_/msvc_never_true.hpp:
+
 /usr/include/c++/7/tr1/hashtable.h:
 
 /usr/include/boost/predef/compiler/mpw.h:
@@ -3461,23 +3475,51 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/linux/errno.h:
 
+/home/contour/ws_moveit/src/moveit/moveit_core/planning_interface/include/moveit/planning_interface/planning_response.h:
+
+/usr/include/c++/7/bits/istream.tcc:
+
+/usr/include/c++/7/bits/functional_hash.h:
+
+/usr/include/boost/mpl/vector/vector0.hpp:
+
+/usr/include/c++/7/cerrno:
+
+/usr/include/c++/7/bits/uses_allocator.h:
+
+/usr/include/c++/7/clocale:
+
+/usr/include/c++/7/backward/binders.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+/usr/include/c++/7/bits/predefined_ops.h:
+
+/usr/include/c++/7/bits/stl_construct.h:
+
+/usr/include/boost/predef/architecture/convex.h:
+
+/usr/include/c++/7/bits/stl_uninitialized.h:
+
+/usr/include/c++/7/bits/codecvt.h:
+
+/usr/include/c++/7/tr1/unordered_set:
+
+/usr/include/boost/predef/compiler/ekopath.h:
+
+/usr/include/boost/predef/compiler/gcc_xml.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h:
+
+/usr/include/boost/predef/compiler/gcc.h:
+
 /usr/include/boost/predef/detail/comp_detected.h:
 
 /usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h:
 
 /usr/include/boost/mpl/vector/vector20.hpp:
 
-/home/contour/ws_moveit/src/moveit/moveit_core/planning_interface/include/moveit/planning_interface/planning_response.h:
-
-/usr/include/c++/7/bits/istream.tcc:
-
-/usr/include/c++/7/bits/list.tcc:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/c++/7/clocale:
-
-/usr/include/c++/7/backward/binders.h:
+/usr/include/boost/predef/compiler/hp_acc.h:
 
 /usr/include/boost/iterator/iterator_facade.hpp:
 
@@ -3747,9 +3789,9 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/mpl/aux_/na.hpp:
 
-/usr/include/boost/mpl/at_fwd.hpp:
-
 /usr/include/boost/mpl/aux_/msvc_type.hpp:
+
+/usr/include/boost/mpl/at_fwd.hpp:
 
 /usr/include/boost/mpl/bool.hpp:
 
@@ -4003,12 +4045,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/mpl/placeholders.hpp:
 
-/usr/include/c++/7/unordered_set:
-
-/opt/ros/melodic/include/geometry_msgs/Quaternion.h:
-
-/usr/include/boost/mpl/size_fwd.hpp:
-
 /usr/include/boost/mpl/list/aux_/empty.hpp:
 
 /usr/include/boost/make_shared.hpp:
@@ -4035,9 +4071,9 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/mpl/list/aux_/preprocessed/plain/list10.hpp:
 
-/usr/include/errno.h:
-
 /usr/include/boost/predef/hardware/simd/arm.h:
+
+/usr/include/errno.h:
 
 /usr/include/boost/mpl/list/aux_/preprocessed/plain/list20.hpp:
 
@@ -4090,8 +4126,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/mpl/lambda.hpp:
 
 /usr/include/boost/preprocessor/array/size.hpp:
-
-/usr/include/boost/mpl/prior.hpp:
 
 /usr/include/boost/preprocessor/repetition/enum_params.hpp:
 
@@ -4280,9 +4314,3 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/mpl/numeric_cast.hpp:
 
 /usr/include/boost/mpl/aux_/numeric_cast_utils.hpp:
-
-/usr/include/boost/mpl/minus.hpp:
-
-/usr/include/eigen3/Eigen/src/LU/arch/Inverse_SSE.h:
-
-/usr/include/boost/mpl/advance_fwd.hpp:

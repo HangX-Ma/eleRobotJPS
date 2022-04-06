@@ -5,7 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /PlanningScene1/Scene Robot1
-      Splitter Ratio: 0.5
+      Splitter Ratio: 0.49899396300315857
     Tree Height: 874
   - Class: rviz/Help
     Name: Help
@@ -271,7 +271,7 @@ Visualization Manager:
       Marker Topic: /rokae_arm/point_marker_out
       Name: Marker
       Namespaces:
-        point: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -279,7 +279,7 @@ Visualization Manager:
       Marker Topic: /rokae_arm/voxel_marker_out
       Name: Marker
       Namespaces:
-        obs: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -287,110 +287,29 @@ Visualization Manager:
       Marker Topic: /rokae_arm/path_markers_out
       Name: Marker
       Namespaces:
-        path: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        elerobot_link0:
-          Value: true
-        elerobot_link1:
-          Value: true
-        elerobot_link2:
-          Value: true
-        elerobot_link3:
-          Value: true
-        elerobot_link4:
-          Value: true
-        elerobot_link5:
-          Value: true
-        elerobot_link6:
-          Value: true
-        elerobot_link7:
-          Value: true
-        map:
-          Value: true
-        vacuum_gripper_1:
-          Value: true
-        vacuum_gripper_10:
-          Value: true
-        vacuum_gripper_11:
-          Value: true
-        vacuum_gripper_12:
-          Value: true
-        vacuum_gripper_13:
-          Value: true
-        vacuum_gripper_2:
-          Value: true
-        vacuum_gripper_3:
-          Value: true
-        vacuum_gripper_4:
-          Value: true
-        vacuum_gripper_5:
-          Value: true
-        vacuum_gripper_6:
-          Value: true
-        vacuum_gripper_7:
-          Value: true
-        vacuum_gripper_8:
-          Value: true
-        vacuum_gripper_9:
-          Value: true
-        world:
-          Value: true
       Marker Scale: 0.10000000149011612
       Name: TF
       Show Arrows: false
       Show Axes: true
       Show Names: false
       Tree:
-        map:
-          world:
-            elerobot_link0:
-              elerobot_link1:
-                elerobot_link2:
-                  elerobot_link3:
-                    elerobot_link4:
-                      elerobot_link5:
-                        elerobot_link6:
-                          elerobot_link7:
-                            vacuum_gripper_1:
-                              {}
-                            vacuum_gripper_10:
-                              {}
-                            vacuum_gripper_11:
-                              {}
-                            vacuum_gripper_12:
-                              {}
-                            vacuum_gripper_13:
-                              {}
-                            vacuum_gripper_2:
-                              {}
-                            vacuum_gripper_3:
-                              {}
-                            vacuum_gripper_4:
-                              {}
-                            vacuum_gripper_5:
-                              {}
-                            vacuum_gripper_6:
-                              {}
-                            vacuum_gripper_7:
-                              {}
-                            vacuum_gripper_8:
-                              {}
-                            vacuum_gripper_9:
-                              {}
+        {}
       Update Interval: 0
-      Value: true
+      Value: false
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: /rokae_arm/expansion_markers_out
       Name: Marker
       Namespaces:
-        expansions: true
+        {}
       Queue Size: 100
       Value: true
   Enabled: true
@@ -424,10 +343,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2997959554195404
+      Pitch: 0.17479604482650757
       Target Frame: world
       Value: Orbit (rviz)
-      Yaw: 3.054948329925537
+      Yaw: 2.4099442958831787
     Saved: ~
 Window Geometry:
   Displays:

@@ -36,6 +36,7 @@ The tutorial [IKFast Kinematics Solver](http://docs.ros.org/en/melodic/api/movei
 
 ##### Generate .dae file
 ```shell
+cd ~/ws_catkin_elephant && catkin_make
 export MYROBOT_NAME="elerobot" # the same as the elerobot.urdf.xacro prefix
 roscd elerobot_description && cd xacro
 rosrun xacro xacro --inorder -o "$MYROBOT_NAME".urdf "$MYROBOT_NAME".urdf.xacro # convert `xacro` to `urdf`
@@ -146,11 +147,9 @@ Copy the `rokae_moveit_demo` package from `rokae` project. You can change the pa
 - Add following codes in `elerobot_moveit_config/planning_context.launch`.
   ```xml
   <!-- Load padding -->
-  <group ns="move_group">
     <group ns="$(arg robot_description)_planning">
       <rosparam command="load" file="$(find <robot>_moveit_config)/config/padding.yaml" />
     </group>
-  </group>
   ```
 ## 5. Intel RealSense i435
 Copy the `realsense_gazebo_description` and `realsense_gazebo_plugin` packages from `rokae` project. Now we need to create our sensor camera for manipulator.
@@ -372,6 +371,14 @@ The command above will save the octomap to your local disk and the name is `mapf
   to load the octomap.
 - In `Rviz` **Planning Scene**, **OccupancyGrid** may be useful.
 
+#### dynamicEDT3D
+I use `dynamicEDT3D` in current version codes to solve the problem that the node infomation can not be used normally or upated correctly. 
+
+#### USAGE NOTE:
+I find a mistake that I misunderstand the point position definition in **Octomap**. In octomap, the point have a bias that will move the original input position to fit the gird voxel center automatically. I had checked the original codes before but I ever thought this bias should be eliminated artificially. Howerver, when debugging the new `Elephant` robot model, I found that If I use the point position that I had eliminated the bias, the JPS algorithm will failed! But the automaically process may not match what I think, so I need to rewrite a new function to solve it.
+
+
+
 ## 8. JPS and TOPP-RA
 
 Now copy the `rokae_jps_navigation` and `rokae_arm_toppra` packages. In `rokae_jps_navigation` pakcage, some files needs to be paid attention.
@@ -383,7 +390,7 @@ In this file you can change the parameters for **JPS** planner, setting `plannin
 - **planner_verbose** is recommended to be `true` because it will print out some useful information.
 - **xDim, yDim, zDim** limits the search region for the manipulator, which may save your searching time.
 - **eps** is the heuristic coefficient.
-- **heu_type** is the heuristic cost calculation type.
+- **heu_type** is the heuristic cost calculation type. **Euclidean**,**Manhattan**, **Diagonal**. **Manhattan** seems to be better choice?
 - **JPS_max_iteration** is the search depth for JPS planner.
 - Under `visualization` is the marker size for visulization.
 #### 2. include/JPS_Modules/ikfast.h
@@ -412,10 +419,32 @@ Change the end-effector name from `rokae_arm_link7` to `elerobot_link7`.
 #### 6. rokae_ikfast_wrapper.cpp
 You need to change the `rokae_upper_limits` and `rokae_lower_limits` according to your robot `urdf` description file.
 
-#### 6. rokae_arm_main.cpp
+#### 7. rokae_arm_main.cpp
 In this file you can wirte the goal poses and realize the function you want.
 
 The `toppra` trajectory info is store in `rokae_arm_toppra/share`. If you want to load this data, find the identifier for that specific folder, and change the value in `rokae_arm_main.cpp`. Please check to ensure that `local config` does not work when you want online planning.
+
+##### Action Service
+I add a vaccum gripper action service and manipulator control action service in this file. If you have delete the `rokae_arm` namespace before, you need to remove the `rokae_arm` prefix in:
+```c++
+operation::operation(ros::NodeHandle *nodehandle):nh_(*nodehandle), trajectory_action_client_("/manipulator_controller/follow_joint_trajectory", true)
+{
+  // publisher
+  command_pub_   = nh_.advertise<trajectory_msgs::JointTrajectory>("/manipulator_controller/command", 1);
+  // service client
+  JPS_PLANNING   = "/rokae_arm/goto_trigger";
+  VACUUM_GRIPPER = "/rokae_arm/vaccum_gripper_control_server";
+
+  ros::service::waitForService(JPS_PLANNING);
+  ros::service::waitForService(VACUUM_GRIPPER);
+
+  planner_client = nh_.serviceClient<rokae_jps_navigation::Goto>(JPS_PLANNING);
+  gripper_client = nh_.serviceClient<rokae_pick_place_with_vacuum_gripper::GripperState>(VACUUM_GRIPPER);
+
+}
+```
+Don't delete **_/rokae_arm_** in **JPS_PLANNING** and **VACUUM_GRIPPER**.
+
 
 #### USAGE:
 - You need to annotate the following codes in `elerobot_simple_control/launch/elerobot_toplevel_moveit.launch` to make sure the JPS planner can work correctly.
@@ -432,5 +461,6 @@ The `toppra` trajectory info is store in `rokae_arm_toppra/share`. If you want t
   # Open JPS Planner
   rosrun rokae_jps_navigation rokae_arm_main
   ```
+- Wait until `[rokae_JPS_planner]: DynamicEDTOctomap generated.` appearing, can you use the second command above.
 
 

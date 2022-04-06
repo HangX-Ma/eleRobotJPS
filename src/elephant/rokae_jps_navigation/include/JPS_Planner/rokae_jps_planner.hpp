@@ -11,7 +11,11 @@
 #ifndef ROKAE_JPS_PLANNER_HPP
 #define ROKAE_JPS_PLANNER_HPP
 
+#include <mutex>
+
 #include <octomap_msgs/conversions.h>
+#include <dynamicEDT3D/dynamicEDTOctomap.h>
+
 #include <moveit/planning_interface/planning_interface.h>
 
 #include <visualization_msgs/MarkerArray.h>
@@ -71,6 +75,9 @@ class JPSPlanner
     //! get the octomap information from the octomap server
     void octomapCallback(const octomap_msgs::Octomap &msg);
 
+    //
+    DynamicEDTOctomap euclideanDistanceTransform(std::shared_ptr<octomap::OcTree> tree);
+    
     //! action operation server
     bool gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jps_navigation::Goto::Response &res);
     
@@ -289,7 +296,7 @@ class JPSPlanner
     std::vector<octomap::point3d> keysToCoords(std::vector<octomap::OcTreeKey> &keys, octomap::OcTree &tree); 
 
     //! key to coordinate type
-    octomap::point3d keyToCoord_modified(octomap::OcTreeKey &key, octomap::OcTree &tree);
+    octomap::point3d keyToCoord_modified(octomap::OcTreeKey &key, octomap::OcTree &tree) = delete;
 
     //! key to coordinate <vector> type
     std::vector<octomap::OcTreeKey> coordsToKeys(std::vector<octomap::point3d> &path, octomap::OcTree &tree); 
@@ -332,7 +339,7 @@ class JPSPlanner
     PlanningState                     planning_status_;          //!< planning status flag
 
     std::shared_ptr<JPS::GraphSearch> JPS_BasePtr;      //!< implement of JPS planner
-
+    std::mutex mtx_;
 };
 
 

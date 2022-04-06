@@ -39,21 +39,21 @@
   <!-- Gazebo requires a joint to a link called "world" for statically mounted robots -->
   <link name="world"/>
   <joint name="world_joint" type="fixed">
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.005 0.0 0.0"/>
     <parent link="world"/>
     <child link="elerobot_link0"/>
   </joint>
   <!-- link0 -->
   <link name="elerobot_link0">
     <visual>
-      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.06 -0.06 0.05"/>
+      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.06 -0.06 0.053"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK0.STL" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
-      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.06 -0.06 0.05"/>
+      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.06 -0.06 0.053"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK0.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -68,14 +68,14 @@
   <!-- link1 -->
   <link name="elerobot_link1">
     <visual>
-      <origin rpy="0.0 0.0 0.0" xyz="-0.0528 -0.0528 -0.07"/>
+      <origin rpy="0.0 0.0 0.0" xyz="-0.0528 -0.0528 -0.072"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK1.STL" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="-0.0528 -0.0528 -0.07"/>
+      <origin rpy="0.0 0.0 0.0" xyz="-0.0528 -0.0528 -0.072"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK1.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -90,14 +90,14 @@
   <!-- link2 -->
   <link name="elerobot_link2">
     <visual>
-      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.054 -0.053 0.155"/>
+      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.054 -0.053 0.15"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK2.STL" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
-      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.054 -0.053 0.155"/>
+      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.054 -0.053 0.15"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK2.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -112,14 +112,14 @@
   <!-- link3 -->
   <link name="elerobot_link3">
     <visual>
-      <origin rpy="-1.57079632675 0.0 3.1415926535" xyz="0.2815 0.078 0.022"/>
+      <origin rpy="-1.57079632675 0.0 3.1415926535" xyz="0.2815 0.078 0.017"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK3.STL" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
-      <origin rpy="-1.57079632675 0.0 3.1415926535" xyz="0.2815 0.078 0.022"/>
+      <origin rpy="-1.57079632675 0.0 3.1415926535" xyz="0.2815 0.078 0.017"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK3.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -134,14 +134,14 @@
   <!-- link4 -->
   <link name="elerobot_link4">
     <visual>
-      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.0772 -0.055 0.046"/>
+      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.0772 -0.055 0.043"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK4.STL" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
-      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.0772 -0.055 0.046"/>
+      <origin rpy="-1.57079632675 0.0 0.0" xyz="-0.0772 -0.055 0.043"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK4.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -156,14 +156,14 @@
   <!-- link5 -->
   <link name="elerobot_link5">
     <visual>
-      <origin rpy="-1.57079632675 0.0 3.1415926535" xyz="0.0775 0.0605 0.046"/>
+      <origin rpy="-1.57079632675 0.0 3.1415926535" xyz="0.0745 0.0605 0.046"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK5.STL" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
-      <origin rpy="-1.57079632675 0.0 3.1415926535" xyz="0.0775 0.0605 0.046"/>
+      <origin rpy="-1.57079632675 0.0 3.1415926535" xyz="0.0745 0.0605 0.046"/>
       <geometry>
         <mesh filename="package://elerobot_description/mesh/ERP03D_LINK5.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -221,7 +221,7 @@
   <!-- joint0 Locked -->
   <joint name="elerobot_joint0" type="revolute">
     <axis xyz="0 0 1"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.11"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.115"/>
     <!-- <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="${-PI*0.001/180}" soft_upper_limit="${PI*0.001/180}"/> -->
     <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="-6.283185307" soft_upper_limit="6.283185307"/>
     <limit acceleration="15" effort="500.0" lower="-6.283185307" upper="6.283185307" velocity="3.1415926535"/>
@@ -232,7 +232,7 @@
   <!-- joint1 -->
   <joint name="elerobot_joint1" type="revolute">
     <axis xyz="0 0 1"/>
-    <origin rpy="0.0 -1.57079632675 -1.57079632675" xyz="0.0 0.05 0.0"/>
+    <origin rpy="0.0 -1.57079632675 -1.57079632675" xyz="0.0 0.055 0.0"/>
     <safety_controller k_position="50.0" k_velocity="20.0" soft_lower_limit="-6.283185307" soft_upper_limit="6.283185307"/>
     <limit acceleration="15" effort="500.0" lower="-6.283185307" upper="6.283185307" velocity="3.1415926535"/>
     <parent link="elerobot_link1"/>
@@ -320,7 +320,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_1">
       <robotNamespace>/rokae_arm/vacuum_gripper_1</robotNamespace>
       <bodyName>vacuum_gripper_1</bodyName>
@@ -364,7 +373,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_2">
       <robotNamespace>/rokae_arm/vacuum_gripper_2</robotNamespace>
       <bodyName>vacuum_gripper_2</bodyName>
@@ -408,7 +426,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_3">
       <robotNamespace>/rokae_arm/vacuum_gripper_3</robotNamespace>
       <bodyName>vacuum_gripper_3</bodyName>
@@ -452,7 +479,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_4">
       <robotNamespace>/rokae_arm/vacuum_gripper_4</robotNamespace>
       <bodyName>vacuum_gripper_4</bodyName>
@@ -496,7 +532,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_5">
       <robotNamespace>/rokae_arm/vacuum_gripper_5</robotNamespace>
       <bodyName>vacuum_gripper_5</bodyName>
@@ -540,7 +585,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_6">
       <robotNamespace>/rokae_arm/vacuum_gripper_6</robotNamespace>
       <bodyName>vacuum_gripper_6</bodyName>
@@ -584,7 +638,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_7">
       <robotNamespace>/rokae_arm/vacuum_gripper_7</robotNamespace>
       <bodyName>vacuum_gripper_7</bodyName>
@@ -628,7 +691,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_8">
       <robotNamespace>/rokae_arm/vacuum_gripper_8</robotNamespace>
       <bodyName>vacuum_gripper_8</bodyName>
@@ -672,7 +744,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_9">
       <robotNamespace>/rokae_arm/vacuum_gripper_9</robotNamespace>
       <bodyName>vacuum_gripper_9</bodyName>
@@ -716,7 +797,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_10">
       <robotNamespace>/rokae_arm/vacuum_gripper_10</robotNamespace>
       <bodyName>vacuum_gripper_10</bodyName>
@@ -760,7 +850,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_11">
       <robotNamespace>/rokae_arm/vacuum_gripper_11</robotNamespace>
       <bodyName>vacuum_gripper_11</bodyName>
@@ -804,7 +903,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_12">
       <robotNamespace>/rokae_arm/vacuum_gripper_12</robotNamespace>
       <bodyName>vacuum_gripper_12</bodyName>
@@ -848,7 +956,16 @@
     <limit effort="50" lower="0" upper="0" velocity="50"/>
     <dynamics damping="0.0" friction="10"/>
   </joint>
-  <gazebo>
+<![CDATA[ 
+    <joint name="${gripper_joint}" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
+      <parent link="${parent_link}" />
+      <child link="${vacuum_gripper}" />
+      <origin rpy="0 0 0" xyz="${vacuum_x} ${vacuum_y} ${vacuum_z}" />
+      <!-- <limit effort="50" velocity="50" lower="0" upper="0" /> -->
+      <!-- <dynamics damping="0.0" friction="10"/> -->
+    </joint>
+    ]]>  <gazebo>
     <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper_13">
       <robotNamespace>/rokae_arm/vacuum_gripper_13</robotNamespace>
       <bodyName>vacuum_gripper_13</bodyName>

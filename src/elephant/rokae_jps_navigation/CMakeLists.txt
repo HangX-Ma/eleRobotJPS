@@ -17,6 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Boost REQUIRED)
 find_package(octomap REQUIRED)
 find_package(octomap_msgs REQUIRED)
+find_package(dynamicEDT3D REQUIRED)
 
 add_service_files(
   FILES
@@ -45,6 +46,7 @@ catkin_package(
   DEPENDS 
     Boost
     OCTOMAP
+    dynamicEDT3D
 )
 
 link_libraries(${OCTOMAP_LIBRARIES})
@@ -75,7 +77,7 @@ set(ROKAE_GRAPH_SEARCH rokae_graph_search)
 add_library(${ROKAE_GRAPH_SEARCH} src/JPS_Planner/rokae_graph_search.cpp)
 
 add_executable(rokae_jps_planner src/JPS_Planner/rokae_jps_planner.cpp)
-target_link_libraries(rokae_jps_planner ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${OCTOMAP_LIBRARIES} ${ROKAE_GRAPH_SEARCH})
+target_link_libraries(rokae_jps_planner ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${OCTOMAP_LIBRARIES} ${ROKAE_GRAPH_SEARCH} ${DYNAMICEDT3D_LIBRARIES})
 
 add_executable(rokae_arm_main src/JPS_Modules/rokae_arm_main.cpp)
 target_link_libraries(rokae_arm_main ${catkin_LIBRARIES} ${Boost_LIBRARIES})

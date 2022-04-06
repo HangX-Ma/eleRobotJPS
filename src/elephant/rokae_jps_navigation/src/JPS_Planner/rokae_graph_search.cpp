@@ -112,7 +112,7 @@ bool GraphSearch::plan(const octomap::OcTree &tree, int maxExpand /* = -1*/)
 
       break;
     }
-    octomap::point3d currCoord = keyToCoord_modified(currNode.key, tree);
+    octomap::point3d currCoord = tree.keyToCoord(currNode.key);
     // if the current node is the goal 
     if (distEuclidean(currCoord, goalCoord_) < planning_tree_resolution_) 
     {
@@ -130,7 +130,6 @@ bool GraphSearch::plan(const octomap::OcTree &tree, int maxExpand /* = -1*/)
     
     std::vector<Node>   Succ_nodeSet;
     std::vector<double> Succ_costSet;
-    // ROS_INFO_STREAM(keyToCoord_modified(currNode.key, tree));
     // ROS_INFO("current Node: dx=%d, dy=%d, dz=%d\n", currNode.dx, currNode.dy, currNode.dz);
 
     //get the succession
@@ -263,7 +262,7 @@ double GraphSearch::DPF_Plan(octomap::OcTree &tree, std::unordered_set<octomap::
     open.erase(currNode);            // erase 'q' from the open list
     closed.insert(currNode);         // add 'q' to closed list
 
-    octomap::point3d currCoord = keyToCoord_modified(currNode.key, tree);
+    octomap::point3d currCoord = tree.keyToCoord(currNode.key);
     // if the current node is the goal 
     if (distEuclidean(currCoord, goalCoord_) < planning_tree_resolution_) 
     {
@@ -349,7 +348,7 @@ void GraphSearch::getSucc(Node& currSucc, std::vector<Node>& NodeSet, std::vecto
   for (const auto d: EXPANSION_DIRECTIONS) 
   {
     auto new_key    = expand(currSucc.key, d[0], d[1], d[2]);
-    auto currPoint  = keyToCoord_modified(new_key, tree);
+    auto currPoint  = tree.keyToCoord(new_key);
     auto currNode   = tree.search(new_key);
 
 
@@ -407,7 +406,7 @@ void GraphSearch::getJpsSucc(Node& currSucc, std::vector<Node>& NodeSet, std::ve
       // 'nextKey' is the check point key value, which indicates the possible obstacles'position, which may lead to the generation of the forced neighbors.
       // [Note]: We use 'switch-case' grammer to describe the mapping between check points and forced neighbors, and a certain check point may mapping more than one forced neighbors. Therefore, the parament in f1[id][x][check] is identical to f2[id][x][forced].
       octomap::OcTreeKey   nextKey   = expand(currSucc.key, jn3d_->f1[id][0][dev-num_neib], jn3d_->f1[id][1][dev-num_neib], jn3d_->f1[id][2][dev-num_neib]); 
-      octomap::point3d     currPoint = keyToCoord_modified(nextKey, tree);
+      octomap::point3d     currPoint = tree.keyToCoord(nextKey);
       octomap::OcTreeNode* currNode  = tree.search(nextKey);
 
       if(isOccupied(currNode, currPoint)) { 
@@ -443,8 +442,8 @@ double GraphSearch::getHeu(const octomap::OcTreeKey &key1, const octomap::OcTree
   constexpr float sqrt_2 = 1.4142136;
 
   double h = 0.0;
-  octomap::point3d point1 = keyToCoord_modified(key1, tree);
-  octomap::point3d point2 = keyToCoord_modified(key2, tree);
+  octomap::point3d point1 = tree.keyToCoord(key1);
+  octomap::point3d point2 = tree.keyToCoord(key2);
   double dx = std::fabs(point1.x() - point2.x());
   double dy = std::fabs(point1.y() - point2.y());
   double dz = std::fabs(point1.z() - point2.z());
@@ -468,10 +467,9 @@ bool GraphSearch::jump(octomap::OcTreeKey &currKey, const int &dx, const int &dy
 {
   // follow current direction to find the next point
   newKey = expand(currKey, dx, dy, dz);
-  // ROS_INFO_STREAM("debug 1111 " << keyToCoord_modified(newKey, tree));
 
   octomap::OcTreeNode* newNode  = tree.search(newKey);
-  octomap::point3d     newCoord = keyToCoord_modified(newKey, tree);
+  octomap::point3d     newCoord = tree.keyToCoord(newKey);;
   // if n is an obstacle or is outside the gird
   if (!isFree(newNode, newCoord)) {
     return false;
@@ -519,7 +517,7 @@ bool GraphSearch::hasForced(const int &dx, const int &dy, const int &dz, const o
       {
         octomap::OcTreeKey   newKey   = expand(key, jn3d_->f1[id][0][cn], jn3d_->f1[id][1][cn], jn3d_->f1[id][2][cn]);
         octomap::OcTreeNode* newNode  = tree.search(newKey);
-        octomap::point3d     newPoint = keyToCoord_modified(newKey, tree);
+        octomap::point3d     newPoint = tree.keyToCoord(newKey);;
         if (isOccupied(newNode, newPoint)) {
           return true;
         }
@@ -531,7 +529,7 @@ bool GraphSearch::hasForced(const int &dx, const int &dy, const int &dz, const o
       {
         octomap::OcTreeKey   newKey   = expand(key, jn3d_->f1[id][0][cn], jn3d_->f1[id][1][cn], jn3d_->f1[id][2][cn]);
         octomap::OcTreeNode* newNode  = tree.search(newKey);
-        octomap::point3d     newPoint = keyToCoord_modified(newKey, tree);
+        octomap::point3d     newPoint = tree.keyToCoord(newKey);
         if( isOccupied(newNode, newPoint) ) {
           return true;
         }
@@ -543,7 +541,7 @@ bool GraphSearch::hasForced(const int &dx, const int &dy, const int &dz, const o
       {
         octomap::OcTreeKey   newKey   = expand(key, jn3d_->f1[id][0][cn], jn3d_->f1[id][1][cn], jn3d_->f1[id][2][cn]);
         octomap::OcTreeNode* newNode  = tree.search(newKey);
-        octomap::point3d     newPoint = keyToCoord_modified(newKey, tree);
+        octomap::point3d     newPoint = tree.keyToCoord(newKey);
         if( isOccupied(newNode, newPoint) ) {
           return true;
         }
@@ -588,12 +586,12 @@ octomap::OcTreeKey GraphSearch::expand(const octomap::OcTreeKey &key, const int 
   return k;
 }
 
-octomap::point3d GraphSearch::keyToCoord_modified(const octomap::OcTreeKey &NodeKey, const octomap::OcTree &tree) {
-  octomap::point3d point = tree.keyToCoord(NodeKey);
-  octomap::point3d point_modified(point.x() - 0.5 * planning_tree_resolution_, point.y() - 0.5 * planning_tree_resolution_, point.z() - 0.5 * planning_tree_resolution_);
+// octomap::point3d GraphSearch::keyToCoord_modified(const octomap::OcTreeKey &NodeKey, const octomap::OcTree &tree) {
+//   octomap::point3d point = tree.keyToCoord(NodeKey);
+//   octomap::point3d point_modified(point.x() - 0.5 * planning_tree_resolution_, point.y() - 0.5 * planning_tree_resolution_, point.z() - 0.5 * planning_tree_resolution_);
   
-  return point_modified;
-}
+//   return point_modified;
+// }
 
 std::vector<octomap::OcTreeKey> GraphSearch::backtrackPathKeys(const Node &from, const Node &to) {
   std::vector<octomap::OcTreeKey> keys;
