@@ -12,7 +12,6 @@
   </node>
 
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" unless="$(arg use_gui)">
-    <!-- <remap from="joint_states" to="/rokae_arm/joint_states"/> -->
     <rosparam param="source_list">[/joint_states]</rosparam>
     <!-- <rosparam param="source_list">[/elerobot/joint_states]</rosparam>  -->
   </node>

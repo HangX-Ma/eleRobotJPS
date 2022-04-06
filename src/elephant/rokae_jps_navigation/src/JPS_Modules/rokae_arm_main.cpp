@@ -39,8 +39,8 @@ void operation::move_config(std::vector<double> &position_, std::vector<double> 
 
   control_msgs::FollowJointTrajectoryAction action;
   auto time_stamp                                    = ros::Time().now();
-  action.action_goal.goal.trajectory.joint_names     =  {"rokae_arm_joint0", "rokae_arm_joint1", "rokae_arm_joint2", 
-                                                                            "rokae_arm_joint3", "rokae_arm_joint4", "rokae_arm_joint5"};
+  action.action_goal.goal.trajectory.joint_names     =  {"elerobot_joint0", "elerobot_joint1", "elerobot_joint2", 
+                                                                            "elerobot_joint3", "elerobot_joint4", "elerobot_joint5"};
   action.action_goal.goal.trajectory.header.frame_id = "world";
   action.action_goal.goal.trajectory.header.stamp    = time_stamp;
 

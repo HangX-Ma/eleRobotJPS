@@ -445,6 +445,7 @@ operation::operation(ros::NodeHandle *nodehandle):nh_(*nodehandle), trajectory_a
 ```
 Don't delete **_/rokae_arm_** in **JPS_PLANNING** and **VACUUM_GRIPPER**.
 
+What is more, don't forget to change the joints' name in `move_config` function.
 
 #### USAGE:
 - You need to annotate the following codes in `elerobot_simple_control/launch/elerobot_toplevel_moveit.launch` to make sure the JPS planner can work correctly.
