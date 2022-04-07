@@ -1305,6 +1305,9 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
  /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/CheckCollision.h \
  /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/CheckCollisionRequest.h \
  /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/CheckCollisionResponse.h \
+ /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2pose.h \
+ /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2poseRequest.h \
+ /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2poseResponse.h \
  /home/contour/ws_catkin_elephant/devel/include/rokae_arm_toppra/ToppRa_srv.h \
  /home/contour/ws_catkin_elephant/devel/include/rokae_arm_toppra/ToppRa_srvRequest.h \
  /home/contour/ws_catkin_elephant/devel/include/rokae_arm_toppra/ToppRa_srvResponse.h \

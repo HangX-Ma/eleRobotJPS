@@ -1,6 +1,6 @@
 # parameters for padded robot (not used for self collision checks)
 
-default_robot_padding: 0.02
+default_robot_padding: 0.04
 default_robot_scale: 1.0
 default_object_padding: 0.06
 # default_attached_padding:

@@ -40,6 +40,8 @@ This manual will introduce how to use the JPS planning module if you want to cha
       - [dynamicEDT3D](#dynamicedt3d)
       - [USAGE NOTE](#usage-note)
   - [8. JPS and TOPP-RA](#8-jps-and-topp-ra)
+    - [TOPP-RA](#topp-ra)
+    - [JPS](#jps)
       - [1. config/rokae_config_JPS.yaml](#1-configrokae_config_jpsyaml)
       - [2. include/JPS_Modules/ikfast.h](#2-includejps_modulesikfasth)
       - [3. rokae_joint2pose.cpp](#3-rokae_joint2posecpp)
@@ -431,6 +433,10 @@ I find a mistake that I misunderstand the point position definition in **Octomap
 Now copy the `rokae_jps_navigation` and `rokae_arm_toppra` packages. In `rokae_jps_navigation` pakcage, some files needs to be paid attention.
 
 ---
+### TOPP-RA
+`rokae_toppra_server.cpp` change the `dir_path` and `path_prefix_` to where the `share` folder located at.
+
+### JPS
 #### 1. config/rokae_config_JPS.yaml
 In this file you can change the parameters for **JPS** planner, setting `planning_timeout`, `JPS_timeout` etc.
 - **planning_tree_resolution** needs to be correspond to your octomap resolution.

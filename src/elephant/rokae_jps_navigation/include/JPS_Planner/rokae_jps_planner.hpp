@@ -28,6 +28,7 @@
 #include "rokae_jps_navigation/eefState.h"
 #include "rokae_jps_navigation/Goto.h"
 #include "rokae_jps_navigation/CheckCollision.h"
+#include "rokae_jps_navigation/joint2pose.h"
 #include "rokae_arm_toppra/ToppRa_srv.h"
 
 #include "JPS_Planner/rokae_graph_basis.hpp"
@@ -59,18 +60,22 @@ class JPSPlanner
     geometry_msgs::Pose eef_state_client();
 
     //! toppra client
-    bool toppra_client();
+    bool toppra_client(std::vector<std::vector<float>> &joint_group);
     
     /**
      * @brief collision detection client, if a certain node is detected as an obstacle, this function will change that node value in octree 
      * 
      * @param waypoints path points
      * @param[in, out] tree octree of octomap
+     * @return joint configs 2d
      */
-    void collision_detection_client(std::vector<octomap::point3d> &waypoints, std::shared_ptr<octomap::OcTree> &tree);
+    std::vector<std::vector<float>> collision_detection_client(std::shared_ptr<octomap::OcTree> &tree);
 
     //! check pose avalability
     bool tarPoseAvalability_client(std::vector<geometry_msgs::Pose> &tarPoseSet);
+
+    //! convert joints to poses
+    geometry_msgs::Pose joint2pose_client(std::vector<double> &joint_group);
 
     //! get the octomap information from the octomap server
     void octomapCallback(const octomap_msgs::Octomap &msg);
@@ -86,6 +91,7 @@ class JPSPlanner
 
     //! generate junction goal 
     void genJunction();
+    
     /**
      * @brief modified target point to satisfied the coordinate value under resolution limitation
      * 
@@ -176,6 +182,7 @@ class JPSPlanner
 
     ros::NodeHandle                  nh_;                       //!< ros node handler
     std::shared_ptr<octomap::OcTree> octree_;                   //!< octree smart pointer
+    std::shared_ptr<octomap::OcTree> binary_tree;
     std::string                      parent_frame_;             //!< parent frame value used in msg transfer
     geometry_msgs::Pose              prevPose_;                 //!< previous planning pose
     std::vector<geometry_msgs::Pose> tarPose_buffer_;          //!< buffer storing the goal pose
@@ -232,6 +239,7 @@ class JPSPlanner
 
     // service client
     ros::ServiceClient eef_state_client_;           //!< end effector state requirement client
+    ros::ServiceClient joint2pose_client_;          //!< convert joints to poses 
     ros::ServiceClient collision_detection_client_; //!< collision detection client
     ros::ServiceClient toppra_client_;              //!< toppra trajectory planner client
 
@@ -271,7 +279,7 @@ class JPSPlanner
     bool setCurrNodeObs(octomap::OcTreeKey &key, std::shared_ptr<octomap::OcTree> &tree);
 
     //! User can set initial joints value for manipulator before the collision detection client initiliazed.
-    bool setInitialJoints(float &&j1, float &&j2, float &&j3, float &&j4, float &&j5, float &&j6);
+    bool setInitialJoints(float j1, float j2, float j3, float j4, float j5, float j6);
 
     /**
      * @brief This function is used to filter waypoints, removing redundant points on the same line. If two waypoints of the waypoint set go through obstacle or unknown cell, we need to record the waypoints. Otherwise, we can ignore those points. 
@@ -331,6 +339,8 @@ class JPSPlanner
     double                            planning_timeout_{300};    //!< planning process timeout
     double                            JPS_timeout_{30000};       //!< JPS planning timeout
     double                            planning_tree_resolution_; //!< octomap resolution
+    double                            euclidean_distance_cutoff_;//!< dynamicEDT3D max distance at which distance computations are clamped
+    double                            default_object_padding_;   //!< dynamicEDT3D clamp obstacle distance at specific point 
     double                            path_cost_;                //!< used in interatively computing path
     std::vector<octomap::point3d>     path_;                     //!< processed path
     std::vector<octomap::point3d>     raw_path_;                 //!< original path
@@ -338,7 +348,7 @@ class JPSPlanner
     std::vector<octomap::OcTreeKey>   dist_path_keys_;           //!< distance property contained path
     PlanningState                     planning_status_;          //!< planning status flag
 
-    std::shared_ptr<JPS::GraphSearch> JPS_BasePtr;      //!< implement of JPS planner
+    std::shared_ptr<JPS::GraphSearch> JPS_BasePtr;               //!< implement of JPS planner
     std::mutex mtx_;
 };
 

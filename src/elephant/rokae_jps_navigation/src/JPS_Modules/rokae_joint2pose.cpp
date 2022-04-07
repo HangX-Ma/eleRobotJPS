@@ -10,7 +10,7 @@
 #include <ros/ros.h>
 #include <moveit/move_group_interface/move_group_interface.h>
 
-#include <rokae_jps_navigation/joint2pose.h>
+#include "rokae_jps_navigation/joint2pose.h"
 #include "rokae_ikfast_wrapper.cpp"
 #include "JPS_Basis/rokae_jps_basis.hpp"
 
@@ -54,12 +54,20 @@ std::vector<float> getTranslation(const std::vector<float> &eef_pose)
 bool joint2pose(rokae_jps_navigation::joint2pose::Request &req, rokae_jps_navigation::joint2pose::Response &res)
 {
   std::shared_ptr<robots::Kinematics> _IKSolver(new robots::Kinematics());
-  std::vector<float> tar_joint {req.joint0.data, req.joint1.data, req.joint2.data, req.joint3.data, req.joint4.data, req.joint5.data};
+  std::vector<float> tar_joint {static_cast<float>(req.joint0), static_cast<float>(req.joint1), static_cast<float>(req.joint2), static_cast<float>(req.joint3), static_cast<float>(req.joint4), static_cast<float>(req.joint5)};
   std::vector<float> tar_eef_pose = _IKSolver->forward(tar_joint);
 
   Eigen::Matrix3f    eef_rotation = getRotationMatrix(tar_eef_pose, req.ifVerbose);
   Eigen::Quaternionf q            = rotationMatrix2Quaterniond(eef_rotation);
   std::vector<float> transl       = getTranslation(tar_eef_pose);
+
+  res.re_pose.position.x    = transl.at(0);
+  res.re_pose.position.y    = transl.at(1);
+  res.re_pose.position.z    = transl.at(2);
+  res.re_pose.orientation.w = q.w();
+  res.re_pose.orientation.x = q.x();
+  res.re_pose.orientation.y = q.y();
+  res.re_pose.orientation.z = q.z();
 
   if (req.ifVerbose) {
     std::cout << ANSI_COLOR_MAGENTA "input joint configs: (" << req.joint0 << "," << req.joint1 << "," << req.joint2 << "," 

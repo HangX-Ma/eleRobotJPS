@@ -3,6 +3,7 @@
 
   <group ns="rokae_arm">
     <rosparam command="load" file="$(find rokae_jps_navigation)/config/rokae_config_JPS.yaml"/>
+    <rosparam command="load" file="$(find elerobot_moveit_config)/config/padding.yaml"/>
   </group>
 
   <node name="rokae_joint2pose" pkg="rokae_jps_navigation" type="rokae_joint2pose" output="screen"/>
@@ -11,10 +12,10 @@
 
   <node name="collision_checker" pkg="rokae_jps_navigation" type="rokae_collision_detection" output="screen"/>
   
-  <node name="JPS_Planner" pkg="rokae_jps_navigation" type="rokae_jps_planner" output="screen"/>
-  <![CDATA[ 
+  <!-- <node name="JPS_Planner" pkg="rokae_jps_navigation" type="rokae_jps_planner" output="screen"/> -->
+  <!-- <![CDATA[  -->
   <node name="JPS_Planner" pkg="rokae_jps_navigation" type="rokae_jps_planner" output="screen" launch-prefix="xterm -e gdb -ex run --args "/>
-  ]]>
+  <!-- ]]> -->
   <include file="$(find rokae_arm_toppra)/launch/toppra_trajectory.launch"/>
   
 </launch>

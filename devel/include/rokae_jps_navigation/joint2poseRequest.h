@@ -15,12 +15,6 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
-#include <std_msgs/Float32.h>
-#include <std_msgs/Float32.h>
-#include <std_msgs/Float32.h>
-#include <std_msgs/Float32.h>
-#include <std_msgs/Float32.h>
-#include <std_msgs/Float32.h>
 
 namespace rokae_jps_navigation
 {
@@ -30,43 +24,43 @@ struct joint2poseRequest_
   typedef joint2poseRequest_<ContainerAllocator> Type;
 
   joint2poseRequest_()
-    : joint0()
-    , joint1()
-    , joint2()
-    , joint3()
-    , joint4()
-    , joint5()
+    : joint0(0.0)
+    , joint1(0.0)
+    , joint2(0.0)
+    , joint3(0.0)
+    , joint4(0.0)
+    , joint5(0.0)
     , ifVerbose(false)  {
     }
   joint2poseRequest_(const ContainerAllocator& _alloc)
-    : joint0(_alloc)
-    , joint1(_alloc)
-    , joint2(_alloc)
-    , joint3(_alloc)
-    , joint4(_alloc)
-    , joint5(_alloc)
+    : joint0(0.0)
+    , joint1(0.0)
+    , joint2(0.0)
+    , joint3(0.0)
+    , joint4(0.0)
+    , joint5(0.0)
     , ifVerbose(false)  {
   (void)_alloc;
     }
 
 
 
-   typedef  ::std_msgs::Float32_<ContainerAllocator>  _joint0_type;
+   typedef double _joint0_type;
   _joint0_type joint0;
 
-   typedef  ::std_msgs::Float32_<ContainerAllocator>  _joint1_type;
+   typedef double _joint1_type;
   _joint1_type joint1;
 
-   typedef  ::std_msgs::Float32_<ContainerAllocator>  _joint2_type;
+   typedef double _joint2_type;
   _joint2_type joint2;
 
-   typedef  ::std_msgs::Float32_<ContainerAllocator>  _joint3_type;
+   typedef double _joint3_type;
   _joint3_type joint3;
 
-   typedef  ::std_msgs::Float32_<ContainerAllocator>  _joint4_type;
+   typedef double _joint4_type;
   _joint4_type joint4;
 
-   typedef  ::std_msgs::Float32_<ContainerAllocator>  _joint5_type;
+   typedef double _joint5_type;
   _joint5_type joint5;
 
    typedef uint8_t _ifVerbose_type;
@@ -164,12 +158,12 @@ struct MD5Sum< ::rokae_jps_navigation::joint2poseRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "5999e34ffaace7b38734bfad5de479e9";
+    return "9ed341ddbb4f864aa1eec399727b045c";
   }
 
   static const char* value(const ::rokae_jps_navigation::joint2poseRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x5999e34ffaace7b3ULL;
-  static const uint64_t static_value2 = 0x8734bfad5de479e9ULL;
+  static const uint64_t static_value1 = 0x9ed341ddbb4f864aULL;
+  static const uint64_t static_value2 = 0xa1eec399727b045cULL;
 };
 
 template<class ContainerAllocator>
@@ -188,17 +182,13 @@ struct Definition< ::rokae_jps_navigation::joint2poseRequest_<ContainerAllocator
 {
   static const char* value()
   {
-    return "std_msgs/Float32 joint0\n"
-"std_msgs/Float32 joint1\n"
-"std_msgs/Float32 joint2\n"
-"std_msgs/Float32 joint3\n"
-"std_msgs/Float32 joint4\n"
-"std_msgs/Float32 joint5\n"
+    return "float64 joint0\n"
+"float64 joint1\n"
+"float64 joint2\n"
+"float64 joint3\n"
+"float64 joint4\n"
+"float64 joint5\n"
 "bool ifVerbose\n"
-"\n"
-"================================================================================\n"
-"MSG: std_msgs/Float32\n"
-"float32 data\n"
 ;
   }
 
@@ -243,23 +233,17 @@ struct Printer< ::rokae_jps_navigation::joint2poseRequest_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::rokae_jps_navigation::joint2poseRequest_<ContainerAllocator>& v)
   {
     s << indent << "joint0: ";
-    s << std::endl;
-    Printer< ::std_msgs::Float32_<ContainerAllocator> >::stream(s, indent + "  ", v.joint0);
+    Printer<double>::stream(s, indent + "  ", v.joint0);
     s << indent << "joint1: ";
-    s << std::endl;
-    Printer< ::std_msgs::Float32_<ContainerAllocator> >::stream(s, indent + "  ", v.joint1);
+    Printer<double>::stream(s, indent + "  ", v.joint1);
     s << indent << "joint2: ";
-    s << std::endl;
-    Printer< ::std_msgs::Float32_<ContainerAllocator> >::stream(s, indent + "  ", v.joint2);
+    Printer<double>::stream(s, indent + "  ", v.joint2);
     s << indent << "joint3: ";
-    s << std::endl;
-    Printer< ::std_msgs::Float32_<ContainerAllocator> >::stream(s, indent + "  ", v.joint3);
+    Printer<double>::stream(s, indent + "  ", v.joint3);
     s << indent << "joint4: ";
-    s << std::endl;
-    Printer< ::std_msgs::Float32_<ContainerAllocator> >::stream(s, indent + "  ", v.joint4);
+    Printer<double>::stream(s, indent + "  ", v.joint4);
     s << indent << "joint5: ";
-    s << std::endl;
-    Printer< ::std_msgs::Float32_<ContainerAllocator> >::stream(s, indent + "  ", v.joint5);
+    Printer<double>::stream(s, indent + "  ", v.joint5);
     s << indent << "ifVerbose: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.ifVerbose);
   }

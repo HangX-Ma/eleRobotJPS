@@ -10,33 +10,33 @@
   ((joint0
     :reader joint0
     :initarg :joint0
-    :type std_msgs-msg:Float32
-    :initform (cl:make-instance 'std_msgs-msg:Float32))
+    :type cl:float
+    :initform 0.0)
    (joint1
     :reader joint1
     :initarg :joint1
-    :type std_msgs-msg:Float32
-    :initform (cl:make-instance 'std_msgs-msg:Float32))
+    :type cl:float
+    :initform 0.0)
    (joint2
     :reader joint2
     :initarg :joint2
-    :type std_msgs-msg:Float32
-    :initform (cl:make-instance 'std_msgs-msg:Float32))
+    :type cl:float
+    :initform 0.0)
    (joint3
     :reader joint3
     :initarg :joint3
-    :type std_msgs-msg:Float32
-    :initform (cl:make-instance 'std_msgs-msg:Float32))
+    :type cl:float
+    :initform 0.0)
    (joint4
     :reader joint4
     :initarg :joint4
-    :type std_msgs-msg:Float32
-    :initform (cl:make-instance 'std_msgs-msg:Float32))
+    :type cl:float
+    :initform 0.0)
    (joint5
     :reader joint5
     :initarg :joint5
-    :type std_msgs-msg:Float32
-    :initform (cl:make-instance 'std_msgs-msg:Float32))
+    :type cl:float
+    :initform 0.0)
    (ifVerbose
     :reader ifVerbose
     :initarg :ifVerbose
@@ -88,22 +88,124 @@
   (ifVerbose m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <joint2pose-request>) ostream)
   "Serializes a message object of type '<joint2pose-request>"
-  (roslisp-msg-protocol:serialize (cl:slot-value msg 'joint0) ostream)
-  (roslisp-msg-protocol:serialize (cl:slot-value msg 'joint1) ostream)
-  (roslisp-msg-protocol:serialize (cl:slot-value msg 'joint2) ostream)
-  (roslisp-msg-protocol:serialize (cl:slot-value msg 'joint3) ostream)
-  (roslisp-msg-protocol:serialize (cl:slot-value msg 'joint4) ostream)
-  (roslisp-msg-protocol:serialize (cl:slot-value msg 'joint5) ostream)
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'joint0))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'joint1))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'joint2))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'joint3))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'joint4))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'joint5))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'ifVerbose) 1 0)) ostream)
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <joint2pose-request>) istream)
   "Deserializes a message object of type '<joint2pose-request>"
-  (roslisp-msg-protocol:deserialize (cl:slot-value msg 'joint0) istream)
-  (roslisp-msg-protocol:deserialize (cl:slot-value msg 'joint1) istream)
-  (roslisp-msg-protocol:deserialize (cl:slot-value msg 'joint2) istream)
-  (roslisp-msg-protocol:deserialize (cl:slot-value msg 'joint3) istream)
-  (roslisp-msg-protocol:deserialize (cl:slot-value msg 'joint4) istream)
-  (roslisp-msg-protocol:deserialize (cl:slot-value msg 'joint5) istream)
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'joint0) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'joint1) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'joint2) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'joint3) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'joint4) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'joint5) (roslisp-utils:decode-double-float-bits bits)))
     (cl:setf (cl:slot-value msg 'ifVerbose) (cl:not (cl:zerop (cl:read-byte istream))))
   msg
 )
@@ -115,24 +217,24 @@
   "rokae_jps_navigation/joint2poseRequest")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<joint2pose-request>)))
   "Returns md5sum for a message object of type '<joint2pose-request>"
-  "5999e34ffaace7b38734bfad5de479e9")
+  "8e3735eb3bfe1ca9ba91861cd4e5d3f8")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'joint2pose-request)))
   "Returns md5sum for a message object of type 'joint2pose-request"
-  "5999e34ffaace7b38734bfad5de479e9")
+  "8e3735eb3bfe1ca9ba91861cd4e5d3f8")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<joint2pose-request>)))
   "Returns full string definition for message of type '<joint2pose-request>"
-  (cl:format cl:nil "std_msgs/Float32 joint0~%std_msgs/Float32 joint1~%std_msgs/Float32 joint2~%std_msgs/Float32 joint3~%std_msgs/Float32 joint4~%std_msgs/Float32 joint5~%bool ifVerbose~%~%================================================================================~%MSG: std_msgs/Float32~%float32 data~%~%"))
+  (cl:format cl:nil "float64 joint0~%float64 joint1~%float64 joint2~%float64 joint3~%float64 joint4~%float64 joint5~%bool ifVerbose~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'joint2pose-request)))
   "Returns full string definition for message of type 'joint2pose-request"
-  (cl:format cl:nil "std_msgs/Float32 joint0~%std_msgs/Float32 joint1~%std_msgs/Float32 joint2~%std_msgs/Float32 joint3~%std_msgs/Float32 joint4~%std_msgs/Float32 joint5~%bool ifVerbose~%~%================================================================================~%MSG: std_msgs/Float32~%float32 data~%~%"))
+  (cl:format cl:nil "float64 joint0~%float64 joint1~%float64 joint2~%float64 joint3~%float64 joint4~%float64 joint5~%bool ifVerbose~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <joint2pose-request>))
   (cl:+ 0
-     (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'joint0))
-     (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'joint1))
-     (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'joint2))
-     (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'joint3))
-     (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'joint4))
-     (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'joint5))
+     8
+     8
+     8
+     8
+     8
+     8
      1
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <joint2pose-request>))
@@ -149,7 +251,11 @@
 ;//! \htmlinclude joint2pose-response.msg.html
 
 (cl:defclass <joint2pose-response> (roslisp-msg-protocol:ros-message)
-  ()
+  ((re_pose
+    :reader re_pose
+    :initarg :re_pose
+    :type geometry_msgs-msg:Pose
+    :initform (cl:make-instance 'geometry_msgs-msg:Pose)))
 )
 
 (cl:defclass joint2pose-response (<joint2pose-response>)
@@ -159,11 +265,18 @@
   (cl:declare (cl:ignorable args))
   (cl:unless (cl:typep m 'joint2pose-response)
     (roslisp-msg-protocol:msg-deprecation-warning "using old message class name rokae_jps_navigation-srv:<joint2pose-response> is deprecated: use rokae_jps_navigation-srv:joint2pose-response instead.")))
+
+(cl:ensure-generic-function 're_pose-val :lambda-list '(m))
+(cl:defmethod re_pose-val ((m <joint2pose-response>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader rokae_jps_navigation-srv:re_pose-val is deprecated.  Use rokae_jps_navigation-srv:re_pose instead.")
+  (re_pose m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <joint2pose-response>) ostream)
   "Serializes a message object of type '<joint2pose-response>"
+  (roslisp-msg-protocol:serialize (cl:slot-value msg 're_pose) ostream)
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <joint2pose-response>) istream)
   "Deserializes a message object of type '<joint2pose-response>"
+  (roslisp-msg-protocol:deserialize (cl:slot-value msg 're_pose) istream)
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<joint2pose-response>)))
@@ -174,22 +287,24 @@
   "rokae_jps_navigation/joint2poseResponse")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<joint2pose-response>)))
   "Returns md5sum for a message object of type '<joint2pose-response>"
-  "5999e34ffaace7b38734bfad5de479e9")
+  "8e3735eb3bfe1ca9ba91861cd4e5d3f8")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'joint2pose-response)))
   "Returns md5sum for a message object of type 'joint2pose-response"
-  "5999e34ffaace7b38734bfad5de479e9")
+  "8e3735eb3bfe1ca9ba91861cd4e5d3f8")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<joint2pose-response>)))
   "Returns full string definition for message of type '<joint2pose-response>"
-  (cl:format cl:nil "~%~%~%"))
+  (cl:format cl:nil "geometry_msgs/Pose re_pose~%~%~%================================================================================~%MSG: geometry_msgs/Pose~%# A representation of pose in free space, composed of position and orientation. ~%Point position~%Quaternion orientation~%~%================================================================================~%MSG: geometry_msgs/Point~%# This contains the position of a point in free space~%float64 x~%float64 y~%float64 z~%~%================================================================================~%MSG: geometry_msgs/Quaternion~%# This represents an orientation in free space in quaternion form.~%~%float64 x~%float64 y~%float64 z~%float64 w~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'joint2pose-response)))
   "Returns full string definition for message of type 'joint2pose-response"
-  (cl:format cl:nil "~%~%~%"))
+  (cl:format cl:nil "geometry_msgs/Pose re_pose~%~%~%================================================================================~%MSG: geometry_msgs/Pose~%# A representation of pose in free space, composed of position and orientation. ~%Point position~%Quaternion orientation~%~%================================================================================~%MSG: geometry_msgs/Point~%# This contains the position of a point in free space~%float64 x~%float64 y~%float64 z~%~%================================================================================~%MSG: geometry_msgs/Quaternion~%# This represents an orientation in free space in quaternion form.~%~%float64 x~%float64 y~%float64 z~%float64 w~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <joint2pose-response>))
   (cl:+ 0
+     (roslisp-msg-protocol:serialization-length (cl:slot-value msg 're_pose))
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <joint2pose-response>))
   "Converts a ROS message object to a list"
   (cl:list 'joint2pose-response
+    (cl:cons ':re_pose (re_pose msg))
 ))
 (cl:defmethod roslisp-msg-protocol:service-request-type ((msg (cl:eql 'joint2pose)))
   'joint2pose-request)

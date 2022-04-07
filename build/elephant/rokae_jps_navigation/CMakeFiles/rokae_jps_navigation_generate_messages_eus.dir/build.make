@@ -102,7 +102,9 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_navigation_generate_messages_
 
 /home/contour/ws_catkin_elephant/devel/share/roseus/ros/rokae_jps_navigation/srv/joint2pose.l: /opt/ros/melodic/lib/geneus/gen_eus.py
 /home/contour/ws_catkin_elephant/devel/share/roseus/ros/rokae_jps_navigation/srv/joint2pose.l: /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv
-/home/contour/ws_catkin_elephant/devel/share/roseus/ros/rokae_jps_navigation/srv/joint2pose.l: /opt/ros/melodic/share/std_msgs/msg/Float32.msg
+/home/contour/ws_catkin_elephant/devel/share/roseus/ros/rokae_jps_navigation/srv/joint2pose.l: /opt/ros/melodic/share/geometry_msgs/msg/Pose.msg
+/home/contour/ws_catkin_elephant/devel/share/roseus/ros/rokae_jps_navigation/srv/joint2pose.l: /opt/ros/melodic/share/geometry_msgs/msg/Quaternion.msg
+/home/contour/ws_catkin_elephant/devel/share/roseus/ros/rokae_jps_navigation/srv/joint2pose.l: /opt/ros/melodic/share/geometry_msgs/msg/Point.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/contour/ws_catkin_elephant/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating EusLisp code from rokae_jps_navigation/joint2pose.srv"
 	cd /home/contour/ws_catkin_elephant/build/elephant/rokae_jps_navigation && ../../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv -Ioctomap_msgs:/opt/ros/melodic/share/octomap_msgs/cmake/../msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p rokae_jps_navigation -o /home/contour/ws_catkin_elephant/devel/share/roseus/ros/rokae_jps_navigation/srv
 

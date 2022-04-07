@@ -6,25 +6,21 @@ python3 = True if sys.hexversion > 0x03000000 else False
 import genpy
 import struct
 
-import std_msgs.msg
 
 class joint2poseRequest(genpy.Message):
-  _md5sum = "5999e34ffaace7b38734bfad5de479e9"
+  _md5sum = "9ed341ddbb4f864aa1eec399727b045c"
   _type = "rokae_jps_navigation/joint2poseRequest"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """std_msgs/Float32 joint0
-std_msgs/Float32 joint1
-std_msgs/Float32 joint2
-std_msgs/Float32 joint3
-std_msgs/Float32 joint4
-std_msgs/Float32 joint5
+  _full_text = """float64 joint0
+float64 joint1
+float64 joint2
+float64 joint3
+float64 joint4
+float64 joint5
 bool ifVerbose
-
-================================================================================
-MSG: std_msgs/Float32
-float32 data"""
+"""
   __slots__ = ['joint0','joint1','joint2','joint3','joint4','joint5','ifVerbose']
-  _slot_types = ['std_msgs/Float32','std_msgs/Float32','std_msgs/Float32','std_msgs/Float32','std_msgs/Float32','std_msgs/Float32','bool']
+  _slot_types = ['float64','float64','float64','float64','float64','float64','bool']
 
   def __init__(self, *args, **kwds):
     """
@@ -44,26 +40,26 @@ float32 data"""
       super(joint2poseRequest, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
       if self.joint0 is None:
-        self.joint0 = std_msgs.msg.Float32()
+        self.joint0 = 0.
       if self.joint1 is None:
-        self.joint1 = std_msgs.msg.Float32()
+        self.joint1 = 0.
       if self.joint2 is None:
-        self.joint2 = std_msgs.msg.Float32()
+        self.joint2 = 0.
       if self.joint3 is None:
-        self.joint3 = std_msgs.msg.Float32()
+        self.joint3 = 0.
       if self.joint4 is None:
-        self.joint4 = std_msgs.msg.Float32()
+        self.joint4 = 0.
       if self.joint5 is None:
-        self.joint5 = std_msgs.msg.Float32()
+        self.joint5 = 0.
       if self.ifVerbose is None:
         self.ifVerbose = False
     else:
-      self.joint0 = std_msgs.msg.Float32()
-      self.joint1 = std_msgs.msg.Float32()
-      self.joint2 = std_msgs.msg.Float32()
-      self.joint3 = std_msgs.msg.Float32()
-      self.joint4 = std_msgs.msg.Float32()
-      self.joint5 = std_msgs.msg.Float32()
+      self.joint0 = 0.
+      self.joint1 = 0.
+      self.joint2 = 0.
+      self.joint3 = 0.
+      self.joint4 = 0.
+      self.joint5 = 0.
       self.ifVerbose = False
 
   def _get_types(self):
@@ -79,7 +75,7 @@ float32 data"""
     """
     try:
       _x = self
-      buff.write(_get_struct_6fB().pack(_x.joint0.data, _x.joint1.data, _x.joint2.data, _x.joint3.data, _x.joint4.data, _x.joint5.data, _x.ifVerbose))
+      buff.write(_get_struct_6dB().pack(_x.joint0, _x.joint1, _x.joint2, _x.joint3, _x.joint4, _x.joint5, _x.ifVerbose))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -91,23 +87,11 @@ float32 data"""
     if python3:
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
-      if self.joint0 is None:
-        self.joint0 = std_msgs.msg.Float32()
-      if self.joint1 is None:
-        self.joint1 = std_msgs.msg.Float32()
-      if self.joint2 is None:
-        self.joint2 = std_msgs.msg.Float32()
-      if self.joint3 is None:
-        self.joint3 = std_msgs.msg.Float32()
-      if self.joint4 is None:
-        self.joint4 = std_msgs.msg.Float32()
-      if self.joint5 is None:
-        self.joint5 = std_msgs.msg.Float32()
       end = 0
       _x = self
       start = end
-      end += 25
-      (_x.joint0.data, _x.joint1.data, _x.joint2.data, _x.joint3.data, _x.joint4.data, _x.joint5.data, _x.ifVerbose,) = _get_struct_6fB().unpack(str[start:end])
+      end += 49
+      (_x.joint0, _x.joint1, _x.joint2, _x.joint3, _x.joint4, _x.joint5, _x.ifVerbose,) = _get_struct_6dB().unpack(str[start:end])
       self.ifVerbose = bool(self.ifVerbose)
       return self
     except struct.error as e:
@@ -122,7 +106,7 @@ float32 data"""
     """
     try:
       _x = self
-      buff.write(_get_struct_6fB().pack(_x.joint0.data, _x.joint1.data, _x.joint2.data, _x.joint3.data, _x.joint4.data, _x.joint5.data, _x.ifVerbose))
+      buff.write(_get_struct_6dB().pack(_x.joint0, _x.joint1, _x.joint2, _x.joint3, _x.joint4, _x.joint5, _x.ifVerbose))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -135,23 +119,11 @@ float32 data"""
     if python3:
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
-      if self.joint0 is None:
-        self.joint0 = std_msgs.msg.Float32()
-      if self.joint1 is None:
-        self.joint1 = std_msgs.msg.Float32()
-      if self.joint2 is None:
-        self.joint2 = std_msgs.msg.Float32()
-      if self.joint3 is None:
-        self.joint3 = std_msgs.msg.Float32()
-      if self.joint4 is None:
-        self.joint4 = std_msgs.msg.Float32()
-      if self.joint5 is None:
-        self.joint5 = std_msgs.msg.Float32()
       end = 0
       _x = self
       start = end
-      end += 25
-      (_x.joint0.data, _x.joint1.data, _x.joint2.data, _x.joint3.data, _x.joint4.data, _x.joint5.data, _x.ifVerbose,) = _get_struct_6fB().unpack(str[start:end])
+      end += 49
+      (_x.joint0, _x.joint1, _x.joint2, _x.joint3, _x.joint4, _x.joint5, _x.ifVerbose,) = _get_struct_6dB().unpack(str[start:end])
       self.ifVerbose = bool(self.ifVerbose)
       return self
     except struct.error as e:
@@ -161,12 +133,12 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_6fB = None
-def _get_struct_6fB():
-    global _struct_6fB
-    if _struct_6fB is None:
-        _struct_6fB = struct.Struct("<6fB")
-    return _struct_6fB
+_struct_6dB = None
+def _get_struct_6dB():
+    global _struct_6dB
+    if _struct_6dB is None:
+        _struct_6dB = struct.Struct("<6dB")
+    return _struct_6dB
 # This Python file uses the following encoding: utf-8
 """autogenerated by genpy from rokae_jps_navigation/joint2poseResponse.msg. Do not edit."""
 import codecs
@@ -175,15 +147,39 @@ python3 = True if sys.hexversion > 0x03000000 else False
 import genpy
 import struct
 
+import geometry_msgs.msg
 
 class joint2poseResponse(genpy.Message):
-  _md5sum = "d41d8cd98f00b204e9800998ecf8427e"
+  _md5sum = "222653e911ec2723bf153c3e2c46d638"
   _type = "rokae_jps_navigation/joint2poseResponse"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """
+  _full_text = """geometry_msgs/Pose re_pose
+
+
+================================================================================
+MSG: geometry_msgs/Pose
+# A representation of pose in free space, composed of position and orientation. 
+Point position
+Quaternion orientation
+
+================================================================================
+MSG: geometry_msgs/Point
+# This contains the position of a point in free space
+float64 x
+float64 y
+float64 z
+
+================================================================================
+MSG: geometry_msgs/Quaternion
+# This represents an orientation in free space in quaternion form.
+
+float64 x
+float64 y
+float64 z
+float64 w
 """
-  __slots__ = []
-  _slot_types = []
+  __slots__ = ['re_pose']
+  _slot_types = ['geometry_msgs/Pose']
 
   def __init__(self, *args, **kwds):
     """
@@ -193,7 +189,7 @@ class joint2poseResponse(genpy.Message):
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       
+       re_pose
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -201,6 +197,11 @@ class joint2poseResponse(genpy.Message):
     """
     if args or kwds:
       super(joint2poseResponse, self).__init__(*args, **kwds)
+      # message fields cannot be None, assign default values for those that are
+      if self.re_pose is None:
+        self.re_pose = geometry_msgs.msg.Pose()
+    else:
+      self.re_pose = geometry_msgs.msg.Pose()
 
   def _get_types(self):
     """
@@ -214,7 +215,8 @@ class joint2poseResponse(genpy.Message):
     :param buff: buffer, ``StringIO``
     """
     try:
-      pass
+      _x = self
+      buff.write(_get_struct_7d().pack(_x.re_pose.position.x, _x.re_pose.position.y, _x.re_pose.position.z, _x.re_pose.orientation.x, _x.re_pose.orientation.y, _x.re_pose.orientation.z, _x.re_pose.orientation.w))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -226,7 +228,13 @@ class joint2poseResponse(genpy.Message):
     if python3:
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
+      if self.re_pose is None:
+        self.re_pose = geometry_msgs.msg.Pose()
       end = 0
+      _x = self
+      start = end
+      end += 56
+      (_x.re_pose.position.x, _x.re_pose.position.y, _x.re_pose.position.z, _x.re_pose.orientation.x, _x.re_pose.orientation.y, _x.re_pose.orientation.z, _x.re_pose.orientation.w,) = _get_struct_7d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -239,7 +247,8 @@ class joint2poseResponse(genpy.Message):
     :param numpy: numpy python module
     """
     try:
-      pass
+      _x = self
+      buff.write(_get_struct_7d().pack(_x.re_pose.position.x, _x.re_pose.position.y, _x.re_pose.position.z, _x.re_pose.orientation.x, _x.re_pose.orientation.y, _x.re_pose.orientation.z, _x.re_pose.orientation.w))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -252,7 +261,13 @@ class joint2poseResponse(genpy.Message):
     if python3:
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
+      if self.re_pose is None:
+        self.re_pose = geometry_msgs.msg.Pose()
       end = 0
+      _x = self
+      start = end
+      end += 56
+      (_x.re_pose.position.x, _x.re_pose.position.y, _x.re_pose.position.z, _x.re_pose.orientation.x, _x.re_pose.orientation.y, _x.re_pose.orientation.z, _x.re_pose.orientation.w,) = _get_struct_7d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -261,8 +276,14 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
+_struct_7d = None
+def _get_struct_7d():
+    global _struct_7d
+    if _struct_7d is None:
+        _struct_7d = struct.Struct("<7d")
+    return _struct_7d
 class joint2pose(object):
   _type          = 'rokae_jps_navigation/joint2pose'
-  _md5sum = '5999e34ffaace7b38734bfad5de479e9'
+  _md5sum = '8e3735eb3bfe1ca9ba91861cd4e5d3f8'
   _request_class  = joint2poseRequest
   _response_class = joint2poseResponse

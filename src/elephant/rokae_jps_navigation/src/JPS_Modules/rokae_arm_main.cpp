@@ -262,14 +262,24 @@ void operation::planner_test()
   rokae_jps_navigation::Goto planner_srv;
   geometry_msgs::Pose pose;
 
-  // forward
-  pose.position.x = -0.62792;
-  pose.position.y = 0.115;
-  pose.position.z = 0.255789;
+  // prepare
+  pose.position.x = -0.0154582;
+  pose.position.y = 0.506155;
+  pose.position.z = 0.215702;
   pose.orientation.w = -0.5;
   pose.orientation.x = 0.5;
   pose.orientation.y = 0.5;
   pose.orientation.z = -0.5;
+  planner_srv.request.goal_pose.push_back(pose);
+
+  // forward
+  pose.position.x = -0.62792;
+  pose.position.y = 0.115;
+  pose.position.z = 0.255789;
+  pose.orientation.w = 0.5;
+  pose.orientation.x = -0.5;
+  pose.orientation.y = -0.5;
+  pose.orientation.z = 0.5;
   planner_srv.request.goal_pose.push_back(pose);
 
   if (planner_client.call(planner_srv)) {
@@ -298,6 +308,16 @@ void operation::plan_with_move()
   // clear previous configuration
   planner_srv.request.goal_pose.clear();
   planner_srv.request.ifback = ifMoveback_;
+  
+  // prepare
+  pose.position.x = -0.0154582;
+  pose.position.y = 0.506155;
+  pose.position.z = 0.215702;
+  pose.orientation.w = -0.5;
+  pose.orientation.x = 0.5;
+  pose.orientation.y = 0.5;
+  pose.orientation.z = -0.5;
+  planner_srv.request.goal_pose.push_back(pose);
 
   // forward
   pose.position.x = -0.62792;
@@ -436,8 +456,8 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "rokae_arm_navigation");
 
-  std::string path_prefix_ = "/home/contour/ws_catkin_rokae/src/rokae_demo/rokae_arm_toppra/share/";
-  std::string folder_name1 = "1648089318";
+  std::string path_prefix_ = "/home/contour/ws_catkin_elephant/src/elephant/rokae_arm_toppra/share/";
+  std::string folder_name1 = "1649296490";
 
   std::vector<double> position_m, velocity_m, acceleration_m, time_m;
   std::vector<std::string> cfgconfig_stage1 {path_prefix_ + folder_name1 + "/toppra_joints_pos_" + folder_name1 + ".txt",

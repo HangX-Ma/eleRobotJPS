@@ -22,6 +22,8 @@ JPSPlanner::JPSPlanner(ros::NodeHandle* nodehandle):nh_(*nodehandle)
   loaded_successfully &= parse_param("/rokae_arm/planning/potential_radius", potential_radius_);
   loaded_successfully &= parse_param("/rokae_arm/planning/potential_weight", potential_weight_);
   loaded_successfully &= parse_param("/rokae_arm/planning/heu_type", heu_type_);
+  loaded_successfully &= parse_param("/rokae_arm/planning/euclidean_distance_cutoff", euclidean_distance_cutoff_);
+  loaded_successfully &= parse_param("/rokae_arm/default_object_padding", default_object_padding_);
 
   // visualization 
   loaded_successfully &= parse_param("/rokae_arm/visualization/show_unoccupied", show_unoccupied_);
@@ -57,7 +59,7 @@ JPSPlanner::JPSPlanner(ros::NodeHandle* nodehandle):nh_(*nodehandle)
 }
 
 
-bool JPSPlanner::setInitialJoints(float &&j1, float &&j2, float &&j3, float &&j4, float &&j5, float &&j6)
+bool JPSPlanner::setInitialJoints(float j1, float j2, float j3, float j4, float j5, float j6)
 {
   if (!check_status_) {
     prev_joint_configs_.clear();
@@ -192,7 +194,6 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   }
   printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: All goal positions are valid!" ANSI_COLOR_RESET "\n");
 
-
   if(!tarPoseAvalability_client(tarPose_buffer_)) {
     planning_status_ = PlanningState::ERROR;
     printf(ANSI_COLOR_RED "GOAL POSE INVALID!!!" ANSI_COLOR_RESET "\n");
@@ -267,6 +268,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
                                                                                planning_goal.x(), planning_goal.y(), planning_goal.z());
       printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Pose (w,x,y,z) = [%.3f, %.3f, %.3f, %.3f] set as a next orientation." ANSI_COLOR_RESET "\n",
                               tarPoints_pose_[currGoal_id_].w(), tarPoints_pose_[currGoal_id_].x(), tarPoints_pose_[currGoal_id_].y(), tarPoints_pose_[currGoal_id_].z());
+      printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Current goal ID is [%d]\n",currGoal_id_);
     }
     visualizePoint(planning_goal, currGoal_id_);
 
@@ -323,7 +325,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         /*******************************************************************/
 
         // REMOVE CORNER POINTS
-        for(int i = 0; i < 1; i++) {
+        for(int i = 0; i < 2; i++) {
           optimal_path_ = removeCornerPts(optimal_path_, *octree_);
         }
         // optimal_path_ = raw_path_;
@@ -338,10 +340,16 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         // The following process will change the 'tree' value.
         tarPoints_pose_msg_.clear();
         resamplePath(optimal_path_, tarPoints_pose_msg_);
-        collision_detection_client(optimal_path_, octree_);
 
-        //TODO debug key
-        // std::getchar();
+        if(currGoal_id_ == 0) {
+            check_status_ = false;
+            setInitialJoints(0, 0, 0, 0, 0, 0);
+        }
+        std::vector<std::vector<float>> joint_configs = collision_detection_client(octree_);
+
+        // for (auto&jg:joint_configs) {
+        //   ROS_INFO("joint configs: (%.3f,%.3f,%.3f,%.3f,%.3f,%.3f)\n",jg[0],jg[1],jg[2],jg[3],jg[4],jg[5]);
+        // }
 
         if (planning_status_ == PlanningState::NEED_REPLANNING) {
           // reset the status
@@ -353,10 +361,51 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
           break;
         }
 
-        // for (auto &p: optimal_path_) {
-        //   ROS_INFO_STREAM(p);
-        // }
+        // current path have no obstacles or collision, 
+        // but if TOPP-RA generates a new trajectory, we need to do further check.
+
+        if(currGoal_id_ == 0) {
+          check_status_ = false;
+          setInitialJoints(0, 0, 0, 0, 0, 0);
+        }
+        // we need to check the poses of the toppra returned values
+        toppra_client(joint_configs);
+        int8_t joint_num = 0;
+        // get joint group
+        std::vector<double> joint_val = getToppraPos();
+        std::vector<double> joint_group;
+        for(auto &jc : joint_val)
+        {
+          if (joint_num < 6) {
+            joint_group.push_back(jc);
+            joint_num++;
+            if (joint_num == 6) {
+              std::vector<geometry_msgs::Pose> pose_group;
+              geometry_msgs::Pose pose = joint2pose_client(joint_group);
+              pose_group.push_back(pose);
+              // if status returned is false, this node need to be set as an obstacle
+              if (!tarPoseAvalability_client(pose_group)) {
+                octomap::point3d point (pose.position.x, pose.position.y, pose.position.z);
+                octomap::OcTreeKey key = octree_->coordToKey(point);
+                setCurrNodeObs(key, octree_);
+                // need to planning again
+                planning_status_ = PlanningState::NEED_REPLANNING;
+              }
+              joint_group.clear();
+              joint_num = 0;
+            }
+          }
+        }
+        if (planning_status_ == PlanningState::NEED_REPLANNING) {
+          // reset the status
+          planning_status_ = PlanningState::NEED_OPTIMAL;
+          continue;
+        } 
         
+        // final joint configs. Now success trajectory for this node generated.
+        joint_configs_.insert(joint_configs_.end(), joint_configs.begin(), joint_configs.end());
+
+
         // if planning_status is not NEED_REPLANNING, it must still be the NEED_OPTIMAL, which means the current optimal_path is valid.
         // We set planning state as SUCCESS and move to next planning goal.
         currGoal_id_++;
@@ -407,7 +456,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   }
 
   // using toppra to generate trajectory
-  toppra_client();
+  toppra_client(joint_configs_);
   if (planner_verbose_) {
     printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Genrating the [toppra] trajectory." ANSI_COLOR_RESET "\n");
   }
@@ -419,7 +468,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
 
   if (req.ifback) {
     std::reverse(joint_configs_.begin(), joint_configs_.end());
-    toppra_client();
+    toppra_client(joint_configs_);
     if (planner_verbose_) {
       printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Genrating the [toppra] moving back trajectory." ANSI_COLOR_RESET "\n");
     }
@@ -443,9 +492,16 @@ DynamicEDTOctomap JPSPlanner::euclideanDistanceTransform(std::shared_ptr<octomap
 {
   octomap::point3d metric_min(-xDim_, -yDim_, 0.0);
   octomap::point3d metric_max(xDim_, yDim_, zDim_);
-  DynamicEDTOctomap edf(planning_tree_resolution_*8, tree.get(), metric_min,
-                        metric_max, false);
+  //- the first argument is the max distance at which distance computations are clamped
+  //- the second argument is the octomap
+  //- arguments 3 and 4 can be used to restrict the distance map to a subarea
+  //- argument 5 defines whether unknown space is treated as occupied or free
+  //The constructor copies data but does not yet compute the distance map
+  DynamicEDTOctomap edf(euclidean_distance_cutoff_, tree.get(), metric_min, metric_max, false);
+
+  //This computes the distance map
   edf.update();
+
   return edf;
 }
 
@@ -457,7 +513,6 @@ void JPSPlanner::octomapCallback(const octomap_msgs::Octomap &msg)
   }
 
   octomap::AbstractOcTree* treePtr = octomap_msgs::msgToMap(msg);
-  std::shared_ptr<octomap::OcTree> binary_tree;
 
   // ros::Duration(2);
 
@@ -476,7 +531,7 @@ void JPSPlanner::octomapCallback(const octomap_msgs::Octomap &msg)
   octree_ = std::make_shared<octomap::OcTree>(planning_tree_resolution_);
   binary_tree->expand();
   for (auto it = binary_tree->begin(); it != binary_tree->end(); it++) {
-    if (edf.getDistance(it.getCoordinate()) <= 0.02) {
+    if (edf.getDistance(it.getCoordinate()) <= default_object_padding_) {
       octree_->setNodeValue(it.getCoordinate(), binary_tree->getClampingThresMaxLog()); // obstacle or close to obstacle
     } else {
       octree_->setNodeValue(it.getCoordinate(), binary_tree->getClampingThresMinLog()); // free and safe
@@ -525,7 +580,7 @@ geometry_msgs::Pose JPSPlanner::eef_state_client()
 }
 
 /* collision detection or state detection client */
-void JPSPlanner::collision_detection_client(std::vector<octomap::point3d> &waypoints, std::shared_ptr<octomap::OcTree> &tree)
+std::vector<std::vector<float>> JPSPlanner::collision_detection_client(std::shared_ptr<octomap::OcTree> &tree)
 { 
   printf(ANSI_COLOR_MAGENTA "[rokae_collision_detection]: collision detection client on" ANSI_COLOR_RESET "\n");
   check_status_ = true;
@@ -534,8 +589,6 @@ void JPSPlanner::collision_detection_client(std::vector<octomap::point3d> &waypo
   ros::service::waitForService(COLLISION_DETECTION_CLIENT_STR);
   collision_detection_client_ = nh_.serviceClient<rokae_jps_navigation::CheckCollision>(COLLISION_DETECTION_CLIENT_STR);
 
-  int iteration     = 0;
-  // int violated_iter = 0; 
   std::vector<std::vector<float>> joint_configs;
   joint_configs.push_back(prev_joint_configs_);
 
@@ -550,8 +603,8 @@ void JPSPlanner::collision_detection_client(std::vector<octomap::point3d> &waypo
     collision_detection_srv.request.ifVerbose = debug_verbose_;
     collision_detection_srv.request.prev_joints.assign(prev_joint_configs_.begin(), prev_joint_configs_.end());
 
-    octomap::OcTreeKey currNodeKey = tree->coordToKey(waypoints.at(iteration));
-    iteration++;
+    octomap::point3d point (pose_msg.position.x, pose_msg.position.y, pose_msg.position.z);
+    octomap::OcTreeKey currNodeKey = tree->coordToKey(point);
     // ROS_INFO("curr_joints size is %d", (int)curr_joint_configs_.size());
     // ROS_INFO("prev_joints size is %d", (int)collision_detection_srv.request.prev_joints.size());
     // printf(ANSI_COLOR_MAGENTA "previous joint configs=(%.3f,%.3f,%.3f,%.3f,%.3f,%.3f); iteration=%d" ANSI_COLOR_RESET "\n",prev_joint_configs_.at(0), prev_joint_configs_.at(1), prev_joint_configs_.at(2), prev_joint_configs_.at(3), prev_joint_configs_.at(4), prev_joint_configs_.at(5), iteration);
@@ -597,13 +650,14 @@ void JPSPlanner::collision_detection_client(std::vector<octomap::point3d> &waypo
   }
 
   if (planning_status_ != PlanningState::NEED_REPLANNING) {
-    joint_configs_.insert(joint_configs_.end(), joint_configs.begin(), joint_configs.end());
-    printf(ANSI_COLOR_MAGENTA "[rokae_collision_detection]: Get effective joint configs. SIZE %d" ANSI_COLOR_RESET "\n", static_cast<int>(joint_configs_.size()));
+    // joint_configs_.insert(joint_configs_.end(), joint_configs.begin(), joint_configs.end());
+    printf(ANSI_COLOR_MAGENTA "[rokae_collision_detection]: Get effective joint configs. SIZE %d" ANSI_COLOR_RESET "\n", static_cast<int>(joint_configs.size()));
+    return joint_configs;
   } 
   else {
-    if (planner_verbose_) {
-      printf(ANSI_COLOR_RED "Current path contains some obstacles or unreachable points. NEED_REPLANNING" ANSI_COLOR_RESET "\n");
-    }
+    printf(ANSI_COLOR_RED "Current path contains some obstacles or unreachable points. NEED_REPLANNING" ANSI_COLOR_RESET "\n");
+    
+    return std::vector<std::vector<float>>();
   }
 }
 
@@ -647,6 +701,32 @@ bool JPSPlanner::tarPoseAvalability_client(std::vector<geometry_msgs::Pose> &tar
   return status;
 }
 
+geometry_msgs::Pose JPSPlanner::joint2pose_client(std::vector<double> &joint_group)
+{
+  printf(ANSI_COLOR_MAGENTA "[joint2pose_client]: joints to poses convertor client on" ANSI_COLOR_RESET "\n");
+
+  geometry_msgs::Pose pose;
+  // using joint2pose client handle
+  const std::string JOINT2POSE_CLIENT_STR = "/rokae_arm/rokae_joint2pose";
+  ros::service::waitForService(JOINT2POSE_CLIENT_STR);
+  joint2pose_client_ = nh_.serviceClient<rokae_jps_navigation::joint2pose>(JOINT2POSE_CLIENT_STR);
+  rokae_jps_navigation::joint2pose joint2pose_srv;
+  joint2pose_srv.request.ifVerbose = false;
+  joint2pose_srv.request.joint0 = joint_group.at(0);
+  joint2pose_srv.request.joint1 = joint_group.at(1);
+  joint2pose_srv.request.joint2 = joint_group.at(2);
+  joint2pose_srv.request.joint3 = joint_group.at(3);
+  joint2pose_srv.request.joint4 = joint_group.at(4);
+  joint2pose_srv.request.joint5 = joint_group.at(5);
+  if (joint2pose_client_.call(joint2pose_srv)) {
+    pose = joint2pose_srv.response.re_pose;
+  } else {
+    printf(ANSI_COLOR_RED "[joint2pose_client]: ERROR." ANSI_COLOR_RESET "\n");
+  }
+
+  return pose;
+}
+
 void JPSPlanner::resamplePath(std::vector<octomap::point3d> &waypoints, std::vector<geometry_msgs::Pose> &tarPoints_pose_msg_local)
 {
   if (planner_verbose_) {
@@ -675,7 +755,7 @@ void JPSPlanner::resamplePath(std::vector<octomap::point3d> &waypoints, std::vec
     pose.orientation.w = tarPoints_pose_[currGoal_id_].w();
     pose_msg.push_back(pose);
   }
-  tarPoints_pose_msg_local.insert(tarPoints_pose_msg_local.end(), pose_msg.begin(), pose_msg.end());
+  tarPoints_pose_msg_local.assign(pose_msg.begin(), pose_msg.end());
 
   if (planner_verbose_) {
     printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: local pose message size is %d" ANSI_COLOR_RESET "\n", static_cast<int>(tarPoints_pose_msg_local.size()));
@@ -688,7 +768,7 @@ void JPSPlanner::resamplePath(std::vector<octomap::point3d> &waypoints, std::vec
 }
 
 
-bool JPSPlanner::toppra_client()
+bool JPSPlanner::toppra_client(std::vector<std::vector<float>> &joint_group)
 {
   // clear previous status
   toppra_pos_.clear();
@@ -702,7 +782,7 @@ bool JPSPlanner::toppra_client()
 
   std::vector<float> joint_configs_1d;
 
-  for (auto &jc : joint_configs_) {
+  for (auto &jc : joint_group) {
     for(size_t i = 0; i < jc.size(); i++) {
       joint_configs_1d.push_back(jc.at(i));
     }
@@ -1311,31 +1391,9 @@ std::vector<octomap::point3d> JPSPlanner::removeCornerPts(const std::vector<octo
 
 std::vector<octomap::point3d> JPSPlanner::keysToCoords(std::vector<octomap::OcTreeKey> &keys, octomap::OcTree &tree) 
 {
-  std::vector<octomap::point3d> coords;
-  float compenstate_offset = planning_tree_resolution_/2;
-  
+  std::vector<octomap::point3d> coords;  
   for (auto &k : keys) {
     octomap::point3d temp_point = tree.keyToCoord(k);
-    // float modified_x, modified_y, modified_z;
-    // if (temp_point.x() < 0) {
-    //   modified_x = temp_point.x() + compenstate_offset;
-    // } else {
-    //   modified_x = temp_point.x() - compenstate_offset;
-    // }
-
-    // if (temp_point.y() < 0) {
-    //   modified_y = temp_point.y() + compenstate_offset;
-    // } else {
-    //   modified_y = temp_point.y() - compenstate_offset;
-    // }
-
-    // if (temp_point.z() < 0) {
-    //   modified_z = temp_point.z() + compenstate_offset;
-    // } else {
-    //   modified_z = temp_point.z() - compenstate_offset;
-    // }
-    // octomap::point3d modified_point (modified_x, modified_y, modified_z);
-    // coords.push_back(modified_point);
     coords.push_back(temp_point);
   }
 

@@ -182,6 +182,7 @@ void inspect(toppra::Vector &vec, toppra::Matrix &controllable_sets, toppra::Mat
 
 bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra::ToppRa_srv::Response &res)
 {
+  plt::backend("agg");
   const bool  printInfo      = false;
   // const bool  printInfo      = true;
   const int   nDof           = 6;
@@ -189,7 +190,7 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
   const float start_t        = 0.0;
   const float end_t          = 8.0;
   int         counter        = 0;
-  int         show_time      = 5;
+  int         show_time      = 1;
 
   //#### create linear joint-space constraints ####
   toppra::Vector lowerVlimit = Eigen::VectorXd::Zero(nDof);
@@ -198,8 +199,8 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
   toppra::Vector upperAlimit = Eigen::VectorXd::Zero(nDof);
   lowerVlimit << -355/180*M_PI, -355/180*M_PI, -355/180*M_PI, -480/180*M_PI, -450/180*M_PI, -705/180*M_PI;
   upperVlimit << 355/180*M_PI, 355/180*M_PI, 355/180*M_PI, 480/180*M_PI, 450/180*M_PI, 705/180*M_PI;
-  lowerAlimit << -0.1, -4.0, -6.0, -0.1, -10.0, -12.0;
-  upperAlimit << 0.1, 4.0, 6.0, 0.1, 10.0, 12.0;
+  lowerAlimit << -3.0, -3.0, -3.0, -6.0, -6.0, -6.0;
+  upperAlimit << 3.0, 3.0, 3.0, 6.0, 6.0, 6.0;
 
   toppra::LinearConstraintPtr linear_joint_vel, linear_joint_acc;
   // Create acceleration bounds, then acceleration constraint object
@@ -248,7 +249,8 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
 
   std::shared_ptr<toppra::parametrizer::ConstAccel> ca = std::make_shared<toppra::parametrizer::ConstAccel>(path, gridpoints, vsquared);
   toppra::Bound  path_interval = ca->pathInterval();
-  const int      length2       = 20*(path_interval(1) - path_interval(0));
+  // const int      length2       = 10*(path_interval(1) - path_interval(0));
+  const int      length2       = 20;
 
   toppra::Vector times2        = toppra::Vector::LinSpaced(length2, path_interval(0), path_interval(1));
 
@@ -294,7 +296,7 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
   std::string UTC_string = std::to_string(UTC);
 
   // mkdir
-  std::string dir_path = "/home/contour/ws_catkin_rokae/src/rokae_demo/rokae_arm_toppra/share/" + UTC_string;
+  std::string dir_path = "/home/contour/ws_catkin_elephant/src/elephant/rokae_arm_toppra/share/" + UTC_string;
   if (!boost::filesystem::is_directory(dir_path))
   {
     printf(ANSI_COLOR_MAGENTA "begin create path: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());

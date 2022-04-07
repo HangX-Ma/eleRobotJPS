@@ -29,7 +29,7 @@ add_custom_target(_rokae_jps_navigation_generate_messages_check_deps_${_filename
 
 get_filename_component(_filename "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv" NAME_WE)
 add_custom_target(_rokae_jps_navigation_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rokae_jps_navigation" "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv" "std_msgs/Float32"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rokae_jps_navigation" "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv" "geometry_msgs/Pose:geometry_msgs/Quaternion:geometry_msgs/Point"
 )
 
 get_filename_component(_filename "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/CheckCollision.srv" NAME_WE)
@@ -60,7 +60,7 @@ _generate_srv_cpp(rokae_jps_navigation
 _generate_srv_cpp(rokae_jps_navigation
   "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Float32.msg"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/rokae_jps_navigation
 )
 _generate_srv_cpp(rokae_jps_navigation
@@ -117,7 +117,7 @@ _generate_srv_eus(rokae_jps_navigation
 _generate_srv_eus(rokae_jps_navigation
   "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Float32.msg"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/rokae_jps_navigation
 )
 _generate_srv_eus(rokae_jps_navigation
@@ -174,7 +174,7 @@ _generate_srv_lisp(rokae_jps_navigation
 _generate_srv_lisp(rokae_jps_navigation
   "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Float32.msg"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/rokae_jps_navigation
 )
 _generate_srv_lisp(rokae_jps_navigation
@@ -231,7 +231,7 @@ _generate_srv_nodejs(rokae_jps_navigation
 _generate_srv_nodejs(rokae_jps_navigation
   "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Float32.msg"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/rokae_jps_navigation
 )
 _generate_srv_nodejs(rokae_jps_navigation
@@ -288,7 +288,7 @@ _generate_srv_py(rokae_jps_navigation
 _generate_srv_py(rokae_jps_navigation
   "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Float32.msg"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/rokae_jps_navigation
 )
 _generate_srv_py(rokae_jps_navigation

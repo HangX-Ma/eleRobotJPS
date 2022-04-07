@@ -67,7 +67,7 @@ include elephant/rokae_jps_navigation/CMakeFiles/_rokae_jps_navigation_generate_
 include elephant/rokae_jps_navigation/CMakeFiles/_rokae_jps_navigation_generate_messages_check_deps_joint2pose.dir/progress.make
 
 elephant/rokae_jps_navigation/CMakeFiles/_rokae_jps_navigation_generate_messages_check_deps_joint2pose:
-	cd /home/contour/ws_catkin_elephant/build/elephant/rokae_jps_navigation && ../../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py rokae_jps_navigation /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv std_msgs/Float32
+	cd /home/contour/ws_catkin_elephant/build/elephant/rokae_jps_navigation && ../../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py rokae_jps_navigation /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv geometry_msgs/Pose:geometry_msgs/Quaternion:geometry_msgs/Point
 
 _rokae_jps_navigation_generate_messages_check_deps_joint2pose: elephant/rokae_jps_navigation/CMakeFiles/_rokae_jps_navigation_generate_messages_check_deps_joint2pose
 _rokae_jps_navigation_generate_messages_check_deps_joint2pose: elephant/rokae_jps_navigation/CMakeFiles/_rokae_jps_navigation_generate_messages_check_deps_joint2pose.dir/build.make

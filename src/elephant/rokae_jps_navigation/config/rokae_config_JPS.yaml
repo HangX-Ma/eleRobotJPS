@@ -8,6 +8,7 @@ planning:
   xDim: 1.8                      # [m]
   yDim: 1.8                      # [m]
   zDim: 1.8                      # [m]
+  euclidean_distance_cutoff: 1.8 # [m]
   eps:  1.0                      # [heuristic gain]
   max_iteration: 10              # [maximum iteration times for getting optimal path]
   JPS_max_iteration: 6000        # [maximum iteration times for getting optimal path]

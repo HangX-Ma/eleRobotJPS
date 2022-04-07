@@ -1,8 +1,9 @@
-std_msgs/Float32 joint0
-std_msgs/Float32 joint1
-std_msgs/Float32 joint2
-std_msgs/Float32 joint3
-std_msgs/Float32 joint4
-std_msgs/Float32 joint5
+float64 joint0
+float64 joint1
+float64 joint2
+float64 joint3
+float64 joint4
+float64 joint5
 bool ifVerbose
 ---
+geometry_msgs/Pose re_pose

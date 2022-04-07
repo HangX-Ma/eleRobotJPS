@@ -13,4 +13,6 @@
           JOINT5
           IFVERBOSE-VAL
           IFVERBOSE
+          RE_POSE-VAL
+          RE_POSE
 ))

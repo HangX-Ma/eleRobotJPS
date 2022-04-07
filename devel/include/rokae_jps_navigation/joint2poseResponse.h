@@ -15,6 +15,7 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
+#include <geometry_msgs/Pose.h>
 
 namespace rokae_jps_navigation
 {
@@ -24,14 +25,17 @@ struct joint2poseResponse_
   typedef joint2poseResponse_<ContainerAllocator> Type;
 
   joint2poseResponse_()
-    {
+    : re_pose()  {
     }
   joint2poseResponse_(const ContainerAllocator& _alloc)
-    {
+    : re_pose(_alloc)  {
   (void)_alloc;
     }
 
 
+
+   typedef  ::geometry_msgs::Pose_<ContainerAllocator>  _re_pose_type;
+  _re_pose_type re_pose;
 
 
 
@@ -56,6 +60,19 @@ std::ostream& operator<<(std::ostream& s, const ::rokae_jps_navigation::joint2po
 {
 ros::message_operations::Printer< ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator> >::stream(s, "", v);
 return s;
+}
+
+
+template<typename ContainerAllocator1, typename ContainerAllocator2>
+bool operator==(const ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator1> & lhs, const ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator2> & rhs)
+{
+  return lhs.re_pose == rhs.re_pose;
+}
+
+template<typename ContainerAllocator1, typename ContainerAllocator2>
+bool operator!=(const ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator1> & lhs, const ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator2> & rhs)
+{
+  return !(lhs == rhs);
 }
 
 
@@ -106,12 +123,12 @@ struct MD5Sum< ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "d41d8cd98f00b204e9800998ecf8427e";
+    return "222653e911ec2723bf153c3e2c46d638";
   }
 
   static const char* value(const ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xd41d8cd98f00b204ULL;
-  static const uint64_t static_value2 = 0xe9800998ecf8427eULL;
+  static const uint64_t static_value1 = 0x222653e911ec2723ULL;
+  static const uint64_t static_value2 = 0xbf153c3e2c46d638ULL;
 };
 
 template<class ContainerAllocator>
@@ -130,7 +147,30 @@ struct Definition< ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocato
 {
   static const char* value()
   {
-    return "\n"
+    return "geometry_msgs/Pose re_pose\n"
+"\n"
+"\n"
+"================================================================================\n"
+"MSG: geometry_msgs/Pose\n"
+"# A representation of pose in free space, composed of position and orientation. \n"
+"Point position\n"
+"Quaternion orientation\n"
+"\n"
+"================================================================================\n"
+"MSG: geometry_msgs/Point\n"
+"# This contains the position of a point in free space\n"
+"float64 x\n"
+"float64 y\n"
+"float64 z\n"
+"\n"
+"================================================================================\n"
+"MSG: geometry_msgs/Quaternion\n"
+"# This represents an orientation in free space in quaternion form.\n"
+"\n"
+"float64 x\n"
+"float64 y\n"
+"float64 z\n"
+"float64 w\n"
 ;
   }
 
@@ -147,8 +187,10 @@ namespace serialization
 
   template<class ContainerAllocator> struct Serializer< ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator> >
   {
-    template<typename Stream, typename T> inline static void allInOne(Stream&, T)
-    {}
+    template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
+    {
+      stream.next(m.re_pose);
+    }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
   }; // struct joint2poseResponse_
@@ -164,8 +206,12 @@ namespace message_operations
 template<class ContainerAllocator>
 struct Printer< ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator> >
 {
-  template<typename Stream> static void stream(Stream&, const std::string&, const ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator>&)
-  {}
+  template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::rokae_jps_navigation::joint2poseResponse_<ContainerAllocator>& v)
+  {
+    s << indent << "re_pose: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Pose_<ContainerAllocator> >::stream(s, indent + "  ", v.re_pose);
+  }
 };
 
 } // namespace message_operations

@@ -103,7 +103,9 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_navigation_generate_messages_
 
 /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2pose.h: /opt/ros/melodic/lib/gencpp/gen_cpp.py
 /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2pose.h: /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/srv/joint2pose.srv
-/home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2pose.h: /opt/ros/melodic/share/std_msgs/msg/Float32.msg
+/home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2pose.h: /opt/ros/melodic/share/geometry_msgs/msg/Pose.msg
+/home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2pose.h: /opt/ros/melodic/share/geometry_msgs/msg/Quaternion.msg
+/home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2pose.h: /opt/ros/melodic/share/geometry_msgs/msg/Point.msg
 /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2pose.h: /opt/ros/melodic/share/gencpp/msg.h.template
 /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/joint2pose.h: /opt/ros/melodic/share/gencpp/srv.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/contour/ws_catkin_elephant/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating C++ code from rokae_jps_navigation/joint2pose.srv"
