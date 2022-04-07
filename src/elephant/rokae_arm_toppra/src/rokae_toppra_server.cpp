@@ -309,8 +309,8 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
     printf(ANSI_COLOR_RED "%s already exist" ANSI_COLOR_RESET "\n", dir_path .c_str());
   }
 
-  plotdata(path_pos2, path_vel2, path_acc2, times2, nDof, show_time, UTC_string, dir_path,true);
-  inspect(pd.parametrization, pd.controllable_sets, pd.feasible_sets, show_time, UTC_string, dir_path,true);
+  plotdata(path_pos2, path_vel2, path_acc2, times2, nDof, show_time, UTC_string, dir_path,false);
+  inspect(pd.parametrization, pd.controllable_sets, pd.feasible_sets, show_time, UTC_string, dir_path,false);
 
   // pos saver
   std::ofstream outfile_pos;

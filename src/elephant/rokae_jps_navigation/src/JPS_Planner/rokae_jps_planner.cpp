@@ -252,11 +252,17 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
 
   // clear obstacle iteration id
   obs_iter_id_ = 0;
+
+
   // If we send more than one goal we need to plan a path to connect each one in order.
   for (int goalNum = 0; goalNum < (int)tarPoints_bufferIn.size(); goalNum++)
   {
     // time tick for current goal planning
     auto curr_goal_start = std::chrono::high_resolution_clock::now(); 
+
+    // save the initial joint for each goal
+    std::vector<float> prev_joints;
+    prev_joints.assign(prev_joint_configs_.begin(),prev_joint_configs_.end());
 
     currGoal_ = tarPoints_bufferIn[currGoal_id_]; 
     
@@ -291,6 +297,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         return false;
       }
 
+      prev_joint_configs_.assign(prev_joints.begin(), prev_joints.end());
       bool success = JPS_BasePtr->plan(*octree_, JPS_max_iteration_);
       if (success) {
         // visualize the best optimal path expansion process
@@ -341,15 +348,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         tarPoints_pose_msg_.clear();
         resamplePath(optimal_path_, tarPoints_pose_msg_);
 
-        if(currGoal_id_ == 0) {
-            check_status_ = false;
-            setInitialJoints(0, 0, 0, 0, 0, 0);
-        }
         std::vector<std::vector<float>> joint_configs = collision_detection_client(octree_);
-
-        // for (auto&jg:joint_configs) {
-        //   ROS_INFO("joint configs: (%.3f,%.3f,%.3f,%.3f,%.3f,%.3f)\n",jg[0],jg[1],jg[2],jg[3],jg[4],jg[5]);
-        // }
 
         if (planning_status_ == PlanningState::NEED_REPLANNING) {
           // reset the status
@@ -364,10 +363,6 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         // current path have no obstacles or collision, 
         // but if TOPP-RA generates a new trajectory, we need to do further check.
 
-        if(currGoal_id_ == 0) {
-          check_status_ = false;
-          setInitialJoints(0, 0, 0, 0, 0, 0);
-        }
         // we need to check the poses of the toppra returned values
         toppra_client(joint_configs);
         int8_t joint_num = 0;
