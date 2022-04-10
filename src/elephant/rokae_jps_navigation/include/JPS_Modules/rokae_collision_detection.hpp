@@ -13,6 +13,7 @@
 
 #include <ros/ros.h>
 #include <string>
+#include <moveit/robot_model/aabb.h>
 #include <moveit/robot_model/robot_model.h>
 #include <moveit/robot_state/robot_state.h>
 #include <moveit/move_group_interface/move_group_interface.h>
@@ -21,6 +22,9 @@
 #include <moveit/planning_scene/planning_scene.h>
 #include <moveit/kinematic_constraints/utils.h>
 #include <tf2_ros/buffer.h>
+#include <tf2_ros/transform_listener.h>
+#include <moveit/collision_detection_fcl/collision_detector_allocator_fcl.h>
+#include <moveit/collision_detection_bullet/collision_detector_allocator_bullet.h>
 
 #include <rokae_jps_navigation/CheckCollision.h>
 #include "JPS_Basis/rokae_jps_basis.hpp"
@@ -68,6 +72,12 @@ class self_detector
 
     //! collision detector service server variable
     ros::ServiceServer detector_service;
+
+    //! visualize aabb
+    ros::Publisher pub_aabb;
+
+    //! visualize obb
+    ros::Publisher pub_obb;
 };
 
 

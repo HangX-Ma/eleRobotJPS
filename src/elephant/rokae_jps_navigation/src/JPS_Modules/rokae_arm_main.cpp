@@ -310,14 +310,14 @@ void operation::plan_with_move()
   planner_srv.request.ifback = ifMoveback_;
   
   // prepare
-  pose.position.x = -0.0154582;
-  pose.position.y = 0.506155;
-  pose.position.z = 0.215702;
-  pose.orientation.w = -0.5;
-  pose.orientation.x = 0.5;
-  pose.orientation.y = 0.5;
-  pose.orientation.z = -0.5;
-  planner_srv.request.goal_pose.push_back(pose);
+  // pose.position.x = -0.0154582;
+  // pose.position.y = 0.506155;
+  // pose.position.z = 0.215702;
+  // pose.orientation.w = -0.5;
+  // pose.orientation.x = 0.5;
+  // pose.orientation.y = 0.5;
+  // pose.orientation.z = -0.5;
+  // planner_srv.request.goal_pose.push_back(pose);
 
   // forward
   pose.position.x = -0.62792;

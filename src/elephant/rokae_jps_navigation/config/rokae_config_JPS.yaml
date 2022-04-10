@@ -15,8 +15,8 @@ planning:
   search_radius: 3               # [increment of key value]
   potential_radius: 5            # [increment of key value]
   potential_weight: 0.5          # [potential field gain]
-  # heu_type: Diagonal             # heuristic type
-  heu_type: Manhattan            # heuristic type
+  heu_type: Diagonal           # heuristic type
+  # heu_type: Manhattan            # heuristic type
 visualization:
   show_unoccupied: false         # show unoccupied voxel of the octree
   tree_points_scale: 0.02        # be same with the planning_tree_resolution

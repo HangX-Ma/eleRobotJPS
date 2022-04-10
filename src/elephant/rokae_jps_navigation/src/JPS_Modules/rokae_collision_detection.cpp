@@ -30,23 +30,25 @@ self_detector::self_detector(ros::NodeHandle* nodehandle):nh_(*nodehandle)
   // determine the planning group for processing
   PLANNING_GROUP = "manipulator";
 
+  // Load the planning scene monitor
   std::shared_ptr<tf2_ros::Buffer> tf_buffer = std::make_shared<tf2_ros::Buffer>();
+  std::shared_ptr<tf2_ros::TransformListener> tf_listener = std::make_shared<tf2_ros::TransformListener>(*tf_buffer, nh_);
   psm = std::make_shared<planning_scene_monitor::PlanningSceneMonitor>("robot_description", tf_buffer);
-  // psm = std::make_shared<planning_scene_monitor::PlanningSceneMonitor>("robot_description");
-
-  psm->startSceneMonitor();
+  
+  psm->startSceneMonitor("/move_group/monitored_planning_scene");
+  psm->startWorldGeometryMonitor();
   psm->startStateMonitor();
- 
-  ros::service::waitForService("/get_planning_scene");
-  if(psm->requestPlanningSceneState("/get_planning_scene")) {
-    psm->startSceneMonitor("/move_group/monitored_planning_scene");
-    psm->startWorldGeometryMonitor();
-    psm->startStateMonitor();
-  }
-  else {
-    ROS_ERROR_STREAM("Error in setting up the PlanningSceneMonitor.");
-  }
+  // psm->requestPlanningSceneState();
 
+  if (!psm->getPlanningScene()) {
+    ROS_ERROR_STREAM("Error in setting up the PlanningSceneMonitor");
+    exit(-1);
+  }
+  ros::Duration(0.5).sleep();
+
+  std::vector<std::string> topics;
+  psm->getMonitoredTopics(topics);
+  ROS_INFO_STREAM("Listening for scene updates on topics " << boost::algorithm::join(topics, ", "));
   // call startSceneMonitor, startWorldGeometryMonitor and startStateMonitor to fully initialize the planning scene monitor
   // /* listen for planning scene messages on topic /XXX and apply them to the internal planning scene accordingly */
   // psm->startSceneMonitor("/move_group/monitored_planning_scene");
@@ -58,6 +60,9 @@ self_detector::self_detector(ros::NodeHandle* nodehandle):nh_(*nodehandle)
   // bool success = psm->requestPlanningSceneState("get_planning_scene");
   // ROS_INFO_STREAM("Request planning scene " << (success ? "succeeded." : "failed."));
   detector_service = nh_.advertiseService("/rokae_arm/robot_collision_detection_node", &self_detector::m_collision_detection, this);
+  pub_aabb         = nh_.advertise<visualization_msgs::Marker>("visualization_aabb", 10);
+  pub_obb          = nh_.advertise<visualization_msgs::Marker>("/visualization_obb", 10);
+
 
   ROS_INFO("[rokae_collision_detection]: Service On. Ready to do robot collision detection.");
 
@@ -106,30 +111,39 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
 /* We can get the most up to date robot state from the PlanningSceneMonitor by locking the internal planning scene
    for reading. This lock ensures that the underlying scene isn't updated while we are reading it's state.
    RobotState's are useful for computing the forward and inverse kinematics of the robot among many other uses */
+  psm->updateFrameTransforms();
 
   planning_scene_monitor::LockedPlanningSceneRW ps(psm); // usage is similar as 'planning_scene::PlanningScene'
 
   // getCurrentStateNonConst() return a robot state class
   ps->getCurrentStateNonConst().update(); // Update all transforms.
 
+  // construct a planning scene that is just a diff on top of our actual planning scene
+            // assume the current state of the diff world is the one we plan to reach
   scene = ps->diff(); // Return a new child PlanningScene that uses this one as parent.
-  
   // Make sure that all the data maintained in this scene is local. 
   // All unmodified data is copied from the parent and the pointer to the parent is discarded.
-  scene->decoupleParent();
+  // scene->decoupleParent();
+  scene->setActiveCollisionDetector(collision_detection::CollisionDetectorAllocatorFCL::create());
+  // scene->setActiveCollisionDetector(collision_detection::CollisionDetectorAllocatorBullet::create());
 
-  
+  double radius = 0.02;
+  double lifetime = 600.0;
+  unsigned int trials = 10000; // The number of repeated collision checks for each state
 
   // Get the kinematic model for which the planning scene is maintained.
   const robot_model::RobotModelConstPtr& model = scene->getRobotModel();
-  
+  collision_detection::AllowedCollisionMatrix acm{collision_detection::AllowedCollisionMatrix(model->getLinkModelNames(), true) };
   // kinematic_state
-  robot_state::RobotStatePtr kinematic_state(new robot_state::RobotState(model));
+  robot_state::RobotState& kinematic_state = scene->getCurrentStateNonConst();
+
+
 
   /* Create a JointModelGroup to keep track of the current robot pose and planning group. The Joint Model
    group is useful for dealing with one set of joints at a time such as a left arm or a end effector */
-  const robot_model::JointModelGroup* joint_model_group = kinematic_state->getJointModelGroup(PLANNING_GROUP);
-
+  const robot_model::JointModelGroup* joint_model_group = kinematic_state.getJointModelGroup(PLANNING_GROUP);
+  kinematic_state.setToDefaultValues(joint_model_group, "home");
+  kinematic_state.update();
   /******************************** debug code ************************************/
   // std::vector<std::string>            joint_names       = joint_model_group->getVariableNames();
   // std::vector<std::string> joint_names {"rokae_arm_joint0", "rokae_arm_joint1", "rokae_arm_joint2", 
@@ -187,15 +201,15 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
   // calculate collision distance
   // [WARNING]: THIS WILL SLOW THE DETECTION SPEED GRAMMATICALLY 
   // collision_req.distance = true;
-
   // if you want to print the detection result
-  // collision_req.verbose  = true;
+  collision_req.verbose  = true;
   
-  // collision_req.contacts = true;
-
+  collision_req.contacts = true;
+  collision_req.max_contacts = 99;
+  collision_req.max_contacts_per_pair = 10;
   // choose the collision detection group 
   // !!!!!!!!!!!!!!!!!!! I set this parament and the result seems to be right. !!!!!!!!!!!!!!!!!!!!!!!!!
-  collision_req.group_name     = PLANNING_GROUP; 
+  // collision_req.group_name     = PLANNING_GROUP; 
 
   /* print out useful message */
   // scene->printKnownObjects(std::cout);
@@ -207,14 +221,106 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
   //   kinematic_state->setJointPositions(joint_names[i].c_str(), &joint_positions[i]);
   // }
   // kinematic_state->setVariablePositions(joint_names, joint_positions);
-  kinematic_state->setJointGroupPositions(joint_model_group, joint_positions);
-  // clear previous collision detection result
-  collision_res.clear();
-  // check the self collision and Env collision
-  scene->checkCollision(collision_req, collision_res, *kinematic_state);
+  // kinematic_state.setJointGroupPositions(joint_model_group, joint_positions);
+  kinematic_state.setJointPositions("elerobot_joint0", &joint_positions[0]);
+  kinematic_state.setJointPositions("elerobot_joint1", &joint_positions[1]);
+  kinematic_state.setJointPositions("elerobot_joint2", &joint_positions[2]);
+  kinematic_state.setJointPositions("elerobot_joint3", &joint_positions[3]);
+  kinematic_state.setJointPositions("elerobot_joint4", &joint_positions[4]);
+  kinematic_state.setJointPositions("elerobot_joint5", &joint_positions[5]);
+
+  kinematic_state.update();
+  scene->setCurrentState(kinematic_state);
+  std::vector<double> gstate;
+  // scene->getCurrentState().copyJointGroupPositions(PLANNING_GROUP,gstate);
+  // ROS_INFO("gstate size: %d\njoint config: %f,%f,%f,%f,%f,%f\n",gstate.size(), gstate[0], gstate[1], gstate[2], gstate[3], gstate[4], gstate[5]);
+  std::vector<double> aabb;
+  scene->getCurrentState().computeAABB(aabb);
+
+  // Prepare the ROS message we will reuse throughout the rest of the function.
+  visualization_msgs::Marker msg;
+  msg.header.frame_id = model->getRootLinkName();
+  msg.type         = visualization_msgs::Marker::CUBE;
+  msg.color.a      = 0.5;
+  msg.lifetime.sec = 3000;
+
+  // Publish the AABB of the whole model
+  msg.ns = "elerobot";
+  msg.pose.position.x = (aabb[0] + aabb[1]) / 2;
+  msg.pose.position.y = (aabb[2] + aabb[3]) / 2;
+  msg.pose.position.z = (aabb[4] + aabb[5]) / 2;
+  msg.pose.orientation.x = msg.pose.orientation.y = msg.pose.orientation.z = 0;
+  msg.pose.orientation.w = 1;
+  msg.scale.x = aabb[1] - aabb[0];
+  msg.scale.y = aabb[3] - aabb[2];
+  msg.scale.z = aabb[5] - aabb[4];
+  pub_aabb.publish(msg);
+
+  // Publish BBs for all links
+  std::vector<const moveit::core::LinkModel*> links = model->getLinkModelsWithCollisionGeometry();
+  for (std::size_t i = 0; i < links.size(); ++i)
+  {
+    Eigen::Isometry3d      transform = kinematic_state.getGlobalLinkTransform(links[i]);  // intentional copy, we will translate
+    const Eigen::Vector3d& extents   = links[i]->getShapeExtentsAtOrigin();
+    transform.translate(links[i]->getCenteredBoundingBoxOffset());
+    moveit::core::AABB aabb_all;
+    aabb_all.extendWithTransformedBox(transform, extents);
+
+    // Publish AABB
+    msg.ns              = links[i]->getName();
+    msg.pose.position.x = transform.translation()[0];
+    msg.pose.position.y = transform.translation()[1];
+    msg.pose.position.z = transform.translation()[2];
+    msg.pose.orientation.x = msg.pose.orientation.y = msg.pose.orientation.z = 0;
+    msg.pose.orientation.w = 1;
+    msg.color.r = 1;
+    msg.color.b = 0;
+    msg.scale.x = aabb_all.sizes()[0];
+    msg.scale.y = aabb_all.sizes()[1];
+    msg.scale.z = aabb_all.sizes()[2];
+    pub_aabb.publish(msg);
+
+    // Publish OBB (oriented BB)
+    msg.ns += "-obb";
+    msg.pose.position.x = transform.translation()[0];
+    msg.pose.position.y = transform.translation()[1];
+    msg.pose.position.z = transform.translation()[2];
+    msg.scale.x = extents[0];
+    msg.scale.y = extents[1];
+    msg.scale.z = extents[2];
+    msg.color.r = 0;
+    msg.color.b = 1;
+    Eigen::Quaterniond q(transform.linear());
+    msg.pose.orientation.x = q.x();
+    msg.pose.orientation.y = q.y();
+    msg.pose.orientation.z = q.z();
+    msg.pose.orientation.w = q.w();
+    pub_obb.publish(msg);
+  }
+
+  for (unsigned int i = 0; i < trials; ++i) {
+    // clear previous collision detection result
+    collision_res.clear();
+    // check the self collision and Env collision
+    scene->checkCollision(collision_req, collision_res, kinematic_state, acm);
+  }
+
   // scene->checkSelfCollision(collision_req, collision_res);
   // printf(ANSI_COLOR_GREEN "collision distance: %f" ANSI_COLOR_RESET"\n", collision_res.distance);
-
+  // ROS_INFO(ANSI_COLOR_CYAN "obs dist: %f" ANSI_COLOR_RESET, collision_res.distance);
+  ROS_INFO(ANSI_COLOR_CYAN "contact num: %d" ANSI_COLOR_RESET, collision_res.contact_count);
+  // color collided objects red
+  for (auto& contact : collision_res.contacts)
+  {
+    ROS_INFO_STREAM("Between: " << contact.first.first << " and " << contact.first.second);
+    std_msgs::ColorRGBA red;
+    red.a = 0.8;
+    red.r = 1;
+    red.g = 0;
+    red.b = 0;
+    scene->setObjectColor(contact.first.first, red);
+    scene->setObjectColor(contact.first.second, red);
+  }
   // response variable store the result contained in collision_result.collision
   res.isCollide = collision_res.collision;
   if(!res.isCollide) {
@@ -248,13 +354,107 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
     // for (std::size_t i = 0; i < joint_names.size(); ++i) {
     //   kinematic_state->setJointPositions(joint_names[i].c_str(), &joint_positions[i]);
     // }
-    kinematic_state->setJointGroupPositions(joint_model_group, joint_positions);
+    // kinematic_state.setJointGroupPositions(joint_model_group, joint_positions);
+    kinematic_state.setJointPositions("elerobot_joint0", &joint_positions[0]);
+    kinematic_state.setJointPositions("elerobot_joint1", &joint_positions[1]);
+    kinematic_state.setJointPositions("elerobot_joint2", &joint_positions[2]);
+    kinematic_state.setJointPositions("elerobot_joint3", &joint_positions[3]);
+    kinematic_state.setJointPositions("elerobot_joint4", &joint_positions[4]);
+    kinematic_state.setJointPositions("elerobot_joint5", &joint_positions[5]);
 
-    collision_res.clear();
-    scene->checkCollision(collision_req, collision_res, *kinematic_state);
+    kinematic_state.update();
+    scene->setCurrentState(kinematic_state);
+    std::vector<double> gstate;
+    scene->getCurrentState().copyJointGroupPositions(PLANNING_GROUP,gstate);
+    ROS_INFO("gstate size: %d\njoint config: %f,%f,%f,%f,%f,%f\n",gstate.size(), gstate[0], gstate[1], gstate[2], gstate[3], gstate[4], gstate[5]);
+
+    std::vector<double> aabb;
+    scene->getCurrentState().computeAABB(aabb);
+    // Prepare the ROS message we will reuse throughout the rest of the function.
+    visualization_msgs::Marker msg;
+    msg.header.frame_id = model->getRootLinkName();
+    msg.type         = visualization_msgs::Marker::CUBE;
+    msg.color.a      = 0.5;
+    msg.lifetime.sec = 3000;
+
+    // Publish the AABB of the whole model
+    msg.ns = "elerobot";
+    msg.pose.position.x = (aabb[0] + aabb[1]) / 2;
+    msg.pose.position.y = (aabb[2] + aabb[3]) / 2;
+    msg.pose.position.z = (aabb[4] + aabb[5]) / 2;
+    msg.pose.orientation.x = msg.pose.orientation.y = msg.pose.orientation.z = 0;
+    msg.pose.orientation.w = 1;
+    msg.scale.x = aabb[1] - aabb[0];
+    msg.scale.y = aabb[3] - aabb[2];
+    msg.scale.z = aabb[5] - aabb[4];
+    pub_aabb.publish(msg);
+
+    // Publish BBs for all links
+    std::vector<const moveit::core::LinkModel*> links = model->getLinkModelsWithCollisionGeometry();
+    for (std::size_t i = 0; i < links.size(); ++i)
+    {
+      Eigen::Isometry3d      transform = kinematic_state.getGlobalLinkTransform(links[i]);  // intentional copy, we will translate
+      const Eigen::Vector3d& extents   = links[i]->getShapeExtentsAtOrigin();
+      transform.translate(links[i]->getCenteredBoundingBoxOffset());
+      moveit::core::AABB bounding_box;
+      bounding_box.extendWithTransformedBox(transform, extents);
+
+      // Publish AABB
+      msg.ns              = links[i]->getName();
+      msg.pose.position.x = transform.translation()[0];
+      msg.pose.position.y = transform.translation()[1];
+      msg.pose.position.z = transform.translation()[2];
+      msg.pose.orientation.x = msg.pose.orientation.y = msg.pose.orientation.z = 0;
+      msg.pose.orientation.w = 1;
+      msg.color.r = 1;
+      msg.color.b = 0;
+      msg.scale.x = bounding_box.sizes()[0];
+      msg.scale.y = bounding_box.sizes()[1];
+      msg.scale.z = bounding_box.sizes()[2];
+      pub_aabb.publish(msg);
+
+      // Publish OBB (oriented BB)
+      msg.ns += "-obb";
+      msg.pose.position.x = transform.translation()[0];
+      msg.pose.position.y = transform.translation()[1];
+      msg.pose.position.z = transform.translation()[2];
+      msg.scale.x = extents[0];
+      msg.scale.y = extents[1];
+      msg.scale.z = extents[2];
+      msg.color.r = 0;
+      msg.color.b = 1;
+      Eigen::Quaterniond q(transform.linear());
+      msg.pose.orientation.x = q.x();
+      msg.pose.orientation.y = q.y();
+      msg.pose.orientation.z = q.z();
+      msg.pose.orientation.w = q.w();
+      pub_obb.publish(msg);
+    }
+
+    for (unsigned int i = 0; i < trials; ++i) {
+      // clear previous collision detection result
+      collision_res.clear();
+      // check the self collision and Env collision
+      scene->checkCollision(collision_req, collision_res, kinematic_state, acm);
+    }
+
     // scene->checkSelfCollision(collision_req, collision_res);
     // printf(ANSI_COLOR_GREEN "collision distance: %f" ANSI_COLOR_RESET"\n", collision_res.distance);
+    // ROS_INFO(ANSI_COLOR_CYAN "obs dist: %f" ANSI_COLOR_RESET, collision_res.distance );
+    ROS_INFO(ANSI_COLOR_CYAN "contact num: %d" ANSI_COLOR_RESET, collision_res.contact_count);
 
+    // color collided objects red
+    for (auto& contact : collision_res.contacts)
+    {
+      ROS_INFO_STREAM("Between: " << contact.first.first << " and " << contact.first.second);
+      std_msgs::ColorRGBA red;
+      red.a = 0.8;
+      red.r = 1;
+      red.g = 0;
+      red.b = 0;
+      scene->setObjectColor(contact.first.first, red);
+      scene->setObjectColor(contact.first.second, red);
+    }
     res.isCollide = collision_res.collision;
     if(!res.isCollide)
     {
@@ -282,70 +482,3 @@ int main(int argc, char** argv)
   ros::waitForShutdown();
   return 0;
 }
-
-
-
-  // robots::Kinematics* IKsolver_test(new robots::Kinematics());
-  // std::vector<float> ee_pose_test {0.554500, 0, 1.053000, 0.0, 0.707107, 0.0, 0.707107};
-  // std::vector<float> ee_pose_test2 {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-  // // std::vector<float> joint_state_values_test = IKsolver_test->forward(ee_pose_test2);
-  // // std::vector<float> joint_state_values_test = IKsolver_test->inverse(ee_pose_test);
-
-  // std::vector<float> ee_pose_pre {0, 1, 0, 0, 0, 0};
-  // const std::vector<float> tmp = IKsolver_test->inverse(ee_pose_test);
-  // std::vector<float> joint_state_values_test = IKsolver_test->getClosestIK(tmp, ee_pose_pre);
-
-  // // Eigen::Matrix3f eef_rotation = getRotationMatrix(joint_state_values_test);
-  // // Eigen::Quaternionf q = rotationMatrix2Quaterniond(eef_rotation);
-  // // ROS_INFO_STREAM("Quaterniond:(" << q.w() << "," << q.x() << "," << q.y() << "," << q.z() << ")");
-
-  // if (joint_state_values_test.size() == 0)
-  // {
-  //   ROS_ERROR("No solution");
-  // }
-
-  // std::string joint_state_string_test; // Joints Configration Output
-  // for (const auto & item : joint_state_values_test){
-  //   joint_state_string_test += std::to_string(item);
-  //   joint_state_string_test += " ";
-  // }
-  // // ROS_INFO_STREAM("Joints Configration at this point: " << joint_state_string_test);
-  // ROS_INFO_STREAM("eef state: " << joint_state_string_test);
-
-  // void self_detector::searchPolicy(const std::vector<float> prev_joint_configs)
-// {
-//   // Monte Carlo Search
-//   robots::Kinematics* _IKsolver(new robots::Kinematics());
-//   std::vector<float> pose {0.554500, 0, 1.053000};
-//   std::vector<float> eef_joint_configs {0, 0, 0, 0, 0, 0};
-//   std::vector<float> search_joint_configs(6);
-//   float tolerance = 0.02;
-//   for (int n = 5000; n > 0; n--)
-//   {
-//     search_joint_configs.clear();
-//     for (int i = 0; i < 6; i++)
-//     {
-//       search_joint_configs.push_back(prev_joint_configs.at(i) + (rand()% 100 - 50 )*0.01);
-//     }
-//     bool success = _IKsolver->CheckBound(search_joint_configs);
-
-//     if (success)
-//     {
-//         std::vector<float> test_pose = _IKsolver->forward(search_joint_configs);
-//         std::vector<float> transl = getTranslation(test_pose);
-//         double x_err = abs(transl[0] - pose[0]);
-//         double y_err = abs(transl[1] - pose[1]);
-//         double z_err = abs(transl[2] - pose[2]);
-//         double cost = pow()
-//         if ( x_err <= tolerance &&  y_err <= tolerance && z_err <= tolerance)
-//         {
-//           ROS_INFO_STREAM("Get joint configs for target point.");
-//           ROS_INFO_STREAM("Joint Configs: (" << search_joint_configs[0] << "," << search_joint_configs[1] << "," << search_joint_configs[2] << ","
-//           << search_joint_configs[3] << "," << search_joint_configs[4] << "," << search_joint_configs[5] << ")");
-//           break;
-//         }
-//     }
-//     ROS_INFO_STREAM(n);
-//   }
-  
-// }

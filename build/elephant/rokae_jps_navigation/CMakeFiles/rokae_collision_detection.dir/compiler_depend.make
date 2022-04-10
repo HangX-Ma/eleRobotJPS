@@ -1088,61 +1088,7 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
   /opt/ros/melodic/include/ros/param.h \
   /opt/ros/melodic/include/ros/topic.h \
   /opt/ros/melodic/include/ros/node_handle.h \
-  /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/robot_model.h \
-  /home/contour/ws_moveit/src/moveit/moveit_core/macros/include/moveit/macros/class_forward.h \
-  /home/contour/ws_moveit/src/moveit/moveit_core/macros/include/moveit/macros/declare_ptr.h \
-  /home/contour/ws_moveit/src/moveit/moveit_core/exceptions/include/moveit/exceptions/exceptions.h \
-  /opt/ros/melodic/include/urdf/model.h \
-  /usr/include/urdf_model/model.h \
-  /usr/include/urdf_model/link.h \
-  /usr/include/urdf_model/joint.h \
-  /usr/include/urdf_model/pose.h \
-  /usr/include/urdf_exception/exception.h \
-  /usr/include/urdf_model/utils.h \
-  /usr/include/urdf_model/types.h \
-  /usr/include/urdf_model/color.h \
-  /usr/include/urdf_model/types.h \
-  /opt/ros/melodic/include/urdf/urdfdom_compatibility.h \
-  /usr/include/urdf_world/types.h \
-  /usr/include/tinyxml.h \
-  /usr/include/tinyxml2.h \
-  /opt/ros/melodic/include/urdf/visibility_control.hpp \
-  /opt/ros/melodic/include/srdfdom/model.h \
-  /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/joint_model_group.h \
-  /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/joint_model.h \
-  /opt/ros/melodic/include/moveit_msgs/JointLimits.h \
-  /opt/ros/melodic/include/ros/message_operations.h \
-  /opt/ros/melodic/include/random_numbers/random_numbers.h \
-  /usr/include/boost/random/mersenne_twister.hpp \
-  /usr/include/boost/integer/integer_mask.hpp \
-  /usr/include/boost/random/detail/config.hpp \
-  /usr/include/boost/random/detail/ptr_helper.hpp \
-  /usr/include/boost/random/detail/seed.hpp \
-  /usr/include/boost/random/detail/seed_impl.hpp \
-  /usr/include/boost/integer/static_log2.hpp \
-  /usr/include/boost/random/traits.hpp \
-  /usr/include/boost/random/detail/const_mod.hpp \
-  /usr/include/boost/random/detail/large_arithmetic.hpp \
-  /usr/include/boost/random/detail/integer_log2.hpp \
-  /usr/include/boost/pending/integer_log2.hpp \
-  /usr/include/boost/integer/integer_log2.hpp \
-  /usr/include/boost/random/detail/disable_warnings.hpp \
-  /usr/include/boost/random/detail/enable_warnings.hpp \
-  /usr/include/boost/random/detail/signed_unsigned_tools.hpp \
-  /usr/include/boost/random/detail/generator_bits.hpp \
-  /usr/include/boost/random/detail/generator_seed_seq.hpp \
-  /usr/include/boost/random/detail/polynomial.hpp \
-  /usr/include/boost/random/uniform_real.hpp \
-  /usr/include/boost/random/uniform_real_distribution.hpp \
-  /usr/include/boost/random/detail/operators.hpp \
-  /usr/include/boost/random/uniform_int.hpp \
-  /usr/include/boost/random/uniform_int_distribution.hpp \
-  /usr/include/boost/random/detail/uniform_int_float.hpp \
-  /usr/include/boost/random/variate_generator.hpp \
-  /usr/include/boost/random/normal_distribution.hpp \
-  /usr/include/boost/random/detail/int_float_pair.hpp \
-  /usr/include/boost/random/uniform_01.hpp \
-  /usr/include/boost/random/exponential_distribution.hpp \
+  /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/aabb.h \
   /usr/include/eigen3/Eigen/Geometry \
   /usr/include/eigen3/Eigen/Core \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -1304,6 +1250,61 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
   /usr/include/eigen3/Eigen/src/Geometry/AlignedBox.h \
   /usr/include/eigen3/Eigen/src/Geometry/Umeyama.h \
   /usr/include/eigen3/Eigen/src/Geometry/arch/Geometry_SSE.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/robot_model.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/macros/include/moveit/macros/class_forward.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/macros/include/moveit/macros/declare_ptr.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/exceptions/include/moveit/exceptions/exceptions.h \
+  /opt/ros/melodic/include/urdf/model.h \
+  /usr/include/urdf_model/model.h \
+  /usr/include/urdf_model/link.h \
+  /usr/include/urdf_model/joint.h \
+  /usr/include/urdf_model/pose.h \
+  /usr/include/urdf_exception/exception.h \
+  /usr/include/urdf_model/utils.h \
+  /usr/include/urdf_model/types.h \
+  /usr/include/urdf_model/color.h \
+  /usr/include/urdf_model/types.h \
+  /opt/ros/melodic/include/urdf/urdfdom_compatibility.h \
+  /usr/include/urdf_world/types.h \
+  /usr/include/tinyxml.h \
+  /usr/include/tinyxml2.h \
+  /opt/ros/melodic/include/urdf/visibility_control.hpp \
+  /opt/ros/melodic/include/srdfdom/model.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/joint_model_group.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/joint_model.h \
+  /opt/ros/melodic/include/moveit_msgs/JointLimits.h \
+  /opt/ros/melodic/include/ros/message_operations.h \
+  /opt/ros/melodic/include/random_numbers/random_numbers.h \
+  /usr/include/boost/random/mersenne_twister.hpp \
+  /usr/include/boost/integer/integer_mask.hpp \
+  /usr/include/boost/random/detail/config.hpp \
+  /usr/include/boost/random/detail/ptr_helper.hpp \
+  /usr/include/boost/random/detail/seed.hpp \
+  /usr/include/boost/random/detail/seed_impl.hpp \
+  /usr/include/boost/integer/static_log2.hpp \
+  /usr/include/boost/random/traits.hpp \
+  /usr/include/boost/random/detail/const_mod.hpp \
+  /usr/include/boost/random/detail/large_arithmetic.hpp \
+  /usr/include/boost/random/detail/integer_log2.hpp \
+  /usr/include/boost/pending/integer_log2.hpp \
+  /usr/include/boost/integer/integer_log2.hpp \
+  /usr/include/boost/random/detail/disable_warnings.hpp \
+  /usr/include/boost/random/detail/enable_warnings.hpp \
+  /usr/include/boost/random/detail/signed_unsigned_tools.hpp \
+  /usr/include/boost/random/detail/generator_bits.hpp \
+  /usr/include/boost/random/detail/generator_seed_seq.hpp \
+  /usr/include/boost/random/detail/polynomial.hpp \
+  /usr/include/boost/random/uniform_real.hpp \
+  /usr/include/boost/random/uniform_real_distribution.hpp \
+  /usr/include/boost/random/detail/operators.hpp \
+  /usr/include/boost/random/uniform_int.hpp \
+  /usr/include/boost/random/uniform_int_distribution.hpp \
+  /usr/include/boost/random/detail/uniform_int_float.hpp \
+  /usr/include/boost/random/variate_generator.hpp \
+  /usr/include/boost/random/normal_distribution.hpp \
+  /usr/include/boost/random/detail/int_float_pair.hpp \
+  /usr/include/boost/random/uniform_01.hpp \
+  /usr/include/boost/random/exponential_distribution.hpp \
   /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/link_model.h \
   /opt/ros/melodic/include/eigen_stl_containers/eigen_stl_vector_container.h \
   /usr/include/eigen3/Eigen/Core \
@@ -2054,6 +2055,171 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
   /home/contour/ws_moveit/src/moveit/moveit_core/kinematic_constraints/include/moveit/kinematic_constraints/utils.h \
   /opt/ros/melodic/include/geometry_msgs/PointStamped.h \
   /opt/ros/melodic/include/geometry_msgs/QuaternionStamped.h \
+  /opt/ros/melodic/include/tf2_ros/transform_listener.h \
+  /opt/ros/melodic/include/std_msgs/Empty.h \
+  /opt/ros/melodic/include/tf2_msgs/TFMessage.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_fcl/include/moveit/collision_detection_fcl/collision_detector_allocator_fcl.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_fcl/include/moveit/collision_detection_fcl/collision_env_fcl.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_fcl/include/moveit/collision_detection_fcl/collision_common.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_fcl/include/moveit/collision_detection_fcl/fcl_compat.h \
+  /usr/include/fcl/config.h \
+  /usr/include/fcl/broadphase/broadphase.h \
+  /usr/include/fcl/collision_object.h \
+  /usr/include/fcl/deprecated.h \
+  /usr/include/fcl/BV/AABB.h \
+  /usr/include/fcl/math/vec_3f.h \
+  /usr/include/fcl/data_types.h \
+  /usr/include/fcl/math/math_details.h \
+  /usr/include/fcl/math/transform.h \
+  /usr/include/fcl/math/matrix_3f.h \
+  /usr/include/c++/7/mutex \
+  /usr/include/c++/7/chrono \
+  /usr/include/c++/7/ratio \
+  /usr/include/c++/7/bits/parse_numbers.h \
+  /usr/include/c++/7/bits/std_mutex.h \
+  /usr/include/fcl/ccd/motion_base.h \
+  /usr/include/fcl/ccd/taylor_matrix.h \
+  /usr/include/fcl/ccd/taylor_vector.h \
+  /usr/include/fcl/ccd/interval_vector.h \
+  /usr/include/fcl/ccd/interval.h \
+  /usr/include/fcl/ccd/taylor_model.h \
+  /usr/include/fcl/ccd/interval_matrix.h \
+  /usr/include/fcl/BV/RSS.h \
+  /usr/include/fcl/math/constants.h \
+  /usr/include/fcl/broadphase/broadphase_bruteforce.h \
+  /usr/include/fcl/broadphase/broadphase_spatialhash.h \
+  /usr/include/fcl/broadphase/hash.h \
+  /usr/include/c++/7/unordered_map \
+  /usr/include/c++/7/bits/hashtable.h \
+  /usr/include/c++/7/bits/hashtable_policy.h \
+  /usr/include/c++/7/bits/unordered_map.h \
+  /usr/include/fcl/broadphase/broadphase_spatialhash.hxx \
+  /usr/include/fcl/broadphase/broadphase_SaP.h \
+  /usr/include/fcl/broadphase/broadphase_SSaP.h \
+  /usr/include/fcl/broadphase/broadphase_interval_tree.h \
+  /usr/include/fcl/broadphase/interval_tree.h \
+  /usr/include/fcl/broadphase/broadphase_dynamic_AABB_tree.h \
+  /usr/include/fcl/broadphase/hierarchy_tree.h \
+  /usr/include/fcl/broadphase/morton.h \
+  /usr/include/fcl/broadphase/hierarchy_tree.hxx \
+  /usr/include/fcl/BV/BV.h \
+  /usr/include/fcl/BV/kDOP.h \
+  /usr/include/fcl/BV/OBB.h \
+  /usr/include/fcl/BV/OBBRSS.h \
+  /usr/include/fcl/BV/kIOS.h \
+  /usr/include/fcl/shape/geometric_shapes_utility.h \
+  /usr/include/fcl/shape/geometric_shapes.h \
+  /usr/include/fcl/broadphase/broadphase_dynamic_AABB_tree_array.h \
+  /usr/include/fcl/collision.h \
+  /usr/include/fcl/collision_data.h \
+  /usr/include/fcl/learning/classifier.h \
+  /usr/include/fcl/math/vec_nf.h \
+  /usr/include/fcl/distance.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/collision_detector_allocator_bullet.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/collision_env_bullet.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/bullet_discrete_bvh_manager.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/bullet_utils.h \
+  /usr/include/bullet/btBulletCollisionCommon.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+  /usr/include/bullet/LinearMath/btVector3.h \
+  /usr/include/bullet/LinearMath/btScalar.h \
+  /usr/include/bullet/LinearMath/btMinMax.h \
+  /usr/include/bullet/LinearMath/btAlignedAllocator.h \
+  /usr/include/bullet/LinearMath/btTransform.h \
+  /usr/include/bullet/LinearMath/btMatrix3x3.h \
+  /usr/include/bullet/LinearMath/btVector3.h \
+  /usr/include/bullet/LinearMath/btQuaternion.h \
+  /usr/include/bullet/LinearMath/btQuadWord.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h \
+  /usr/include/bullet/LinearMath/btMotionState.h \
+  /usr/include/bullet/LinearMath/btTransform.h \
+  /usr/include/bullet/LinearMath/btAlignedAllocator.h \
+  /usr/include/bullet/LinearMath/btAlignedObjectArray.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btDispatcher.h \
+  /usr/include/bullet/LinearMath/btScalar.h \
+  /usr/include/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+  /usr/include/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+  /usr/include/bullet/LinearMath/btTransformUtil.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btManifoldResult.h \
+  /usr/include/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+  /usr/include/bullet/LinearMath/btMatrix3x3.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btCollisionShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btCollisionMargin.h \
+  /usr/include/bullet/LinearMath/btAabbUtil2.h \
+  /usr/include/bullet/LinearMath/btMinMax.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btSphereShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btCapsuleShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btCylinderShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btConeShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btStaticPlaneShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btConcaveShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btTriangleCallback.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btTriangleMesh.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btOptimizedBvh.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btTriangleInfoMap.h \
+  /usr/include/bullet/LinearMath/btHashMap.h \
+  /usr/include/bullet/LinearMath/btAlignedObjectArray.h \
+  /usr/include/bullet/LinearMath/btSerializer.h \
+  /usr/include/bullet/LinearMath/btHashMap.h \
+  /usr/include/memory.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btCompoundShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btTetrahedronShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btEmptyShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btMultiSphereShape.h \
+  /usr/include/bullet/BulletCollision/CollisionShapes/btUniformScalingShape.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionConfiguration.h \
+  /usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btDbvt.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3Internal.h \
+  /usr/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h \
+  /usr/include/bullet/LinearMath/btQuaternion.h \
+  /usr/include/bullet/LinearMath/btTransform.h \
+  /usr/include/bullet/LinearMath/btDefaultMotionState.h \
+  /usr/include/bullet/LinearMath/btMotionState.h \
+  /usr/include/bullet/LinearMath/btQuickprof.h \
+  /usr/include/bullet/LinearMath/btIDebugDraw.h \
+  /usr/include/bullet/LinearMath/btSerializer.h \
+  /opt/ros/melodic/include/geometric_shapes/mesh_operations.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/basic_types.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/contact_checker_common.h \
+  /usr/include/bullet/LinearMath/btConvexHullComputer.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/bullet_bvh_manager.h \
+  /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/bullet_cast_bvh_manager.h \
   /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/CheckCollision.h \
   /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/CheckCollisionRequest.h \
   /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/CheckCollisionResponse.h \
@@ -2066,6 +2232,128 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/src/JPS_Modules/rokae_ikfast_wrapper.cpp:
 
 /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/CheckCollisionRequest.h:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/basic_types.h:
+
+/opt/ros/melodic/include/geometric_shapes/mesh_operations.h:
+
+/usr/include/bullet/LinearMath/btDefaultMotionState.h:
+
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btDbvt.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btUniformScalingShape.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btMultiSphereShape.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h:
+
+/usr/include/bullet/LinearMath/btSerializer.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btStridingMeshInterface.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btStaticPlaneShape.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btCapsuleShape.h:
+
+/usr/include/bullet/LinearMath/btAabbUtil2.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btCollisionMargin.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:
+
+/usr/include/bullet/BulletCollision/CollisionDispatch/btManifoldResult.h:
+
+/usr/include/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h:
+
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btDispatcher.h:
+
+/usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h:
+
+/usr/include/bullet/LinearMath/btAlignedObjectArray.h:
+
+/usr/include/bullet/LinearMath/btMotionState.h:
+
+/usr/include/bullet/LinearMath/btQuadWord.h:
+
+/usr/include/bullet/LinearMath/btQuaternion.h:
+
+/usr/include/bullet/LinearMath/btTransform.h:
+
+/usr/include/bullet/LinearMath/btMinMax.h:
+
+/usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/bullet_utils.h:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/bullet_discrete_bvh_manager.h:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/collision_detector_allocator_bullet.h:
+
+/usr/include/fcl/collision_data.h:
+
+/usr/include/fcl/collision.h:
+
+/usr/include/fcl/broadphase/broadphase_dynamic_AABB_tree_array.h:
+
+/usr/include/fcl/BV/OBBRSS.h:
+
+/usr/include/fcl/BV/kDOP.h:
+
+/usr/include/fcl/broadphase/morton.h:
+
+/usr/include/fcl/broadphase/broadphase_dynamic_AABB_tree.h:
+
+/usr/include/fcl/broadphase/broadphase_interval_tree.h:
+
+/usr/include/fcl/broadphase/broadphase_SSaP.h:
+
+/usr/include/fcl/broadphase/broadphase_SaP.h:
+
+/usr/include/fcl/broadphase/broadphase_spatialhash.hxx:
+
+/usr/include/c++/7/bits/hashtable.h:
+
+/usr/include/fcl/broadphase/broadphase_bruteforce.h:
+
+/usr/include/fcl/BV/RSS.h:
+
+/usr/include/fcl/ccd/taylor_model.h:
+
+/usr/include/fcl/ccd/interval.h:
+
+/usr/include/fcl/ccd/interval_vector.h:
+
+/usr/include/fcl/ccd/motion_base.h:
+
+/usr/include/c++/7/mutex:
+
+/usr/include/fcl/math/matrix_3f.h:
+
+/usr/include/fcl/data_types.h:
+
+/usr/include/fcl/math/vec_3f.h:
+
+/usr/include/fcl/BV/AABB.h:
+
+/usr/include/fcl/collision_object.h:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_fcl/include/moveit/collision_detection_fcl/fcl_compat.h:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_fcl/include/moveit/collision_detection_fcl/collision_env_fcl.h:
+
+/opt/ros/melodic/include/tf2_msgs/TFMessage.h:
+
+/opt/ros/melodic/include/std_msgs/Empty.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:
+
+/opt/ros/melodic/include/tf2_ros/transform_listener.h:
 
 /opt/ros/melodic/include/geometry_msgs/PointStamped.h:
 
@@ -2151,6 +2439,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/Poco/Mutex_POSIX.h:
 
+/usr/include/bullet/LinearMath/btTransformUtil.h:
+
 /usr/include/Poco/Mutex.h:
 
 /usr/include/Poco/Types.h:
@@ -2179,6 +2469,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/algorithm/string/split.hpp:
 
+/usr/include/bullet/BulletCollision/CollisionShapes/btTriangleMesh.h:
+
 /usr/include/boost/algorithm/string/detail/predicate.hpp:
 
 /usr/include/boost/algorithm/string/detail/finder.hpp:
@@ -2192,6 +2484,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/iterator/transform_iterator.hpp:
 
 /usr/include/boost/algorithm/string/predicate_facade.hpp:
+
+/usr/include/bullet/btBulletCollisionCommon.h:
 
 /usr/include/boost/algorithm/string/detail/classification.hpp:
 
@@ -2223,6 +2517,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /home/contour/ws_moveit/src/moveit/moveit_ros/planning/robot_model_loader/include/moveit/robot_model_loader/robot_model_loader.h:
 
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h:
+
 /home/contour/ws_moveit/devel/.private/moveit_core/include/moveit/moveit_planning_scene_export.h:
 
 /home/contour/ws_moveit/src/moveit/moveit_core/robot_trajectory/include/moveit/robot_trajectory/robot_trajectory.h:
@@ -2238,6 +2534,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /opt/ros/melodic/include/tf2/transform_datatypes.h:
 
 /usr/include/boost/unordered/unordered_map_fwd.hpp:
+
+/usr/include/fcl/distance.h:
 
 /usr/include/boost/unordered/detail/fwd.hpp:
 
@@ -2277,6 +2575,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/parameter/aux_/parenthesized_type.hpp:
 
+/usr/include/fcl/config.h:
+
 /usr/include/boost/parameter/name.hpp:
 
 /usr/include/boost/parameter/match.hpp:
@@ -2292,6 +2592,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/mpl/set/aux_/iterator.hpp:
 
 /usr/include/boost/mpl/set/aux_/begin_end_impl.hpp:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btCollisionShape.h:
 
 /usr/include/boost/mpl/set/aux_/value_type_impl.hpp:
 
@@ -2407,6 +2709,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/mpl/front.hpp:
 
+/usr/include/bullet/LinearMath/btScalar.h:
+
 /usr/include/boost/mpl/aux_/empty_impl.hpp:
 
 /usr/include/boost/mpl/empty.hpp:
@@ -2451,6 +2755,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/variant/detail/substitute_fwd.hpp:
 
+/usr/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:
+
 /usr/include/boost/variant/variant_fwd.hpp:
 
 /usr/include/Poco/Platform.h:
@@ -2489,6 +2795,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/signals2/postconstructible.hpp:
 
+/usr/include/bullet/LinearMath/btMatrix3x3.h:
+
 /usr/include/boost/signals2/deconstruct_ptr.hpp:
 
 /usr/include/boost/signals2.hpp:
@@ -2514,6 +2822,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /opt/ros/melodic/include/actionlib/client/simple_goal_state.h:
 
 /opt/ros/melodic/include/actionlib/client/connection_monitor.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:
 
 /opt/ros/melodic/include/actionlib/client/client_goal_handle_imp.h:
 
@@ -2550,6 +2860,10 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /opt/ros/melodic/include/moveit_msgs/SaveMap.h:
 
 /usr/include/boost/thread/futures/wait_for_any.hpp:
+
+/usr/include/fcl/learning/classifier.h:
+
+/usr/include/c++/7/ratio:
 
 /home/contour/ws_moveit/src/moveit/moveit_ros/occupancy_map_monitor/include/moveit/occupancy_map_monitor/occupancy_map_updater.h:
 
@@ -2647,11 +2961,15 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/atomic/detail/config.hpp:
 
+/usr/include/bullet/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h:
+
 /usr/include/boost/atomic/atomic.hpp:
 
 /usr/include/boost/atomic.hpp:
 
 /usr/include/boost/thread/pthread/once_atomic.hpp:
+
+/usr/include/c++/7/bits/hashtable_policy.h:
 
 /usr/include/boost/range/iterator_range_io.hpp:
 
@@ -2685,6 +3003,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/thread/detail/is_convertible.hpp:
 
+/usr/include/fcl/broadphase/hierarchy_tree.hxx:
+
 /usr/include/boost/thread/thread_only.hpp:
 
 /opt/ros/melodic/include/actionlib/action_definition.h:
@@ -2710,6 +3030,10 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/c++/7/bits/stl_deque.h:
 
 /usr/include/boost/thread/tss.hpp:
+
+/usr/include/boost/optional/detail/optional_swap.hpp:
+
+/usr/include/boost/thread/shared_mutex.hpp:
 
 /usr/include/boost/type_traits/is_abstract.hpp:
 
@@ -2758,6 +3082,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /opt/ros/melodic/include/geometry_msgs/Transform.h:
 
 /usr/include/boost/mpl/vector/aux_/include_preprocessed.hpp:
+
+/usr/include/fcl/broadphase/interval_tree.h:
 
 /usr/include/boost/exception/to_string_stub.hpp:
 
@@ -2855,6 +3181,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /opt/ros/melodic/include/ros/macros.h:
 
+/usr/include/fcl/math/math_details.h:
+
 /usr/include/boost/mpl/reverse_fold.hpp:
 
 /usr/include/boost/mpl/O1_size.hpp:
@@ -2885,6 +3213,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/eigen3/Eigen/src/Core/ArrayWrapper.h:
 
+/usr/include/bullet/BulletCollision/CollisionShapes/btCylinderShape.h:
+
 /usr/include/boost/mpl/aux_/preprocessed/gcc/or.hpp:
 
 /usr/include/boost/integer_traits.hpp:
@@ -2896,6 +3226,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/mpl/aux_/preprocessed/gcc/template_arity.hpp:
 
 /usr/include/boost/mpl/comparison.hpp:
+
+/usr/include/bullet/LinearMath/btAlignedAllocator.h:
 
 /usr/include/x86_64-linux-gnu/c++/7/bits/c++locale.h:
 
@@ -2925,7 +3257,11 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/mpl/assert.hpp:
 
+/usr/include/bullet/LinearMath/btConvexHullComputer.h:
+
 /usr/include/boost/mpl/arg.hpp:
+
+/usr/include/fcl/deprecated.h:
 
 /usr/include/boost/mpl/begin_end_fwd.hpp:
 
@@ -2970,6 +3306,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/eigen3/Eigen/Cholesky:
 
 /usr/include/boost/mpl/aux_/config/has_xxx.hpp:
+
+/usr/include/bullet/LinearMath/btIDebugDraw.h:
 
 /usr/include/asm-generic/errno.h:
 
@@ -3115,6 +3453,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/include/JPS_Modules/ikfast.h:
 
+/usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h:
+
 /usr/include/boost/mpl/aux_/arity_spec.hpp:
 
 /usr/include/boost/mpl/list/aux_/tag.hpp:
@@ -3165,6 +3505,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/preprocessor/comma_if.hpp:
 
+/usr/include/c++/7/bits/parse_numbers.h:
+
 /home/contour/ws_moveit/src/moveit/moveit_core/collision_detection/include/moveit/collision_detection/collision_env.h:
 
 /usr/include/boost/predef/library/c/zos.h:
@@ -3189,9 +3531,9 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/mpl/remove_if.hpp:
 
-/home/contour/ws_moveit/src/moveit/moveit_core/exceptions/include/moveit/exceptions/exceptions.h:
-
 /usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/exceptions/include/moveit/exceptions/exceptions.h:
 
 /usr/include/boost/mpl/list/aux_/front.hpp:
 
@@ -3213,6 +3555,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/weak_ptr.hpp:
 
+/usr/include/fcl/BV/kIOS.h:
+
 /usr/include/boost/mpl/list/aux_/push_front.hpp:
 
 /usr/include/urdf_model/types.h:
@@ -3222,6 +3566,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/mpl/aux_/lambda_arity_param.hpp:
 
 /usr/include/boost/mpl/aux_/config/nttp.hpp:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_fcl/include/moveit/collision_detection_fcl/collision_detector_allocator_fcl.h:
 
 /usr/include/boost/mpl/sequence_tag_fwd.hpp:
 
@@ -3255,6 +3601,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/mpl/aux_/nttp_decl.hpp:
 
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h:
+
 /usr/include/boost/mpl/set/aux_/insert_range_impl.hpp:
 
 /usr/include/boost/ratio/detail/overflow_helpers.hpp:
@@ -3268,6 +3616,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/integer.hpp:
 
 /usr/include/boost/mpl/integral_c_tag.hpp:
+
+/usr/include/c++/7/bits/std_mutex.h:
 
 /usr/include/boost/mpl/aux_/config/workaround.hpp:
 
@@ -3359,9 +3709,13 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/c++/7/cerrno:
 
+/usr/include/c++/7/bits/unordered_map.h:
+
 /usr/include/boost/mpl/aux_/preprocessed/gcc/bind.hpp:
 
 /usr/include/boost/preprocessor/tuple/rem.hpp:
+
+/usr/include/c++/7/chrono:
 
 /usr/include/c++/7/bits/locale_conv.h:
 
@@ -3429,6 +3783,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/c++/7/algorithm:
 
+/usr/include/bullet/LinearMath/btQuickprof.h:
+
 /usr/include/stdlib.h:
 
 /usr/include/boost/mpl/and.hpp:
@@ -3461,6 +3817,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/c++/7/system_error:
 
+/usr/include/fcl/broadphase/broadphase_spatialhash.h:
+
 /usr/include/boost/mpl/vector/vector10.hpp:
 
 /usr/include/boost/predef/library/c.h:
@@ -3480,6 +3838,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/thread/pthread/thread_heap_alloc.hpp:
 
 /opt/ros/melodic/include/moveit_msgs/PlanningSceneWorld.h:
+
+/usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h:
 
 /usr/include/boost/chrono/detail/is_evenly_divisible_by.hpp:
 
@@ -3511,9 +3871,13 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/date_time/dst_rules.hpp:
 
+/usr/include/bullet/BulletCollision/CollisionShapes/btSphereShape.h:
+
 /usr/include/boost/mpl/aux_/config/preprocessor.hpp:
 
 /usr/include/boost/predef/detail/_exception.h:
+
+/usr/include/fcl/math/vec_nf.h:
 
 /usr/include/c++/7/ios:
 
@@ -3571,6 +3935,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/predef/library/c/vms.h:
 
+/usr/include/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h:
+
 /usr/include/boost/predef/version_number.h:
 
 /usr/include/x86_64-linux-gnu/bits/sched.h:
@@ -3589,6 +3955,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/predef/architecture/superh.h:
 
+/usr/include/fcl/broadphase/broadphase.h:
+
 /usr/include/boost/numeric/conversion/int_float_mixture_enum.hpp:
 
 /usr/include/c++/7/climits:
@@ -3596,6 +3964,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/c++/7/istream:
 
 /usr/include/boost/ratio/ratio.hpp:
+
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h:
 
 /usr/include/boost/preprocessor/logical/and.hpp:
 
@@ -3609,6 +3979,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/numeric/conversion/converter.hpp:
 
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_fcl/include/moveit/collision_detection_fcl/collision_common.h:
+
 /usr/include/boost/date_time/compiler_config.hpp:
 
 /usr/include/c++/7/bits/range_access.h:
@@ -3616,6 +3988,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/detail/indirect_traits.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/Diagonal.h:
+
+/usr/include/bullet/LinearMath/btHashMap.h:
 
 /usr/include/boost/mpl/aux_/iter_apply.hpp:
 
@@ -3636,6 +4010,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /opt/ros/melodic/include/moveit_msgs/LoadMapResponse.h:
 
 /usr/include/c++/7/bits/ostream_insert.h:
+
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h:
 
 /usr/include/boost/mpl/vector/aux_/O1_size.hpp:
 
@@ -3797,6 +4173,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/date_time/gregorian/greg_weekday.hpp:
 
+/usr/include/bullet/BulletCollision/CollisionShapes/btConeShape.h:
+
 /usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
@@ -3824,6 +4202,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/mpl/aux_/reverse_fold_impl.hpp:
 
 /opt/ros/melodic/include/geometric_shapes/check_isometry.h:
+
+/usr/include/fcl/BV/BV.h:
 
 /usr/include/c++/7/bits/char_traits.h:
 
@@ -3857,6 +4237,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/eigen3/Eigen/src/Core/VectorwiseOp.h:
 
+/usr/include/bullet/BulletCollision/CollisionShapes/btTriangleCallback.h:
+
 /usr/include/console_bridge_export.h:
 
 /usr/include/c++/7/cmath:
@@ -3876,6 +4258,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /opt/ros/melodic/include/tf2_msgs/FrameGraphRequest.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/bullet/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h:
 
 /usr/include/boost/type_traits/is_fundamental.hpp:
 
@@ -3993,6 +4377,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/mpl/aux_/config/bind.hpp:
 
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/bullet_bvh_manager.h:
+
 /usr/include/boost/predef/compiler/visualc.h:
 
 /usr/include/boost/preprocessor/detail/split.hpp:
@@ -4047,6 +4433,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/function.hpp:
 
+/usr/include/bullet/BulletCollision/CollisionShapes/btOptimizedBvh.h:
+
 /usr/include/boost/date_time/posix_time/posix_time_system.hpp:
 
 /opt/ros/melodic/include/trajectory_msgs/MultiDOFJointTrajectory.h:
@@ -4075,7 +4463,11 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/range/difference_type.hpp:
 
+/usr/include/bullet/BulletCollision/CollisionShapes/btTriangleInfoMap.h:
+
 /usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h:
+
+/usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionConfiguration.h:
 
 /usr/include/boost/mpl/contains.hpp:
 
@@ -4158,6 +4550,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/algorithm/string/detail/find_format_all.hpp:
 
 /usr/include/pthread.h:
+
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
@@ -4473,6 +4867,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/c++/7/bits/sstream.tcc:
 
+/usr/include/fcl/math/transform.h:
+
 /opt/ros/melodic/include/class_loader/visibility_control.hpp:
 
 /usr/include/c++/7/backward/auto_ptr.h:
@@ -4605,6 +5001,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/thread/lock_types.hpp:
 
+/usr/include/fcl/ccd/taylor_matrix.h:
+
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 
 /usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:
@@ -4697,6 +5095,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/strings.h:
 
+/usr/include/fcl/ccd/interval_matrix.h:
+
 /usr/include/c++/7/bits/shared_ptr.h:
 
 /usr/include/boost/system/api_config.hpp:
@@ -4742,6 +5142,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /opt/ros/melodic/include/moveit_msgs/CollisionObject.h:
 
 /usr/include/boost/date_time/time_iterator.hpp:
+
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h:
 
 /usr/include/boost/type_traits/is_scalar.hpp:
 
@@ -4797,7 +5199,11 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/predef/other.h:
 
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/collision_env_bullet.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btEmptyShape.h:
 
 /usr/include/boost/parameter/preprocessor.hpp:
 
@@ -4953,6 +5359,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/c++/7/bits/shared_ptr_atomic.h:
 
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h:
+
 /usr/include/c++/7/bits/atomic_lockfree_defines.h:
 
 /opt/ros/melodic/include/ros/message_forward.h:
@@ -4975,7 +5383,11 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /opt/ros/melodic/include/ros/wall_timer.h:
 
+/usr/include/fcl/ccd/taylor_vector.h:
+
 /usr/include/eigen3/Eigen/src/Core/NumTraits.h:
+
+/usr/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h:
 
 /usr/include/boost/core/typeinfo.hpp:
 
@@ -5115,11 +5527,15 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/integer_fwd.hpp:
 
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/bullet_cast_bvh_manager.h:
+
 /opt/ros/melodic/include/ros/message.h:
 
 /usr/include/boost/preprocessor/seq/elem.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/Product.h:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btTetrahedronShape.h:
 
 /usr/include/boost/type_index.hpp:
 
@@ -5167,6 +5583,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/bind/mem_fn_cc.hpp:
 
+/usr/include/fcl/shape/geometric_shapes_utility.h:
+
 /opt/ros/melodic/include/geometry_msgs/PoseStamped.h:
 
 /opt/ros/melodic/include/ros/node_handle.h:
@@ -5177,9 +5595,15 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/preprocessor/enum.hpp:
 
+/usr/include/memory.h:
+
+/usr/include/fcl/broadphase/hierarchy_tree.h:
+
 /usr/include/boost/preprocessor/repetition/enum.hpp:
 
 /usr/include/boost/preprocessor/iteration/detail/iter/forward1.hpp:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h:
 
 /usr/include/boost/preprocessor/slot/detail/shared.hpp:
 
@@ -5200,6 +5624,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/type_traits/is_float.hpp:
 
 /usr/include/boost/core/no_exceptions_support.hpp:
+
+/usr/include/bullet/LinearMath/btVector3.h:
 
 /home/contour/ws_moveit/src/moveit/moveit_core/planning_scene/include/moveit/planning_scene/planning_scene.h:
 
@@ -5224,6 +5650,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/thread/shared_lock_guard.hpp:
 
 /usr/include/boost/call_traits.hpp:
+
+/usr/include/c++/7/unordered_map:
 
 /opt/ros/melodic/include/ros/service_traits.h:
 
@@ -5313,6 +5741,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/ratio/detail/mpl/sign.hpp:
 
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h:
+
 /usr/include/boost/iterator/detail/facade_iterator_category.hpp:
 
 /opt/ros/melodic/include/moveit_msgs/MoveGroupAction.h:
@@ -5358,6 +5788,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/eigen3/Eigen/src/Core/ReturnByValue.h:
 
 /usr/include/boost/range/detail/common.hpp:
+
+/usr/include/bullet/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h:
 
 /usr/include/boost/range/detail/sfinae.hpp:
 
@@ -5445,6 +5877,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /home/contour/ws_moveit/src/moveit/moveit_ros/planning/kinematics_plugin_loader/include/moveit/kinematics_plugin_loader/kinematics_plugin_loader.h:
 
+/home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/aabb.h:
+
 /usr/include/boost/utility/identity_type.hpp:
 
 /usr/include/boost/chrono/clock_string.hpp:
@@ -5531,6 +5965,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/eigen3/Eigen/src/Core/arch/CUDA/PacketMathHalf.h:
 
+/usr/include/fcl/shape/geometric_shapes.h:
+
 /usr/include/asm-generic/errno-base.h:
 
 /usr/include/boost/move/detail/std_ns_begin.hpp:
@@ -5549,6 +5985,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h:
 
+/usr/include/fcl/broadphase/hash.h:
+
 /opt/ros/melodic/include/ros/master.h:
 
 /usr/include/boost/mpl/aux_/config/bcc.hpp:
@@ -5560,94 +5998,6 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /opt/ros/melodic/include/ros/param.h:
 
 /opt/ros/melodic/include/ros/topic.h:
-
-/usr/include/boost/mpl/vector/aux_/front.hpp:
-
-/home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/robot_model.h:
-
-/usr/include/boost/bind/storage.hpp:
-
-/home/contour/ws_moveit/src/moveit/moveit_core/macros/include/moveit/macros/declare_ptr.h:
-
-/opt/ros/melodic/include/urdf/model.h:
-
-/usr/include/boost/random/detail/int_float_pair.hpp:
-
-/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h:
-
-/usr/include/urdf_exception/exception.h:
-
-/usr/include/urdf_model/utils.h:
-
-/usr/include/urdf_model/color.h:
-
-/usr/include/c++/7/bits/move.h:
-
-/opt/ros/melodic/include/moveit_msgs/AllowedCollisionMatrix.h:
-
-/opt/ros/melodic/include/ros/callback_queue_interface.h:
-
-/opt/ros/melodic/include/urdf/urdfdom_compatibility.h:
-
-/opt/ros/melodic/include/geometry_msgs/Wrench.h:
-
-/opt/ros/melodic/include/moveit_msgs/JointLimits.h:
-
-/opt/ros/melodic/include/ros/message_operations.h:
-
-/usr/include/boost/date_time/posix_time/ptime.hpp:
-
-/opt/ros/melodic/include/random_numbers/random_numbers.h:
-
-/usr/include/boost/signals2/detail/signal_template.hpp:
-
-/usr/include/boost/random/uniform_real_distribution.hpp:
-
-/usr/include/boost/thread/exceptions.hpp:
-
-/usr/include/boost/random/detail/seed_impl.hpp:
-
-/usr/include/boost/integer/static_log2.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h:
-
-/usr/include/boost/thread/pthread/condition_variable.hpp:
-
-/usr/include/boost/random/traits.hpp:
-
-/usr/include/boost/random/detail/integer_log2.hpp:
-
-/opt/ros/melodic/include/eigen_stl_containers/eigen_stl_map_container.h:
-
-/usr/include/boost/pending/integer_log2.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/DenseStorage.h:
-
-/usr/include/boost/random/detail/signed_unsigned_tools.hpp:
-
-/usr/include/boost/assert.hpp:
-
-/usr/include/boost/random/detail/generator_seed_seq.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/Swap.h:
-
-/usr/include/boost/random/detail/polynomial.hpp:
-
-/usr/include/boost/mpl/size.hpp:
-
-/usr/include/c++/7/ext/string_conversions.h:
-
-/usr/include/boost/random/uniform_int.hpp:
-
-/usr/include/boost/type_traits/is_unsigned.hpp:
-
-/usr/include/boost/type_traits/remove_extent.hpp:
-
-/usr/include/boost/random/variate_generator.hpp:
-
-/usr/include/c++/7/bits/cpp_type_traits.h:
-
-/usr/include/boost/random/uniform_01.hpp:
 
 /usr/include/libintl.h:
 
@@ -5695,6 +6045,10 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h:
 
+/usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h:
+
+/usr/include/boost/integer/static_log2.hpp:
+
 /usr/include/boost/chrono/detail/system.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/arch/CUDA/Half.h:
@@ -5719,6 +6073,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h:
 
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3Internal.h:
+
 /usr/include/eigen3/Eigen/src/Geometry/Rotation2D.h:
 
 /usr/include/eigen3/Eigen/src/Core/MatrixBase.h:
@@ -5728,6 +6084,12 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h:
 
 /usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:
+
+/usr/include/boost/random/detail/int_float_pair.hpp:
+
+/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h:
+
+/opt/ros/melodic/include/urdf/model.h:
 
 /usr/include/eigen3/Eigen/src/Core/Assign.h:
 
@@ -5740,6 +6102,10 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/utility/enable_if.hpp:
 
 /usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
+
+/usr/include/eigen3/Eigen/src/Core/DenseStorage.h:
+
+/usr/include/boost/pending/integer_log2.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h:
 
@@ -5763,17 +6129,11 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/eigen3/Eigen/src/Core/MapBase.h:
 
+/usr/include/fcl/BV/OBB.h:
+
 /usr/include/eigen3/Eigen/src/Core/Ref.h:
 
 /usr/include/boost/cerrno.hpp:
-
-/usr/include/boost/algorithm/string/join.hpp:
-
-/usr/include/boost/preprocessor/control/while.hpp:
-
-/opt/ros/melodic/include/urdf/visibility_control.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/Block.h:
 
 /usr/include/eigen3/Eigen/src/Core/VectorBlock.h:
 
@@ -5788,6 +6148,12 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /opt/ros/melodic/include/ros/internal/condition_variable.h:
 
 /usr/include/eigen3/Eigen/src/Core/Redux.h:
+
+/usr/include/eigen3/Eigen/src/Core/Swap.h:
+
+/usr/include/boost/assert.hpp:
+
+/usr/include/boost/random/detail/generator_seed_seq.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/CommaInitializer.h:
 
@@ -5836,6 +6202,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h:
 
 /usr/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/collision_detection_bullet/include/moveit/collision_detection_bullet/bullet_integration/contact_checker_common.h:
 
 /usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h:
 
@@ -5905,6 +6273,84 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/eigen3/Eigen/src/Geometry/AngleAxis.h:
 
+/usr/include/boost/mpl/vector/aux_/front.hpp:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/robot_model.h:
+
+/usr/include/boost/bind/storage.hpp:
+
+/home/contour/ws_moveit/src/moveit/moveit_core/macros/include/moveit/macros/declare_ptr.h:
+
+/usr/include/urdf_exception/exception.h:
+
+/usr/include/urdf_model/utils.h:
+
+/usr/include/urdf_model/color.h:
+
+/usr/include/c++/7/bits/move.h:
+
+/opt/ros/melodic/include/moveit_msgs/AllowedCollisionMatrix.h:
+
+/opt/ros/melodic/include/ros/callback_queue_interface.h:
+
+/opt/ros/melodic/include/urdf/urdfdom_compatibility.h:
+
+/opt/ros/melodic/include/geometry_msgs/Wrench.h:
+
+/usr/include/boost/algorithm/string/join.hpp:
+
+/usr/include/boost/preprocessor/control/while.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/Block.h:
+
+/opt/ros/melodic/include/urdf/visibility_control.hpp:
+
+/opt/ros/melodic/include/moveit_msgs/JointLimits.h:
+
+/opt/ros/melodic/include/ros/message_operations.h:
+
+/usr/include/boost/date_time/posix_time/ptime.hpp:
+
+/opt/ros/melodic/include/random_numbers/random_numbers.h:
+
+/usr/include/boost/signals2/detail/signal_template.hpp:
+
+/usr/include/boost/random/uniform_real_distribution.hpp:
+
+/usr/include/boost/thread/exceptions.hpp:
+
+/usr/include/boost/random/detail/seed_impl.hpp:
+
+/usr/include/boost/thread/pthread/condition_variable.hpp:
+
+/usr/include/boost/random/traits.hpp:
+
+/usr/include/boost/random/detail/integer_log2.hpp:
+
+/opt/ros/melodic/include/eigen_stl_containers/eigen_stl_map_container.h:
+
+/usr/include/boost/random/detail/signed_unsigned_tools.hpp:
+
+/usr/include/bullet/BulletCollision/CollisionShapes/btCompoundShape.h:
+
+/usr/include/boost/random/detail/polynomial.hpp:
+
+/usr/include/boost/mpl/size.hpp:
+
+/usr/include/c++/7/ext/string_conversions.h:
+
+/usr/include/boost/random/uniform_int.hpp:
+
+/usr/include/boost/type_traits/is_unsigned.hpp:
+
+/usr/include/boost/type_traits/remove_extent.hpp:
+
+/usr/include/boost/random/variate_generator.hpp:
+
+/usr/include/c++/7/bits/cpp_type_traits.h:
+
+/usr/include/boost/random/uniform_01.hpp:
+
 /usr/include/boost/algorithm/string/detail/trim.hpp:
 
 /usr/include/eigen3/Eigen/StdVector:
@@ -5957,11 +6403,15 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /opt/ros/melodic/include/object_recognition_msgs/ObjectType.h:
 
+/usr/include/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h:
+
 /opt/ros/melodic/include/shape_msgs/Mesh.h:
 
 /opt/ros/melodic/include/shape_msgs/MeshTriangle.h:
 
 /opt/ros/melodic/include/shape_msgs/Plane.h:
+
+/usr/include/fcl/math/constants.h:
 
 /opt/ros/melodic/include/moveit_msgs/PlannerInterfaceDescription.h:
 
@@ -6053,6 +6503,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/date_time/date.hpp:
 
+/usr/include/bullet/BulletCollision/CollisionShapes/btConcaveShape.h:
+
 /opt/ros/melodic/include/std_msgs/ColorRGBA.h:
 
 /usr/include/boost/date_time/date_defs.hpp:
@@ -6097,6 +6549,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/chrono/duration.hpp:
 
+/usr/include/bullet/BulletCollision/BroadphaseCollision/btQuantizedBvh.h:
+
 /usr/include/boost/ratio/detail/mpl/gcd.hpp:
 
 /usr/include/boost/predef.h:
@@ -6123,6 +6577,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 
 /usr/include/boost/thread/detail/lockable_wrapper.hpp:
 
+/usr/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:
+
 /usr/include/boost/range/detail/has_member_size.hpp:
 
 /usr/include/boost/thread/lock_options.hpp:
@@ -6138,7 +6594,3 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_collision_detection.dir/src/JPS_M
 /usr/include/boost/mpl/has_xxx.hpp:
 
 /usr/include/boost/smart_ptr/enable_shared_from_this.hpp:
-
-/usr/include/boost/optional/detail/optional_swap.hpp:
-
-/usr/include/boost/thread/shared_mutex.hpp:

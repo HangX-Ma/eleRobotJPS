@@ -39,10 +39,11 @@ private:
 octomap_load::octomap_load(ros::NodeHandle* noodehandle):nh_(*noodehandle)
 {
   // publisher for the planning scene
+  // TODO octomap_pub_1 = nh_.advertise<moveit_msgs::PlanningScene>("/move_group/monitored_planning_scene", 1);
   octomap_pub_1 = nh_.advertise<moveit_msgs::PlanningScene>("/move_group/monitored_planning_scene", 1);
   octomap_pub_2 = nh_.advertise<moveit_msgs::PlanningScene>("planning_scene", 1);
   // subscriber for octomap information
-  octomap_sub = nh_.subscribe<octomap_msgs::Octomap>("/move_group/octomap_binary", 1, &octomap_load::msgs_callback, this);
+  octomap_sub   = nh_.subscribe<octomap_msgs::Octomap>("octomap_binary", 1, &octomap_load::msgs_callback, this);
   ROS_INFO("rokae_static_octomap_publish_node initialized!");
 }
 
@@ -60,7 +61,11 @@ void octomap_load::msgs_callback(const octomap_msgs::Octomap::ConstPtr &msg)
   ROS_INFO("subscribe successfully");
 
   octomap_pub_1.publish(planning_scene);
+  ros::Duration(0.5).sleep();
+
   octomap_pub_2.publish(planning_scene);
+  ros::Duration(0.5).sleep();
+
   ROS_INFO_STREAM("octomap successfully published");
 
 }
