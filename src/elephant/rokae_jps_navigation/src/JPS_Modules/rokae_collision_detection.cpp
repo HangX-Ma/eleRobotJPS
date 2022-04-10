@@ -34,21 +34,22 @@ self_detector::self_detector(ros::NodeHandle* nodehandle):nh_(*nodehandle)
   std::shared_ptr<tf2_ros::Buffer> tf_buffer = std::make_shared<tf2_ros::Buffer>();
   std::shared_ptr<tf2_ros::TransformListener> tf_listener = std::make_shared<tf2_ros::TransformListener>(*tf_buffer, nh_);
   psm = std::make_shared<planning_scene_monitor::PlanningSceneMonitor>("robot_description", tf_buffer);
-  
-  psm->startSceneMonitor("/move_group/monitored_planning_scene");
-  psm->startWorldGeometryMonitor();
-  psm->startStateMonitor();
-  // psm->requestPlanningSceneState();
 
   if (!psm->getPlanningScene()) {
     ROS_ERROR_STREAM("Error in setting up the PlanningSceneMonitor");
     exit(-1);
   }
+
+  psm->startSceneMonitor();
+  psm->startStateMonitor();
+  psm->startWorldGeometryMonitor();
+  psm->requestPlanningSceneState();
+
   ros::Duration(0.5).sleep();
 
   std::vector<std::string> topics;
   psm->getMonitoredTopics(topics);
-  ROS_INFO_STREAM("Listening for scene updates on topics " << boost::algorithm::join(topics, ", "));
+  ROS_INFO_STREAM(ANSI_COLOR_CYAN "Listening for scene updates on topics " ANSI_COLOR_RESET << boost::algorithm::join(topics, ", "));
   // call startSceneMonitor, startWorldGeometryMonitor and startStateMonitor to fully initialize the planning scene monitor
   // /* listen for planning scene messages on topic /XXX and apply them to the internal planning scene accordingly */
   // psm->startSceneMonitor("/move_group/monitored_planning_scene");
@@ -111,16 +112,17 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
 /* We can get the most up to date robot state from the PlanningSceneMonitor by locking the internal planning scene
    for reading. This lock ensures that the underlying scene isn't updated while we are reading it's state.
    RobotState's are useful for computing the forward and inverse kinematics of the robot among many other uses */
-  psm->updateFrameTransforms();
 
   planning_scene_monitor::LockedPlanningSceneRW ps(psm); // usage is similar as 'planning_scene::PlanningScene'
-
-  // getCurrentStateNonConst() return a robot state class
-  ps->getCurrentStateNonConst().update(); // Update all transforms.
+  // scene = planning_scene::PlanningScene::clone(ps);
 
   // construct a planning scene that is just a diff on top of our actual planning scene
-            // assume the current state of the diff world is the one we plan to reach
+  // assume the current state of the diff world is the one we plan to reach
+
   scene = ps->diff(); // Return a new child PlanningScene that uses this one as parent.
+  scene->decoupleParent();
+
+
   // Make sure that all the data maintained in this scene is local. 
   // All unmodified data is copied from the parent and the pointer to the parent is discarded.
   // scene->decoupleParent();
@@ -129,7 +131,7 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
 
   double radius = 0.02;
   double lifetime = 600.0;
-  unsigned int trials = 10000; // The number of repeated collision checks for each state
+  unsigned int trials = 100; // The number of repeated collision checks for each state
 
   // Get the kinematic model for which the planning scene is maintained.
   const robot_model::RobotModelConstPtr& model = scene->getRobotModel();
@@ -202,14 +204,14 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
   // [WARNING]: THIS WILL SLOW THE DETECTION SPEED GRAMMATICALLY 
   // collision_req.distance = true;
   // if you want to print the detection result
-  collision_req.verbose  = true;
+  // collision_req.verbose  = true;
   
   collision_req.contacts = true;
   collision_req.max_contacts = 99;
   collision_req.max_contacts_per_pair = 10;
   // choose the collision detection group 
   // !!!!!!!!!!!!!!!!!!! I set this parament and the result seems to be right. !!!!!!!!!!!!!!!!!!!!!!!!!
-  // collision_req.group_name     = PLANNING_GROUP; 
+  collision_req.group_name     = PLANNING_GROUP; 
 
   /* print out useful message */
   // scene->printKnownObjects(std::cout);
@@ -228,9 +230,10 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
   kinematic_state.setJointPositions("elerobot_joint3", &joint_positions[3]);
   kinematic_state.setJointPositions("elerobot_joint4", &joint_positions[4]);
   kinematic_state.setJointPositions("elerobot_joint5", &joint_positions[5]);
-
   kinematic_state.update();
+
   scene->setCurrentState(kinematic_state);
+
   std::vector<double> gstate;
   // scene->getCurrentState().copyJointGroupPositions(PLANNING_GROUP,gstate);
   // ROS_INFO("gstate size: %d\njoint config: %f,%f,%f,%f,%f,%f\n",gstate.size(), gstate[0], gstate[1], gstate[2], gstate[3], gstate[4], gstate[5]);
@@ -308,11 +311,11 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
   // scene->checkSelfCollision(collision_req, collision_res);
   // printf(ANSI_COLOR_GREEN "collision distance: %f" ANSI_COLOR_RESET"\n", collision_res.distance);
   // ROS_INFO(ANSI_COLOR_CYAN "obs dist: %f" ANSI_COLOR_RESET, collision_res.distance);
-  ROS_INFO(ANSI_COLOR_CYAN "contact num: %d" ANSI_COLOR_RESET, collision_res.contact_count);
+
   // color collided objects red
   for (auto& contact : collision_res.contacts)
   {
-    ROS_INFO_STREAM("Between: " << contact.first.first << " and " << contact.first.second);
+    ROS_INFO_STREAM(ANSI_COLOR_CYAN "Between: " << contact.first.first << " and " << contact.first.second << ANSI_COLOR_RESET);
     std_msgs::ColorRGBA red;
     red.a = 0.8;
     red.r = 1;
@@ -361,12 +364,14 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
     kinematic_state.setJointPositions("elerobot_joint3", &joint_positions[3]);
     kinematic_state.setJointPositions("elerobot_joint4", &joint_positions[4]);
     kinematic_state.setJointPositions("elerobot_joint5", &joint_positions[5]);
-
     kinematic_state.update();
+
     scene->setCurrentState(kinematic_state);
+    psm->triggerSceneUpdateEvent(planning_scene_monitor::PlanningSceneMonitor::SceneUpdateType::UPDATE_SCENE);
+
     std::vector<double> gstate;
     scene->getCurrentState().copyJointGroupPositions(PLANNING_GROUP,gstate);
-    ROS_INFO("gstate size: %d\njoint config: %f,%f,%f,%f,%f,%f\n",gstate.size(), gstate[0], gstate[1], gstate[2], gstate[3], gstate[4], gstate[5]);
+    // ROS_INFO("gstate size: %d\njoint config: %f,%f,%f,%f,%f,%f\n",gstate.size(), gstate[0], gstate[1], gstate[2], gstate[3], gstate[4], gstate[5]);
 
     std::vector<double> aabb;
     scene->getCurrentState().computeAABB(aabb);
@@ -441,12 +446,11 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
     // scene->checkSelfCollision(collision_req, collision_res);
     // printf(ANSI_COLOR_GREEN "collision distance: %f" ANSI_COLOR_RESET"\n", collision_res.distance);
     // ROS_INFO(ANSI_COLOR_CYAN "obs dist: %f" ANSI_COLOR_RESET, collision_res.distance );
-    ROS_INFO(ANSI_COLOR_CYAN "contact num: %d" ANSI_COLOR_RESET, collision_res.contact_count);
 
     // color collided objects red
     for (auto& contact : collision_res.contacts)
     {
-      ROS_INFO_STREAM("Between: " << contact.first.first << " and " << contact.first.second);
+      ROS_INFO_STREAM(ANSI_COLOR_CYAN "Between: " << contact.first.first << " and " << contact.first.second << ANSI_COLOR_RESET);
       std_msgs::ColorRGBA red;
       red.a = 0.8;
       red.r = 1;

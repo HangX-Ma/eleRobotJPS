@@ -42,3 +42,5 @@ if (psm.getPlanningScene())
 [moveit/moveit_ros/manipulation/pick_place/src/approach_and_translate_stage.cpp](https://github.com/ros-planning/moveit/blob/cce0ffe58c3f472fc5bf76b1ec364d29d2fa7252/moveit_ros/manipulation/pick_place/src/approach_and_translate_stage.cpp)
 
 [moveit/moveit_core/robot_state/test/test_aabb.cpp](https://github.com/ros-planning/moveit/blob/3361b2d1b6b2feabc2d3e93c75653f5a00e87fa4/moveit_core/robot_state/test/test_aabb.cpp)
+
+[Collision checking only includes some links from a EEF group with multiple fingertips #2701](https://github.com/ros-planning/moveit/issues/2701)

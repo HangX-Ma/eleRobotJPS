@@ -33,6 +33,7 @@ This manual will introduce how to use the JPS planning module if you want to cha
         - [3.rokae_arm_gazebo_world.launch](#3rokae_arm_gazebo_worldlaunch)
         - [4.rokae_arm_toplevel_moveit.launch](#4rokae_arm_toplevel_moveitlaunch)
         - [5. moveit_planning_execution.launch](#5-moveit_planning_executionlaunch)
+      - [4. elerobot_moveit_config/launch/moveit.rviz](#4-elerobot_moveit_configlaunchmoveitrviz)
       - [USAGE:](#usage-2)
         - [pid](#pid)
         - [chomp](#chomp)
@@ -358,10 +359,11 @@ controller_list:
   ```xml
   <rosparam param="source_list">[/rokae_arm/joint_states]</rosparam>
   ```
-- Oh~ If you forget to delete the `namespace` parameters in `elerobot_description/xacro/elerobot.urdf.xacro` for `gazebo_ros_control` plugin, following warning will come up!
+- Oh~ If you forget to delete the `robotNamespace` parameters in `elerobot_description/xacro/elerobot.urdf.xacro` like `<robotNamespace>/</robotNamespace>`for `gazebo_ros_control` plugin, following warning will come up!
   ```shell
   [ WARN] [1648998058.818776808, 194.134000000]: Waiting for manipulator_controller/follow_joint_trajectory to come up
   ```
+**[Note]:** I haven't solve the problem that when removing the `robotNamespace` for current controller, the `Rviz` can not display what happened in `Gazebo`. And the action client return `ABORTED` though the manipulator actually move to the goal.
 
 ##### 3.rokae_arm_gazebo_world.launch
 - Delete `tf2_ros`.
@@ -372,6 +374,34 @@ controller_list:
 - We have not created `octomap`, so annotate it first. If we want to load a local `octomap` annotate it again.
 ##### 5. moveit_planning_execution.launch
 - Copy the `moveit_planning_execution.launch` and paste it in `elerobot_moveit_config/launch` and modify some parameters to fit the name of current robot configuration.
+- 
+#### 4. elerobot_moveit_config/launch/moveit.rviz
+This config file is used in afterward planning display in **Rviz**. There is a functional step that you need to bear in mind: **YOU NEED TO CHOOSE THE RIGHT TOPIC!**
+
+Why I say above because I previously wanted to do collision detection for elephant Panda3 manipulator but always failed. I had read the source code of **Moveit** and followed the steps that the author exactly did. Occasionally I figure out in `elerobot_description/xacro/elerobot.urdf.xacro` I write:
+
+```xml
+  <!-- Gazebo plugin for ROS control -->
+  <gazebo> <!-- controller -->
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <controlPeriod>0.001</controlPeriod>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+    <self_collide>true</self_collide>
+    
+    <plugin filename="libgazebo_ros_moveit_planning_scene.so" name="gazebo_ros_moveit_planning_scene">
+      <topicName>/planning_scene</topicName>
+      <sceneName>factory</sceneName>
+      <robotName>/${arm_id}</robotName>
+      <updatePeriod>0.5</updatePeriod>
+    </plugin>
+
+    <plugin name="gravity_compensation" filename="libGravityCompensationPlugin.so"/>
+  </gazebo>
+```
+![topic name](README_pic/topic_name.png)
+Topic name for `libgazebo_ros_moveit_planning_scene.so` is `/planning_scene` and I had published the octomap to the planning sence with `/move_group/planning_scene` and `planning_scene`. The default topic for `psm->startSceneMonitor()` is `/get_planning_scene`, and the returned topic names also contain the `/planning_scene`. Therefore, after I changed the topic name for `Planning Scene Topic` to `/planning_scene` in **Rviz** `PlanningScene` plugin, the **Moveit** seemed to be worked right and check the collision efficiently.
+
 
 #### USAGE:
 You can enter the following command in terminal to test the function of the robot. When you move the robot by `rqt_control` in Gazebo, you will find the `Rviz` planning scene will move simultaneously.

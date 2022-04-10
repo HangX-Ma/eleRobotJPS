@@ -4,6 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /PlanningScene1
         - /PlanningScene1/Scene Robot1
       Splitter Ratio: 0.49899396300315857
     Tree Height: 874
@@ -70,115 +71,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          elerobot_link0:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link5:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link6:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link7:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_10:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_11:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_12:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_13:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_5:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_6:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_7:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_8:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_9:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          world:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
         Loop Animation: true
         Robot Alpha: 0.5
         Robot Color: 150; 50; 150
@@ -224,115 +116,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          elerobot_link0:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link5:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link6:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          elerobot_link7:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_10:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_11:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_12:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_13:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_5:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_6:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_7:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_8:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          vacuum_gripper_9:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          world:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
         Robot Alpha: 0.5
         Show Robot Collision: false
         Show Robot Visual: true
@@ -354,7 +137,7 @@ Visualization Manager:
       Enabled: true
       Move Group Namespace: ""
       Name: PlanningScene
-      Planning Scene Topic: move_group/monitored_planning_scene
+      Planning Scene Topic: /planning_scene
       Robot Description: robot_description
       Scene Geometry:
         Scene Alpha: 0.8999999761581421
