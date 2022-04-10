@@ -4,6 +4,10 @@
 - **Branch summary:** Elephant Panda3 `6-DOF` manipulator projects
 - **Maintained by:** m-contour <m-contour@qq.com>
 
+### 2022-04-10 
+#### Feature
+- **Fixed:** (`rokae_jps_navigation`) Fixed the collision detection problem. The planning scene topic is `/planning_scene`. User needs to guarantee the `Rviz`, `elerobot_description`, `rokae_collision_detection.cpp` all use the same **topic**.
+
 ### 2022-04-07 
 #### Feature
 - ~~**Fixed:** (`rokae_octomap_unit/src/rokae_static_octomap_publish_node.cpp`) Change octomap subscriber topic name from `octomap_binary` to `/move_group/octomap_binary`, which solves the problem that the planning scene sometimes cannot display the geometry published by octomap server. **[#841aaab](https://github.com/Master-sx/eleRobotJPS/commit/841aaabc6ad1139cd57a78d33c748139be285d88)**~~
@@ -21,26 +25,8 @@
 #### Debug Log
 
 [moveit/moveit_ros/planning/planning_components_tools/src/evaluate_collision_checking_speed.cpp](https://github.com/ros-planning/moveit/blob/cce0ffe58c3f472fc5bf76b1ec364d29d2fa7252/moveit_ros/planning/planning_components_tools/src/evaluate_collision_checking_speed.cpp)
-```c++
-planning_scene_monitor::PlanningSceneMonitor psm(ROBOT_DESCRIPTION);
-if (psm.getPlanningScene())
-{
-  // sample a valid state
-  moveit::core::RobotState* state = new moveit::core::RobotState(psm.getPlanningScene()->getRobotModel());
-  collision_detection::CollisionRequest req;
-  state->setToRandomPositions();
-  state->update();
-  collision_detection::CollisionResult res;
-  psm.getPlanningScene()->checkCollision(req, res);
-}
-```
-
 [moveit/moveit_ros/planning/planning_components_tools/src/visualize_robot_collision_volume.cpp](https://github.com/ros-planning/moveit/blob/3361b2d1b6b2feabc2d3e93c75653f5a00e87fa4/moveit_ros/planning/planning_components_tools/src/visualize_robot_collision_volume.cpp)
-
 [moveit/moveit_ros/planning/planning_components_tools/src/compare_collision_speed_checking_fcl_bullet.cpp](https://github.com/ros-planning/moveit/blob/779b7c8b019f70898d4de3189f9261c9697d9b9f/moveit_ros/planning/planning_components_tools/src/compare_collision_speed_checking_fcl_bullet.cpp#L92)
-
 [moveit/moveit_ros/manipulation/pick_place/src/approach_and_translate_stage.cpp](https://github.com/ros-planning/moveit/blob/cce0ffe58c3f472fc5bf76b1ec364d29d2fa7252/moveit_ros/manipulation/pick_place/src/approach_and_translate_stage.cpp)
-
 [moveit/moveit_core/robot_state/test/test_aabb.cpp](https://github.com/ros-planning/moveit/blob/3361b2d1b6b2feabc2d3e93c75653f5a00e87fa4/moveit_core/robot_state/test/test_aabb.cpp)
-
 [Collision checking only includes some links from a EEF group with multiple fingertips #2701](https://github.com/ros-planning/moveit/issues/2701)
