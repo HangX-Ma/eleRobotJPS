@@ -9,6 +9,9 @@ sensors:
     shadow_threshold: 0.05
     padding_offset: 0.01
     padding_scale: 0.5
+    # real camera point cloud topic
+    # point_cloud_topic: /camera/depth/color/points
+    # simulated camera point cloud topic
     point_cloud_topic: /D435i_camera/depth/color/points
     point_subsample: 1
     sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater

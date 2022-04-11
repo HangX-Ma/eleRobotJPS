@@ -7,13 +7,19 @@
   <arg name="use_gui" value="true"/> <!-- don't open it when gazebo gui state on-->
 
   <!-- load local octomap file-->
+  <param name="octomap_resolution" type="double" value="0.01" />
   <group ns="move_group">
     <param name="octomap_resolution" type="double" value="0.01" />
     <param name="octomap_frame" type="string" value="world" /> 
   </group>
   <include file="$(find rokae_octomap_unit)/launch/load_octomap.launch" />
   
-  <param name="octomap_resolution" type="double" value="0.01" />
+  <!-- Use local camera to get point cloud. You need to annotate local octomap loader and change the sensor configuration. -->
+  <!-- <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+      <arg name="enable_pointcloud" value="true"/>
+      <arg name="filters" value="pointcloud"/>
+      <arg name="device_type" value="d435"/>
+  </include> -->
 
   <!-- Launch Gazebo  -->
   <include file="$(find elerobot_simple_control)/launch/elerobot_gazebo_world.launch" >

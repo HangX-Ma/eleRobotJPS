@@ -23,7 +23,10 @@ This manual will introduce how to use the JPS planning module if you want to cha
       - [Update Solver](#update-solver)
     - [Function test](#function-test)
     - [Obstacle Padding](#obstacle-padding)
-  - [5. Intel RealSense i435](#5-intel-realsense-i435)
+  - [5. Intel RealSense D435i](#5-intel-realsense-d435i)
+    - [Physical Intel RealSense D435i USAGE](#physical-intel-realsense-d435i-usage)
+      - [Step 1: Install the latest Intel® RealSense™ SDK 2.0](#step-1-install-the-latest-intel-realsense-sdk-20)
+      - [Step 2: Install Intel® RealSense™ ROS from Sources](#step-2-install-intel-realsense-ros-from-sources)
   - [6.Rviz and Gazebo](#6rviz-and-gazebo)
       - [1. Trajectory Execution Functionality](#1-trajectory-execution-functionality)
       - [2. ros_controllers.yaml](#2-ros_controllersyaml)
@@ -201,13 +204,13 @@ Copy the `rokae_moveit_demo` package from `rokae` project. You can change the pa
       <rosparam command="load" file="$(find <robot>_moveit_config)/config/padding.yaml" />
     </group>
   ```
-## 5. Intel RealSense i435
+## 5. Intel RealSense D435i
 Copy the `realsense_gazebo_description` and `realsense_gazebo_plugin` packages from `rokae` project. Now we need to create our sensor camera for manipulator.
 
 - Please run `catkin_make` first to guarantee the ROS can recognize the `realsense_gazebo_description` and `realsense_gazebo_plugin` packages.
 - You need to copy the following code and add them to the `<YOUR_ROBOT_DESCRIPTION>.xacro`(`elerobot.xacro`) marco space. And make sure the `with_camera` is `true` in upper file.
   ```xml
-      <!-- di435  frame definition can be found at https://github.com/IntelRealSense/librealsense/blob/master/doc/d435i.md -->
+      <!-- d435i  frame definition can be found at https://github.com/IntelRealSense/librealsense/blob/master/doc/d435i.md -->
       <xacro:if value="${with_camera}">
         <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro"/>
         <xacro:sensor_d435i  parent="${arm_id}_link7" name="D435i_camera" topics_ns="D435i_camera" enable_pointCloud="true" align_depth="false">
@@ -255,6 +258,67 @@ Copy the `realsense_gazebo_description` and `realsense_gazebo_plugin` packages f
     ```xml
     <arg name="camera_name" default="D435i_camera"/>
     ```
+
+### Physical Intel RealSense D435i USAGE 
+
+#### Step 1: Install the latest Intel® RealSense™ SDK 2.0
+[IntelRealSense/librealsense](https://github.com/IntelRealSense/librealsense) introduced how to install the SDK for D435i in [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md).
+
+- Register the server's public key:
+  ```shell
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+  ```
+- Add the server to the list of repositories:
+  ```shell
+  sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u
+  ```
+- Install the libraries (see section below if upgrading packages):
+  ```shell
+  sudo apt-get install librealsense2-dkms
+  sudo apt-get install librealsense2-utils
+  ```
+- Optionally install the developer and debug packages:
+  ```shell
+  sudo apt-get install librealsense2-dev
+  sudo apt-get install librealsense2-dbg
+  ```
+Reconnect the Intel RealSense depth camera and run: `realsense-viewer` to verify the installation.
+#### Step 2: Install Intel® RealSense™ ROS from Sources
+[IntelRealSense/realsense-ros](https://github.com/IntelRealSense/realsense-ros) introduces how to install ROS wrapper for Intel Realsense D435i.
+
+- Create a catkin workspace _Ubuntu_
+  ```shell
+  mkdir -p ~/ws_catkin_realsense/src
+  cd ~/ws_catkin_realsense/src
+  ````
+- Clone the latest Intel® RealSense™ ROS from into `ws_catkin_realsense/src`
+  ```shell
+  git clone https://github.com/IntelRealSense/realsense-ros.git
+  git clone https://github.com/pal-robotics/ddynamic_reconfigure.git
+  cd realsense-ros/
+  git checkout `git tag | sort -V | grep -P "^2.\d+\.\d+" | tail -1`
+  cd ..
+  ```
+- Make sure all dependent packages are installed. You can check .travis.yml file for reference.
+- Specifically, make sure that the ros package ddynamic_reconfigure is installed. 
+  ```shell
+  sudo apt install ros-melodic-cv-bridge ros-melodic-image-transport ros-melodic-tf ros-melodic-diagnostic-updater # if you can install from srouce do not run this command `ros-melodic-ddynamic-reconfigure`
+  ```
+  ```shell
+  cd ..
+  catkin_init_workspace
+  cd ..
+  catkin_make clean
+  catkin_make -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release
+  catkin_make install
+  ```
+- Include catkin workspace to system path. 
+  ```shell
+  echo "source ~/ws_catkin_realsense/devel/setup.bash" >> ~/.bashrc
+  source ~/.bashrc
+  ```
+[If errors occur, please check this website.](https://www.guyuehome.com/11502)
+
 
 ## 6.Rviz and Gazebo
 
