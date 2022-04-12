@@ -4,6 +4,12 @@
 - **Branch summary:** Elephant Panda3 `6-DOF` manipulator projects
 - **Maintained by:** m-contour <m-contour@qq.com>
 
+### 2022-04-11 
+#### Feature
+- **Add:** (`elerobot_simple_control/launch/elerobot_toplevel_moveit.launch`) (`elerobot_moveit_config/config/sensors_3d_point_cloud.yaml`) Local Intel Realsense D435i setting. Update configuration steps in `README.md`. **(not test)** **[#5fea039](https://github.com/Master-sx/eleRobotJPS/commit/5fea03935fd0ed8de0ddb22ea4f48c32a1eb1c32)**
+- **Add:** (`elerobot_map_convertor`) ROS package for converting local `.pcd` file to octomap `.bt` file. **(not test)** **[#5fea039](https://github.com/Master-sx/eleRobotJPS/commit/5fea03935fd0ed8de0ddb22ea4f48c32a1eb1c32)**
+- **Add:** (`elerobot_socket`) ROS package for elephant Panda3 robot socket control. **(not complete)** **[#5fea039](https://github.com/Master-sx/eleRobotJPS/commit/5fea03935fd0ed8de0ddb22ea4f48c32a1eb1c32)**
+
 ### 2022-04-10 
 #### Feature
 - **Fixed:** (`rokae_jps_navigation`) Fixed the collision detection problem. The planning scene topic is `/planning_scene`. User needs to guarantee the `Rviz`, `elerobot_description`, `rokae_collision_detection.cpp` all use the same **topic**.

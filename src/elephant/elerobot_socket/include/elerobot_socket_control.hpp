@@ -37,19 +37,15 @@
 namespace eleRobot{
 
 
-class socket_client{
+class socket_client : private base_command
+{
   public:
-    socket_client(ros::NodeHandle *nodehandle): public base_command;
+    socket_client(ros::NodeHandle *nodehandle);
     bool robot_init();
   private:    
     ros::NodeHandle nh_;
     ros::ServiceClient planner_client_; //!< JPS planner client
     std::string        JPS_PLANNING;    //!< JPS service name
-
-    int send_len_;
-    int recv_len_;
-    int socket_cli_;
-
 };
 
 }
