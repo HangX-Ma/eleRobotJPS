@@ -3,7 +3,11 @@
 ## Branch-Name(main)
 - **Branch summary:** Elephant Panda3 `6-DOF` manipulator projects
 - **Maintained by:** m-contour <m-contour@qq.com>
-
+- 
+### 2022-04-11 
+#### Feature
+- **Add:** (`elerobot_socket`) Add socket commands. **[#dab54b6](https://github.com/Master-sx/eleRobotJPS/commit/dab54b6501a6a05910517343d2ae22ba320fbc00)**
+ 
 ### 2022-04-11 
 #### Feature
 - **Add:** (`elerobot_simple_control/launch/elerobot_toplevel_moveit.launch`) (`elerobot_moveit_config/config/sensors_3d_point_cloud.yaml`) Local Intel Realsense D435i setting. Update configuration steps in `README.md`. **(not test)** **[#5fea039](https://github.com/Master-sx/eleRobotJPS/commit/5fea03935fd0ed8de0ddb22ea4f48c32a1eb1c32)**

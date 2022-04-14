@@ -1,0 +1,8 @@
+prefix=/home/contour/ws_catkin_elephant/install
+
+Name: elerobot_socket
+Description: Description of elerobot_socket
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: roscpp

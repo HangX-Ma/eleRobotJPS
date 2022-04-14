@@ -1901,6 +1901,19 @@ rokae_arm_main/fast:
 .PHONY : rokae_arm_main/fast
 
 #=============================================================================
+# Target rules for targets named elerobot_tcpsocket_client
+
+# Build rule for target.
+elerobot_tcpsocket_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 elerobot_tcpsocket_client
+.PHONY : elerobot_tcpsocket_client
+
+# fast build rule for target.
+elerobot_tcpsocket_client/fast:
+	$(MAKE) $(MAKESILENT) -f elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/build.make elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/build
+.PHONY : elerobot_tcpsocket_client/fast
+
+#=============================================================================
 # Target rules for targets named graph_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -2448,6 +2461,7 @@ help:
 	@echo "... visualization_msgs_generate_messages_nodejs"
 	@echo "... visualization_msgs_generate_messages_py"
 	@echo "... elerobot_manipulator_moveit_ikfast_plugin"
+	@echo "... elerobot_tcpsocket_client"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
