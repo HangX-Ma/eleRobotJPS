@@ -3,7 +3,13 @@
 ## Branch-Name(main)
 - **Branch summary:** Elephant Panda3 `6-DOF` manipulator projects
 - **Maintained by:** m-contour <m-contour@qq.com>
-- 
+
+### 2022-04-14 
+#### Feature
+- **Add:** (`elerobot_socket`) Finished socket commands and updated TCP socket communication. **[#271592d](https://github.com/Master-sx/eleRobotJPS/commit/271592de40cdd5578bee93523d1f615f6fb69a1e)**
+- **Bug:** `Intel RealSense D435i` Because my computer has no USB 3.0 port, though using Type-C instead, errors still occur. I guess this may be related to the camera itself. Further survey needs to be done. **[#271592d](https://github.com/Master-sx/eleRobotJPS/commit/271592de40cdd5578bee93523d1f615f6fb69a1e)**
+
+
 ### 2022-04-11 
 #### Feature
 - **Add:** (`elerobot_socket`) Add socket commands. **[#dab54b6](https://github.com/Master-sx/eleRobotJPS/commit/dab54b6501a6a05910517343d2ae22ba320fbc00)**
