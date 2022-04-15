@@ -131,7 +131,7 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
 
   double radius = 0.02;
   double lifetime = 600.0;
-  unsigned int trials = 100; // The number of repeated collision checks for each state
+  unsigned int trials = 2; // The number of repeated collision checks for each state
 
   // Get the kinematic model for which the planning scene is maintained.
   const robot_model::RobotModelConstPtr& model = scene->getRobotModel();
@@ -315,7 +315,7 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
   // color collided objects red
   for (auto& contact : collision_res.contacts)
   {
-    ROS_INFO_STREAM(ANSI_COLOR_CYAN "Between: " << contact.first.first << " and " << contact.first.second << ANSI_COLOR_RESET);
+    // ROS_INFO_STREAM(ANSI_COLOR_CYAN "Between: " << contact.first.first << " and " << contact.first.second << ANSI_COLOR_RESET);
     std_msgs::ColorRGBA red;
     red.a = 0.8;
     red.r = 1;
@@ -450,7 +450,7 @@ bool self_detector::m_collision_detection(rokae_jps_navigation::CheckCollision::
     // color collided objects red
     for (auto& contact : collision_res.contacts)
     {
-      ROS_INFO_STREAM(ANSI_COLOR_CYAN "Between: " << contact.first.first << " and " << contact.first.second << ANSI_COLOR_RESET);
+      // ROS_INFO_STREAM(ANSI_COLOR_CYAN "Between: " << contact.first.first << " and " << contact.first.second << ANSI_COLOR_RESET);
       std_msgs::ColorRGBA red;
       red.a = 0.8;
       red.r = 1;

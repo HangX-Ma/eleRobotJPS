@@ -209,6 +209,7 @@
 /home/contour/ws_catkin_elephant/build/elephant/rokae_jps_navigation/CMakeFiles/install/local.dir
 /home/contour/ws_catkin_elephant/build/elephant/rokae_jps_navigation/CMakeFiles/install/strip.dir
 /home/contour/ws_catkin_elephant/build/elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir
+/home/contour/ws_catkin_elephant/build/elephant/elerobot_socket/CMakeFiles/elerobot_control.dir
 /home/contour/ws_catkin_elephant/build/elephant/elerobot_socket/CMakeFiles/test.dir
 /home/contour/ws_catkin_elephant/build/elephant/elerobot_socket/CMakeFiles/edit_cache.dir
 /home/contour/ws_catkin_elephant/build/elephant/elerobot_socket/CMakeFiles/rebuild_cache.dir

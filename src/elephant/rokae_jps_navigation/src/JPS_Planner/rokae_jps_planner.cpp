@@ -134,6 +134,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   tarPoints_pose_.clear();
   tarPoints_pose_msg_.clear();
   joint_configs_.clear();
+  path_signer_.clear();
   check_status_ = false;
   setInitialJoints(0, 0, 0, 0, 0, 0);
 
@@ -321,19 +322,27 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
 
         // TODO FOLLOWING CODES USED TO CHECK ORIGINAL JPS PLANNER
         /*******************************************************************/
+        path_signer_.clear();
         octomap::KeyRay ray;
-        std::vector<octomap::OcTreeKey> keys;
+        std::vector<octomap::OcTreeKey> keys; 
         for (int i = 0; i < (int)raw_path_.size() - 1; ++i) {
           octree_->computeRayKeys(raw_path_.at(i), raw_path_.at(i+1), ray);
-          keys.insert(keys.end(), ray.begin(), ray.end());
+          keys.assign(ray.begin(), ray.end());
+          std::vector<octomap::point3d> point  = keysToCoords(keys, *octree_);
+          pathNode raw(raw_path_.at(i), true);
+          path_signer_.push_back(raw);
+          for (size_t j = 1; j < point.size(); j++) {
+            pathNode raw(point.at(j), false);
+            path_signer_.push_back(raw);
+          }
         }
-        optimal_path_ = keysToCoords(keys, *octree_);
-        optimal_path_.push_back(raw_path_.back());
+        pathNode raw(raw_path_.back(), true);
+        path_signer_.push_back(raw);
         /*******************************************************************/
 
         // REMOVE CORNER POINTS
-        for(int i = 0; i < 2; i++) {
-          optimal_path_ = removeCornerPts(optimal_path_, *octree_);
+        for(int i = 0; i < 3; i++) {
+          optimal_path_ = removeCornerPts(path_signer_, *octree_);
         }
         // optimal_path_ = raw_path_;
 
@@ -377,12 +386,25 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
             if (joint_num == 6) {
               std::vector<geometry_msgs::Pose> pose_group;
               geometry_msgs::Pose pose = joint2pose_client(joint_group);
+              octomap::point3d raw_point(pose.position.x, pose.position.y, pose.position.z);
+              octomap::point3d suit_point = suit_coordinate(raw_point);
+              pose.position.x = suit_point.x();
+              pose.position.y = suit_point.y();
+              pose.position.z = suit_point.z();
               pose_group.push_back(pose);
               // if status returned is false, this node need to be set as an obstacle
               if (!tarPoseAvalability_client(pose_group)) {
-                octomap::point3d point (pose.position.x, pose.position.y, pose.position.z);
-                octomap::OcTreeKey key = octree_->coordToKey(point);
+                octomap::OcTreeKey key = octree_->coordToKey(suit_point);
                 setCurrNodeObs(key, octree_);
+                visualizeVoxel(suit_point);
+                // set neighbors obstacles as well
+                for (const auto d: JPS_BasePtr->EXPANSION_DIRECTIONS) 
+                {
+                  auto new_key    = expand(key, d);
+                  auto currPoint  = octree_->keyToCoord(new_key);
+                  setCurrNodeObs(new_key, octree_);
+                  visualizeVoxel(currPoint);
+                }
                 // need to planning again
                 planning_status_ = PlanningState::NEED_REPLANNING;
               }
@@ -941,7 +963,7 @@ void JPSPlanner::visualizePath(const std::vector<octomap::point3d> &waypoints)
   msg.scale.x            = path_points_scale_;
   msg.scale.y            = path_points_scale_;
   msg.scale.z            = path_points_scale_;
-
+  
   for (size_t i = 1; i < waypoints.size(); i++) {
     geometry_msgs::Point p1, p2;
     std_msgs::ColorRGBA  c;
@@ -1043,9 +1065,6 @@ bool JPSPlanner::plan(octomap::OcTree &tree)
 
   path_ = keysToCoords(keys, tree); 
   // Simplify the raw path
-  // path_     = removeCornerPts(path_points, tree);
-  // path_     = removeCornerPts(path_, tree);
-  // path_     = removeLinePts(path_points, tree);
 
   return true;
 }
@@ -1064,9 +1083,7 @@ bool JPSPlanner::iterativeComputePath(int max_iteration, octomap::OcTree &tree)
   }
 
   // Simplify the raw path
-  // path_     = removeCornerPts(raw_path_, tree);
-  // path_     = removeCornerPts(path_, tree);
-  // optimal_path_ = removeLinePts(raw_path_, tree);
+
   optimal_path_ = raw_path_;
 
   if (planner_verbose_) {
@@ -1323,14 +1340,14 @@ std::vector<octomap::point3d> JPSPlanner::removeLinePts(const std::vector<octoma
   return optimized_path;
 }
 
-std::vector<octomap::point3d> JPSPlanner::removeCornerPts(const std::vector<octomap::point3d> &waypoints, octomap::OcTree &tree)
+std::vector<octomap::point3d> JPSPlanner::removeCornerPts(const std::vector<pathNode> &pathNodes, octomap::OcTree &tree)
 {
-  if (waypoints.size() < 3) {
+  if (pathNodes.size() < 3) {
     if (planner_verbose_) {
       printf(ANSI_COLOR_BLUE "[JPS]: No enough points for 'Corner Points' filtering!" ANSI_COLOR_RESET "\n");
     }
-
-    return waypoints;
+    
+    return raw_path_;
   }
 
   // cut zigzag segment
@@ -1341,12 +1358,12 @@ std::vector<octomap::point3d> JPSPlanner::removeCornerPts(const std::vector<octo
 
   double cost1, cost2, cost3;
 
-  optimized_path.push_back(waypoints.front());
+  optimized_path.push_back(pathNodes.front().point);
   int iteration = 1;
-  while(iteration + 2 < (int) waypoints.size()) {
-    point1 = waypoints.at(iteration);
-    point2 = waypoints.at(iteration+1);
-    point3 = waypoints.at(iteration+2);
+  while(iteration + 2 < (int) pathNodes.size()) {
+    point1 = pathNodes.at(iteration).point;
+    point2 = pathNodes.at(iteration+1).point;
+    point3 = pathNodes.at(iteration+2).point;
     // calculate cost1
     if (freeStraightPath(point1, point2, tree)) {
       cost1 = (point1 - point2).norm();
@@ -1368,6 +1385,10 @@ std::vector<octomap::point3d> JPSPlanner::removeCornerPts(const std::vector<octo
 
     if (cost3 < cost1 + cost2) {
       optimized_path.push_back(point1);
+      // don't delete the raw path points
+      if(pathNodes.at(iteration+1).ifRaw) {
+        optimized_path.push_back(point2);
+      }
     } 
     else if (cost3 == std::numeric_limits<double>::infinity()) {
       iteration += 2;
@@ -1379,7 +1400,7 @@ std::vector<octomap::point3d> JPSPlanner::removeCornerPts(const std::vector<octo
     }
     iteration += 2;
   }
-  optimized_path.push_back(waypoints.back());
+  optimized_path.push_back(pathNodes.back().point);
 
   return optimized_path;
 }

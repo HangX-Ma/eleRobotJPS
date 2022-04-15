@@ -47,6 +47,7 @@
 #endif
 
 namespace plt = matplotlibcpp;
+constexpr int MAX_TIME_INTERVAL = 120;
 
 void formatVecToMat(const std::vector<Eigen::VectorXd, Eigen::aligned_allocator<Eigen::VectorXd>>& vec, Eigen::MatrixXd& mat) 
 {
@@ -250,7 +251,10 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
   std::shared_ptr<toppra::parametrizer::ConstAccel> ca = std::make_shared<toppra::parametrizer::ConstAccel>(path, gridpoints, vsquared);
   toppra::Bound  path_interval = ca->pathInterval();
   // const int      length2       = 10*(path_interval(1) - path_interval(0));
-  const int      length2       = 20;
+  int            length2       = 10*(path_interval(1) - path_interval(0));
+  if (length2 > MAX_TIME_INTERVAL) {
+    length2 = MAX_TIME_INTERVAL;
+  }
 
   toppra::Vector times2        = toppra::Vector::LinSpaced(length2, path_interval(0), path_interval(1));
 

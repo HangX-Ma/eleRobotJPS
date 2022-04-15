@@ -549,46 +549,48 @@ void socket_client::resume_program() {
 }
 
 
-int main(int argc, char **argv)
-{
-  ros::init(argc, argv, "elerobot_socket_control");
-  ros::NodeHandle nh("~");
-  socket_client sockClient(&nh);
+// TEST CODE
 
-  // sockClient.power_on();
+// int main(int argc, char **argv)
+// {
+//   ros::init(argc, argv, "elerobot_socket_control");
+//   ros::NodeHandle nh("~");
+//   socket_client sockClient(&nh);
+
+//   // sockClient.power_on();
   
-  // sockClient.state_on();
+//   // sockClient.state_on();
 
-  // std::vector<double> angles = sockClient.get_angles();
-  // sockClient.set_angles(angles[0], angles[1], angles[2], angles[3], angles[4], angles[5]-10, 100);
-  // sockClient.set_angle(6, angles[5]-10, 100);
-  // sockClient.get_coords();
-  // sockClient.get_digital_out(1);
-  // sockClient.get_digital_in(0);
-  // sockClient.state_check();
-  // sockClient.check_running();
-  // sockClient.resume_program();
+//   // std::vector<double> angles = sockClient.get_angles();
+//   // sockClient.set_angles(angles[0], angles[1], angles[2], angles[3], angles[4], angles[5]-10, 100);
+//   // sockClient.set_angle(6, angles[5]-10, 100);
+//   // sockClient.get_coords();
+//   // sockClient.get_digital_out(1);
+//   // sockClient.get_digital_in(0);
+//   // sockClient.state_check();
+//   // sockClient.check_running();
+//   // sockClient.resume_program();
 
-  // sockClient.pause_program();
-  // sockClient.wait_command_done();
-  // sockClient.power_off();
-  // sockClient.power_on();
-  // sockClient.state_on();
-  // sockClient.state_off();  
-  // sockClient.task_stop();
-  // sockClient.set_feed_rate(50);
-  // sockClient.read_next_error();
-  // sockClient.wait(2);
-  // sockClient.get_speed();
-  sockClient.set_torque_limit('x',10.0);
-  sockClient.set_payload(5.0);
-  sockClient.set_acceleration(400);
-  sockClient.get_acceleration();
+//   // sockClient.pause_program();
+//   // sockClient.wait_command_done();
+//   // sockClient.power_off();
+//   // sockClient.power_on();
+//   // sockClient.state_on();
+//   // sockClient.state_off();  
+//   // sockClient.task_stop();
+//   // sockClient.set_feed_rate(50);
+//   // sockClient.read_next_error();
+//   // sockClient.wait(2);
+//   // sockClient.get_speed();
+//   // sockClient.set_torque_limit('x',10.0);
+//   // sockClient.set_payload(5.0);
+//   // sockClient.set_acceleration(400);
+//   // sockClient.get_acceleration();
 
-  ros::spin();
+//   ros::spin();
 
-  return 0;
-}
+//   return 0;
+// }
 
 // subscribe the JPS planner service
 // JPS_PLANNING    = "/rokae_arm/goto_trigger";

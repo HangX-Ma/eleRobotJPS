@@ -1914,6 +1914,19 @@ elerobot_tcpsocket_client/fast:
 .PHONY : elerobot_tcpsocket_client/fast
 
 #=============================================================================
+# Target rules for targets named elerobot_control
+
+# Build rule for target.
+elerobot_control: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 elerobot_control
+.PHONY : elerobot_control
+
+# fast build rule for target.
+elerobot_control/fast:
+	$(MAKE) $(MAKESILENT) -f elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/build.make elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/build
+.PHONY : elerobot_control/fast
+
+#=============================================================================
 # Target rules for targets named graph_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -2460,6 +2473,7 @@ help:
 	@echo "... visualization_msgs_generate_messages_lisp"
 	@echo "... visualization_msgs_generate_messages_nodejs"
 	@echo "... visualization_msgs_generate_messages_py"
+	@echo "... elerobot_control"
 	@echo "... elerobot_manipulator_moveit_ikfast_plugin"
 	@echo "... elerobot_tcpsocket_client"
 	@echo "... gmock"

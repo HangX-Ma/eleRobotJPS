@@ -185,6 +185,44 @@ elerobot_tcpsocket_client/fast:
 	cd /home/contour/ws_catkin_elephant/build && $(MAKE) $(MAKESILENT) -f elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/build.make elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/build
 .PHONY : elerobot_tcpsocket_client/fast
 
+# Convenience name for target.
+elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/rule:
+	cd /home/contour/ws_catkin_elephant/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/rule
+.PHONY : elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/rule
+
+# Convenience name for target.
+elerobot_control: elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/rule
+.PHONY : elerobot_control
+
+# fast build rule for target.
+elerobot_control/fast:
+	cd /home/contour/ws_catkin_elephant/build && $(MAKE) $(MAKESILENT) -f elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/build.make elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/build
+.PHONY : elerobot_control/fast
+
+src/elerobot_control.o: src/elerobot_control.cpp.o
+.PHONY : src/elerobot_control.o
+
+# target to build an object file
+src/elerobot_control.cpp.o:
+	cd /home/contour/ws_catkin_elephant/build && $(MAKE) $(MAKESILENT) -f elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/build.make elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cpp.o
+.PHONY : src/elerobot_control.cpp.o
+
+src/elerobot_control.i: src/elerobot_control.cpp.i
+.PHONY : src/elerobot_control.i
+
+# target to preprocess a source file
+src/elerobot_control.cpp.i:
+	cd /home/contour/ws_catkin_elephant/build && $(MAKE) $(MAKESILENT) -f elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/build.make elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cpp.i
+.PHONY : src/elerobot_control.cpp.i
+
+src/elerobot_control.s: src/elerobot_control.cpp.s
+.PHONY : src/elerobot_control.s
+
+# target to generate assembly for a file
+src/elerobot_control.cpp.s:
+	cd /home/contour/ws_catkin_elephant/build && $(MAKE) $(MAKESILENT) -f elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/build.make elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cpp.s
+.PHONY : src/elerobot_control.cpp.s
+
 src/elerobot_tcpsocket_client.o: src/elerobot_tcpsocket_client.cpp.o
 .PHONY : src/elerobot_tcpsocket_client.o
 
@@ -222,7 +260,11 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... elerobot_control"
 	@echo "... elerobot_tcpsocket_client"
+	@echo "... src/elerobot_control.o"
+	@echo "... src/elerobot_control.i"
+	@echo "... src/elerobot_control.s"
 	@echo "... src/elerobot_tcpsocket_client.o"
 	@echo "... src/elerobot_tcpsocket_client.i"
 	@echo "... src/elerobot_tcpsocket_client.s"

@@ -789,6 +789,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/DependInfo.cmake"
   "elephant/rokae_jps_navigation/CMakeFiles/rokae_arm_main.dir/DependInfo.cmake"
   "elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/DependInfo.cmake"
+  "elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/DependInfo.cmake"
   "elephant/rokae_octomap_unit/CMakeFiles/graph_msgs_generate_messages_cpp.dir/DependInfo.cmake"
   "elephant/rokae_octomap_unit/CMakeFiles/graph_msgs_generate_messages_eus.dir/DependInfo.cmake"
   "elephant/rokae_octomap_unit/CMakeFiles/graph_msgs_generate_messages_lisp.dir/DependInfo.cmake"

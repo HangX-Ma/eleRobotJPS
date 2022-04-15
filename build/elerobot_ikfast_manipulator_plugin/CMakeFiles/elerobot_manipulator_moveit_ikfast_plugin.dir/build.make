@@ -169,6 +169,8 @@ elerobot_manipulator_moveit_ikfast_plugin_EXTERNAL_OBJECTS =
 /home/contour/ws_catkin_elephant/devel/lib/libelerobot_manipulator_moveit_ikfast_plugin.so: /opt/ros/melodic/lib/liborocos-kdl.so.1.4.0
 /home/contour/ws_catkin_elephant/devel/lib/libelerobot_manipulator_moveit_ikfast_plugin.so: /usr/lib/x86_64-linux-gnu/liblapack.so
 /home/contour/ws_catkin_elephant/devel/lib/libelerobot_manipulator_moveit_ikfast_plugin.so: /usr/lib/x86_64-linux-gnu/libblas.so
+/home/contour/ws_catkin_elephant/devel/lib/libelerobot_manipulator_moveit_ikfast_plugin.so: /usr/lib/x86_64-linux-gnu/libf77blas.so
+/home/contour/ws_catkin_elephant/devel/lib/libelerobot_manipulator_moveit_ikfast_plugin.so: /usr/lib/x86_64-linux-gnu/libatlas.so
 /home/contour/ws_catkin_elephant/devel/lib/libelerobot_manipulator_moveit_ikfast_plugin.so: elerobot_ikfast_manipulator_plugin/CMakeFiles/elerobot_manipulator_moveit_ikfast_plugin.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/contour/ws_catkin_elephant/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library /home/contour/ws_catkin_elephant/devel/lib/libelerobot_manipulator_moveit_ikfast_plugin.so"
 	cd /home/contour/ws_catkin_elephant/build/elerobot_ikfast_manipulator_plugin && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/elerobot_manipulator_moveit_ikfast_plugin.dir/link.txt --verbose=$(VERBOSE)

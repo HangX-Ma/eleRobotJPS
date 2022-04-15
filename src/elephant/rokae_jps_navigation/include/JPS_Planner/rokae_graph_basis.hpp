@@ -347,15 +347,15 @@ class GraphSearch
     std::unordered_set<Node, HashFunction>                       open;       //!< Initialize the open list
     std::unordered_set<Node, HashFunction>                       closed;     //!< Initialize the closed list
     std::unordered_map<Node, Node, HashFunction>                 parent_map; //!< first = child, second = parent
-    
+
+    HeuristicFunctionType heuristic_function_type = HeuristicFunctionType::Diagonal; //!< heuristic type for A-star and JPS planning
+    PlanningState         planning_status_;                                           //!< planning status flag
+  public:
     //! expansion direction of A-star
     const std::vector<std::vector<int>> EXPANSION_DIRECTIONS = {{-1, -1, -1}, {-1, -1, 0}, {-1, -1, 1}, {-1, 0, -1}, {-1, 0, 0}, {-1, 0, 1}, {-1, 1, -1},
                                                                 {-1, 1, 0},   {-1, 1, 1},  {0, -1, -1}, {0, -1, 0},  {0, -1, 1}, {0, 0, -1}, {0, 0, 1},
                                                                 {0, 1, -1},   {0, 1, 0},   {0, 1, 1},   {1, -1, -1}, {1, -1, 0}, {1, -1, 1}, {1, 0, -1},
                                                                 {1, 0, 0},    {1, 0, 1},   {1, 1, -1},  {1, 1, 0},   {1, 1, 1}};
-
-    HeuristicFunctionType heuristic_function_type = HeuristicFunctionType::Diagonal; //!< heuristic type for A-star and JPS planning
-    PlanningState         planning_status_;                                           //!< planning status flag
 };
 }
 #endif

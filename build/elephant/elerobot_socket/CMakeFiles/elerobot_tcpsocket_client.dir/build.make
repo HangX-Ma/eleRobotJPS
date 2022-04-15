@@ -90,110 +90,14 @@ elerobot_tcpsocket_client_OBJECTS = \
 # External object files for target elerobot_tcpsocket_client
 elerobot_tcpsocket_client_EXTERNAL_OBJECTS =
 
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_tcpsocket_client.cpp.o
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/build.make
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning_interface/lib/libmoveit_common_planning_interface_objects.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning_interface/lib/libmoveit_planning_scene_interface.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning_interface/lib/libmoveit_move_group_interface.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning_interface/lib/libmoveit_py_bindings_tools.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_warehouse/lib/libmoveit_warehouse.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libwarehouse_ros.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libtf.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_manipulation/lib/libmoveit_pick_place_planner.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_move_group/lib/libmoveit_move_group_capabilities_base.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning/lib/libmoveit_rdf_loader.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning/lib/libmoveit_kinematics_plugin_loader.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning/lib/libmoveit_robot_model_loader.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning/lib/libmoveit_constraint_sampler_manager_loader.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning/lib/libmoveit_planning_pipeline.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning/lib/libmoveit_trajectory_execution_manager.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning/lib/libmoveit_plan_execution.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning/lib/libmoveit_planning_scene_monitor.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning/lib/libmoveit_collision_plugin_loader.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_planning/lib/libmoveit_cpp.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_ros_occupancy_map_monitor/lib/libmoveit_ros_occupancy_map_monitor.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_exceptions.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_background_processing.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_kinematics_base.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_robot_model.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_transforms.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_robot_state.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_robot_trajectory.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_planning_interface.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_collision_detection.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_collision_detection_fcl.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_collision_detection_bullet.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_kinematic_constraints.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_planning_scene.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_constraint_samplers.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_planning_request_adapter.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_profiler.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_python_tools.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_trajectory_processing.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_distance_field.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_collision_distance_field.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_kinematics_metrics.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_dynamics_solver.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_utils.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/moveit_core/lib/libmoveit_test_utils.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libboost_iostreams.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libfcl.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libBulletSoftBody.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libBulletDynamics.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libBulletCollision.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libLinearMath.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libkdl_parser.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/liburdf.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/liburdfdom_model.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/liburdfdom_world.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/librosconsole_bridge.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libsrdfdom.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libtinyxml.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /home/contour/ws_moveit/devel/.private/geometric_shapes/lib/libgeometric_shapes.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/liboctomap.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/liboctomath.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/librandom_numbers.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libclass_loader.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/libPocoFoundation.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libroslib.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/librospack.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libpython2.7.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/liborocos-kdl.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/liborocos-kdl.so.1.4.0
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libtf2_ros.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libactionlib.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libmessage_filters.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libroscpp.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/librosconsole.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/librosconsole_log4cxx.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/librosconsole_backend_interface.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libtf2.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libroscpp_serialization.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/librostime.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /opt/ros/melodic/lib/libcpp_common.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client: elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/contour/ws_catkin_elephant/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client"
+/home/contour/ws_catkin_elephant/devel/lib/libelerobot_tcpsocket_client.so: elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_tcpsocket_client.cpp.o
+/home/contour/ws_catkin_elephant/devel/lib/libelerobot_tcpsocket_client.so: elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/build.make
+/home/contour/ws_catkin_elephant/devel/lib/libelerobot_tcpsocket_client.so: elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/contour/ws_catkin_elephant/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library /home/contour/ws_catkin_elephant/devel/lib/libelerobot_tcpsocket_client.so"
 	cd /home/contour/ws_catkin_elephant/build/elephant/elerobot_socket && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/elerobot_tcpsocket_client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/build: /home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client
+elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/build: /home/contour/ws_catkin_elephant/devel/lib/libelerobot_tcpsocket_client.so
 .PHONY : elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/build
 
 elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/clean:

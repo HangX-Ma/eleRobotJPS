@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client"
-  "/home/contour/ws_catkin_elephant/devel/lib/elerobot_socket/elerobot_tcpsocket_client.pdb"
+  "/home/contour/ws_catkin_elephant/devel/lib/libelerobot_tcpsocket_client.pdb"
+  "/home/contour/ws_catkin_elephant/devel/lib/libelerobot_tcpsocket_client.so"
   "CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_tcpsocket_client.cpp.o"
   "CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_tcpsocket_client.cpp.o.d"
 )

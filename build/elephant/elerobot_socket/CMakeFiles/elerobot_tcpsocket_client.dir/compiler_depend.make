@@ -4,7 +4,11 @@
 elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_tcpsocket_client.cpp.o: /home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/src/elerobot_tcpsocket_client.cpp \
   /usr/include/stdc-predef.h \
   /home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/include/elerobot_tcpsocket_client.hpp \
-  /usr/include/c++/7/iostream \
+  /opt/ros/melodic/include/ros/ros.h \
+  /opt/ros/melodic/include/ros/time.h \
+  /opt/ros/melodic/include/ros/platform.h \
+  /usr/include/c++/7/stdlib.h \
+  /usr/include/c++/7/cstdlib \
   /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
   /usr/include/features.h \
@@ -14,46 +18,56 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/7/bits/cpu_defines.h \
-  /usr/include/c++/7/ostream \
-  /usr/include/c++/7/ios \
-  /usr/include/c++/7/iosfwd \
-  /usr/include/c++/7/bits/stringfwd.h \
-  /usr/include/c++/7/bits/memoryfwd.h \
-  /usr/include/c++/7/bits/postypes.h \
-  /usr/include/c++/7/cwchar \
-  /usr/include/wchar.h \
+  /usr/include/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
-  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
-  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar.h \
-  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
-  /usr/include/c++/7/exception \
-  /usr/include/c++/7/bits/exception.h \
-  /usr/include/c++/7/bits/exception_ptr.h \
-  /usr/include/c++/7/bits/exception_defines.h \
-  /usr/include/c++/7/bits/cxxabi_init_exception.h \
-  /usr/include/c++/7/typeinfo \
-  /usr/include/c++/7/bits/hash_bytes.h \
-  /usr/include/c++/7/new \
-  /usr/include/c++/7/bits/nested_exception.h \
-  /usr/include/c++/7/bits/move.h \
-  /usr/include/c++/7/bits/concept_check.h \
-  /usr/include/c++/7/type_traits \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
+  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/sys/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
+  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/c++/7/bits/std_abs.h \
+  /usr/include/c++/7/string \
+  /usr/include/c++/7/bits/stringfwd.h \
+  /usr/include/c++/7/bits/memoryfwd.h \
   /usr/include/c++/7/bits/char_traits.h \
   /usr/include/c++/7/bits/stl_algobase.h \
   /usr/include/c++/7/bits/functexcept.h \
+  /usr/include/c++/7/bits/exception_defines.h \
   /usr/include/c++/7/bits/cpp_type_traits.h \
   /usr/include/c++/7/ext/type_traits.h \
   /usr/include/c++/7/ext/numeric_traits.h \
   /usr/include/c++/7/bits/stl_pair.h \
+  /usr/include/c++/7/bits/move.h \
+  /usr/include/c++/7/bits/concept_check.h \
+  /usr/include/c++/7/type_traits \
   /usr/include/c++/7/bits/stl_iterator_base_types.h \
   /usr/include/c++/7/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/7/debug/assertions.h \
@@ -61,54 +75,39 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
   /usr/include/c++/7/bits/ptr_traits.h \
   /usr/include/c++/7/debug/debug.h \
   /usr/include/c++/7/bits/predefined_ops.h \
+  /usr/include/c++/7/bits/postypes.h \
+  /usr/include/c++/7/cwchar \
+  /usr/include/wchar.h \
+  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/c++/7/cstdint \
   /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h \
   /usr/include/stdint.h \
-  /usr/include/x86_64-linux-gnu/bits/types.h \
-  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
-  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/c++/7/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h \
+  /usr/include/c++/7/ext/new_allocator.h \
+  /usr/include/c++/7/new \
+  /usr/include/c++/7/exception \
+  /usr/include/c++/7/bits/exception.h \
+  /usr/include/c++/7/bits/exception_ptr.h \
+  /usr/include/c++/7/bits/cxxabi_init_exception.h \
+  /usr/include/c++/7/typeinfo \
+  /usr/include/c++/7/bits/hash_bytes.h \
+  /usr/include/c++/7/bits/nested_exception.h \
   /usr/include/c++/7/bits/localefwd.h \
   /usr/include/x86_64-linux-gnu/c++/7/bits/c++locale.h \
   /usr/include/c++/7/clocale \
   /usr/include/locale.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
+  /usr/include/c++/7/iosfwd \
   /usr/include/c++/7/cctype \
   /usr/include/ctype.h \
-  /usr/include/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
-  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/c++/7/bits/ios_base.h \
-  /usr/include/c++/7/ext/atomicity.h \
-  /usr/include/x86_64-linux-gnu/c++/7/bits/gthr.h \
-  /usr/include/x86_64-linux-gnu/c++/7/bits/gthr-default.h \
-  /usr/include/pthread.h \
-  /usr/include/sched.h \
-  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/sched.h \
-  /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
-  /usr/include/time.h \
-  /usr/include/x86_64-linux-gnu/bits/time.h \
-  /usr/include/x86_64-linux-gnu/bits/timex.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
-  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
-  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
-  /usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h \
-  /usr/include/c++/7/bits/locale_classes.h \
-  /usr/include/c++/7/string \
-  /usr/include/c++/7/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h \
-  /usr/include/c++/7/ext/new_allocator.h \
   /usr/include/c++/7/bits/ostream_insert.h \
   /usr/include/c++/7/bits/cxxabi_forced.h \
   /usr/include/c++/7/bits/stl_function.h \
@@ -116,23 +115,23 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
   /usr/include/c++/7/bits/range_access.h \
   /usr/include/c++/7/initializer_list \
   /usr/include/c++/7/bits/basic_string.h \
+  /usr/include/c++/7/ext/atomicity.h \
+  /usr/include/x86_64-linux-gnu/c++/7/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/7/bits/gthr-default.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
+  /usr/include/x86_64-linux-gnu/bits/sched.h \
+  /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
+  /usr/include/time.h \
+  /usr/include/x86_64-linux-gnu/bits/time.h \
+  /usr/include/x86_64-linux-gnu/bits/timex.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
+  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
+  /usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h \
   /usr/include/c++/7/ext/alloc_traits.h \
   /usr/include/c++/7/bits/alloc_traits.h \
   /usr/include/c++/7/ext/string_conversions.h \
-  /usr/include/c++/7/cstdlib \
-  /usr/include/stdlib.h \
-  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
-  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
-  /usr/include/x86_64-linux-gnu/sys/types.h \
-  /usr/include/x86_64-linux-gnu/sys/select.h \
-  /usr/include/x86_64-linux-gnu/bits/select.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
-  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
-  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
-  /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/c++/7/bits/std_abs.h \
   /usr/include/c++/7/cstdio \
   /usr/include/stdio.h \
   /usr/include/x86_64-linux-gnu/bits/libio.h \
@@ -148,6 +147,11 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
   /usr/include/asm-generic/errno-base.h \
   /usr/include/c++/7/bits/functional_hash.h \
   /usr/include/c++/7/bits/basic_string.tcc \
+  /usr/include/c++/7/iostream \
+  /usr/include/c++/7/ostream \
+  /usr/include/c++/7/ios \
+  /usr/include/c++/7/bits/ios_base.h \
+  /usr/include/c++/7/bits/locale_classes.h \
   /usr/include/c++/7/bits/locale_classes.tcc \
   /usr/include/c++/7/system_error \
   /usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h \
@@ -167,10 +171,6 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
   /usr/include/c++/7/bits/ostream.tcc \
   /usr/include/c++/7/istream \
   /usr/include/c++/7/bits/istream.tcc \
-  /opt/ros/melodic/include/ros/ros.h \
-  /opt/ros/melodic/include/ros/time.h \
-  /opt/ros/melodic/include/ros/platform.h \
-  /usr/include/c++/7/stdlib.h \
   /usr/include/c++/7/cmath \
   /usr/include/math.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -1111,23 +1111,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
   /usr/include/c++/7/thread \
   /usr/include/c++/7/chrono \
   /usr/include/c++/7/ratio \
-  /usr/include/c++/7/bits/parse_numbers.h \
-  /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/Goto.h \
-  /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/GotoRequest.h \
-  /opt/ros/melodic/include/ros/message_operations.h \
-  /opt/ros/melodic/include/geometry_msgs/Pose.h \
-  /opt/ros/melodic/include/geometry_msgs/Point.h \
-  /opt/ros/melodic/include/geometry_msgs/Quaternion.h \
-  /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/GotoResponse.h
+  /usr/include/c++/7/bits/parse_numbers.h
 
-
-/opt/ros/melodic/include/geometry_msgs/Point.h:
-
-/opt/ros/melodic/include/geometry_msgs/Pose.h:
-
-/opt/ros/melodic/include/ros/message_operations.h:
-
-/home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/GotoRequest.h:
 
 /usr/include/c++/7/bits/parse_numbers.h:
 
@@ -1555,8 +1540,6 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/c++/7/cstdarg:
 
-/home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/Goto.h:
-
 /usr/include/boost/type_traits/make_unsigned.hpp:
 
 /usr/include/x86_64-linux-gnu/sys/time.h:
@@ -1911,19 +1894,17 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /opt/ros/melodic/include/ros/rostime_decl.h:
 
-/usr/include/wctype.h:
-
 /usr/include/boost/container/detail/std_fwd.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h:
+
+/usr/include/wctype.h:
 
 /usr/include/linux/limits.h:
 
 /usr/include/boost/mpl/vector/aux_/size.hpp:
 
 /usr/include/boost/type_traits/is_convertible.hpp:
-
-/home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/GotoResponse.h:
 
 /usr/include/boost/config/compiler/gcc.hpp:
 
@@ -1943,49 +1924,11 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
-/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+/usr/include/boost/config/detail/posix_features.hpp:
 
-/usr/include/boost/smart_ptr/make_shared.hpp:
+/usr/include/c++/7/bits/basic_string.h:
 
-/usr/include/c++/7/stdlib.h:
-
-/usr/include/c++/7/debug/debug.h:
-
-/usr/include/boost/mpl/vector/aux_/begin_end.hpp:
-
-/usr/include/boost/predef/library/c/gnu.h:
-
-/usr/include/boost/predef/compiler/digitalmars.h:
-
-/usr/include/c++/7/ext/new_allocator.h:
-
-/opt/ros/melodic/include/ros/ros.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
-
-/usr/include/boost/predef/compiler/gcc_xml.h:
-
-/usr/include/time.h:
-
-/usr/include/c++/7/bits/locale_classes.tcc:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/ctype_base.h:
-
-/opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h:
-
-/usr/include/boost/mpl/aux_/config/overload_resolution.hpp:
-
-/usr/include/boost/predef/compiler/llvm.h:
-
-/usr/include/boost/predef.h:
-
-/usr/include/boost/range/const_iterator.hpp:
-
-/usr/include/boost/mpl/aux_/config/lambda.hpp:
-
-/usr/include/boost/mpl/aux_/template_arity.hpp:
+/usr/include/c++/7/bits/ostream.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
@@ -1994,20 +1937,6 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 /home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/include/elerobot_basesocket.hpp:
 
 /usr/include/boost/predef/architecture/sparc.h:
-
-/usr/include/boost/predef/architecture.h:
-
-/usr/include/boost/config/no_tr1/cmath.hpp:
-
-/usr/include/c++/7/memory:
-
-/usr/include/boost/mpl/advance.hpp:
-
-/usr/include/boost/type_traits/is_enum.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
-
-/usr/include/boost/predef/compiler/edg.h:
 
 /usr/include/c++/7/bits/ptr_traits.h:
 
@@ -2021,31 +1950,9 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/minus.hpp:
 
-/usr/include/boost/lexical_cast/detail/widest_char.hpp:
-
-/usr/include/boost/predef/compiler/watcom.h:
-
-/usr/include/boost/current_function.hpp:
-
-/usr/include/pthread.h:
-
-/usr/include/c++/7/bits/basic_ios.h:
-
-/usr/include/boost/mpl/vector/aux_/clear.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
-
-/usr/include/c++/7/iosfwd:
-
-/usr/include/boost/mpl/vector/aux_/back.hpp:
-
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
-
-/usr/include/boost/utility/base_from_member.hpp:
-
-/usr/include/c++/7/bits/stl_algobase.h:
 
 /usr/include/c++/7/bits/concept_check.h:
 
@@ -2061,125 +1968,17 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/boost/mpl/back_inserter.hpp:
 
-/usr/include/boost/math/special_functions/round.hpp:
+/usr/include/c++/7/iosfwd:
 
-/usr/include/c++/7/bits/stl_iterator_base_types.h:
+/usr/include/boost/mpl/vector/aux_/back.hpp:
 
-/usr/include/c++/7/new:
+/usr/include/c++/7/bits/predefined_ops.h:
 
-/usr/include/c++/7/bits/cxxabi_init_exception.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
-/usr/include/boost/detail/iterator.hpp:
+/usr/include/boost/utility/base_from_member.hpp:
 
-/usr/include/x86_64-linux-gnu/sys/select.h:
-
-/usr/include/boost/detail/sp_typeinfo.hpp:
-
-/usr/include/ctype.h:
-
-/usr/include/c++/7/bits/exception_defines.h:
-
-/usr/include/boost/mpl/clear.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
-
-/usr/include/log4cxx/logstring.h:
-
-/usr/include/boost/mpl/empty_fwd.hpp:
-
-/usr/include/c++/7/initializer_list:
-
-/usr/include/math.h:
-
-/usr/include/c++/7/bits/exception_ptr.h:
-
-/usr/include/c++/7/iostream:
-
-/usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
-/usr/include/c++/7/bits/hash_bytes.h:
-
-/usr/include/boost/preprocessor/logical/bitand.hpp:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/include/boost/mpl/distance_fwd.hpp:
-
-/usr/include/boost/predef/hardware/simd/x86_amd/versions.h:
-
-/usr/include/c++/7/cmath:
-
-/usr/include/boost/mpl/aux_/config/static_constant.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
-
-/usr/include/c++/7/cstdint:
-
-/usr/include/c++/7/bits/memoryfwd.h:
-
-/opt/ros/melodic/include/ros/duration.h:
-
-/usr/include/boost/mpl/aux_/has_size.hpp:
-
-/usr/include/stdc-predef.h:
-
-/usr/include/boost/range/difference_type.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
-
-/usr/include/boost/type_traits/add_const.hpp:
-
-/usr/include/c++/7/bits/nested_exception.h:
-
-/usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:
-
-/home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/include/elerobot_tcpsocket_client.hpp:
-
-/usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp:
-
-/usr/include/c++/7/ostream:
-
-/usr/include/c++/7/math.h:
-
-/usr/include/boost/predef/other/endian.h:
-
-/usr/include/boost/predef/os/aix.h:
-
-/usr/include/stdint.h:
-
-/usr/include/boost/predef/architecture/mips.h:
-
-/usr/include/c++/7/bits/stl_relops.h:
-
-/usr/include/locale.h:
-
-/usr/include/boost/mpl/vector/aux_/O1_size.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/locale.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h:
-
-/usr/include/x86_64-linux-gnu/bits/floatn.h:
-
-/usr/include/c++/7/ext/numeric_traits.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
-
-/usr/include/boost/math/special_functions/detail/round_fwd.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/cpu_defines.h:
-
-/usr/include/boost/type_traits/detail/has_binary_operator.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/sysmacros.h:
-
-/usr/include/boost/mpl/push_front_fwd.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/gthr.h:
+/usr/include/c++/7/bits/stl_algobase.h:
 
 /usr/include/c++/7/bits/stringfwd.h:
 
@@ -2193,123 +1992,73 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/c++/7/ext/alloc_traits.h:
 
-/usr/include/boost/config/detail/select_compiler_config.hpp:
+/usr/include/c++/7/string:
 
-/usr/include/boost/type_traits/has_trivial_copy.hpp:
+/usr/include/boost/type_traits/is_enum.hpp:
 
-/usr/include/boost/mpl/list/aux_/O1_size.hpp:
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 
-/usr/include/boost/concept/detail/has_constraints.hpp:
+/usr/include/boost/predef/architecture.h:
 
-/usr/include/x86_64-linux-gnu/bits/endian.h:
+/usr/include/boost/config/no_tr1/cmath.hpp:
 
-/usr/include/c++/7/bits/stl_iterator_base_funcs.h:
+/usr/include/c++/7/memory:
 
-/usr/include/boost/cstdint.hpp:
+/usr/include/boost/mpl/advance.hpp:
 
-/usr/include/boost/concept/assert.hpp:
+/usr/include/c++/7/debug/debug.h:
 
-/usr/include/limits.h:
+/usr/include/boost/mpl/vector/aux_/begin_end.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+/usr/include/boost/math/special_functions/round.hpp:
 
-/usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h:
+/usr/include/boost/iterator.hpp:
 
-/usr/include/boost/predef/hardware/simd/x86_amd.h:
+/opt/ros/melodic/include/ros/static_assert.h:
 
-/usr/include/boost/bind/bind_cc.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+/usr/include/stdio.h:
 
-/usr/include/c++/7/bits/move.h:
+/usr/include/c++/7/bits/exception_defines.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+/usr/include/log4cxx/logstring.h:
 
-/usr/include/c++/7/bits/stl_bvector.h:
+/usr/include/boost/mpl/empty_fwd.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
+/usr/include/c++/7/initializer_list:
 
-/usr/include/c++/7/stdexcept:
+/usr/include/boost/detail/iterator.hpp:
 
-/usr/include/c++/7/bits/stl_vector.h:
+/usr/include/x86_64-linux-gnu/sys/select.h:
 
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
+/usr/include/c++/7/bits/cxxabi_init_exception.h:
 
-/usr/include/boost/predef/architecture/alpha.h:
+/usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp:
 
-/usr/include/boost/mpl/aux_/msvc_eti_base.hpp:
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
-/usr/include/boost/mpl/same_as.hpp:
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
-/opt/ros/melodic/include/ros/platform.h:
+/usr/include/boost/mpl/distance_fwd.hpp:
 
-/usr/include/boost/smart_ptr/detail/sp_convertible.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h:
+/usr/include/boost/preprocessor/seq/cat.hpp:
 
-/usr/include/c++/7/ext/atomicity.h:
+/usr/include/c++/7/vector:
 
-/usr/include/boost/mpl/apply.hpp:
+/usr/include/boost/get_pointer.hpp:
 
-/usr/include/c++/7/typeinfo:
+/usr/include/features.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
+/usr/include/boost/preprocessor/control/while.hpp:
 
-/usr/include/boost/type_traits/is_float.hpp:
+/usr/include/c++/7/ext/new_allocator.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+/usr/include/boost/predef/compiler/digitalmars.h:
 
-/usr/include/c++/7/bits/cpp_type_traits.h:
-
-/usr/include/boost/mpl/void.hpp:
-
-/usr/include/c++/7/bits/stl_function.h:
-
-/usr/include/c++/7/bits/predefined_ops.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
-
-/usr/include/boost/predef/os/bsd.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h:
-
-/usr/include/boost/move/detail/config_begin.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
-
-/usr/include/boost/preprocessor/enum_params.hpp:
-
-/usr/include/c++/7/ios:
-
-/usr/include/boost/predef/library/std/stdcpp3.h:
-
-/usr/include/c++/7/bits/stl_iterator.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h:
-
-/usr/include/c++/7/bits/localefwd.h:
-
-/usr/include/boost/mpl/aux_/lambda_spec.hpp:
-
-/usr/include/boost/mpl/aux_/config/eti.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/libio.h:
-
-/usr/include/c++/7/tuple:
-
-/usr/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp:
-
-/usr/include/boost/type_traits/is_fundamental.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
-
-/usr/include/boost/mpl/aux_/arg_typedef.hpp:
-
-/usr/include/c++/7/bits/exception.h:
-
-/usr/include/boost/version.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/timex.h:
+/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /usr/include/boost/predef/os.h:
 
@@ -2319,61 +2068,25 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/boost/mpl/aux_/config/msvc_typename.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+/usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:
 
-/usr/include/c++/7/string:
+/home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/include/elerobot_tcpsocket_client.hpp:
 
-/usr/include/boost/numeric/conversion/converter.hpp:
+/usr/include/boost/type_traits/add_const.hpp:
 
-/usr/include/c++/7/streambuf:
+/usr/include/c++/7/bits/nested_exception.h:
 
-/usr/include/sched.h:
+/usr/include/time.h:
 
-/usr/include/c++/7/bits/locale_facets.tcc:
+/usr/include/c++/7/bits/locale_classes.tcc:
 
-/usr/include/boost/predef/os/amigaos.h:
+/usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h:
 
-/usr/include/boost/predef/architecture/rs6k.h:
+/usr/include/x86_64-linux-gnu/c++/7/bits/ctype_base.h:
 
-/usr/include/boost/mpl/vector/aux_/push_front.hpp:
+/opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h:
 
-/usr/include/boost/predef/architecture/parisc.h:
-
-/usr/include/string.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
-/usr/include/boost/type_traits/add_reference.hpp:
-
-/usr/include/boost/mpl/aux_/find_if_pred.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
-
-/usr/include/boost/predef/compiler/borland.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
-
-/usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/usr/include/x86_64-linux-gnu/asm/socket.h:
-
-/usr/include/boost/preprocessor/repetition/detail/for.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/include/boost/preprocessor/facilities/expand.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h:
-
-/usr/include/c++/7/utility:
-
-/usr/include/boost/range/distance.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/select.h:
-
-/usr/include/boost/function.hpp:
-
-/usr/include/boost/mpl/aux_/advance_forward.hpp:
+/usr/include/boost/mpl/aux_/config/overload_resolution.hpp:
 
 /usr/include/boost/predef/detail/_cassert.h:
 
@@ -2383,71 +2096,13 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/boost/predef/architecture/m68k.h:
 
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
-/usr/include/boost/mpl/identity.hpp:
+/opt/ros/melodic/include/ros/ros.h:
 
-/usr/include/boost/lexical_cast/detail/lcast_char_constants.hpp:
+/usr/include/boost/predef/compiler/gcc_xml.h:
 
-/usr/include/boost/predef/platform/windows_phone.h:
-
-/usr/include/x86_64-linux-gnu/bits/socket_type.h:
-
-/usr/include/boost/preprocessor/control/deduce_d.hpp:
-
-/usr/include/c++/7/bits/shared_ptr.h:
-
-/usr/include/boost/type_traits/detail/config.hpp:
-
-/home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/src/elerobot_tcpsocket_client.cpp:
-
-/usr/include/c++/7/bits/ostream_insert.h:
-
-/usr/include/c++/7/bits/basic_ios.tcc:
-
-/usr/include/boost/config.hpp:
-
-/usr/include/boost/mpl/at.hpp:
-
-/usr/include/boost/iterator/iterator_facade.hpp:
-
-/usr/include/c++/7/limits:
-
-/usr/include/boost/predef/compiler/iar.h:
-
-/usr/include/boost/numeric/conversion/bounds.hpp:
-
-/usr/include/boost/mpl/aux_/iter_apply.hpp:
-
-/usr/include/boost/detail/indirect_traits.hpp:
-
-/usr/include/c++/7/bits/range_access.h:
-
-/usr/include/c++/7/bits/basic_string.h:
-
-/usr/include/boost/config/detail/posix_features.hpp:
-
-/usr/include/c++/7/istream:
-
-/usr/include/c++/7/climits:
-
-/usr/include/c++/7/ext/string_conversions.h:
-
-/usr/include/boost/numeric/conversion/int_float_mixture_enum.hpp:
-
-/usr/include/boost/predef/architecture/superh.h:
-
-/usr/include/boost/preprocessor/logical/and.hpp:
-
-/usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_long_long.hpp:
-
-/usr/include/boost/mpl/aux_/is_msvc_eti_arg.hpp:
-
-/usr/include/boost/math/tools/precision.hpp:
-
-/usr/include/c++/7/bits/ios_base.h:
-
-/usr/include/c++/7/bits/streambuf_iterator.h:
+/usr/include/c++/7/ext/numeric_traits.h:
 
 /usr/include/boost/smart_ptr/detail/sp_forward.hpp:
 
@@ -2475,6 +2130,152 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/boost/config/no_tr1/complex.hpp:
 
+/usr/include/pthread.h:
+
+/usr/include/c++/7/bits/basic_ios.h:
+
+/usr/include/boost/mpl/vector/aux_/clear.hpp:
+
+/usr/include/stdint.h:
+
+/usr/include/boost/predef/os/aix.h:
+
+/usr/include/boost/predef/architecture/mips.h:
+
+/usr/include/c++/7/bits/stl_relops.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn.h:
+
+/usr/include/boost/range/difference_type.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/usr/include/boost/predef/library/c/gnu.h:
+
+/usr/include/c++/7/utility:
+
+/usr/include/boost/range/distance.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/boost/function.hpp:
+
+/usr/include/boost/mpl/aux_/advance_forward.hpp:
+
+/usr/include/boost/predef/hardware/simd/x86_amd.h:
+
+/usr/include/boost/type_traits/is_float.hpp:
+
+/usr/include/c++/7/bits/cpp_type_traits.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/usr/include/boost/bind/bind_cc.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/c++/7/bits/move.h:
+
+/usr/include/boost/predef/compiler/metaware.h:
+
+/usr/include/c++/7/bits/std_abs.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+
+/usr/include/c++/7/bits/stl_bvector.h:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+
+/usr/include/boost/smart_ptr/make_shared.hpp:
+
+/usr/include/c++/7/stdlib.h:
+
+/usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
+
+/usr/include/boost/math/special_functions/detail/round_fwd.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/cpu_defines.h:
+
+/usr/include/boost/type_traits/detail/has_binary_operator.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/sysmacros.h:
+
+/usr/include/boost/mpl/push_front_fwd.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/gthr.h:
+
+/usr/include/boost/lexical_cast/detail/widest_char.hpp:
+
+/usr/include/boost/predef/compiler/watcom.h:
+
+/usr/include/boost/current_function.hpp:
+
+/usr/include/c++/7/new:
+
+/usr/include/c++/7/bits/stl_iterator_base_types.h:
+
+/usr/include/boost/concept/assert.hpp:
+
+/usr/include/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h:
+
+/usr/include/boost/mpl/aux_/lambda_spec.hpp:
+
+/usr/include/boost/mpl/aux_/config/eti.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/libio.h:
+
+/usr/include/c++/7/tuple:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp:
+
+/usr/include/boost/type_traits/is_fundamental.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/boost/mpl/aux_/arg_typedef.hpp:
+
+/usr/include/boost/predef/compiler/llvm.h:
+
+/usr/include/boost/predef.h:
+
+/usr/include/boost/range/const_iterator.hpp:
+
+/usr/include/boost/mpl/aux_/config/lambda.hpp:
+
+/usr/include/boost/mpl/aux_/template_arity.hpp:
+
+/usr/include/boost/predef/compiler/borland.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
+
+/usr/include/boost/predef/hardware/simd/x86_amd/versions.h:
+
+/usr/include/c++/7/cmath:
+
+/usr/include/boost/mpl/aux_/config/static_constant.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
+
+/usr/include/c++/7/cstdint:
+
+/usr/include/c++/7/bits/memoryfwd.h:
+
+/opt/ros/melodic/include/ros/duration.h:
+
+/usr/include/boost/mpl/aux_/has_size.hpp:
+
+/usr/include/stdc-predef.h:
+
 /usr/include/c++/7/bits/stream_iterator.h:
 
 /usr/include/c++/7/bits/char_traits.h:
@@ -2493,29 +2294,185 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/boost/mpl/aux_/at_impl.hpp:
 
-/usr/include/boost/iterator.hpp:
+/usr/include/boost/type_traits/add_reference.hpp:
 
-/opt/ros/melodic/include/ros/static_assert.h:
+/usr/include/boost/mpl/aux_/find_if_pred.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+/usr/include/boost/predef/os/amigaos.h:
 
-/usr/include/stdio.h:
+/usr/include/boost/predef/architecture/rs6k.h:
 
-/usr/include/boost/get_pointer.hpp:
+/usr/include/boost/mpl/vector/aux_/push_front.hpp:
 
-/usr/include/features.h:
+/usr/include/boost/predef/architecture/parisc.h:
 
-/usr/include/boost/preprocessor/control/while.hpp:
+/usr/include/string.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
-/usr/include/boost/preprocessor/seq/cat.hpp:
+/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
 
-/usr/include/c++/7/vector:
+/usr/include/c++/7/stdexcept:
 
-/usr/include/boost/predef/compiler/metaware.h:
+/usr/include/c++/7/bits/stl_vector.h:
 
-/usr/include/c++/7/bits/std_abs.h:
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+
+/usr/include/boost/mpl/identity.hpp:
+
+/usr/include/boost/config/detail/select_compiler_config.hpp:
+
+/usr/include/boost/type_traits/has_trivial_copy.hpp:
+
+/usr/include/boost/mpl/list/aux_/O1_size.hpp:
+
+/usr/include/c++/7/bits/stl_iterator_base_funcs.h:
+
+/usr/include/boost/cstdint.hpp:
+
+/usr/include/boost/concept/detail/has_constraints.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/boost/predef/architecture/alpha.h:
+
+/usr/include/boost/mpl/aux_/msvc_eti_base.hpp:
+
+/usr/include/boost/mpl/same_as.hpp:
+
+/opt/ros/melodic/include/ros/platform.h:
+
+/usr/include/boost/smart_ptr/detail/sp_convertible.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h:
+
+/usr/include/c++/7/ext/atomicity.h:
+
+/usr/include/boost/predef/os/bsd.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h:
+
+/usr/include/boost/move/detail/config_begin.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/x86_64-linux-gnu/asm/socket.h:
+
+/usr/include/boost/preprocessor/repetition/detail/for.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+/usr/include/boost/preprocessor/facilities/expand.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/boost/mpl/clear.hpp:
+
+/usr/include/boost/lexical_cast/detail/lcast_char_constants.hpp:
+
+/usr/include/boost/predef/platform/windows_phone.h:
+
+/usr/include/x86_64-linux-gnu/bits/socket_type.h:
+
+/usr/include/boost/preprocessor/control/deduce_d.hpp:
+
+/usr/include/c++/7/bits/shared_ptr.h:
+
+/usr/include/boost/type_traits/detail/config.hpp:
+
+/home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/src/elerobot_tcpsocket_client.cpp:
+
+/usr/include/boost/detail/sp_typeinfo.hpp:
+
+/usr/include/ctype.h:
+
+/usr/include/c++/7/bits/exception.h:
+
+/usr/include/boost/version.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/timex.h:
+
+/usr/include/math.h:
+
+/usr/include/c++/7/bits/exception_ptr.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
+
+/usr/include/c++/7/typeinfo:
+
+/usr/include/boost/mpl/apply.hpp:
+
+/usr/include/c++/7/iostream:
+
+/usr/include/boost/preprocessor/logical/bitand.hpp:
+
+/usr/include/c++/7/bits/hash_bytes.h:
+
+/usr/include/c++/7/bits/stl_function.h:
+
+/usr/include/boost/mpl/void.hpp:
+
+/usr/include/boost/predef/compiler/edg.h:
+
+/usr/include/locale.h:
+
+/usr/include/boost/mpl/vector/aux_/O1_size.hpp:
+
+/usr/include/c++/7/bits/ostream_insert.h:
+
+/usr/include/c++/7/bits/basic_ios.tcc:
+
+/usr/include/boost/config.hpp:
+
+/usr/include/boost/mpl/at.hpp:
+
+/usr/include/boost/iterator/iterator_facade.hpp:
+
+/usr/include/c++/7/limits:
+
+/usr/include/boost/predef/compiler/iar.h:
+
+/usr/include/boost/numeric/conversion/bounds.hpp:
+
+/usr/include/boost/mpl/aux_/iter_apply.hpp:
+
+/usr/include/boost/detail/indirect_traits.hpp:
+
+/usr/include/c++/7/bits/range_access.h:
+
+/usr/include/boost/numeric/conversion/converter.hpp:
+
+/usr/include/c++/7/streambuf:
+
+/usr/include/sched.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/c++/7/istream:
+
+/usr/include/c++/7/climits:
+
+/usr/include/c++/7/ext/string_conversions.h:
+
+/usr/include/boost/numeric/conversion/int_float_mixture_enum.hpp:
+
+/usr/include/boost/predef/architecture/superh.h:
+
+/usr/include/boost/preprocessor/logical/and.hpp:
+
+/usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_long_long.hpp:
+
+/usr/include/boost/mpl/aux_/is_msvc_eti_arg.hpp:
+
+/usr/include/boost/math/tools/precision.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
@@ -2547,6 +2504,12 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/c++/7/array:
 
+/usr/include/c++/7/math.h:
+
+/usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp:
+
+/usr/include/c++/7/ostream:
+
 /usr/include/c++/7/atomic:
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
@@ -2562,6 +2525,12 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 /usr/include/boost/type_traits/add_rvalue_reference.hpp:
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/less.hpp:
+
+/usr/include/boost/predef/library/std/stdcpp3.h:
+
+/usr/include/boost/preprocessor/enum_params.hpp:
+
+/usr/include/c++/7/ios:
 
 /usr/include/boost/predef/detail/_exception.h:
 
@@ -2581,6 +2550,20 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 
 /usr/include/boost/mpl/vector/vector0.hpp:
 
+/usr/include/boost/predef/other/endian.h:
+
+/usr/include/c++/7/bits/stl_iterator.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h:
+
+/usr/include/c++/7/bits/localefwd.h:
+
+/usr/include/c++/7/bits/streambuf_iterator.h:
+
+/usr/include/c++/7/bits/ios_base.h:
+
+/usr/include/c++/7/bits/locale_facets.tcc:
+
 /usr/include/c++/7/clocale:
 
 /usr/include/c++/7/backward/binders.h:
@@ -2592,8 +2575,6 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 /usr/include/c++/7/bits/locale_facets.h:
 
 /usr/include/boost/mpl/clear_fwd.hpp:
-
-/usr/include/c++/7/bits/ostream.tcc:
 
 /opt/ros/melodic/include/ros/single_subscriber_publisher.h:
 
@@ -2978,8 +2959,6 @@ elephant/elerobot_socket/CMakeFiles/elerobot_tcpsocket_client.dir/src/elerobot_t
 /usr/include/boost/mpl/long.hpp:
 
 /usr/include/boost/mpl/placeholders.hpp:
-
-/opt/ros/melodic/include/geometry_msgs/Quaternion.h:
 
 /usr/include/boost/mpl/size_fwd.hpp:
 

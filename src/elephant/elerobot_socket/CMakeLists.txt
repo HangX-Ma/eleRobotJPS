@@ -122,8 +122,13 @@ include
 ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(elerobot_tcpsocket_client src/elerobot_tcpsocket_client.cpp)
-target_link_libraries(elerobot_tcpsocket_client ${catkin_LIBRARIES})
+# add_executable(elerobot_tcpsocket_client src/elerobot_tcpsocket_client.cpp)
+# target_link_libraries(elerobot_tcpsocket_client ${catkin_LIBRARIES})
+
+set(ELEROBOT_TCPSOCKET elerobot_tcpsocket_client)
+add_library(${ELEROBOT_TCPSOCKET} src/elerobot_tcpsocket_client.cpp)
+add_executable(elerobot_control src/elerobot_control.cpp)
+target_link_libraries(elerobot_control ${catkin_LIBRARIES} ${ELEROBOT_TCPSOCKET})
 
 
 ## Declare a C++ library

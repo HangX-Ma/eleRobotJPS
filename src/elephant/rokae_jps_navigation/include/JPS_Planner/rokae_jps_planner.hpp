@@ -47,6 +47,13 @@ enum class PlanningState
   FAILURE,         //!< planning fails
 };    
 
+struct pathNode{
+  octomap::point3d point;
+  bool ifRaw = false;
+  
+  pathNode(octomap::point3d _point, bool _ifRaw) : point(_point),ifRaw(_ifRaw){}
+};
+
 
 /**
  * @brief JPSPlanner class is used to integrate the JPS planner function, which is realized in the <tt>rokae_grapth_basis.hpp</tt>. 
@@ -193,6 +200,7 @@ class JPSPlanner
     std::vector<Eigen::Vector4f>     tarPoints_pose_;           //!< multiple planning poses buffer, using \c currGoal_id_ to locate the content 
     std::vector<geometry_msgs::Pose> tarPoints_pose_msg_;       //!< pose msg buffer  
     std::vector<std::vector<float>>  joint_configs_;            //!< joints value output buffer
+    std::vector<pathNode>            path_signer_;              //!< to clarify the path points whether belong to raw path or not
 
     // collision detection
     std::vector<float>  prev_joint_configs_ = std::vector<float>(6); //!< previous joint angle values
@@ -298,7 +306,7 @@ class JPSPlanner
      * @param tree octree of octomap
      * @return optimal path points
      */
-    std::vector<octomap::point3d> removeCornerPts(const std::vector<octomap::point3d> &waypoints, octomap::OcTree &tree);
+    std::vector<octomap::point3d> removeCornerPts(const std::vector<pathNode> &pathNodes, octomap::OcTree &tree);
 
     //! keys to coordinate <vector> type
     std::vector<octomap::point3d> keysToCoords(std::vector<octomap::OcTreeKey> &keys, octomap::OcTree &tree); 
