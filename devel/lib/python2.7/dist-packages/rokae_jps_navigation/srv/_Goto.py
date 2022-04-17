@@ -218,11 +218,14 @@ import struct
 
 
 class GotoResponse(genpy.Message):
-  _md5sum = "21290f3e8f5a1054b6b9d96f21138cdf"
+  _md5sum = "1d1f4162acc575e9ecdf795508e248a9"
   _type = "rokae_jps_navigation/GotoResponse"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """string message
 bool success
+float64[] px
+float64[] py
+float64[] pz
 float64[] pos
 float64[] vel
 float64[] acc
@@ -232,8 +235,8 @@ float64[] back_vel
 float64[] back_acc
 float64[] back_t
 """
-  __slots__ = ['message','success','pos','vel','acc','t','back_pos','back_vel','back_acc','back_t']
-  _slot_types = ['string','bool','float64[]','float64[]','float64[]','float64[]','float64[]','float64[]','float64[]','float64[]']
+  __slots__ = ['message','success','px','py','pz','pos','vel','acc','t','back_pos','back_vel','back_acc','back_t']
+  _slot_types = ['string','bool','float64[]','float64[]','float64[]','float64[]','float64[]','float64[]','float64[]','float64[]','float64[]','float64[]','float64[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -243,7 +246,7 @@ float64[] back_t
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       message,success,pos,vel,acc,t,back_pos,back_vel,back_acc,back_t
+       message,success,px,py,pz,pos,vel,acc,t,back_pos,back_vel,back_acc,back_t
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -256,6 +259,12 @@ float64[] back_t
         self.message = ''
       if self.success is None:
         self.success = False
+      if self.px is None:
+        self.px = []
+      if self.py is None:
+        self.py = []
+      if self.pz is None:
+        self.pz = []
       if self.pos is None:
         self.pos = []
       if self.vel is None:
@@ -275,6 +284,9 @@ float64[] back_t
     else:
       self.message = ''
       self.success = False
+      self.px = []
+      self.py = []
+      self.pz = []
       self.pos = []
       self.vel = []
       self.acc = []
@@ -304,6 +316,18 @@ float64[] back_t
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self.success
       buff.write(_get_struct_B().pack(_x))
+      length = len(self.px)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(struct.Struct(pattern).pack(*self.px))
+      length = len(self.py)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(struct.Struct(pattern).pack(*self.py))
+      length = len(self.pz)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(struct.Struct(pattern).pack(*self.pz))
       length = len(self.pos)
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
@@ -361,6 +385,30 @@ float64[] back_t
       end += 1
       (self.success,) = _get_struct_B().unpack(str[start:end])
       self.success = bool(self.success)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.px = s.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.py = s.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.pz = s.unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -445,6 +493,18 @@ float64[] back_t
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self.success
       buff.write(_get_struct_B().pack(_x))
+      length = len(self.px)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(self.px.tostring())
+      length = len(self.py)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(self.py.tostring())
+      length = len(self.pz)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(self.pz.tostring())
       length = len(self.pos)
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
@@ -503,6 +563,30 @@ float64[] back_t
       end += 1
       (self.success,) = _get_struct_B().unpack(str[start:end])
       self.success = bool(self.success)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.px = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.py = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.pz = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -583,6 +667,6 @@ def _get_struct_B():
     return _struct_B
 class Goto(object):
   _type          = 'rokae_jps_navigation/Goto'
-  _md5sum = '8981a10f92f52c0004c5f25fd13239d0'
+  _md5sum = 'db7c9c254c9a1585396c175f27b28c32'
   _request_class  = GotoRequest
   _response_class = GotoResponse

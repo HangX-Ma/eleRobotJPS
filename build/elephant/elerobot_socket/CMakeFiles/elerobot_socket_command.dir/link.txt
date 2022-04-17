@@ -1,1 +1,0 @@
-/usr/lib/ccache/c++ -fPIC -shared -Wl,-soname,libelerobot_socket_command.so -o /home/contour/ws_catkin_elephant/devel/lib/libelerobot_socket_command.so CMakeFiles/elerobot_socket_command.dir/src/elerobot_socket_command.cxx.o 

@@ -7,6 +7,12 @@
           MESSAGE
           SUCCESS-VAL
           SUCCESS
+          PX-VAL
+          PX
+          PY-VAL
+          PY
+          PZ-VAL
+          PZ
           POS-VAL
           POS
           VEL-VAL

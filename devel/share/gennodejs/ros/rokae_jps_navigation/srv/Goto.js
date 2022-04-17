@@ -150,6 +150,9 @@ class GotoResponse {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.message = null;
       this.success = null;
+      this.px = null;
+      this.py = null;
+      this.pz = null;
       this.pos = null;
       this.vel = null;
       this.acc = null;
@@ -171,6 +174,24 @@ class GotoResponse {
       }
       else {
         this.success = false;
+      }
+      if (initObj.hasOwnProperty('px')) {
+        this.px = initObj.px
+      }
+      else {
+        this.px = [];
+      }
+      if (initObj.hasOwnProperty('py')) {
+        this.py = initObj.py
+      }
+      else {
+        this.py = [];
+      }
+      if (initObj.hasOwnProperty('pz')) {
+        this.pz = initObj.pz
+      }
+      else {
+        this.pz = [];
       }
       if (initObj.hasOwnProperty('pos')) {
         this.pos = initObj.pos
@@ -229,6 +250,12 @@ class GotoResponse {
     bufferOffset = _serializer.string(obj.message, buffer, bufferOffset);
     // Serialize message field [success]
     bufferOffset = _serializer.bool(obj.success, buffer, bufferOffset);
+    // Serialize message field [px]
+    bufferOffset = _arraySerializer.float64(obj.px, buffer, bufferOffset, null);
+    // Serialize message field [py]
+    bufferOffset = _arraySerializer.float64(obj.py, buffer, bufferOffset, null);
+    // Serialize message field [pz]
+    bufferOffset = _arraySerializer.float64(obj.pz, buffer, bufferOffset, null);
     // Serialize message field [pos]
     bufferOffset = _arraySerializer.float64(obj.pos, buffer, bufferOffset, null);
     // Serialize message field [vel]
@@ -256,6 +283,12 @@ class GotoResponse {
     data.message = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [success]
     data.success = _deserializer.bool(buffer, bufferOffset);
+    // Deserialize message field [px]
+    data.px = _arrayDeserializer.float64(buffer, bufferOffset, null)
+    // Deserialize message field [py]
+    data.py = _arrayDeserializer.float64(buffer, bufferOffset, null)
+    // Deserialize message field [pz]
+    data.pz = _arrayDeserializer.float64(buffer, bufferOffset, null)
     // Deserialize message field [pos]
     data.pos = _arrayDeserializer.float64(buffer, bufferOffset, null)
     // Deserialize message field [vel]
@@ -278,6 +311,9 @@ class GotoResponse {
   static getMessageSize(object) {
     let length = 0;
     length += object.message.length;
+    length += 8 * object.px.length;
+    length += 8 * object.py.length;
+    length += 8 * object.pz.length;
     length += 8 * object.pos.length;
     length += 8 * object.vel.length;
     length += 8 * object.acc.length;
@@ -286,7 +322,7 @@ class GotoResponse {
     length += 8 * object.back_vel.length;
     length += 8 * object.back_acc.length;
     length += 8 * object.back_t.length;
-    return length + 37;
+    return length + 49;
   }
 
   static datatype() {
@@ -296,7 +332,7 @@ class GotoResponse {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '21290f3e8f5a1054b6b9d96f21138cdf';
+    return '1d1f4162acc575e9ecdf795508e248a9';
   }
 
   static messageDefinition() {
@@ -304,6 +340,9 @@ class GotoResponse {
     return `
     string message
     bool success
+    float64[] px
+    float64[] py
+    float64[] pz
     float64[] pos
     float64[] vel
     float64[] acc
@@ -334,6 +373,27 @@ class GotoResponse {
     }
     else {
       resolved.success = false
+    }
+
+    if (msg.px !== undefined) {
+      resolved.px = msg.px;
+    }
+    else {
+      resolved.px = []
+    }
+
+    if (msg.py !== undefined) {
+      resolved.py = msg.py;
+    }
+    else {
+      resolved.py = []
+    }
+
+    if (msg.pz !== undefined) {
+      resolved.pz = msg.pz;
+    }
+    else {
+      resolved.pz = []
     }
 
     if (msg.pos !== undefined) {
@@ -399,6 +459,6 @@ class GotoResponse {
 module.exports = {
   Request: GotoRequest,
   Response: GotoResponse,
-  md5sum() { return '8981a10f92f52c0004c5f25fd13239d0'; },
+  md5sum() { return 'db7c9c254c9a1585396c175f27b28c32'; },
   datatype() { return 'rokae_jps_navigation/Goto'; }
 };

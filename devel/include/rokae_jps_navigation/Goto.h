@@ -40,7 +40,7 @@ template<>
 struct MD5Sum< ::rokae_jps_navigation::Goto > {
   static const char* value()
   {
-    return "8981a10f92f52c0004c5f25fd13239d0";
+    return "db7c9c254c9a1585396c175f27b28c32";
   }
 
   static const char* value(const ::rokae_jps_navigation::Goto&) { return value(); }

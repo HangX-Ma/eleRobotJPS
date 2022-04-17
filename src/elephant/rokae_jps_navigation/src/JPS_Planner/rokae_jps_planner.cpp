@@ -238,8 +238,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
 
 
   // begin planning
-  res.message = "Planning started";
-  res.success = true;
+  printf(ANSI_COLOR_MAGENTA "[rokae_JPS_planner]: Start planning ..." ANSI_COLOR_RESET "\n");
 
   if(planner_verbose_) {
     printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Waypoint [%.3f, %.3f, %.3f] set as original point position." ANSI_COLOR_RESET "\n",
@@ -253,7 +252,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
 
   // clear obstacle iteration id
   obs_iter_id_ = 0;
-
+  std::vector<octomap::point3d> path_points_info;
 
   // If we send more than one goal we need to plan a path to connect each one in order.
   for (int goalNum = 0; goalNum < (int)tarPoints_bufferIn.size(); goalNum++)
@@ -421,7 +420,8 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         
         // final joint configs. Now success trajectory for this node generated.
         joint_configs_.insert(joint_configs_.end(), joint_configs.begin(), joint_configs.end());
-
+        // store the path points info and reserve them for plotting.
+        path_points_info.insert(path_points_info.end(), optimal_path_.begin(), optimal_path_.end());
 
         // if planning_status is not NEED_REPLANNING, it must still be the NEED_OPTIMAL, which means the current optimal_path is valid.
         // We set planning state as SUCCESS and move to next planning goal.
@@ -499,6 +499,14 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   auto time_cost_total = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - time_start);
   if (planner_verbose_) {
     std::cout << ANSI_COLOR_BLUE "[rokae_JPS_planner]: Total time cost: " << time_cost_total.count() << " [s]" ANSI_COLOR_RESET << std::endl;
+  }
+  
+  res.message = "Planning finished.";
+  res.success = true;
+  for (auto& p: path_points_info) {
+    res.px.push_back(p.x());
+    res.py.push_back(p.y());
+    res.pz.push_back(p.z());
   }
 
   return true;

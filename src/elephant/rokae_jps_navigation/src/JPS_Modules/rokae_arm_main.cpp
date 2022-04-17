@@ -1,6 +1,11 @@
 #include "JPS_Modules/rokae_arm_main.hpp"
+#include "matplotlibcpp.h"
+#include <chrono>
+#include <fstream>
+#include <boost/filesystem.hpp>
 
 using namespace execution;
+namespace plt = matplotlibcpp;
 
 operation::operation(ros::NodeHandle *nodehandle):nh_(*nodehandle), trajectory_action_client_("/manipulator_controller/follow_joint_trajectory", true)
 {
@@ -348,6 +353,7 @@ void operation::plan_with_move()
   else {
     printf(ANSI_COLOR_RED "Failed to call JPS planner" ANSI_COLOR_RESET "\n");
   }
+  pathPointsPlot(planner_srv.response.px, planner_srv.response.py, planner_srv.response.pz);
 }
 
 bool operation::load_config(std::vector<std::string> cfgfilepath, std::vector<double> &position_,
@@ -448,6 +454,72 @@ void clear_configuration(std::vector<double> &position_, std::vector<double> &ve
   return;
 }
 
+void operation::pathPointsPlot(std::vector<double>& coord_x, std::vector<double>& coord_y, std::vector<double>& coord_z) 
+{
+  // time stamp
+  auto now = std::chrono::system_clock::now();
+  auto UTC = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
+
+  auto in_time_t = std::chrono::system_clock::to_time_t(now);
+  std::stringstream datetime;
+  datetime << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
+
+  std::string UTC_string = std::to_string(UTC);
+
+  // mkdir
+  std::string dir_path = "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/share/" + UTC_string;
+  if (!boost::filesystem::is_directory(dir_path))
+  {
+    printf(ANSI_COLOR_MAGENTA "begin create path: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());
+    if (!boost::filesystem::create_directory(dir_path))
+    {
+      printf(ANSI_COLOR_RED "create_directories failed: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());
+
+      return;
+    }
+  } else {
+    printf(ANSI_COLOR_RED "%s already exist" ANSI_COLOR_RESET "\n", dir_path .c_str());
+  }
+
+  size_t data_size = coord_x.size();
+  // plot
+  std::string output_path = dir_path + "/Coord_Path_" + UTC_string + ".png";
+  std::map<std::string, std::string> keywords;
+  keywords.insert(std::pair<std::string, std::string>("label", "Coord Trajectory"));  
+  plt::backend("agg");
+  plt::figure(1);
+  plt::figure_size(1280, 720);
+  plt::ion();
+  plt::plot3(coord_y, coord_x, coord_z,keywords);
+  plt::xlabel("y (m)");
+  plt::ylabel("x (m)");
+  plt::set_zlabel("z (m)");
+  plt::ylim(-1,0);
+  plt::xlim(-0.5,0.5);
+  plt::title("Coordinate Path Points");
+  plt::legend();
+  plt::save(output_path);
+  plt::close();
+
+  // saver
+  std::ofstream outfile_coords;
+  std::string outfile_coords_path = dir_path + "/JPS_coords_path" + UTC_string + ".txt";
+  outfile_coords.open (outfile_coords_path, std::ios::out | std::ios::binary);
+
+  if (outfile_coords.is_open())
+  {
+    outfile_coords.flush();
+    printf(ANSI_COLOR_MAGENTA "Path points information recorder has been created." ANSI_COLOR_RESET "\n");
+    for (size_t i = 0; i < data_size; i++)
+    {
+      outfile_coords << coord_x.at(i) << "," << coord_y.at(i) << "," << coord_z.at(i);
+      outfile_coords << std::endl;
+    }
+    outfile_coords.close();
+  } else {
+    printf(ANSI_COLOR_YELLOW "Path points output file can not be opened." ANSI_COLOR_RESET "\n");
+  }
+}
 
 
 

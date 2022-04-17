@@ -36,6 +36,7 @@
 #include <ros/ros.h>
 #include <iostream>
 #include <cstring>
+#include <mutex>
 #include "elerobot_tcpsocket.hpp"
 
 
@@ -149,6 +150,7 @@ class socket_client
   private: 
     ros::NodeHandle            nh_;             //!< ROS node handler
     std::shared_ptr<TCPSocket> tcpSocket;       //!< TCP socket class
+    std::mutex                 lock_;
     // ros::ServiceClient         planner_client_; //!< JPS planner client
     // std::string                JPS_PLANNING;    //!< JPS service name
 };

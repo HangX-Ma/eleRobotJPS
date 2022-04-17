@@ -78,6 +78,8 @@ class operation
                                                     std::vector<double> &velocity_, std::vector<double> &acceleration_, std::vector<double> &time_);
     //! set move back state
     void setBack(bool state=false);
+
+    void pathPointsPlot(std::vector<double>& coord_x, std::vector<double>& coord_y, std::vector<double>& coord_z);
 };
 }
 

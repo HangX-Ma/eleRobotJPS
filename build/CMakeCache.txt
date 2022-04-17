@@ -27,15 +27,6 @@ AVFORMAT_LIBRARY_avformat:FILEPATH=/usr/lib/x86_64-linux-gnu/libavformat.so
 AVUTIL_LIBRARY_avutil:FILEPATH=/usr/lib/x86_64-linux-gnu/libavutil.so
 
 //Path to a library.
-BLAS_Accelerate_LIBRARY:FILEPATH=BLAS_Accelerate_LIBRARY-NOTFOUND
-
-//Path to a library.
-BLAS_acml_LIBRARY:FILEPATH=BLAS_acml_LIBRARY-NOTFOUND
-
-//Path to a library.
-BLAS_acml_mp_LIBRARY:FILEPATH=BLAS_acml_mp_LIBRARY-NOTFOUND
-
-//Path to a library.
 BLAS_armpl_lp64_LIBRARY:FILEPATH=BLAS_armpl_lp64_LIBRARY-NOTFOUND
 
 //Path to a library.
@@ -48,25 +39,7 @@ BLAS_blas_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libblas.so
 BLAS_blis_LIBRARY:FILEPATH=BLAS_blis_LIBRARY-NOTFOUND
 
 //Path to a library.
-BLAS_complib_sgimath_LIBRARY:FILEPATH=BLAS_complib_sgimath_LIBRARY-NOTFOUND
-
-//Path to a library.
-BLAS_cxml_LIBRARY:FILEPATH=BLAS_cxml_LIBRARY-NOTFOUND
-
-//Path to a library.
-BLAS_dxml_LIBRARY:FILEPATH=BLAS_dxml_LIBRARY-NOTFOUND
-
-//Path to a library.
-BLAS_eml_LIBRARY:FILEPATH=BLAS_eml_LIBRARY-NOTFOUND
-
-//Path to a library.
-BLAS_essl_LIBRARY:FILEPATH=BLAS_essl_LIBRARY-NOTFOUND
-
-//Path to a library.
 BLAS_f77blas_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libf77blas.so
-
-//Path to a library.
-BLAS_fjlapack_LIBRARY:FILEPATH=BLAS_fjlapack_LIBRARY-NOTFOUND
 
 //Path to a library.
 BLAS_flexiblas_LIBRARY:FILEPATH=BLAS_flexiblas_LIBRARY-NOTFOUND
@@ -94,18 +67,6 @@ BLAS_mkl_rt_LIBRARY:FILEPATH=BLAS_mkl_rt_LIBRARY-NOTFOUND
 
 //Path to a library.
 BLAS_openblas_LIBRARY:FILEPATH=BLAS_openblas_LIBRARY-NOTFOUND
-
-//Path to a library.
-BLAS_scs_LIBRARY:FILEPATH=BLAS_scs_LIBRARY-NOTFOUND
-
-//Path to a library.
-BLAS_sgemm_LIBRARY:FILEPATH=BLAS_sgemm_LIBRARY-NOTFOUND
-
-//Path to a library.
-BLAS_sunperf_LIBRARY:FILEPATH=BLAS_sunperf_LIBRARY-NOTFOUND
-
-//Path to a library.
-BLAS_vecLib_LIBRARY:FILEPATH=BLAS_vecLib_LIBRARY-NOTFOUND
 
 //Builds the googlemock subproject
 BUILD_GMOCK:BOOL=ON
@@ -1542,40 +1503,20 @@ AVUTIL_libavutil_INCLUDEDIR:INTERNAL=
 AVUTIL_libavutil_LIBDIR:INTERNAL=
 AVUTIL_libavutil_PREFIX:INTERNAL=
 AVUTIL_libavutil_VERSION:INTERNAL=
-//ADVANCED property for variable: BLAS_Accelerate_LIBRARY
-BLAS_Accelerate_LIBRARY-ADVANCED:INTERNAL=1
 //Have function sgemm_
 BLAS_WORKS:INTERNAL=
-//ADVANCED property for variable: BLAS_acml_LIBRARY
-BLAS_acml_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_acml_mp_LIBRARY
-BLAS_acml_mp_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: BLAS_armpl_lp64_LIBRARY
 BLAS_armpl_lp64_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: BLAS_atlas_LIBRARY
 BLAS_atlas_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: BLAS_blas_LIBRARY
 BLAS_blas_LIBRARY-ADVANCED:INTERNAL=1
-//Have function sgemm_
-BLAS_blas_WORKS:INTERNAL=1
 //Have function dgemm_
 BLAS_blas_f77blas_atlas_WORKS:INTERNAL=1
 //ADVANCED property for variable: BLAS_blis_LIBRARY
 BLAS_blis_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_complib_sgimath_LIBRARY
-BLAS_complib_sgimath_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_cxml_LIBRARY
-BLAS_cxml_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_dxml_LIBRARY
-BLAS_dxml_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_eml_LIBRARY
-BLAS_eml_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_essl_LIBRARY
-BLAS_essl_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: BLAS_f77blas_LIBRARY
 BLAS_f77blas_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_fjlapack_LIBRARY
-BLAS_fjlapack_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: BLAS_flexiblas_LIBRARY
 BLAS_flexiblas_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: BLAS_goto2_LIBRARY
@@ -1594,14 +1535,6 @@ BLAS_mkl_intel_lp64_LIBRARY-ADVANCED:INTERNAL=1
 BLAS_mkl_rt_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: BLAS_openblas_LIBRARY
 BLAS_openblas_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_scs_LIBRARY
-BLAS_scs_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_sgemm_LIBRARY
-BLAS_sgemm_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_sunperf_LIBRARY
-BLAS_sunperf_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_vecLib_LIBRARY
-BLAS_vecLib_LIBRARY-ADVANCED:INTERNAL=1
 BULLET_CFLAGS:INTERNAL=-I/usr/include/bullet
 BULLET_CFLAGS_I:INTERNAL=
 BULLET_CFLAGS_OTHER:INTERNAL=

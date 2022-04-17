@@ -3,6 +3,9 @@ bool ifback
 ---
 string message
 bool success
+float64[] px
+float64[] py
+float64[] pz
 float64[] pos
 float64[] vel
 float64[] acc

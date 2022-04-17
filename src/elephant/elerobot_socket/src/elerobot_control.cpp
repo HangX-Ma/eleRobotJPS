@@ -103,15 +103,44 @@ void moveRobot(std::vector<double> &position, std::vector<double> &velocity, std
     return;
   }
   double interval  = time.at(1) - time.at(0);
-
+  double angle_pos1, angle_pos2, angle_pos3, angle_pos4, angle_pos5, angle_pos6;
+  // double angle_vel1, angle_vel2, angle_vel3, angle_vel4, angle_vel5, angle_vel6;
   socket_cli.wait(1); 
   
-  for (size_t i = 0; i < data_size; i += 6) {
-    auto command_send_stamp = std::chrono::high_resolution_clock::now();
-    socket_cli.set_angles(position.at(i), position.at(i+1), position.at(i+2), position.at(i+3), position.at(i+4), position.at(i+5), velocity.at(i/6));
-    while ((std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - command_send_stamp).count() * std::chrono::microseconds::period::num / std::chrono::microseconds::period::den) < interval) {
-      ;
-    }
+  // for (size_t i = 1; i < data_size; i += 6) {
+  //   auto command_send_stamp = std::chrono::high_resolution_clock::now();
+  //   angle_pos1 = position.at(i*6)/M_PI*180;
+  //   angle_pos2 = position.at(i*6+1)/M_PI*180 - 90.0;
+  //   angle_pos3 = position.at(i*6+2)/M_PI*180;
+  //   angle_pos4 = position.at(i*6+3)/M_PI*180 - 90.0;
+  //   angle_pos5 = position.at(i*6+4)/M_PI*180 + 90.0;
+  //   angle_pos6 = position.at(i*6+5)/M_PI*180;
+  //   angle_vel1 = position.at(i*6)/M_PI*180*60;
+  //   angle_vel2 = position.at(i*6+1)/M_PI*180*60;
+  //   angle_vel3 = position.at(i*6+2)/M_PI*180*60;
+  //   angle_vel4 = position.at(i*6+3)/M_PI*180*60;
+  //   angle_vel5 = position.at(i*6+4)/M_PI*180*60;
+  //   angle_vel6 = position.at(i*6+5)/M_PI*180*60;
+  //   while ((std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now() - command_send_stamp).count()) < interval) {
+  //     socket_cli.set_angle(1, angle_pos1, angle_vel1);
+  //     socket_cli.set_angle(2, angle_pos2, angle_vel2);
+  //     socket_cli.set_angle(3, angle_pos3, angle_vel3);
+  //     socket_cli.set_angle(4, angle_pos4, angle_vel4);
+  //     socket_cli.set_angle(5, angle_pos5, angle_vel5);
+  //     socket_cli.set_angle(6, angle_pos6, angle_vel6);
+  //   }
+  // }
+
+  double vel;
+  for (size_t i = 0; i < data_size; i++) {
+    angle_pos1 = position.at(i*6)/M_PI*180;
+    angle_pos2 = position.at(i*6+1)/M_PI*180 - 90.0;
+    angle_pos3 = position.at(i*6+2)/M_PI*180;
+    angle_pos4 = position.at(i*6+3)/M_PI*180 - 90.0;
+    angle_pos5 = position.at(i*6+4)/M_PI*180 + 90.0;
+    angle_pos6 = position.at(i*6+5)/M_PI*180;
+    vel        = 300;
+    socket_cli.set_angles(angle_pos1, angle_pos2, angle_pos3, angle_pos4, angle_pos5, angle_pos6, vel);
   }
   socket_cli.wait(1); 
 
@@ -124,20 +153,13 @@ int main(int argc, char **argv)
   ros::NodeHandle nh("~");
 
   std::string path_prefix_ = "/home/contour/ws_catkin_elephant/src/elephant/rokae_arm_toppra/share/";
-  std::string folder_name1 = "1649296490";
+  std::string folder_name1 = "1650109358";
 
   std::vector<double> position_m, velocity_m, acceleration_m, time_m;
   std::vector<std::string> cfgconfig_stage1 {path_prefix_ + folder_name1 + "/toppra_joints_pos_" + folder_name1 + ".txt",
                                               path_prefix_ + folder_name1 + "/toppra_joints_vel_" + folder_name1 + ".txt",
                                               path_prefix_ + folder_name1 + "/toppra_joints_acc_" + folder_name1 + ".txt",
                                               path_prefix_ + folder_name1 + "/toppra_joints_t_" + folder_name1 + ".txt"};
-
-  // subscribe the JPS planner service
-  std::string JPS_PLANNING    = "/rokae_arm/goto_trigger";
-
-  ros::service::waitForService(JPS_PLANNING);
-  ros::ServiceClient planner_client = nh.serviceClient<rokae_jps_navigation::Goto>(JPS_PLANNING);
-  ROS_INFO(ANSI_COLOR_GREEN "Planner is loaded." ANSI_COLOR_RESET);
 
   // socket communication
   eleRobot::socket_client sockClient(&nh);
@@ -161,44 +183,68 @@ int main(int argc, char **argv)
   sockClient.set_feed_rate(100);
   sockClient.set_acceleration(400);
   sockClient.set_payload(0.5);
-  sockClient.wait_command_done();
-  sockClient.set_angles(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100);
+  printf(ANSI_COLOR_GREEN "Initialzing ..." ANSI_COLOR_RESET "\n");
+  sockClient.set_angles(0.0, -90.0, 0.0, -90.0, 90.0, 0.0, 200);
+  // while(!sockClient.wait_command_done()) {
+  //   ;
+  // }
 
-  rokae_jps_navigation::Goto planner_srv;
-  bool BACK_MOVE = false;
-  planner_srv.request.goal_pose.clear();
-  planner_srv.request.ifback = BACK_MOVE;
+  // IF YOU WANT TO USE THE LOCAL CONFIGURATION FILE
+  /* ------------------------- load local config files ------------------------- */
+  printf(ANSI_COLOR_GREEN "Start Moving ..." ANSI_COLOR_RESET "\n");
 
-  geometry_msgs::Pose pose;
-    // forward
-  pose.position.x = -0.62792;
-  pose.position.y = 0.115;
-  pose.position.z = 0.255789;
-  pose.orientation.w = -0.5;
-  pose.orientation.x = 0.5;
-  pose.orientation.y = 0.5;
-  pose.orientation.z = -0.5;
-  planner_srv.request.goal_pose.push_back(pose);
-
-  if (planner_client.call(planner_srv)) {
-    if(planner_srv.response.success) {
-      ROS_INFO_STREAM(planner_srv.response.message);
-      printf(ANSI_COLOR_GREEN "[move]: EXERT MOVING OPERATION" ANSI_COLOR_RESET "\n");
-      moveRobot(planner_srv.response.pos, planner_srv.response.vel, planner_srv.response.acc, planner_srv.response.t, sockClient);
-      ros::Duration(5).sleep();
-      if (BACK_MOVE) {
-        printf(ANSI_COLOR_GREEN "[move]: EXERT MOVING BACK OPERATION" ANSI_COLOR_RESET "\n");
-        moveRobot(planner_srv.response.back_pos, planner_srv.response.back_vel, planner_srv.response.back_acc, planner_srv.response.back_t, sockClient);
-        ros::Duration(5).sleep(); 
-      }
-    } 
-    else {
-      printf(ANSI_COLOR_RED "JPS planner error" ANSI_COLOR_RESET "\n");
-    }
-  } 
-  else {
-    printf(ANSI_COLOR_RED "Failed to call JPS planner" ANSI_COLOR_RESET "\n");
+  if (load_config(cfgconfig_stage1, position_m, velocity_m, acceleration_m, time_m)) {
+    moveRobot(position_m, velocity_m, acceleration_m, time_m, sockClient);
   }
+  clear_configuration(position_m, velocity_m, acceleration_m, time_m);
+
+
+  
+  // IF YOU WANT TO USE THE ONLINE PLANNING
+
+  // subscribe the JPS planner service
+  // std::string JPS_PLANNING    = "/rokae_arm/goto_trigger";
+
+  // ros::service::waitForService(JPS_PLANNING);
+  // ros::ServiceClient planner_client = nh.serviceClient<rokae_jps_navigation::Goto>(JPS_PLANNING);
+  // ROS_INFO(ANSI_COLOR_GREEN "Planner is loaded." ANSI_COLOR_RESET);
+
+  // /* ------------------------------ online planning ----------------------------- */
+  // rokae_jps_navigation::Goto planner_srv;
+  // bool BACK_MOVE = false;
+  // planner_srv.request.goal_pose.clear();
+  // planner_srv.request.ifback = BACK_MOVE;
+
+  // geometry_msgs::Pose pose;
+  // // forward
+  // pose.position.x = -0.62792;
+  // pose.position.y = 0.115;
+  // pose.position.z = 0.255789;
+  // pose.orientation.w = -0.5;
+  // pose.orientation.x = 0.5;
+  // pose.orientation.y = 0.5;
+  // pose.orientation.z = -0.5;
+  // planner_srv.request.goal_pose.push_back(pose);
+
+  // if (planner_client.call(planner_srv)) {
+  //   if(planner_srv.response.success) {
+  //     ROS_INFO_STREAM(planner_srv.response.message);
+  //     printf(ANSI_COLOR_GREEN "[move]: EXERT MOVING OPERATION" ANSI_COLOR_RESET "\n");
+  //     moveRobot(planner_srv.response.pos, planner_srv.response.vel, planner_srv.response.acc, planner_srv.response.t, sockClient);
+  //     ros::Duration(5).sleep();
+  //     if (BACK_MOVE) {
+  //       printf(ANSI_COLOR_GREEN "[move]: EXERT MOVING BACK OPERATION" ANSI_COLOR_RESET "\n");
+  //       moveRobot(planner_srv.response.back_pos, planner_srv.response.back_vel, planner_srv.response.back_acc, planner_srv.response.back_t, sockClient);
+  //       ros::Duration(5).sleep(); 
+  //     }
+  //   } 
+  //   else {
+  //     printf(ANSI_COLOR_RED "JPS planner error" ANSI_COLOR_RESET "\n");
+  //   }
+  // } 
+  // else {
+  //   printf(ANSI_COLOR_RED "Failed to call JPS planner" ANSI_COLOR_RESET "\n");
+  // }
 
   ros::spin();
 

@@ -968,7 +968,10 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
  /opt/ros/melodic/include/ros/this_node.h \
  /opt/ros/melodic/include/ros/param.h \
  /opt/ros/melodic/include/ros/topic.h \
- /opt/ros/melodic/include/ros/node_handle.h \
+ /opt/ros/melodic/include/ros/node_handle.h /usr/include/c++/7/mutex \
+ /usr/include/c++/7/chrono /usr/include/c++/7/ratio \
+ /usr/include/c++/7/bits/parse_numbers.h \
+ /usr/include/c++/7/bits/std_mutex.h \
  /home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/include/elerobot_tcpsocket.hpp \
  /home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/include/elerobot_basesocket.hpp \
  /usr/include/arpa/inet.h /usr/include/netinet/in.h \
@@ -987,8 +990,6 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
  /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
  /usr/include/x86_64-linux-gnu/bits/netdb.h /usr/include/c++/7/thread \
- /usr/include/c++/7/chrono /usr/include/c++/7/ratio \
- /usr/include/c++/7/bits/parse_numbers.h \
  /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/Goto.h \
  /home/contour/ws_catkin_elephant/devel/include/rokae_jps_navigation/GotoRequest.h \
  /opt/ros/melodic/include/ros/message_operations.h \

@@ -82,13 +82,16 @@
 
 (defclass rokae_jps_navigation::GotoResponse
   :super ros::object
-  :slots (_message _success _pos _vel _acc _t _back_pos _back_vel _back_acc _back_t ))
+  :slots (_message _success _px _py _pz _pos _vel _acc _t _back_pos _back_vel _back_acc _back_t ))
 
 (defmethod rokae_jps_navigation::GotoResponse
   (:init
    (&key
     ((:message __message) "")
     ((:success __success) nil)
+    ((:px __px) (make-array 0 :initial-element 0.0 :element-type :float))
+    ((:py __py) (make-array 0 :initial-element 0.0 :element-type :float))
+    ((:pz __pz) (make-array 0 :initial-element 0.0 :element-type :float))
     ((:pos __pos) (make-array 0 :initial-element 0.0 :element-type :float))
     ((:vel __vel) (make-array 0 :initial-element 0.0 :element-type :float))
     ((:acc __acc) (make-array 0 :initial-element 0.0 :element-type :float))
@@ -101,6 +104,9 @@
    (send-super :init)
    (setq _message (string __message))
    (setq _success __success)
+   (setq _px __px)
+   (setq _py __py)
+   (setq _pz __pz)
    (setq _pos __pos)
    (setq _vel __vel)
    (setq _acc __acc)
@@ -116,6 +122,15 @@
   (:success
    (&optional __success)
    (if __success (setq _success __success)) _success)
+  (:px
+   (&optional __px)
+   (if __px (setq _px __px)) _px)
+  (:py
+   (&optional __py)
+   (if __py (setq _py __py)) _py)
+  (:pz
+   (&optional __pz)
+   (if __pz (setq _pz __pz)) _pz)
   (:pos
    (&optional __pos)
    (if __pos (setq _pos __pos)) _pos)
@@ -147,6 +162,12 @@
     4 (length _message)
     ;; bool _success
     1
+    ;; float64[] _px
+    (* 8    (length _px)) 4
+    ;; float64[] _py
+    (* 8    (length _py)) 4
+    ;; float64[] _pz
+    (* 8    (length _pz)) 4
     ;; float64[] _pos
     (* 8    (length _pos)) 4
     ;; float64[] _vel
@@ -172,6 +193,21 @@
        (write-long (length _message) s) (princ _message s)
      ;; bool _success
        (if _success (write-byte -1 s) (write-byte 0 s))
+     ;; float64[] _px
+     (write-long (length _px) s)
+     (dotimes (i (length _px))
+       (sys::poke (elt _px i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+       )
+     ;; float64[] _py
+     (write-long (length _py) s)
+     (dotimes (i (length _py))
+       (sys::poke (elt _py i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+       )
+     ;; float64[] _pz
+     (write-long (length _pz) s)
+     (dotimes (i (length _pz))
+       (sys::poke (elt _pz i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+       )
      ;; float64[] _pos
      (write-long (length _pos) s)
      (dotimes (i (length _pos))
@@ -220,6 +256,27 @@
      (let (n) (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4) (setq _message (subseq buf ptr- (+ ptr- n))) (incf ptr- n))
    ;; bool _success
      (setq _success (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
+   ;; float64[] _px
+   (let (n)
+     (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
+     (setq _px (instantiate float-vector n))
+     (dotimes (i n)
+     (setf (elt _px i) (sys::peek buf ptr- :double)) (incf ptr- 8)
+     ))
+   ;; float64[] _py
+   (let (n)
+     (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
+     (setq _py (instantiate float-vector n))
+     (dotimes (i n)
+     (setf (elt _py i) (sys::peek buf ptr- :double)) (incf ptr- 8)
+     ))
+   ;; float64[] _pz
+   (let (n)
+     (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
+     (setq _pz (instantiate float-vector n))
+     (dotimes (i n)
+     (setf (elt _pz i) (sys::peek buf ptr- :double)) (incf ptr- 8)
+     ))
    ;; float64[] _pos
    (let (n)
      (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
@@ -284,7 +341,7 @@
   :super ros::object
   :slots ())
 
-(setf (get rokae_jps_navigation::Goto :md5sum-) "8981a10f92f52c0004c5f25fd13239d0")
+(setf (get rokae_jps_navigation::Goto :md5sum-) "db7c9c254c9a1585396c175f27b28c32")
 (setf (get rokae_jps_navigation::Goto :datatype-) "rokae_jps_navigation/Goto")
 (setf (get rokae_jps_navigation::Goto :request) rokae_jps_navigation::GotoRequest)
 (setf (get rokae_jps_navigation::Goto :response) rokae_jps_navigation::GotoResponse)
@@ -292,7 +349,7 @@
 (defmethod rokae_jps_navigation::GotoRequest
   (:response () (instance rokae_jps_navigation::GotoResponse :init)))
 
-(setf (get rokae_jps_navigation::GotoRequest :md5sum-) "8981a10f92f52c0004c5f25fd13239d0")
+(setf (get rokae_jps_navigation::GotoRequest :md5sum-) "db7c9c254c9a1585396c175f27b28c32")
 (setf (get rokae_jps_navigation::GotoRequest :datatype-) "rokae_jps_navigation/GotoRequest")
 (setf (get rokae_jps_navigation::GotoRequest :definition-)
       "geometry_msgs/Pose[] goal_pose
@@ -322,6 +379,9 @@ float64 w
 ---
 string message
 bool success
+float64[] px
+float64[] py
+float64[] pz
 float64[] pos
 float64[] vel
 float64[] acc
@@ -332,7 +392,7 @@ float64[] back_acc
 float64[] back_t
 ")
 
-(setf (get rokae_jps_navigation::GotoResponse :md5sum-) "8981a10f92f52c0004c5f25fd13239d0")
+(setf (get rokae_jps_navigation::GotoResponse :md5sum-) "db7c9c254c9a1585396c175f27b28c32")
 (setf (get rokae_jps_navigation::GotoResponse :datatype-) "rokae_jps_navigation/GotoResponse")
 (setf (get rokae_jps_navigation::GotoResponse :definition-)
       "geometry_msgs/Pose[] goal_pose
@@ -362,6 +422,9 @@ float64 w
 ---
 string message
 bool success
+float64[] px
+float64[] py
+float64[] pz
 float64[] pos
 float64[] vel
 float64[] acc
@@ -374,6 +437,6 @@ float64[] back_t
 
 
 
-(provide :rokae_jps_navigation/Goto "8981a10f92f52c0004c5f25fd13239d0")
+(provide :rokae_jps_navigation/Goto "db7c9c254c9a1585396c175f27b28c32")
 
 

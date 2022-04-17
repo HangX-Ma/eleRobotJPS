@@ -44,10 +44,15 @@ std::vector<double> socket_client::get_angles() {
   recv_msg = NULL;
   std::string command = "get_angles();";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 
   // find the `[` address and move the pointer to the next location
   std::vector<double> angles;
@@ -86,10 +91,15 @@ void socket_client::set_angles(double j1, double j2, double j3, double j4, doubl
   sprintf(command_conv, format, j1,j2,j3,j4,j5,j6,speed);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 
 }
 
@@ -101,10 +111,15 @@ void socket_client::set_angle(int joint, double angle, int speed){
   sprintf(command_conv, format, joint, angle, speed);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.4 get current coordinates of robot
@@ -112,10 +127,15 @@ std::vector<double> socket_client::get_coords() {
   recv_msg = NULL;
   std::string command = "get_coords();";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 
   // find the `[` address and move the pointer to the next location
   std::vector<double> coords;
@@ -154,10 +174,15 @@ void socket_client::set_coords(double axis_x_coord, double axis_y_coord, double 
   sprintf(command_conv, format, axis_x_coord, axis_y_coord, axis_z_coord, axis_rx_coord, axis_ry_coord, axis_rz_coord, speed);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.6 set the coordinate of one axis
@@ -168,10 +193,15 @@ void socket_client::set_coord(char axis, double coordinate , int speed) {
   sprintf(command_conv, format, axis, coordinate, speed);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 
@@ -183,10 +213,15 @@ bool socket_client::get_digital_out(int pin_num) {
   sprintf(command_conv, format, pin_num);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 
   const char *currPtrTmp = recv_msg + find_element<char>(recv_msg, ':') + 1; 
   char * currPtr = (char *)(currPtrTmp);
@@ -207,10 +242,15 @@ bool socket_client::set_digital_out(int pin_num, int signal) {
   sprintf(command_conv, format, pin_num, signal);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.9 get the signal of digital in pin
@@ -221,10 +261,15 @@ bool socket_client::get_digital_in(int pin_num) {
   sprintf(command_conv, format, pin_num);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 
   const char *currPtrTmp = recv_msg + find_element<char>(recv_msg, ':') + 1; 
   char * currPtr = (char *)(currPtrTmp);
@@ -245,10 +290,15 @@ bool socket_client::set_analog_out(int pin_num, int signal) {
   sprintf(command_conv, format, pin_num, signal);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.11 change the coordinate of one axis in one direction continuously 
@@ -259,10 +309,15 @@ void socket_client::jog_coord(char axis, int dir, int speed){
   sprintf(command_conv, format, axis, dir, speed);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.12 change the angle of one joint in one direction continuously 
@@ -273,10 +328,15 @@ void socket_client::jog_angle(int joint, int dir, int speed){
   sprintf(command_conv, format, joint, dir, speed);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.13 enable the system 
@@ -284,10 +344,15 @@ void socket_client::state_on() {
   recv_msg = NULL;
   std::string command = "state_on()";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.14 disable the system 
@@ -295,10 +360,15 @@ void socket_client::state_off() {
   recv_msg = NULL;
   std::string command = "state_off()";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.15 stop the task 
@@ -306,10 +376,15 @@ void socket_client::task_stop() {
   recv_msg = NULL;
   std::string command = "task_stop()";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.16 set feed rate 
@@ -320,10 +395,15 @@ bool socket_client::set_feed_rate(double rate) {
   sprintf(command_conv, format, rate);
   std::string command(command_conv);
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 
   const char *currPtrTmp = recv_msg + find_element<char>(recv_msg, ':') + 1; 
   char * currPtr = (char *)(currPtrTmp);
@@ -345,10 +425,15 @@ void socket_client::wait(double sec) {
   std::string command(command_conv);
 
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 
@@ -357,10 +442,15 @@ void socket_client::power_on() {
   recv_msg = NULL;
   std::string command = "power_on()";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.20 power off the robot 
@@ -368,10 +458,15 @@ void socket_client::power_off() {
   recv_msg = NULL;
   std::string command = "power_off()";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.21 get the speed the robot
@@ -387,7 +482,10 @@ int socket_client::get_speed() {
   const char *currPtrTmp = recv_msg + find_element<char>(recv_msg, ':') + 1; 
   char * currPtr = (char *)(currPtrTmp);
   int speed = atoi(currPtr);
-
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
   return speed;
 }
 
@@ -396,10 +494,15 @@ void socket_client::state_check() {
   recv_msg = NULL;
   std::string command = "state_check()";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.23 check if the robot is running
@@ -429,6 +532,10 @@ std::pair<bool, int> socket_client::check_running() {
 
     return std::make_pair(false, ERROR); 
   }
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.24 set the torque limit of the robot 
@@ -440,10 +547,15 @@ void socket_client::set_torque_limit(char axis, double torque) {
   std::string command(command_conv);
 
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.26 get the robot error 
@@ -451,10 +563,15 @@ void socket_client::read_next_error() {
   recv_msg = NULL;
   std::string command = "read_next_error()";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.27 set the payload of the robot 
@@ -464,12 +581,16 @@ void socket_client::set_payload(double payload) {
   char command_conv[1024];
   sprintf(command_conv, format, payload);
   std::string command(command_conv);
-
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.28 set the acceleration of the robot 
@@ -479,12 +600,16 @@ void socket_client::set_acceleration(int acc) {
   char command_conv[1024];
   sprintf(command_conv, format, acc);
   std::string command(command_conv);
-
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.29 get the acceleration of the robot 
@@ -501,19 +626,24 @@ int socket_client::get_acceleration() {
   char * currPtr = (char *)(currPtrTmp);
   int acc = atoi(currPtr);
 
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
+
   return acc;
 }
 
 //! 2.32 wait for command done 
 bool socket_client::wait_command_done() {
+  std::lock_guard<std::mutex> lock(lock_);
   recv_msg = NULL;
   std::string command = "wait_command_done()";
   tcpSocket->Send(command);
   while (recv_msg == NULL) {
     ;
   }
-  printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
-
+  // printf(ANSI_COLOR_YELLOW "%s\n" ANSI_COLOR_RESET, recv_msg);
   const char *currPtrTmp = recv_msg + find_element<char>(recv_msg, ':') + 1; 
   char * currPtr = (char *)(currPtrTmp);
   int res = atoi(currPtr);
@@ -522,8 +652,7 @@ bool socket_client::wait_command_done() {
   } 
   else {
     return false; 
-  } // ERROR
-
+  }
 }
 
 //! 2.32 pause the program 
@@ -531,10 +660,15 @@ void socket_client::pause_program() {
   recv_msg = NULL;
   std::string command = "pause_program()";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 //! 2.33 resume the program 
@@ -542,10 +676,15 @@ void socket_client::resume_program() {
   recv_msg = NULL;
   std::string command = "resume_program()";
   tcpSocket->Send(command);
+  // wait service message
   while (recv_msg == NULL) {
     ;
   }
   printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, recv_msg);
+  // wait command done
+  while(!wait_command_done()) {
+    ;
+  }
 }
 
 

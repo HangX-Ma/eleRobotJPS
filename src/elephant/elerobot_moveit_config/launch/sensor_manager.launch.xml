@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="camera_name" default="D435i_camera"/>
+  <arg name="camera_name" default="camera"/>
   <!-- This file makes it easy to include the settings for sensor managers -->
 
   <!-- Params for 3D sensors config -->

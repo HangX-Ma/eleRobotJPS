@@ -26,6 +26,11 @@
       <arg name="filters" value="pointcloud"/>
   </include> -->
 
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="camera_to_eef" args="0 -0.058 -0.0255 0 0 0 1 elerobot_link7 camera_link" /> -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="camera_to_eef" args="0 -0.058 -0.0255 0 0 0 1 elerobot_link7 camera_link" /> -->
+
+
+
   <!-- Launch Gazebo  -->
   <include file="$(find elerobot_simple_control)/launch/elerobot_gazebo_world.launch" >
     <arg name="with_camera" value="$(arg with_camera)"/>

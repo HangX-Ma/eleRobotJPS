@@ -47,7 +47,7 @@
 #endif
 
 namespace plt = matplotlibcpp;
-constexpr int MAX_TIME_INTERVAL = 120;
+constexpr int MAX_TIME_INTERVAL = 50;
 
 void formatVecToMat(const std::vector<Eigen::VectorXd, Eigen::aligned_allocator<Eigen::VectorXd>>& vec, Eigen::MatrixXd& mat) 
 {
@@ -189,7 +189,7 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
   const int   nDof           = 6;
   const int   joint_set_size = req.joint_configs_on_way.size() / nDof;
   const float start_t        = 0.0;
-  const float end_t          = 8.0;
+  const float end_t          = 10.0;
   int         counter        = 0;
   int         show_time      = 1;
 

@@ -26,6 +26,9 @@ struct GotoResponse_
   GotoResponse_()
     : message()
     , success(false)
+    , px()
+    , py()
+    , pz()
     , pos()
     , vel()
     , acc()
@@ -38,6 +41,9 @@ struct GotoResponse_
   GotoResponse_(const ContainerAllocator& _alloc)
     : message(_alloc)
     , success(false)
+    , px(_alloc)
+    , py(_alloc)
+    , pz(_alloc)
     , pos(_alloc)
     , vel(_alloc)
     , acc(_alloc)
@@ -56,6 +62,15 @@ struct GotoResponse_
 
    typedef uint8_t _success_type;
   _success_type success;
+
+   typedef std::vector<double, typename ContainerAllocator::template rebind<double>::other >  _px_type;
+  _px_type px;
+
+   typedef std::vector<double, typename ContainerAllocator::template rebind<double>::other >  _py_type;
+  _py_type py;
+
+   typedef std::vector<double, typename ContainerAllocator::template rebind<double>::other >  _pz_type;
+  _pz_type pz;
 
    typedef std::vector<double, typename ContainerAllocator::template rebind<double>::other >  _pos_type;
   _pos_type pos;
@@ -112,6 +127,9 @@ bool operator==(const ::rokae_jps_navigation::GotoResponse_<ContainerAllocator1>
 {
   return lhs.message == rhs.message &&
     lhs.success == rhs.success &&
+    lhs.px == rhs.px &&
+    lhs.py == rhs.py &&
+    lhs.pz == rhs.pz &&
     lhs.pos == rhs.pos &&
     lhs.vel == rhs.vel &&
     lhs.acc == rhs.acc &&
@@ -176,12 +194,12 @@ struct MD5Sum< ::rokae_jps_navigation::GotoResponse_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "21290f3e8f5a1054b6b9d96f21138cdf";
+    return "1d1f4162acc575e9ecdf795508e248a9";
   }
 
   static const char* value(const ::rokae_jps_navigation::GotoResponse_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x21290f3e8f5a1054ULL;
-  static const uint64_t static_value2 = 0xb6b9d96f21138cdfULL;
+  static const uint64_t static_value1 = 0x1d1f4162acc575e9ULL;
+  static const uint64_t static_value2 = 0xecdf795508e248a9ULL;
 };
 
 template<class ContainerAllocator>
@@ -202,6 +220,9 @@ struct Definition< ::rokae_jps_navigation::GotoResponse_<ContainerAllocator> >
   {
     return "string message\n"
 "bool success\n"
+"float64[] px\n"
+"float64[] py\n"
+"float64[] pz\n"
 "float64[] pos\n"
 "float64[] vel\n"
 "float64[] acc\n"
@@ -230,6 +251,9 @@ namespace serialization
     {
       stream.next(m.message);
       stream.next(m.success);
+      stream.next(m.px);
+      stream.next(m.py);
+      stream.next(m.pz);
       stream.next(m.pos);
       stream.next(m.vel);
       stream.next(m.acc);
@@ -260,6 +284,24 @@ struct Printer< ::rokae_jps_navigation::GotoResponse_<ContainerAllocator> >
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.message);
     s << indent << "success: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.success);
+    s << indent << "px[]" << std::endl;
+    for (size_t i = 0; i < v.px.size(); ++i)
+    {
+      s << indent << "  px[" << i << "]: ";
+      Printer<double>::stream(s, indent + "  ", v.px[i]);
+    }
+    s << indent << "py[]" << std::endl;
+    for (size_t i = 0; i < v.py.size(); ++i)
+    {
+      s << indent << "  py[" << i << "]: ";
+      Printer<double>::stream(s, indent + "  ", v.py[i]);
+    }
+    s << indent << "pz[]" << std::endl;
+    for (size_t i = 0; i < v.pz.size(); ++i)
+    {
+      s << indent << "  pz[" << i << "]: ";
+      Printer<double>::stream(s, indent + "  ", v.pz[i]);
+    }
     s << indent << "pos[]" << std::endl;
     for (size_t i = 0; i < v.pos.size(); ++i)
     {
