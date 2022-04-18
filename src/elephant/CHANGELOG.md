@@ -4,7 +4,14 @@
 - **Branch summary:** Elephant Panda3 `6-DOF` manipulator projects
 - **Maintained by:** m-contour <m-contour@qq.com>
 
-### 2022-04-15 
+### 2022-04-18 
+#### Feature
+- **Add:** (`rokae_arm_toppra`) Add `ifSave` request for user to determine whether save the data or not. **[#2f93c9a](https://github.com/Master-sx/eleRobotJPS/commit/2f93c9ab02566cf467a09442ab6ae5d032e414a7)**
+- **Fixed:** (`rokae_jps_navigation`) Move the `chrono` timer before the `toppra` files generator code. The timer will exactly store the planning time. **[#2f93c9a](https://github.com/Master-sx/eleRobotJPS/commit/2f93c9ab02566cf467a09442ab6ae5d032e414a7)**
+- **Fixed:** (`rokae_jps_navigation`)  Add `set unknown voxel as obstacles` in `dynamicEDT3D`. Although this will slower the prerequisite processing, it will make the planner works efficiently and correctly. **[#2f93c9a](https://github.com/Master-sx/eleRobotJPS/commit/2f93c9ab02566cf467a09442ab6ae5d032e414a7)**
+- **Fixed:** (`rokae_jps_navigation`) Update `planner_verbose` and `debug_verbose` for quicker planning and only generate `toppra` data when planning successes. **[#445e443](https://github.com/Master-sx/eleRobotJPS/commit/445e443b6fdc04a86a5e26d31c20abb3a8bcbead)**
+- 
+### 2022-04-17
 #### Feature
 - **Fixed:** (`elerobot_socket`) Amend socket control bugs. **[#0146c21](https://github.com/Master-sx/eleRobotJPS/commit/0146c2173a9b9335f56e137825c79f01a5c3fb9d)**
 - **Fixed:** (`elerobot_socket`) Add test codes for physical robot control. **[#0146c21](https://github.com/Master-sx/eleRobotJPS/commit/0146c2173a9b9335f56e137825c79f01a5c3fb9d)**
