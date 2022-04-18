@@ -94,9 +94,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   {
     res.message = "Goto rejected, node not initialized.";
     res.success = false;
-    if (planner_verbose_) {
-      printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Goto rejected, node not initialized." ANSI_COLOR_RESET "\n");
-    }
+    printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Goto rejected, node not initialized." ANSI_COLOR_RESET "\n");
 
     return false;
   }
@@ -106,18 +104,14 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   {
     res.message = "Goto rejected, octomap not received.";
     res.success = false;
-    if (planner_verbose_) {
-      printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Goto rejected, octomap not received." ANSI_COLOR_RESET "\n");
-    }
+    printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Goto rejected, octomap not received." ANSI_COLOR_RESET "\n");
 
     return false;
   }
   
   // check octomap status
   if (octree_ == NULL || octree_->size() < 1) {
-    if(planner_verbose_) {
-      printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Octomap is NULL or empty! Abort planning." ANSI_COLOR_RESET "\n");
-    }
+    printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Octomap is NULL or empty! Abort planning." ANSI_COLOR_RESET "\n");
 
     return false;
   }
@@ -172,11 +166,9 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
       tarPose_buffer_.push_back(modified_pose);
     } 
     else {
-      if(planner_verbose_) {
-        std::cout << point << std::endl;
-        printf(ANSI_COLOR_RED " goal point is invalid!" ANSI_COLOR_RESET "\n");
-        ROS_INFO_STREAM(point);
-      }
+      std::cout << point << std::endl;
+      printf(ANSI_COLOR_RED " goal point is invalid!" ANSI_COLOR_RESET "\n");
+      ROS_INFO_STREAM(point);
 
       return false;
     }
@@ -187,9 +179,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   {
     res.message = "Goto rejected, no waypoint provided";
     res.success = false;
-    if(planner_verbose_) {
-      printf(ANSI_COLOR_RED "[rokae_JPS_planner]: 'Goto' rejected, providing no waypoint." ANSI_COLOR_RESET "\n");
-    }
+    printf(ANSI_COLOR_RED "[rokae_JPS_planner]: 'Goto' rejected, providing no waypoint." ANSI_COLOR_RESET "\n");
     
     return false;
   }
@@ -215,9 +205,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   visualizePoint(prevGoal_, tmp_msg_id);
 
   if (!checkAvailability(prevGoal_)) {
-    if(planner_verbose_) {
-      printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Start point is invalid." ANSI_COLOR_RESET "\n");
-    }
+    printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Start point is invalid." ANSI_COLOR_RESET "\n");
     
     return false;
   }  
@@ -240,12 +228,11 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   // begin planning
   printf(ANSI_COLOR_MAGENTA "[rokae_JPS_planner]: Start planning ..." ANSI_COLOR_RESET "\n");
 
-  if(planner_verbose_) {
-    printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Waypoint [%.3f, %.3f, %.3f] set as original point position." ANSI_COLOR_RESET "\n",
-                                                                              prevGoal_.x(), prevGoal_.y(), prevGoal_.z());
-    printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Pose (x,y,z,w) = [%.3f, %.3f, %.3f, %.3f] set as a original orientation." ANSI_COLOR_RESET "\n",
-                              prevPose_.orientation.x, prevPose_.orientation.y, prevPose_.orientation.z, prevPose_.orientation.w);
-  }
+  printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Waypoint [%.3f, %.3f, %.3f] set as original point position." ANSI_COLOR_RESET "\n",
+                                                                            prevGoal_.x(), prevGoal_.y(), prevGoal_.z());
+  printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Pose (x,y,z,w) = [%.3f, %.3f, %.3f, %.3f] set as a original orientation." ANSI_COLOR_RESET "\n",
+                            prevPose_.orientation.x, prevPose_.orientation.y, prevPose_.orientation.z, prevPose_.orientation.w);
+
 
   // printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: goal buffer size is %d" ANSI_COLOR_RESET "\n", static_cast<int>(tarPoints_bufferIn.size()));
   // printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: pose buffer size is %d" ANSI_COLOR_RESET "\n", static_cast<int>(tarPoints_pose_.size()));
@@ -269,13 +256,13 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
     octomap::point3d planning_start = prevGoal_;
     octomap::point3d planning_goal  = currGoal_;
 
-    if(planner_verbose_) {
-      printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Waypoint [%.3f, %.3f, %.3f] set as a next goal position." ANSI_COLOR_RESET "\n",
-                                                                               planning_goal.x(), planning_goal.y(), planning_goal.z());
-      printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Pose (w,x,y,z) = [%.3f, %.3f, %.3f, %.3f] set as a next orientation." ANSI_COLOR_RESET "\n",
-                              tarPoints_pose_[currGoal_id_].w(), tarPoints_pose_[currGoal_id_].x(), tarPoints_pose_[currGoal_id_].y(), tarPoints_pose_[currGoal_id_].z());
-      printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Current goal ID is [%d]\n",currGoal_id_);
-    }
+
+    printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Waypoint [%.3f, %.3f, %.3f] set as a next goal position." ANSI_COLOR_RESET "\n",
+                                                                              planning_goal.x(), planning_goal.y(), planning_goal.z());
+    printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Pose (w,x,y,z) = [%.3f, %.3f, %.3f, %.3f] set as a next orientation." ANSI_COLOR_RESET "\n",
+                            tarPoints_pose_[currGoal_id_].w(), tarPoints_pose_[currGoal_id_].x(), tarPoints_pose_[currGoal_id_].y(), tarPoints_pose_[currGoal_id_].z());
+    printf(ANSI_COLOR_GREEN "[rokae_JPS_planner]: Current goal ID is [%d]\n",currGoal_id_);
+    
     visualizePoint(planning_goal, currGoal_id_);
 
     // initialize the JPS Planner Pointer
@@ -288,10 +275,9 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
       auto time_now = std::chrono::high_resolution_clock::now();
       if (std::chrono::duration<double>(time_now - time_start).count() > planning_timeout_) 
       {
-        if (planner_verbose_) {
-          printf(ANSI_COLOR_CYAN "[rokae_JPS_planner]: Planning timeout!\n" ANSI_COLOR_RESET);
-          std::cout << ANSI_COLOR_BLUE "[rokae_JPS_planner]: Total time cost: " << std::chrono::duration<double>(time_now - time_start).count() << " [s]" ANSI_COLOR_RESET << std::endl;
-        }
+        printf(ANSI_COLOR_CYAN "[rokae_JPS_planner]: Planning timeout!\n" ANSI_COLOR_RESET);
+        std::cout << ANSI_COLOR_BLUE "[rokae_JPS_planner]: Total time cost: " << std::chrono::duration<double>(time_now - time_start).count() << " [s]" ANSI_COLOR_RESET << std::endl;
+        
         planning_status_ = PlanningState::ERROR;
 
         return false;
@@ -435,9 +421,8 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         break;
       } 
       else {
-        if (planner_verbose_) {
-          std::cout << ANSI_COLOR_RED "[rokae_JPS_planner]: JPS planning failed, from [start]: (" << planning_start.x() << "," << planning_start.y() << "," << planning_start.z() << ") [goal]: (" << planning_goal.x() << "," << planning_goal.y() << "," << planning_goal.z() << ")" ANSI_COLOR_RESET << " Abort!" << std::endl;
-        }
+        std::cout << ANSI_COLOR_RED "[rokae_JPS_planner]: JPS planning failed, from [start]: (" << planning_start.x() << "," << planning_start.y() << "," << planning_start.z() << ") [goal]: (" << planning_goal.x() << "," << planning_goal.y() << "," << planning_goal.z() << ")" ANSI_COLOR_RESET << " Abort!" << std::endl;
+        
         planning_status_ = PlanningState::FAILURE;
 
         break;
@@ -445,28 +430,20 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
     }
 
     auto time_cost = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - curr_goal_start);
-    if (planner_verbose_) {
-      std::cout << ANSI_COLOR_BLUE "[rokae_JPS_planner]: JPS Planner time cost for current goal: " << time_cost.count() << " [s]" ANSI_COLOR_RESET << std::endl;
-    }
+    std::cout << ANSI_COLOR_BLUE "[rokae_JPS_planner]: JPS Planner time cost for current goal: " << time_cost.count() << " [s]" ANSI_COLOR_RESET << std::endl;
 
     if (planning_status_ == PlanningState::SUCCESS) {
-      if (planner_verbose_) {
-        printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: [currGoad_id] = [%d] success. Next!" ANSI_COLOR_RESET "\n", currGoal_id_);
-      }
+      printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: [currGoad_id] = [%d] success. Next!" ANSI_COLOR_RESET "\n", currGoal_id_);
 
       continue;
     }
     else if (planning_status_ == PlanningState::ERROR){
-      if (planner_verbose_) {
-        printf(ANSI_COLOR_RED "[rokae_JPS_planner]: REQUEST FOR RESETING JPS PLANNER" ANSI_COLOR_RESET "\n");
-      }
+      printf(ANSI_COLOR_RED "[rokae_JPS_planner]: REQUEST FOR RESETING JPS PLANNER" ANSI_COLOR_RESET "\n");
 
       return false;
     }
     else {
-      if (planner_verbose_) {
-        printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Please check the input pose of start point. [currGoad_id] = [%d]" ANSI_COLOR_RESET "\n", currGoal_id_);
-      }
+      printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Please check the input pose of start point. [currGoad_id] = [%d]" ANSI_COLOR_RESET "\n", currGoal_id_);
 
       return false;
     }
@@ -474,9 +451,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
 
   // using toppra to generate trajectory
   toppra_client(joint_configs_);
-  if (planner_verbose_) {
-    printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Genrating the [toppra] trajectory." ANSI_COLOR_RESET "\n");
-  }
+  printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Genrating the [toppra] trajectory." ANSI_COLOR_RESET "\n");
   // send trajectory data
   res.pos = getToppraPos();
   res.vel = getToppraVel();
@@ -486,9 +461,8 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   if (req.ifback) {
     std::reverse(joint_configs_.begin(), joint_configs_.end());
     toppra_client(joint_configs_);
-    if (planner_verbose_) {
-      printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Genrating the [toppra] moving back trajectory." ANSI_COLOR_RESET "\n");
-    }
+    printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Genrating the [toppra] moving back trajectory." ANSI_COLOR_RESET "\n");
+
     // send trajectory data
     res.back_pos = getToppraPos();
     res.back_vel = getToppraVel();
@@ -497,10 +471,8 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   }
 
   auto time_cost_total = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - time_start);
-  if (planner_verbose_) {
-    std::cout << ANSI_COLOR_BLUE "[rokae_JPS_planner]: Total time cost: " << time_cost_total.count() << " [s]" ANSI_COLOR_RESET << std::endl;
-  }
-  
+  std::cout << ANSI_COLOR_BLUE "[rokae_JPS_planner]: Total time cost: " << time_cost_total.count() << " [s]" ANSI_COLOR_RESET << std::endl;
+
   res.message = "Planning finished.";
   res.success = true;
   for (auto& p: path_points_info) {
@@ -533,19 +505,16 @@ DynamicEDTOctomap JPSPlanner::euclideanDistanceTransform(std::shared_ptr<octomap
 void JPSPlanner::octomapCallback(const octomap_msgs::Octomap &msg) 
 {
   parent_frame_    = msg.header.frame_id;
-  if (planner_verbose_) {
-    printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Getting octomap" ANSI_COLOR_RESET "\n");
-  }
+  printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Getting octomap" ANSI_COLOR_RESET "\n");
 
   octomap::AbstractOcTree* treePtr = octomap_msgs::msgToMap(msg);
 
   // ros::Duration(2);
 
   if (!treePtr) {
-    if (planner_verbose_) {
-      printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Octomap message is empty!" ANSI_COLOR_RESET "\n");
-    }
-  } else {
+    printf(ANSI_COLOR_RED "[rokae_JPS_planner]: Octomap message is empty!" ANSI_COLOR_RESET "\n");
+  } 
+  else {
     binary_tree = std::shared_ptr<octomap::OcTree>(dynamic_cast<octomap::OcTree *>(treePtr));
   }
 
@@ -607,7 +576,9 @@ geometry_msgs::Pose JPSPlanner::eef_state_client()
 /* collision detection or state detection client */
 std::vector<std::vector<float>> JPSPlanner::collision_detection_client(std::shared_ptr<octomap::OcTree> &tree)
 { 
-  printf(ANSI_COLOR_MAGENTA "[rokae_collision_detection]: collision detection client on" ANSI_COLOR_RESET "\n");
+  if (debug_verbose_) {
+    printf(ANSI_COLOR_MAGENTA "[rokae_collision_detection]: collision detection client on" ANSI_COLOR_RESET "\n");
+  }
   check_status_ = true;
   const std::string COLLISION_DETECTION_CLIENT_STR = "/rokae_arm/robot_collision_detection_node";
 
@@ -689,7 +660,9 @@ std::vector<std::vector<float>> JPSPlanner::collision_detection_client(std::shar
 
 bool JPSPlanner::tarPoseAvalability_client(std::vector<geometry_msgs::Pose> &tarPoseSet)
 {
-  printf(ANSI_COLOR_MAGENTA "[tarPoseAvalability_client]: target poses avalability checker client on" ANSI_COLOR_RESET "\n");
+  if (debug_verbose_) {
+    printf(ANSI_COLOR_MAGENTA "[tarPoseAvalability_client]: target poses avalability checker client on" ANSI_COLOR_RESET "\n");
+  }
 
   // using collision detection client handle
   const std::string COLLISION_DETECTION_CLIENT_STR = "/rokae_arm/robot_collision_detection_node";
@@ -702,22 +675,28 @@ bool JPSPlanner::tarPoseAvalability_client(std::vector<geometry_msgs::Pose> &tar
     rokae_jps_navigation::CheckCollision collision_detection_srv;
     // ROS_INFO("tarpose: (x,y,z,w,i,j,k): (%f,%f,%f,%f,%f,%f,%f)", pose_msg.position.x, pose_msg.position.y, pose_msg.position.z, pose_msg.orientation.w, pose_msg.orientation.x, pose_msg.orientation.y, pose_msg.orientation.z);
     collision_detection_srv.request.path_pose = pose_msg;
-    collision_detection_srv.request.ifVerbose = planner_verbose_;
+    collision_detection_srv.request.ifVerbose = debug_verbose_;
     collision_detection_srv.request.prev_joints.assign(prev_joint_configs_.begin(), prev_joint_configs_.end());
 
     iteration++;
     if (collision_detection_client_.call(collision_detection_srv)) {
       if(collision_detection_srv.response.getSolution) {
         if(collision_detection_srv.response.isCollide) {
-          printf(ANSI_COLOR_RED "target pose [%d] is in collision, please check the pose set." ANSI_COLOR_RESET "\n", iteration);
+          if (debug_verbose_) {
+            printf(ANSI_COLOR_RED "target pose [%d] is in collision, please check the pose set." ANSI_COLOR_RESET "\n", iteration);
+          }
           status = false;
         }
         else {
-          printf(ANSI_COLOR_GREEN "target pose [%d] is valid" ANSI_COLOR_RESET "\n", iteration);
+          if (debug_verbose_) {
+            printf(ANSI_COLOR_GREEN "target pose [%d] is valid" ANSI_COLOR_RESET "\n", iteration);
+          }
         }
       } 
       else {
-        printf(ANSI_COLOR_RED "target pose [%d] is invalid, please check the pose set." ANSI_COLOR_RESET "\n", iteration);
+        if (debug_verbose_) {
+          printf(ANSI_COLOR_RED "target pose [%d] is invalid, please check the pose set." ANSI_COLOR_RESET "\n", iteration);
+        }
         status = false;
       }
     }
@@ -728,7 +707,9 @@ bool JPSPlanner::tarPoseAvalability_client(std::vector<geometry_msgs::Pose> &tar
 
 geometry_msgs::Pose JPSPlanner::joint2pose_client(std::vector<double> &joint_group)
 {
-  printf(ANSI_COLOR_MAGENTA "[joint2pose_client]: joints to poses convertor client on" ANSI_COLOR_RESET "\n");
+  if (debug_verbose_) {
+    printf(ANSI_COLOR_MAGENTA "[joint2pose_client]: joints to poses convertor client on" ANSI_COLOR_RESET "\n");
+  }
 
   geometry_msgs::Pose pose;
   // using joint2pose client handle
@@ -1021,7 +1002,7 @@ void JPSPlanner::visualizePoint(const octomap::point3d &point, int msg_id)
 
 void JPSPlanner::visualizeVoxel(const octomap::point3d &point) 
 {
-  if (planner_verbose_) {
+  if (debug_verbose_) {
     printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Visualizing voxel" ANSI_COLOR_RESET "\n");
   }
   visualization_msgs::Marker msg;
@@ -1622,18 +1603,14 @@ bool JPSPlanner::checkAvailability(octomap::point3d &point)
   }
 
   if (isOccupied(tentative_node)) {
-    if (planner_verbose_) {
-      printf(ANSI_COLOR_RED "point is occupied!" ANSI_COLOR_RESET "\n");
-    }
+    printf(ANSI_COLOR_RED "point is occupied!" ANSI_COLOR_RESET "\n");
 
     return false;
   } 
   else if (isOutside(point)) {
-    if (planner_verbose_) {
-        printf(ANSI_COLOR_RED "point is outside!" ANSI_COLOR_RESET "\n");
-        std::cout << ANSI_COLOR_MAGENTA "coordinate: (" << point.x() << "," << point.y() << "," << point.z() << ")" ANSI_COLOR_RESET << std::endl;
-        printf(ANSI_COLOR_MAGENTA "octomap region: x=%f, y=%f, z=%f" ANSI_COLOR_RESET "\n", xDim_, yDim_, zDim_);
-    }
+    printf(ANSI_COLOR_RED "point is outside!" ANSI_COLOR_RESET "\n");
+    std::cout << ANSI_COLOR_MAGENTA "coordinate: (" << point.x() << "," << point.y() << "," << point.z() << ")" ANSI_COLOR_RESET << std::endl;
+    printf(ANSI_COLOR_MAGENTA "octomap region: x=%f, y=%f, z=%f" ANSI_COLOR_RESET "\n", xDim_, yDim_, zDim_);
 
     return false;
   }

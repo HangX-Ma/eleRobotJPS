@@ -43,7 +43,7 @@ bool DPF_HashFunction::operator()(const octomap::OcTreeKey &key) const {
   return ((hash<int>()(key.k[0]) ^ (hash<int>()(key.k[1]) << 1)) >> 1) ^ (hash<int>()(key.k[2]) << 1);
 }
 
-GraphSearch::GraphSearch(const float &xDim, const float &yDim, const float &zDim, const double &planning_tree_resolution, const octomap::point3d &startCoord, const octomap::point3d &goalCoord, const double &timeout_threshold, const double &eps/* = 1*/, const bool &verbose/* = false*/)
+GraphSearch::GraphSearch(const float &xDim, const float &yDim, const float &zDim, const double &planning_tree_resolution, const octomap::point3d &startCoord, const octomap::point3d &goalCoord, const double &timeout_threshold, const double &eps/* = 1*/, const bool verbose/* = false*/)
 {
   this->xDim_                     = xDim;
   this->yDim_                     = yDim;

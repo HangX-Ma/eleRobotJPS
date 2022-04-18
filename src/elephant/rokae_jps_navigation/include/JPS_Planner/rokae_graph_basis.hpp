@@ -186,7 +186,7 @@ class GraphSearch
      * @param[in] eps weight of heuristic, optional, default as 1
      * @param[in] verbose flag for printing debug info, optional, default as False
      */
-    GraphSearch(const float &xDim, const float &yDim, const float &zDim, const double &planning_tree_resolution, const octomap::point3d &startCoord, const octomap::point3d &goalCoord, const double &timeout_threshold, const double &eps = 1, const bool &verbose = false);
+    GraphSearch(const float &xDim, const float &yDim, const float &zDim, const double &planning_tree_resolution, const octomap::point3d &startCoord, const octomap::point3d &goalCoord, const double &timeout_threshold, const double &eps = 1, const bool verbose = false);
 
     /**
      * @brief start 3D planning thread

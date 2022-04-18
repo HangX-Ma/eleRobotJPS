@@ -490,7 +490,7 @@ void operation::pathPointsPlot(std::vector<double>& coord_x, std::vector<double>
   plt::figure(1);
   plt::figure_size(1280, 720);
   plt::ion();
-  plt::plot3(coord_y, coord_x, coord_z,keywords);
+  plt::plot3(coord_y, coord_x, coord_z, keywords);
   plt::xlabel("y (m)");
   plt::ylabel("x (m)");
   plt::set_zlabel("z (m)");
@@ -508,15 +508,21 @@ void operation::pathPointsPlot(std::vector<double>& coord_x, std::vector<double>
 
   if (outfile_coords.is_open())
   {
+    double dist_cost = 0;
     outfile_coords.flush();
     printf(ANSI_COLOR_MAGENTA "Path points information recorder has been created." ANSI_COLOR_RESET "\n");
-    for (size_t i = 0; i < data_size; i++)
+    outfile_coords << coord_x.at(0) << "," << coord_y.at(0) << "," << coord_z.at(0);
+    outfile_coords << std::endl;
+    for (size_t i = 1; i < data_size; i++)
     {
       outfile_coords << coord_x.at(i) << "," << coord_y.at(i) << "," << coord_z.at(i);
       outfile_coords << std::endl;
+      dist_cost += sqrt(pow(coord_x.at(i)-coord_x.at(i-1),2) + pow(coord_y.at(i)-coord_y.at(i-1),2) + pow(coord_z.at(i)-coord_z.at(i-1),2));
     }
+    printf(ANSI_COLOR_CYAN "Path euclidean cost: %.3f" ANSI_COLOR_RESET "\n", dist_cost);
     outfile_coords.close();
-  } else {
+  } 
+  else {
     printf(ANSI_COLOR_YELLOW "Path points output file can not be opened." ANSI_COLOR_RESET "\n");
   }
 }

@@ -1,8 +1,8 @@
 # This is a configuration file to set JPS planning non-optional parament
 planning:
   planning_tree_resolution: 0.01 # [m]
-  planning_timeout: 6000          # [s]
-  JPS_timeout:      60000        # [ms]
+  planning_timeout: 60000          # [s]
+  JPS_timeout:      600000        # [ms]
   planner_verbose: true          # [print info or not]
   debug_verbose: false           # [print info or not]
   xDim: 1.8                      # [m]
@@ -11,12 +11,14 @@ planning:
   euclidean_distance_cutoff: 1.8 # [m]
   eps:  1.0                      # [heuristic gain]
   max_iteration: 10              # [maximum iteration times for getting optimal path]
-  JPS_max_iteration: 6000        # [maximum iteration times for getting optimal path]
+  JPS_max_iteration: 10000        # [maximum iteration times for getting optimal path]
   search_radius: 3               # [increment of key value]
   potential_radius: 5            # [increment of key value]
   potential_weight: 0.5          # [potential field gain]
-  heu_type: Diagonal           # heuristic type
-  # heu_type: Manhattan            # heuristic type
+  heu_type: Manhattan          # heuristic type
+  # heu_type: Euclidean          # heuristic type (Failed)
+  # heu_type: Diagonal           # heuristic type
+
 visualization:
   show_unoccupied: false         # show unoccupied voxel of the octree
   tree_points_scale: 0.02        # be same with the planning_tree_resolution
