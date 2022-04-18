@@ -24,10 +24,12 @@ struct ToppRa_srvRequest_
   typedef ToppRa_srvRequest_<ContainerAllocator> Type;
 
   ToppRa_srvRequest_()
-    : joint_configs_on_way()  {
+    : joint_configs_on_way()
+    , ifSave(false)  {
     }
   ToppRa_srvRequest_(const ContainerAllocator& _alloc)
-    : joint_configs_on_way(_alloc)  {
+    : joint_configs_on_way(_alloc)
+    , ifSave(false)  {
   (void)_alloc;
     }
 
@@ -35,6 +37,9 @@ struct ToppRa_srvRequest_
 
    typedef std::vector<double, typename ContainerAllocator::template rebind<double>::other >  _joint_configs_on_way_type;
   _joint_configs_on_way_type joint_configs_on_way;
+
+   typedef uint8_t _ifSave_type;
+  _ifSave_type ifSave;
 
 
 
@@ -65,7 +70,8 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::rokae_arm_toppra::ToppRa_srvRequest_<ContainerAllocator1> & lhs, const ::rokae_arm_toppra::ToppRa_srvRequest_<ContainerAllocator2> & rhs)
 {
-  return lhs.joint_configs_on_way == rhs.joint_configs_on_way;
+  return lhs.joint_configs_on_way == rhs.joint_configs_on_way &&
+    lhs.ifSave == rhs.ifSave;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -122,12 +128,12 @@ struct MD5Sum< ::rokae_arm_toppra::ToppRa_srvRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "733832a93b7ef333f057ff38c1f9011e";
+    return "0311a789c31d9f89e270b2ec1d7d51f7";
   }
 
   static const char* value(const ::rokae_arm_toppra::ToppRa_srvRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x733832a93b7ef333ULL;
-  static const uint64_t static_value2 = 0xf057ff38c1f9011eULL;
+  static const uint64_t static_value1 = 0x0311a789c31d9f89ULL;
+  static const uint64_t static_value2 = 0xe270b2ec1d7d51f7ULL;
 };
 
 template<class ContainerAllocator>
@@ -147,6 +153,7 @@ struct Definition< ::rokae_arm_toppra::ToppRa_srvRequest_<ContainerAllocator> >
   static const char* value()
   {
     return "float64[] joint_configs_on_way \n"
+"bool ifSave\n"
 ;
   }
 
@@ -166,6 +173,7 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.joint_configs_on_way);
+      stream.next(m.ifSave);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -190,6 +198,8 @@ struct Printer< ::rokae_arm_toppra::ToppRa_srvRequest_<ContainerAllocator> >
       s << indent << "  joint_configs_on_way[" << i << "]: ";
       Printer<double>::stream(s, indent + "  ", v.joint_configs_on_way[i]);
     }
+    s << indent << "ifSave: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.ifSave);
   }
 };
 

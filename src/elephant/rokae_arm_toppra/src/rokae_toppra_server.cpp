@@ -286,6 +286,7 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
   if (printInfo) std::cout << ANSI_COLOR_MAGENTA << "path_acc2_\n " << path_acc2_ << ANSI_COLOR_RESET << std::endl;
   if (printInfo) std::cout << ANSI_COLOR_MAGENTA << "times2 \n " << times.transpose() << ANSI_COLOR_RESET << std::endl;
 
+  // -------------------------- IF YOU DON'T WANT TO SAVE DATA ------------------------------
   for (auto &pos : path_pos2)
   {
     for (size_t i = 0; i < pos.size(); i++) {
@@ -313,126 +314,125 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
   }
 
   // ------------------------------------ DATA SAVER -----------------------------------------    
+  if (req.ifSave) 
+  {
+    // time stamp
+    auto now = std::chrono::system_clock::now();
+    auto UTC = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
 
-  // // time stamp
-  // auto now = std::chrono::system_clock::now();
-  // auto UTC = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
+    auto in_time_t = std::chrono::system_clock::to_time_t(now);
+    std::stringstream datetime;
+    datetime << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
 
-  // auto in_time_t = std::chrono::system_clock::to_time_t(now);
-  // std::stringstream datetime;
-  // datetime << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
+    std::string UTC_string = std::to_string(UTC);
 
-  // std::string UTC_string = std::to_string(UTC);
+    // mkdir
+    std::string dir_path = "/home/contour/ws_catkin_elephant/src/elephant/rokae_arm_toppra/share/" + UTC_string;
+    if (!boost::filesystem::is_directory(dir_path))
+    {
+      printf(ANSI_COLOR_MAGENTA "begin create path: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());
+      if (!boost::filesystem::create_directory(dir_path))
+      {
+        printf(ANSI_COLOR_RED "create_directories failed: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());
+        return true;
+      }
+    } else {
+      printf(ANSI_COLOR_RED "%s already exist" ANSI_COLOR_RESET "\n", dir_path .c_str());
+    }
 
-  // // mkdir
-  // std::string dir_path = "/home/contour/ws_catkin_elephant/src/elephant/rokae_arm_toppra/share/" + UTC_string;
-  // if (!boost::filesystem::is_directory(dir_path))
-  // {
-  //   printf(ANSI_COLOR_MAGENTA "begin create path: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());
-  //   if (!boost::filesystem::create_directory(dir_path))
-  //   {
-  //     printf(ANSI_COLOR_RED "create_directories failed: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());
-  //     return true;
-  //   }
-  // } else {
-  //   printf(ANSI_COLOR_RED "%s already exist" ANSI_COLOR_RESET "\n", dir_path .c_str());
-  // }
+    plotdata(path_pos2, path_vel2, path_acc2, times2, nDof, show_time, UTC_string, dir_path,false);
+    inspect(pd.parametrization, pd.controllable_sets, pd.feasible_sets, show_time, UTC_string, dir_path,false);
 
-  // plotdata(path_pos2, path_vel2, path_acc2, times2, nDof, show_time, UTC_string, dir_path,false);
-  // inspect(pd.parametrization, pd.controllable_sets, pd.feasible_sets, show_time, UTC_string, dir_path,false);
+    // pos saver
+    std::ofstream outfile_pos;
+    std::string output_pos_path = dir_path + "/toppra_joints_pos_" + UTC_string + ".txt";
+    outfile_pos.open (output_pos_path, std::ios::out | std::ios::binary);
+    
+    if (outfile_pos.is_open())
+    {
+      outfile_pos.flush();
+      printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Position intformation recorder has been created." ANSI_COLOR_RESET "\n");
+      for (auto &pos : path_pos2)
+      {
+        // outfile_pos << "JOINT_CONFIGS:" << std::endl;
+        for (size_t i = 0; i < pos.size(); i++)
+        {
+          outfile_pos << pos(i) << " ";
+        }
+        outfile_pos << std::endl;
+      }
+      outfile_pos.close();
+    } else {
+      printf(ANSI_COLOR_YELLOW "[position]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
+    }
 
-  // // pos saver
-  // std::ofstream outfile_pos;
-  // std::string output_pos_path = dir_path + "/toppra_joints_pos_" + UTC_string + ".txt";
-  // outfile_pos.open (output_pos_path, std::ios::out | std::ios::binary);
-  
-  // if (outfile_pos.is_open())
-  // {
-  //   outfile_pos.flush();
-  //   printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Position intformation recorder has been created." ANSI_COLOR_RESET "\n");
-  //   for (auto &pos : path_pos2)
-  //   {
-  //     // outfile_pos << "JOINT_CONFIGS:" << std::endl;
-  //     for (size_t i = 0; i < pos.size(); i++)
-  //     {
-  //       res.pos.push_back(pos(i));
-  //       outfile_pos << pos(i) << " ";
-  //     }
-  //     outfile_pos << std::endl;
-  //   }
-  //   outfile_pos.close();
-  // } else {
-  //   printf(ANSI_COLOR_YELLOW "[position]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
-  // }
+    // vel saver
+    std::ofstream outfile_vel;
+    std::string output_vel_path = dir_path + "/toppra_joints_vel_" + UTC_string + ".txt";
+    outfile_vel.open (output_vel_path, std::ios::out | std::ios::binary);
 
-  // // vel saver
-  // std::ofstream outfile_vel;
-  // std::string output_vel_path = dir_path + "/toppra_joints_vel_" + UTC_string + ".txt";
-  // outfile_vel.open (output_vel_path, std::ios::out | std::ios::binary);
+    if (outfile_vel.is_open())
+    {
+      outfile_vel.flush();
+      printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Velocity intformation recorder has been created." ANSI_COLOR_RESET "\n");
+      for (auto &vel : path_vel2)
+      {
+        // outfile_vel << "JOINT_VELOCITY:" << std::endl;
+        for (size_t i = 0; i < vel.size(); i++)
+        {
+          outfile_vel << vel(i) << " ";
+        }
+        outfile_vel << std::endl;
+      }
+      outfile_vel.close();
+    } else {
+      printf(ANSI_COLOR_YELLOW "[velocity]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
+    }
 
-  // if (outfile_vel.is_open())
-  // {
-  //   outfile_vel.flush();
-  //   printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Velocity intformation recorder has been created." ANSI_COLOR_RESET "\n");
-  //   for (auto &vel : path_vel2)
-  //   {
-  //     // outfile_vel << "JOINT_VELOCITY:" << std::endl;
-  //     for (size_t i = 0; i < vel.size(); i++)
-  //     {
-  //       res.vel.push_back(vel(i));
-  //       outfile_vel << vel(i) << " ";
-  //     }
-  //     outfile_vel << std::endl;
-  //   }
-  //   outfile_vel.close();
-  // } else {
-  //   printf(ANSI_COLOR_YELLOW "[velocity]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
-  // }
+    // acc saver
+    std::ofstream outfile_acc;
+    std::string output_acc_path = dir_path + "/toppra_joints_acc_" + UTC_string + ".txt";
+    outfile_acc.open (output_acc_path, std::ios::out | std::ios::binary);
 
-  // // acc saver
-  // std::ofstream outfile_acc;
-  // std::string output_acc_path = dir_path + "/toppra_joints_acc_" + UTC_string + ".txt";
-  // outfile_acc.open (output_acc_path, std::ios::out | std::ios::binary);
+    if (outfile_acc.is_open())
+    {
+      outfile_acc.flush();
+      printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Acceleration intformation recorder has been created." ANSI_COLOR_RESET "\n");
+      for (auto &acc : path_acc2)
+      {
+        // outfile_acc << "JOINT_ACCELERATION:" << std::endl;
+        for (size_t i = 0; i < acc.size(); i++)
+        {
+          outfile_acc << acc(i) << " ";
+        }
+        outfile_acc << std::endl;
+      }
+      outfile_acc.close();
+    } else {
+      printf(ANSI_COLOR_YELLOW "[acceleration]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
+    }
 
-  // if (outfile_acc.is_open())
-  // {
-  //   outfile_acc.flush();
-  //   printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Acceleration intformation recorder has been created." ANSI_COLOR_RESET "\n");
-  //   for (auto &acc : path_acc2)
-  //   {
-  //     // outfile_acc << "JOINT_ACCELERATION:" << std::endl;
-  //     for (size_t i = 0; i < acc.size(); i++)
-  //     {
-  //       res.acc.push_back(acc(i));
-  //       outfile_acc << acc(i) << " ";
-  //     }
-  //     outfile_acc << std::endl;
-  //   }
-  //   outfile_acc.close();
-  // } else {
-  //   printf(ANSI_COLOR_YELLOW "[acceleration]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
-  // }
+    // t saver
+    std::ofstream outfile_t;
+    std::string output_t_path = dir_path + "/toppra_joints_t_" + UTC_string + ".txt";
+    outfile_t.open (output_t_path, std::ios::out | std::ios::binary);
 
-  // // t saver
-  // std::ofstream outfile_t;
-  // std::string output_t_path = dir_path + "/toppra_joints_t_" + UTC_string + ".txt";
-  // outfile_t.open (output_t_path, std::ios::out | std::ios::binary);
+    if (outfile_t.is_open())
+    {
+      outfile_t.flush();
+      printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Times intformation recorder has been created." ANSI_COLOR_RESET "\n" );
+      // outfile_t << "JOINT_TIME:" << std::endl;
+      for (size_t i = 0; i < times2.size(); i++)
+      {
+        outfile_t << times2(i) << " ";
+      }
+      outfile_t << std::endl;
+      outfile_t.close();
+    } else {
+      printf(ANSI_COLOR_YELLOW "[time]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
+    }
+  }
 
-  // if (outfile_t.is_open())
-  // {
-  //   outfile_t.flush();
-  //   printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Times intformation recorder has been created." ANSI_COLOR_RESET "\n" );
-  //   // outfile_t << "JOINT_TIME:" << std::endl;
-  //   for (size_t i = 0; i < times2.size(); i++)
-  //   {
-  //     res.t.push_back(times2(i));
-  //     outfile_t << times2(i) << " ";
-  //   }
-  //   outfile_t << std::endl;
-  //   outfile_t.close();
-  // } else {
-  //   printf(ANSI_COLOR_YELLOW "[time]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
-  // }
 
   return true;
 }

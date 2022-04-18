@@ -22,6 +22,7 @@ class ToppRa_srvRequest {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.joint_configs_on_way = null;
+      this.ifSave = null;
     }
     else {
       if (initObj.hasOwnProperty('joint_configs_on_way')) {
@@ -30,6 +31,12 @@ class ToppRa_srvRequest {
       else {
         this.joint_configs_on_way = [];
       }
+      if (initObj.hasOwnProperty('ifSave')) {
+        this.ifSave = initObj.ifSave
+      }
+      else {
+        this.ifSave = false;
+      }
     }
   }
 
@@ -37,6 +44,8 @@ class ToppRa_srvRequest {
     // Serializes a message object of type ToppRa_srvRequest
     // Serialize message field [joint_configs_on_way]
     bufferOffset = _arraySerializer.float64(obj.joint_configs_on_way, buffer, bufferOffset, null);
+    // Serialize message field [ifSave]
+    bufferOffset = _serializer.bool(obj.ifSave, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -46,13 +55,15 @@ class ToppRa_srvRequest {
     let data = new ToppRa_srvRequest(null);
     // Deserialize message field [joint_configs_on_way]
     data.joint_configs_on_way = _arrayDeserializer.float64(buffer, bufferOffset, null)
+    // Deserialize message field [ifSave]
+    data.ifSave = _deserializer.bool(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += 8 * object.joint_configs_on_way.length;
-    return length + 4;
+    return length + 5;
   }
 
   static datatype() {
@@ -62,13 +73,14 @@ class ToppRa_srvRequest {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '733832a93b7ef333f057ff38c1f9011e';
+    return '0311a789c31d9f89e270b2ec1d7d51f7';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     float64[] joint_configs_on_way 
+    bool ifSave
     
     `;
   }
@@ -84,6 +96,13 @@ class ToppRa_srvRequest {
     }
     else {
       resolved.joint_configs_on_way = []
+    }
+
+    if (msg.ifSave !== undefined) {
+      resolved.ifSave = msg.ifSave;
+    }
+    else {
+      resolved.ifSave = false
     }
 
     return resolved;
@@ -226,6 +245,6 @@ class ToppRa_srvResponse {
 module.exports = {
   Request: ToppRa_srvRequest,
   Response: ToppRa_srvResponse,
-  md5sum() { return '7a9e423704160b7b83b4437739d703ae'; },
+  md5sum() { return '7cd293dc242907880f3bae1412ae9b57'; },
   datatype() { return 'rokae_arm_toppra/ToppRa_srv'; }
 };

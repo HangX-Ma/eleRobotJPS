@@ -358,7 +358,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         // but if TOPP-RA generates a new trajectory, we need to do further check.
 
         // we need to check the poses of the toppra returned values
-        toppra_client(joint_configs);
+        toppra_client(joint_configs,false);
         int8_t joint_num = 0;
         // get joint group
         std::vector<double> joint_val = getToppraPos();
@@ -449,8 +449,11 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
     }
   }
 
+  auto time_cost_total = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - time_start);
+  std::cout << ANSI_COLOR_BLUE "[rokae_JPS_planner]: Total time cost: " << time_cost_total.count() << " [s]" ANSI_COLOR_RESET << std::endl;
+
   // using toppra to generate trajectory
-  toppra_client(joint_configs_);
+  toppra_client(joint_configs_, true);
   printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Genrating the [toppra] trajectory." ANSI_COLOR_RESET "\n");
   // send trajectory data
   res.pos = getToppraPos();
@@ -460,7 +463,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
 
   if (req.ifback) {
     std::reverse(joint_configs_.begin(), joint_configs_.end());
-    toppra_client(joint_configs_);
+    toppra_client(joint_configs_, true);
     printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Genrating the [toppra] moving back trajectory." ANSI_COLOR_RESET "\n");
 
     // send trajectory data
@@ -469,9 +472,6 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
     res.back_acc = getToppraAcc();
     res.back_t   = getToppraT();
   }
-
-  auto time_cost_total = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - time_start);
-  std::cout << ANSI_COLOR_BLUE "[rokae_JPS_planner]: Total time cost: " << time_cost_total.count() << " [s]" ANSI_COLOR_RESET << std::endl;
 
   res.message = "Planning finished.";
   res.success = true;
@@ -494,7 +494,7 @@ DynamicEDTOctomap JPSPlanner::euclideanDistanceTransform(std::shared_ptr<octomap
   //- arguments 3 and 4 can be used to restrict the distance map to a subarea
   //- argument 5 defines whether unknown space is treated as occupied or free
   //The constructor copies data but does not yet compute the distance map
-  DynamicEDTOctomap edf(euclidean_distance_cutoff_, tree.get(), metric_min, metric_max, false);
+  DynamicEDTOctomap edf(euclidean_distance_cutoff_, tree.get(), metric_min, metric_max, true);
 
   //This computes the distance map
   edf.update();
@@ -774,7 +774,7 @@ void JPSPlanner::resamplePath(std::vector<octomap::point3d> &waypoints, std::vec
 }
 
 
-bool JPSPlanner::toppra_client(std::vector<std::vector<float>> &joint_group)
+bool JPSPlanner::toppra_client(std::vector<std::vector<float>> &joint_group, bool ifSave)
 {
   // clear previous status
   toppra_pos_.clear();
@@ -799,6 +799,7 @@ bool JPSPlanner::toppra_client(std::vector<std::vector<float>> &joint_group)
   toppra_client_ = nh_.serviceClient<rokae_arm_toppra::ToppRa_srv>(TOPPRA_CLIENT_STR);
 
   rokae_arm_toppra::ToppRa_srv toppra_srv;
+  toppra_srv.request.ifSave = ifSave;
   toppra_srv.request.joint_configs_on_way.assign(joint_configs_1d.begin(), joint_configs_1d.end());
 
   if (toppra_client_.call(toppra_srv))

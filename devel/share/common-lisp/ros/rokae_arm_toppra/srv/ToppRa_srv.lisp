@@ -11,7 +11,12 @@
     :reader joint_configs_on_way
     :initarg :joint_configs_on_way
     :type (cl:vector cl:float)
-   :initform (cl:make-array 0 :element-type 'cl:float :initial-element 0.0)))
+   :initform (cl:make-array 0 :element-type 'cl:float :initial-element 0.0))
+   (ifSave
+    :reader ifSave
+    :initarg :ifSave
+    :type cl:boolean
+    :initform cl:nil))
 )
 
 (cl:defclass ToppRa_srv-request (<ToppRa_srv-request>)
@@ -26,6 +31,11 @@
 (cl:defmethod joint_configs_on_way-val ((m <ToppRa_srv-request>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader rokae_arm_toppra-srv:joint_configs_on_way-val is deprecated.  Use rokae_arm_toppra-srv:joint_configs_on_way instead.")
   (joint_configs_on_way m))
+
+(cl:ensure-generic-function 'ifSave-val :lambda-list '(m))
+(cl:defmethod ifSave-val ((m <ToppRa_srv-request>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader rokae_arm_toppra-srv:ifSave-val is deprecated.  Use rokae_arm_toppra-srv:ifSave instead.")
+  (ifSave m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <ToppRa_srv-request>) ostream)
   "Serializes a message object of type '<ToppRa_srv-request>"
   (cl:let ((__ros_arr_len (cl:length (cl:slot-value msg 'joint_configs_on_way))))
@@ -43,6 +53,7 @@
     (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream)))
    (cl:slot-value msg 'joint_configs_on_way))
+  (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'ifSave) 1 0)) ostream)
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <ToppRa_srv-request>) istream)
   "Deserializes a message object of type '<ToppRa_srv-request>"
@@ -64,6 +75,7 @@
       (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
     (cl:setf (cl:aref vals i) (roslisp-utils:decode-double-float-bits bits))))))
+    (cl:setf (cl:slot-value msg 'ifSave) (cl:not (cl:zerop (cl:read-byte istream))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<ToppRa_srv-request>)))
@@ -74,24 +86,26 @@
   "rokae_arm_toppra/ToppRa_srvRequest")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<ToppRa_srv-request>)))
   "Returns md5sum for a message object of type '<ToppRa_srv-request>"
-  "7a9e423704160b7b83b4437739d703ae")
+  "7cd293dc242907880f3bae1412ae9b57")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'ToppRa_srv-request)))
   "Returns md5sum for a message object of type 'ToppRa_srv-request"
-  "7a9e423704160b7b83b4437739d703ae")
+  "7cd293dc242907880f3bae1412ae9b57")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<ToppRa_srv-request>)))
   "Returns full string definition for message of type '<ToppRa_srv-request>"
-  (cl:format cl:nil "float64[] joint_configs_on_way ~%~%~%"))
+  (cl:format cl:nil "float64[] joint_configs_on_way ~%bool ifSave~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'ToppRa_srv-request)))
   "Returns full string definition for message of type 'ToppRa_srv-request"
-  (cl:format cl:nil "float64[] joint_configs_on_way ~%~%~%"))
+  (cl:format cl:nil "float64[] joint_configs_on_way ~%bool ifSave~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <ToppRa_srv-request>))
   (cl:+ 0
      4 (cl:reduce #'cl:+ (cl:slot-value msg 'joint_configs_on_way) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 8)))
+     1
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <ToppRa_srv-request>))
   "Converts a ROS message object to a list"
   (cl:list 'ToppRa_srv-request
     (cl:cons ':joint_configs_on_way (joint_configs_on_way msg))
+    (cl:cons ':ifSave (ifSave msg))
 ))
 ;//! \htmlinclude ToppRa_srv-response.msg.html
 
@@ -292,10 +306,10 @@
   "rokae_arm_toppra/ToppRa_srvResponse")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<ToppRa_srv-response>)))
   "Returns md5sum for a message object of type '<ToppRa_srv-response>"
-  "7a9e423704160b7b83b4437739d703ae")
+  "7cd293dc242907880f3bae1412ae9b57")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'ToppRa_srv-response)))
   "Returns md5sum for a message object of type 'ToppRa_srv-response"
-  "7a9e423704160b7b83b4437739d703ae")
+  "7cd293dc242907880f3bae1412ae9b57")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<ToppRa_srv-response>)))
   "Returns full string definition for message of type '<ToppRa_srv-response>"
   (cl:format cl:nil "float64[] pos~%float64[] vel~%float64[] acc~%float64[] t~%~%~%"))

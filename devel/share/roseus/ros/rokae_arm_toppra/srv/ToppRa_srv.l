@@ -20,24 +20,31 @@
 
 (defclass rokae_arm_toppra::ToppRa_srvRequest
   :super ros::object
-  :slots (_joint_configs_on_way ))
+  :slots (_joint_configs_on_way _ifSave ))
 
 (defmethod rokae_arm_toppra::ToppRa_srvRequest
   (:init
    (&key
     ((:joint_configs_on_way __joint_configs_on_way) (make-array 0 :initial-element 0.0 :element-type :float))
+    ((:ifSave __ifSave) nil)
     )
    (send-super :init)
    (setq _joint_configs_on_way __joint_configs_on_way)
+   (setq _ifSave __ifSave)
    self)
   (:joint_configs_on_way
    (&optional __joint_configs_on_way)
    (if __joint_configs_on_way (setq _joint_configs_on_way __joint_configs_on_way)) _joint_configs_on_way)
+  (:ifSave
+   (&optional __ifSave)
+   (if __ifSave (setq _ifSave __ifSave)) _ifSave)
   (:serialization-length
    ()
    (+
     ;; float64[] _joint_configs_on_way
     (* 8    (length _joint_configs_on_way)) 4
+    ;; bool _ifSave
+    1
     ))
   (:serialize
    (&optional strm)
@@ -48,6 +55,8 @@
      (dotimes (i (length _joint_configs_on_way))
        (sys::poke (elt _joint_configs_on_way i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
        )
+     ;; bool _ifSave
+       (if _ifSave (write-byte -1 s) (write-byte 0 s))
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -59,6 +68,8 @@
      (dotimes (i n)
      (setf (elt _joint_configs_on_way i) (sys::peek buf ptr- :double)) (incf ptr- 8)
      ))
+   ;; bool _ifSave
+     (setq _ifSave (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
    ;;
    self)
   )
@@ -169,7 +180,7 @@
   :super ros::object
   :slots ())
 
-(setf (get rokae_arm_toppra::ToppRa_srv :md5sum-) "7a9e423704160b7b83b4437739d703ae")
+(setf (get rokae_arm_toppra::ToppRa_srv :md5sum-) "7cd293dc242907880f3bae1412ae9b57")
 (setf (get rokae_arm_toppra::ToppRa_srv :datatype-) "rokae_arm_toppra/ToppRa_srv")
 (setf (get rokae_arm_toppra::ToppRa_srv :request) rokae_arm_toppra::ToppRa_srvRequest)
 (setf (get rokae_arm_toppra::ToppRa_srv :response) rokae_arm_toppra::ToppRa_srvResponse)
@@ -177,10 +188,11 @@
 (defmethod rokae_arm_toppra::ToppRa_srvRequest
   (:response () (instance rokae_arm_toppra::ToppRa_srvResponse :init)))
 
-(setf (get rokae_arm_toppra::ToppRa_srvRequest :md5sum-) "7a9e423704160b7b83b4437739d703ae")
+(setf (get rokae_arm_toppra::ToppRa_srvRequest :md5sum-) "7cd293dc242907880f3bae1412ae9b57")
 (setf (get rokae_arm_toppra::ToppRa_srvRequest :datatype-) "rokae_arm_toppra/ToppRa_srvRequest")
 (setf (get rokae_arm_toppra::ToppRa_srvRequest :definition-)
       "float64[] joint_configs_on_way 
+bool ifSave
 ---
 float64[] pos
 float64[] vel
@@ -188,10 +200,11 @@ float64[] acc
 float64[] t
 ")
 
-(setf (get rokae_arm_toppra::ToppRa_srvResponse :md5sum-) "7a9e423704160b7b83b4437739d703ae")
+(setf (get rokae_arm_toppra::ToppRa_srvResponse :md5sum-) "7cd293dc242907880f3bae1412ae9b57")
 (setf (get rokae_arm_toppra::ToppRa_srvResponse :datatype-) "rokae_arm_toppra/ToppRa_srvResponse")
 (setf (get rokae_arm_toppra::ToppRa_srvResponse :definition-)
       "float64[] joint_configs_on_way 
+bool ifSave
 ---
 float64[] pos
 float64[] vel
@@ -201,6 +214,6 @@ float64[] t
 
 
 
-(provide :rokae_arm_toppra/ToppRa_srv "7a9e423704160b7b83b4437739d703ae")
+(provide :rokae_arm_toppra/ToppRa_srv "7cd293dc242907880f3bae1412ae9b57")
 
 

@@ -67,7 +67,7 @@ class JPSPlanner
     geometry_msgs::Pose eef_state_client();
 
     //! toppra client
-    bool toppra_client(std::vector<std::vector<float>> &joint_group);
+    bool toppra_client(std::vector<std::vector<float>> &joint_group, bool ifSave=false);
     
     /**
      * @brief collision detection client, if a certain node is detected as an obstacle, this function will change that node value in octree 

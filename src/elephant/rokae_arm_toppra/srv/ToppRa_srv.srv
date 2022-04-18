@@ -1,4 +1,5 @@
 float64[] joint_configs_on_way 
+bool ifSave
 ---
 float64[] pos
 float64[] vel
