@@ -1,3 +1,25 @@
+/**
+ * @file rokae_jps_planner.cpp
+ * @author MContour(m-contour@qq.com)
+ * @version 0.1
+ * @date 2022-05-13
+ * 
+ * @copyright Copyright (c) 2021-2022 MContour. All rights reserved.
+ * 
+ * Copyright 2021-2022 MContour
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include "JPS_Planner/rokae_jps_planner.hpp"
 
 JPSPlanner::JPSPlanner(ros::NodeHandle* nodehandle):nh_(*nodehandle)
@@ -1533,60 +1555,79 @@ octomap::point3d JPSPlanner::suit_coordinate(octomap::point3d &point)
 
   // ROS_INFO_STREAM("integral_x: " << integral_x);
   // ROS_INFO_STREAM("integral_z: " << integral_z);
-
-  if ( std::fabs(point.x() - integral_x * planning_tree_resolution_) >= planning_tree_resolution_ / 2) {
-    if (integral_x > 0) {
-      x = (integral_x + 0.5) * planning_tree_resolution_;
-    } else if (integral_x < 0) {
-      x = (integral_x - 0.5) * planning_tree_resolution_;
-    } else {
-      x = point.x();
-    }
-  } else {
-    if (integral_x > 0) {
-      x = (integral_x - 0.5) * planning_tree_resolution_;
-    } else if (integral_x < 0) {
-      x = (integral_x + 0.5) * planning_tree_resolution_;
-    } else {
-      x = point.x();
-    }
+  if (integral_x < 0) {
+    x = (integral_x - 0.5) * planning_tree_resolution_;
+  } 
+  else {
+    x = (integral_x + 0.5) * planning_tree_resolution_;
   }
 
-  if ( std::fabs(point.y() - integral_y * planning_tree_resolution_) >= planning_tree_resolution_ / 2) {
-    if (integral_y > 0) {
-      y = (integral_y + 0.5) * planning_tree_resolution_;
-    } else if (integral_y < 0) {
-      y = (integral_y - 0.5) * planning_tree_resolution_;
-    } else {
-      y = point.y();
-    }
-  } else {
-    if (integral_y > 0) {
-      y = (integral_y - 0.5) * planning_tree_resolution_;
-    } else if (integral_y < 0) {
-      y = (integral_y + 0.5) * planning_tree_resolution_;
-    } else {
-      y = point.y();
-    }
+  if (integral_y < 0) {
+    y = (integral_y - 0.5) * planning_tree_resolution_;
+  } 
+  else {
+    y = (integral_y + 0.5) * planning_tree_resolution_;
   }
 
-  if ( std::fabs(point.z() - integral_z * planning_tree_resolution_) >= planning_tree_resolution_ / 2) {
-    if (integral_z > 0) {
-      z = (integral_z + 0.5) * planning_tree_resolution_;
-    } else if (integral_z < 0) {
-      z = (integral_z - 0.5) * planning_tree_resolution_;
-    } else {
-      z = point.z();
-    }
-  } else {
-    if (integral_z > 0) {
-      z = (integral_z - 0.5) * planning_tree_resolution_;
-    } else if (integral_z < 0) {
-      z = (integral_z + 0.5) * planning_tree_resolution_;
-    } else {
-      z = point.z();
-    }
+  if (integral_z < 0) {
+    z = (integral_z - 0.5) * planning_tree_resolution_;
+  } 
+  else {
+    z = (integral_z + 0.5) * planning_tree_resolution_;
   }
+  // if ( std::fabs(point.x() - integral_x * planning_tree_resolution_) >= planning_tree_resolution_ / 2) {
+  //   if (integral_x > 0) {
+  //     x = (integral_x + 0.5) * planning_tree_resolution_;
+  //   } else if (integral_x < 0) {
+  //     x = (integral_x - 0.5) * planning_tree_resolution_;
+  //   } else {
+  //     x = point.x();
+  //   }
+  // } else {
+  //   if (integral_x > 0) {
+  //     x = (integral_x - 0.5) * planning_tree_resolution_;
+  //   } else if (integral_x < 0) {
+  //     x = (integral_x + 0.5) * planning_tree_resolution_;
+  //   } else {
+  //     x = point.x();
+  //   }
+  // }
+
+  // if ( std::fabs(point.y() - integral_y * planning_tree_resolution_) >= planning_tree_resolution_ / 2) {
+  //   if (integral_y > 0) {
+  //     y = (integral_y + 0.5) * planning_tree_resolution_;
+  //   } else if (integral_y < 0) {
+  //     y = (integral_y - 0.5) * planning_tree_resolution_;
+  //   } else {
+  //     y = point.y();
+  //   }
+  // } else {
+  //   if (integral_y > 0) {
+  //     y = (integral_y - 0.5) * planning_tree_resolution_;
+  //   } else if (integral_y < 0) {
+  //     y = (integral_y + 0.5) * planning_tree_resolution_;
+  //   } else {
+  //     y = point.y();
+  //   }
+  // }
+
+  // if ( std::fabs(point.z() - integral_z * planning_tree_resolution_) >= planning_tree_resolution_ / 2) {
+  //   if (integral_z > 0) {
+  //     z = (integral_z + 0.5) * planning_tree_resolution_;
+  //   } else if (integral_z < 0) {
+  //     z = (integral_z - 0.5) * planning_tree_resolution_;
+  //   } else {
+  //     z = point.z();
+  //   }
+  // } else {
+  //   if (integral_z > 0) {
+  //     z = (integral_z - 0.5) * planning_tree_resolution_;
+  //   } else if (integral_z < 0) {
+  //     z = (integral_z + 0.5) * planning_tree_resolution_;
+  //   } else {
+  //     z = point.z();
+  //   }
+  // }
   octomap::point3d re_point(x, y, z);
   // ROS_INFO_STREAM("x, y, z : " << re_point.x() << ", " << re_point.y() << ", " << re_point.z() );
 

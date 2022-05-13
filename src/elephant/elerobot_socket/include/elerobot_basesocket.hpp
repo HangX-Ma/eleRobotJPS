@@ -1,3 +1,9 @@
+/**
+ * @file elerobot_basesocket.hpp
+ * @brief basic socket communication
+ * @version 0.1
+ * @date 2022-05-13
+ */
 #ifndef ELEROBOT_BASESOCKET_HPP
 #define ELEROBOT_BASESOCKET_HPP
 

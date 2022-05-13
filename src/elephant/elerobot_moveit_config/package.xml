@@ -8,7 +8,7 @@
   <author email="m-contour@qq.com">m-contour</author>
   <maintainer email="m-contour@qq.com">m-contour</maintainer>
 
-  <license>BSD</license>
+  <license>Apache Licence 2.0</license>
 
   <url type="website">http://moveit.ros.org/</url>
   <url type="bugtracker">https://github.com/ros-planning/moveit/issues</url>

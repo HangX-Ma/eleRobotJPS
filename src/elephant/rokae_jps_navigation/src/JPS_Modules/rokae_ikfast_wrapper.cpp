@@ -93,7 +93,7 @@ float NORM(float a, float b, float c, float d);
 namespace robots { 
     /**
      * @date 2021.11.22
-     * @author contour
+     * @author MContour (m-contour@qq.com)
      * @version v1.0
      * @brief We need to check the joint configs from the 'ikCompute' function is valid, which means, the joint configs for target pose
      *        needs to within the joint limits and to be effective.
@@ -102,7 +102,23 @@ namespace robots {
      * @param rokae_upper_limits joint upper limits
      * @param rokae_lower_limits joint lower limits
      * @param divided_joint_configs divdie the solutions, which in one vector container, to several groups according to the joint number
-    */
+     * 
+     * @copyright Copyright (c) 2021-2022 MContour. All rights reserved.
+     * 
+     * Copyright 2021-2022 MContour
+     * 
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     * 
+     *     http://www.apache.org/licenses/LICENSE-2.0
+     * 
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
     class Kinematics { 
       public: 
         int num_of_joints, num_free_parameters;

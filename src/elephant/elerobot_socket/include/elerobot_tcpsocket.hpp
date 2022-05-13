@@ -1,3 +1,10 @@
+/**
+ * @file elerobot_tcpsocket.hpp
+ * @brief tcp socket functions
+ * @version 0.1
+ * @date 2022-05-13
+ */
+
 #ifndef ELEROBOT_TCPSOCKET_HPP
 #define ELEROBOT_TCPSOCKET_HPP
 #include "elerobot_basesocket.hpp"

@@ -1,7 +1,55 @@
+/**
+ * @file elerobot_control.cpp
+ * @author MContour (m-contour@qq.com)
+ * @brief elephant panda3 control
+ * @version 0.1
+ * @date 2022-05-13
+ * 
+ * @copyright Copyright (c) 2021-2022 MContour. All rights reserved.
+ * 
+ * Copyright 2021-2022 MContour
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include "elerobot_tcpsocket_client.hpp"
 #include "rokae_jps_navigation/Goto.h"
 #include <fstream>
 #include <chrono>
+#include <boost/filesystem.hpp>
+
+//! Set red font in printf function
+#ifndef ANSI_COLOR_RED
+#define ANSI_COLOR_RED "\x1b[1;31m"
+#endif
+//! Set green font in printf function
+#ifndef ANSI_COLOR_GREEN
+#define ANSI_COLOR_GREEN "\x1b[1;32m"
+#endif
+//! Set yellow font in printf function
+#ifndef ANSI_COLOR_YELLOW
+#define ANSI_COLOR_YELLOW "\x1b[1;33m"
+#endif
+
+//! Set magenta font in printf function
+#ifndef ANSI_COLOR_MAGENTA
+#define ANSI_COLOR_MAGENTA "\x1b[1;35m"
+#endif
+
+//! Reset font color in printf function
+#ifndef ANSI_COLOR_RESET
+#define ANSI_COLOR_RESET "\x1b[0m"
+#endif
+
 
 bool load_config(std::vector<std::string> cfgfilepath, std::vector<double> &position,
                                std::vector<double> &velocity, std::vector<double> &acceleration, std::vector<double> &time)
@@ -130,7 +178,7 @@ void moveRobot(std::vector<double> &position, std::vector<double> &velocity, std
   //     socket_cli.set_angle(6, angle_pos6, angle_vel6);
   //   }
   // }
-
+  std::vector<std::vector<double>> curr_angles;
   double vel;
   for (size_t i = 0; i < data_size; i++) {
     angle_pos1 = position.at(i*6)/M_PI*180;
@@ -141,9 +189,59 @@ void moveRobot(std::vector<double> &position, std::vector<double> &velocity, std
     angle_pos6 = position.at(i*6+5)/M_PI*180;
     vel        = 300;
     socket_cli.set_angles(angle_pos1, angle_pos2, angle_pos3, angle_pos4, angle_pos5, angle_pos6, vel);
+    socket_cli.wait(0.1);
+    std::vector<double> angles = socket_cli.get_angles();
+    curr_angles.push_back(angles);
   }
   socket_cli.wait(1); 
 
+    // time stamp
+    auto now = std::chrono::system_clock::now();
+    auto UTC = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
+
+    auto in_time_t = std::chrono::system_clock::to_time_t(now);
+    std::stringstream datetime;
+    datetime << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
+
+    std::string UTC_string = std::to_string(UTC);
+
+    // mkdir
+    std::string dir_path = "/home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/share/" + UTC_string;
+    if (!boost::filesystem::is_directory(dir_path))
+    {
+      printf(ANSI_COLOR_MAGENTA "begin create path: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());
+      if (!boost::filesystem::create_directory(dir_path)) {
+        printf(ANSI_COLOR_RED "create_directories failed: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());
+      }
+    } 
+    else {
+      printf(ANSI_COLOR_RED "%s already exist" ANSI_COLOR_RESET "\n", dir_path .c_str());
+    }
+
+    // pos saver
+    std::ofstream outfile_pos;
+    std::string output_pos_path = dir_path + "/joints_pos_" + UTC_string + ".txt";
+    outfile_pos.open (output_pos_path, std::ios::out | std::ios::binary);
+    
+    if (outfile_pos.is_open())
+    {
+      outfile_pos.flush();
+      printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Position intformation recorder has been created." ANSI_COLOR_RESET "\n");
+      for (auto &pos : curr_angles)
+      {
+        // outfile_pos << "JOINT_CONFIGS:" << std::endl;
+        for (size_t i = 0; i < pos.size(); i++) {
+          outfile_pos << pos.at(i) << " ";
+        }
+        outfile_pos << std::endl;
+      }
+      outfile_pos.close();
+    } 
+    else {
+      printf(ANSI_COLOR_YELLOW "[position]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
+    }
+
+  
 }
 
 

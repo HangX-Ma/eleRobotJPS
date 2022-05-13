@@ -1,0 +1,46 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/contour/ws_catkin_aruco/devel/include/**",
+        "/home/contour/ws_catkin_elephant/devel/include/**",
+        "/home/contour/Desktop/eleRobotJPS/devel/include/**",
+        "/home/contour/ws_catkin_realsense/devel/include/**",
+        "/home/contour/ws_moveit/devel/include/**",
+        "/home/contour/ws_moveit/install/include/**",
+        "/opt/ros/melodic/include/**",
+        "/opt/openrobots/include/**",
+        "/home/contour/ws_catkin_aruco/src/aruco_ros/aruco/include/**",
+        "/home/contour/ws_catkin_aruco/src/aruco_ros/aruco_ros/include/**",
+        "/home/contour/ws_catkin_realsense/src/ddynamic_reconfigure/include/**",
+        "/home/contour/ws_catkin_elephant/src/elerobot_ikfast_manipulator_plugin/include/**",
+        "/home/contour/ws_catkin_elephant/src/elephant/elerobot_map_convertor/include/**",
+        "/home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/include/**",
+        "/home/contour/ws_moveit/src/geometric_shapes/include/**",
+        "/home/contour/ws_moveit/src/moveit_resources/prbt_ikfast_manipulator_plugin/include/**",
+        "/home/contour/ws_moveit/src/moveit/moveit_ros/benchmarks/include/**",
+        "/home/contour/ws_moveit/src/moveit/moveit_plugins/moveit_ros_control_interface/include/**",
+        "/home/contour/ws_moveit/src/moveit/moveit_ros/move_group/include/**",
+        "/home/contour/ws_moveit/src/moveit/moveit_ros/occupancy_map_monitor/include/**",
+        "/home/contour/ws_moveit/src/moveit/moveit_ros/robot_interaction/include/**",
+        "/home/contour/ws_moveit/src/moveit/moveit_ros/moveit_servo/include/**",
+        "/home/contour/ws_moveit/src/moveit/moveit_setup_assistant/include/**",
+        "/home/contour/ws_moveit/src/moveit/moveit_plugins/moveit_simple_controller_manager/include/**",
+        "/home/contour/ws_moveit/src/moveit_visual_tools/include/**",
+        "/home/contour/ws_moveit/src/moveit/moveit_planners/pilz_industrial_motion_planner/include/**",
+        "/home/contour/ws_moveit/src/moveit/moveit_planners/pilz_industrial_motion_planner_testutils/include/**",
+        "/home/contour/ws_catkin_realsense/src/realsense-ros/realsense2_camera/include/**",
+        "/home/contour/ws_catkin_elephant/src/elephant/realsense_gazebo_plugin/include/**",
+        "/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/include/**",
+        "/home/contour/ws_moveit/src/rviz_visual_tools/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
