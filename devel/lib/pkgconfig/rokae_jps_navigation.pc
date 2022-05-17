@@ -2,7 +2,7 @@ prefix=/home/contour/ws_catkin_elephant/devel
 
 Name: rokae_jps_navigation
 Description: Description of rokae_jps_navigation
-Version: 0.0.0
+Version: 1.0.0
 Cflags: -I/home/contour/ws_catkin_elephant/devel/include -I/home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/include -I/usr/include -I/opt/ros/melodic/include
 Libs: -L${prefix}/lib /opt/ros/melodic/lib/liboctomap.so /opt/ros/melodic/lib/liboctomath.so
 Requires: roscpp moveit_core moveit_ros_planning_interface message_runtime

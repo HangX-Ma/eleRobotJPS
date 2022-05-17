@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "roscpp".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "elerobot_socket"
 PROJECT_SPACE_DIR = "/home/contour/ws_catkin_elephant/install"
-PROJECT_VERSION = "0.0.0"
+PROJECT_VERSION = "1.0.0"

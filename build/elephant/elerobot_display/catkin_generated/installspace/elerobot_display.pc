@@ -2,7 +2,7 @@ prefix=/home/contour/ws_catkin_elephant/install
 
 Name: elerobot_display
 Description: Description of elerobot_display
-Version: 0.0.0
+Version: 1.0.0
 Cflags: 
 Libs: -L${prefix}/lib 
 Requires: 

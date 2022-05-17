@@ -38,12 +38,16 @@
 #include <sensor_msgs/JointState.h>
 #include <trajectory_msgs/JointTrajectory.h>
 #include <trajectory_msgs/JointTrajectoryPoint.h>
+#include <trajectory_msgs/MultiDOFJointTrajectory.h>
+#include <trajectory_msgs/MultiDOFJointTrajectoryPoint.h>
+
 
 #include "rokae_jps_navigation/eefState.h"
 #include "rokae_jps_navigation/Goto.h"
 #include "rokae_jps_navigation/CheckCollision.h"
 #include "rokae_jps_navigation/joint2pose.h"
 #include "rokae_arm_toppra/ToppRa_srv.h"
+#include "topp_ros/GenerateTrajectory.h"
 
 #include "JPS_Planner/rokae_graph_basis.hpp"
 
@@ -83,6 +87,8 @@ class JPSPlanner
     //! toppra client
     bool toppra_client(std::vector<std::vector<float>> &joint_group, bool ifSave=false);
     
+    bool toppra_ros_client(std::vector<std::vector<float>> &joint_group, bool ifSave=false);
+
     /**
      * @brief collision detection client, if a certain node is detected as an obstacle, this function will change that node value in octree 
      * 
@@ -264,6 +270,7 @@ class JPSPlanner
     ros::ServiceClient joint2pose_client_;          //!< convert joints to poses 
     ros::ServiceClient collision_detection_client_; //!< collision detection client
     ros::ServiceClient toppra_client_;              //!< toppra trajectory planner client
+    ros::ServiceClient toppra_ros_client_;          //!< toppra_ros trajectory planner client
 
     /**
      * @brief load paraments from .yaml file 

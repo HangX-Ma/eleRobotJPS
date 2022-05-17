@@ -57,4 +57,6 @@
   <!-- JPS Planner -->
   <include file="$(find rokae_jps_navigation)/launch/rokae_arm_navigation_JPS.launch"/>
   
+  <node pkg="topp_ros" type="generate_toppra_trajectory.py" name="generate_toppra_trajectory"/>
+
 </launch>

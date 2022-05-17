@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "elerobot_map_convertor")
-set(elerobot_map_convertor_VERSION "0.0.0")
-set(elerobot_map_convertor_MAINTAINER "contour <contour@todo.todo>")
+set(elerobot_map_convertor_VERSION "1.0.0")
+set(elerobot_map_convertor_MAINTAINER "MContour <mcontour@qq.com>")
 set(elerobot_map_convertor_PACKAGE_FORMAT "2")
 set(elerobot_map_convertor_BUILD_DEPENDS )
 set(elerobot_map_convertor_BUILD_EXPORT_DEPENDS )

@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "rokae_jps_navigation")
-set(rokae_jps_navigation_VERSION "0.0.0")
-set(rokae_jps_navigation_MAINTAINER "contour <contour@qq.com>")
+set(rokae_jps_navigation_VERSION "1.0.0")
+set(rokae_jps_navigation_MAINTAINER "MContour <m-contour@qq.com>")
 set(rokae_jps_navigation_PACKAGE_FORMAT "2")
 set(rokae_jps_navigation_BUILD_DEPENDS "message_generation" "roscpp" "rospy" "std_msgs" "std_srvs" "geometry_msgs" "visualization_msgs" "octomap" "octomap_msgs" "moveit_core" "moveit_ros_planning_interface" "dynamicEDT3D")
 set(rokae_jps_navigation_BUILD_EXPORT_DEPENDS "roscpp" "rospy" "std_msgs" "std_srvs" "geometry_msgs" "visualization_msgs" "octomap" "octomap_msgs" "moveit_core" "moveit_ros_planning_interface" "dynamicEDT3D")

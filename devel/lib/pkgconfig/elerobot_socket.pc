@@ -2,7 +2,7 @@ prefix=/home/contour/ws_catkin_elephant/devel
 
 Name: elerobot_socket
 Description: Description of elerobot_socket
-Version: 0.0.0
+Version: 1.0.0
 Cflags: -I/home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/include
 Libs: -L${prefix}/lib 
 Requires: roscpp

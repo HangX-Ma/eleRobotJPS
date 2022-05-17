@@ -1124,8 +1124,62 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
   /usr/include/c++/7/fstream \
   /usr/include/x86_64-linux-gnu/c++/7/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/7/bits/c++io.h \
-  /usr/include/c++/7/bits/fstream.tcc
+  /usr/include/c++/7/bits/fstream.tcc \
+  /usr/include/boost/filesystem.hpp \
+  /usr/include/boost/filesystem/config.hpp \
+  /usr/include/boost/system/api_config.hpp \
+  /usr/include/boost/config/auto_link.hpp \
+  /usr/include/boost/filesystem/path.hpp \
+  /usr/include/boost/filesystem/path_traits.hpp \
+  /usr/include/boost/type_traits/decay.hpp \
+  /usr/include/boost/type_traits/remove_bounds.hpp \
+  /usr/include/boost/type_traits/remove_extent.hpp \
+  /usr/include/boost/system/error_code.hpp \
+  /usr/include/boost/system/config.hpp \
+  /usr/include/boost/cerrno.hpp \
+  /usr/include/boost/config/abi_prefix.hpp \
+  /usr/include/boost/config/abi_suffix.hpp \
+  /usr/include/boost/system/system_error.hpp \
+  /usr/include/boost/io/detail/quoted_manip.hpp \
+  /usr/include/boost/io/ios_state.hpp \
+  /usr/include/boost/io_fwd.hpp \
+  /usr/include/boost/functional/hash_fwd.hpp \
+  /usr/include/boost/functional/hash/hash_fwd.hpp \
+  /usr/include/boost/filesystem/operations.hpp \
+  /usr/include/boost/detail/scoped_enum_emulation.hpp \
+  /usr/include/boost/core/scoped_enum.hpp \
+  /usr/include/boost/detail/bitmask.hpp \
+  /usr/include/c++/7/stack \
+  /usr/include/c++/7/deque \
+  /usr/include/c++/7/bits/stl_deque.h \
+  /usr/include/c++/7/bits/deque.tcc \
+  /usr/include/c++/7/bits/stl_stack.h \
+  /usr/include/boost/filesystem/convenience.hpp \
+  /usr/include/boost/filesystem/string_file.hpp \
+  /usr/include/boost/filesystem/fstream.hpp
 
+
+/usr/include/boost/filesystem/string_file.hpp:
+
+/usr/include/c++/7/bits/deque.tcc:
+
+/usr/include/boost/detail/scoped_enum_emulation.hpp:
+
+/usr/include/boost/filesystem/operations.hpp:
+
+/usr/include/boost/io/detail/quoted_manip.hpp:
+
+/usr/include/boost/system/system_error.hpp:
+
+/usr/include/boost/config/abi_prefix.hpp:
+
+/usr/include/boost/cerrno.hpp:
+
+/usr/include/boost/type_traits/remove_extent.hpp:
+
+/usr/include/boost/filesystem/path_traits.hpp:
+
+/usr/include/boost/filesystem.hpp:
 
 /usr/include/c++/7/bits/fstream.tcc:
 
@@ -1169,6 +1223,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /opt/ros/melodic/include/ros/topic.h:
 
+/usr/include/boost/detail/bitmask.hpp:
+
 /opt/ros/melodic/include/ros/param.h:
 
 /opt/ros/melodic/include/ros/this_node.h:
@@ -1202,6 +1258,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 /usr/include/netinet/in.h:
 
 /usr/include/boost/numeric/conversion/numeric_cast_traits.hpp:
+
+/usr/include/c++/7/deque:
 
 /usr/include/boost/numeric/conversion/detail/bounds.hpp:
 
@@ -1249,11 +1307,15 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /usr/include/boost/preprocessor/logical/not.hpp:
 
+/usr/include/boost/io/ios_state.hpp:
+
 /usr/include/boost/preprocessor/comparison/less_equal.hpp:
 
 /usr/include/boost/preprocessor/arithmetic/detail/div_base.hpp:
 
 /usr/include/boost/preprocessor/seq/transform.hpp:
+
+/usr/include/boost/config/abi_suffix.hpp:
 
 /usr/include/boost/utility/binary.hpp:
 
@@ -1264,6 +1326,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 /usr/include/boost/range/detail/has_member_size.hpp:
 
 /usr/include/boost/type_traits/is_unsigned.hpp:
+
+/usr/include/boost/core/scoped_enum.hpp:
 
 /usr/include/boost/type_traits/is_signed.hpp:
 
@@ -1298,6 +1362,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 /usr/include/boost/range/detail/common.hpp:
 
 /usr/include/boost/range/detail/implementation_help.hpp:
+
+/usr/include/boost/system/config.hpp:
 
 /usr/include/boost/lexical_cast/detail/inf_nan.hpp:
 
@@ -1441,6 +1507,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /usr/include/boost/config/no_tr1/functional.hpp:
 
+/usr/include/c++/7/bits/stl_deque.h:
+
 /usr/include/boost/function/detail/prologue.hpp:
 
 /usr/include/boost/preprocessor/slot/slot.hpp:
@@ -1464,6 +1532,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 /usr/include/boost/smart_ptr/make_shared_array.hpp:
 
 /usr/include/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp:
+
+/usr/include/boost/io_fwd.hpp:
 
 /usr/include/boost/type_traits/is_member_function_pointer.hpp:
 
@@ -1689,6 +1759,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/arg.hpp:
 
+/usr/include/boost/system/api_config.hpp:
+
 /usr/include/strings.h:
 
 /usr/include/boost/range/detail/extract_optional_type.hpp:
@@ -1743,6 +1815,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /usr/include/assert.h:
 
+/usr/include/boost/functional/hash/hash_fwd.hpp:
+
 /usr/include/boost/mpl/plus.hpp:
 
 /usr/include/c++/7/cassert:
@@ -1794,6 +1868,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 /usr/include/boost/predef/compiler/hp_acc.h:
 
 /usr/include/boost/predef/os/beos.h:
+
+/usr/include/boost/type_traits/remove_bounds.hpp:
 
 /usr/include/boost/predef/compiler/diab.h:
 
@@ -2069,6 +2145,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /usr/include/c++/7/bits/cxxabi_init_exception.h:
 
+/usr/include/boost/type_traits/decay.hpp:
+
 /usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
@@ -2106,6 +2184,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 /usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:
 
 /home/contour/ws_catkin_elephant/src/elephant/elerobot_socket/include/elerobot_tcpsocket_client.hpp:
+
+/usr/include/boost/filesystem/config.hpp:
 
 /usr/include/boost/type_traits/add_const.hpp:
 
@@ -2287,6 +2367,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /usr/include/boost/mpl/aux_/template_arity.hpp:
 
+/usr/include/boost/filesystem/path.hpp:
+
 /usr/include/boost/predef/compiler/borland.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
@@ -2461,6 +2543,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /usr/include/c++/7/bits/ostream_insert.h:
 
+/usr/include/c++/7/bits/stl_stack.h:
+
 /usr/include/c++/7/bits/basic_ios.tcc:
 
 /usr/include/boost/config.hpp:
@@ -2520,6 +2604,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 /usr/include/boost/predef/library/c/vms.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+/usr/include/boost/config/auto_link.hpp:
 
 /usr/include/boost/preprocessor/facilities/overload.hpp:
 
@@ -2744,6 +2830,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 /usr/include/boost/mpl/list.hpp:
 
 /usr/include/boost/mpl/limits/list.hpp:
+
+/usr/include/c++/7/stack:
 
 /usr/include/boost/mpl/aux_/na.hpp:
 
@@ -3003,6 +3091,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /usr/include/boost/mpl/list/aux_/empty.hpp:
 
+/usr/include/boost/functional/hash_fwd.hpp:
+
 /usr/include/boost/smart_ptr/weak_ptr.hpp:
 
 /usr/include/boost/mpl/not_equal_to.hpp:
@@ -3093,6 +3183,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /usr/include/boost/preprocessor/array/elem.hpp:
 
+/usr/include/boost/filesystem/convenience.hpp:
+
 /usr/include/boost/mpl/lambda.hpp:
 
 /usr/include/boost/preprocessor/array/size.hpp:
@@ -3173,6 +3265,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/quote.hpp:
 
+/usr/include/boost/filesystem/fstream.hpp:
+
 /usr/include/x86_64-linux-gnu/c++/7/bits/c++locale.h:
 
 /usr/include/boost/mpl/comparison.hpp:
@@ -3204,6 +3298,8 @@ elephant/elerobot_socket/CMakeFiles/elerobot_control.dir/src/elerobot_control.cp
 /usr/include/boost/type_traits/intrinsics.hpp:
 
 /usr/include/boost/mpl/aux_/iter_fold_if_impl.hpp:
+
+/usr/include/boost/system/error_code.hpp:
 
 /usr/include/boost/ref.hpp:
 

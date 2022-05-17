@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "elerobot_socket")
-set(elerobot_socket_VERSION "0.0.0")
-set(elerobot_socket_MAINTAINER "contour <contour@todo.todo>")
+set(elerobot_socket_VERSION "1.0.0")
+set(elerobot_socket_MAINTAINER "MContour <m-contour@qq.com>")
 set(elerobot_socket_PACKAGE_FORMAT "2")
 set(elerobot_socket_BUILD_DEPENDS "rokae_jps_navigation" "roscpp")
 set(elerobot_socket_BUILD_EXPORT_DEPENDS "roscpp")

@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "rokae_arm_toppra")
-set(rokae_arm_toppra_VERSION "0.0.0")
-set(rokae_arm_toppra_MAINTAINER "contour <contour@qq.com>")
+set(rokae_arm_toppra_VERSION "1.0.0")
+set(rokae_arm_toppra_MAINTAINER "MContour <m-contour@qq.com>")
 set(rokae_arm_toppra_PACKAGE_FORMAT "2")
 set(rokae_arm_toppra_BUILD_DEPENDS "message_generation" "rospy" "roscpp" "std_msgs")
 set(rokae_arm_toppra_BUILD_EXPORT_DEPENDS "roscpp" "rospy" "std_msgs")

@@ -2,7 +2,7 @@ prefix=/home/contour/ws_catkin_elephant/devel
 
 Name: elerobot_simple_control
 Description: Description of elerobot_simple_control
-Version: 0.0.0
+Version: 1.0.0
 Cflags: 
 Libs: -L${prefix}/lib 
 Requires: tf2_ros

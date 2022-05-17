@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "roscpp;message_runtime".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "rokae_arm_toppra"
 PROJECT_SPACE_DIR = "/home/contour/ws_catkin_elephant/devel"
-PROJECT_VERSION = "0.0.0"
+PROJECT_VERSION = "1.0.0"

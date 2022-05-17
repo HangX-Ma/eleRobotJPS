@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "rokae_pick_place_with_vacuum_gripper")
 set(rokae_pick_place_with_vacuum_gripper_VERSION "0.0.0")
-set(rokae_pick_place_with_vacuum_gripper_MAINTAINER "contour <contour@qq.com>")
+set(rokae_pick_place_with_vacuum_gripper_MAINTAINER "MContour <m-contour@qq.com>")
 set(rokae_pick_place_with_vacuum_gripper_PACKAGE_FORMAT "2")
 set(rokae_pick_place_with_vacuum_gripper_BUILD_DEPENDS "roscpp" "rospy" "message_generation")
 set(rokae_pick_place_with_vacuum_gripper_BUILD_EXPORT_DEPENDS )

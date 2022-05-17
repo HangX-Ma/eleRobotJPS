@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "roscpp;moveit_core;moveit_ros_planning_interface;messa
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "/opt/ros/melodic/lib/liboctomap.so;/opt/ros/melodic/lib/liboctomath.so".split(';') if "/opt/ros/melodic/lib/liboctomap.so;/opt/ros/melodic/lib/liboctomath.so" != "" else []
 PROJECT_NAME = "rokae_jps_navigation"
 PROJECT_SPACE_DIR = "/home/contour/ws_catkin_elephant/devel"
-PROJECT_VERSION = "0.0.0"
+PROJECT_VERSION = "1.0.0"

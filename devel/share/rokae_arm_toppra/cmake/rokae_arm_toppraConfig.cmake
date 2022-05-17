@@ -99,7 +99,7 @@ if(NOT "/home/contour/ws_catkin_elephant/devel/include;/usr/include " STREQUAL "
   elseif(NOT " " STREQUAL " ")
     set(_report "Check the website '' for information and consider reporting the problem.")
   else()
-    set(_report "Report the problem to the maintainer 'contour <contour@qq.com>' and request to fix the problem.")
+    set(_report "Report the problem to the maintainer 'MContour <m-contour@qq.com>' and request to fix the problem.")
   endif()
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})

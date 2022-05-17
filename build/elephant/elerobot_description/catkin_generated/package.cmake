@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "elerobot_description")
-set(elerobot_description_VERSION "0.0.0")
-set(elerobot_description_MAINTAINER "contour <contour@todo.todo>")
+set(elerobot_description_VERSION "1.0.0")
+set(elerobot_description_MAINTAINER "MContour <m-contour@qq.com>")
 set(elerobot_description_PACKAGE_FORMAT "2")
 set(elerobot_description_BUILD_DEPENDS )
 set(elerobot_description_BUILD_EXPORT_DEPENDS )

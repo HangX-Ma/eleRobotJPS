@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "elerobot_simple_control")
-set(elerobot_simple_control_VERSION "0.0.0")
-set(elerobot_simple_control_MAINTAINER "contour <m-contour@qq.com>")
+set(elerobot_simple_control_VERSION "1.0.0")
+set(elerobot_simple_control_MAINTAINER "MContour <m-contour@qq.com>")
 set(elerobot_simple_control_PACKAGE_FORMAT "2")
 set(elerobot_simple_control_BUILD_DEPENDS "tf2_ros" "std_msgs" "geometry_msgs" "message_generation")
 set(elerobot_simple_control_BUILD_EXPORT_DEPENDS )

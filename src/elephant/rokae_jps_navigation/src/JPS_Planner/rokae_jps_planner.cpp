@@ -22,6 +22,7 @@
  */
 #include "JPS_Planner/rokae_jps_planner.hpp"
 
+
 JPSPlanner::JPSPlanner(ros::NodeHandle* nodehandle):nh_(*nodehandle)
 {
   printf("\n" ANSI_COLOR_BLUE "[rokae_JPS_planner]: Initializing..." ANSI_COLOR_RESET "\n");
@@ -380,7 +381,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
         // but if TOPP-RA generates a new trajectory, we need to do further check.
 
         // we need to check the poses of the toppra returned values
-        toppra_client(joint_configs,false);
+        toppra_ros_client(joint_configs,false);
         int8_t joint_num = 0;
         // get joint group
         std::vector<double> joint_val = getToppraPos();
@@ -475,7 +476,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
   std::cout << ANSI_COLOR_BLUE "[rokae_JPS_planner]: Total time cost: " << time_cost_total.count() << " [s]" ANSI_COLOR_RESET << std::endl;
 
   // using toppra to generate trajectory
-  toppra_client(joint_configs_, true);
+  toppra_ros_client(joint_configs_, true);
   printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Genrating the [toppra] trajectory." ANSI_COLOR_RESET "\n");
   // send trajectory data
   res.pos = getToppraPos();
@@ -485,7 +486,7 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
 
   if (req.ifback) {
     std::reverse(joint_configs_.begin(), joint_configs_.end());
-    toppra_client(joint_configs_, true);
+    toppra_ros_client(joint_configs_, true);
     printf(ANSI_COLOR_BLUE "[rokae_JPS_planner]: Genrating the [toppra] moving back trajectory." ANSI_COLOR_RESET "\n");
 
     // send trajectory data
@@ -642,7 +643,6 @@ std::vector<std::vector<float>> JPSPlanner::collision_detection_client(std::shar
           }
           setCurrNodeObs(currNodeKey, tree);
           visualizeVoxel(tree->keyToCoord(currNodeKey));
-          obs_iter_id_++;
           planning_status_ = PlanningState::NEED_REPLANNING;
         } 
         else {
@@ -660,7 +660,6 @@ std::vector<std::vector<float>> JPSPlanner::collision_detection_client(std::shar
         }
         setCurrNodeObs(currNodeKey, tree);
         visualizeVoxel(tree->keyToCoord(currNodeKey));
-        obs_iter_id_++;
         // violated_iter++;
         planning_status_ = PlanningState::NEED_REPLANNING;
       }
@@ -852,6 +851,48 @@ bool JPSPlanner::toppra_client(std::vector<std::vector<float>> &joint_group, boo
 
     return false;
   }
+}
+
+
+bool JPSPlanner::toppra_ros_client(std::vector<std::vector<float>> &joint_group, bool ifSave) {
+  const std::string TOPPRA_CLIENT_STR = "generate_toppra_trajectory";
+  ros::service::waitForService(TOPPRA_CLIENT_STR);
+  toppra_ros_client_ = nh_.serviceClient<topp_ros::GenerateTrajectory>(TOPPRA_CLIENT_STR);
+
+  topp_ros::GenerateTrajectory::Request req;
+  topp_ros::GenerateTrajectory::Response res;
+
+  trajectory_msgs::JointTrajectoryPoint waypoints;
+  std::vector<float> vlimit {355/180*M_PI, 355/180*M_PI, 355/180*M_PI, 480/180*M_PI, 450/180*M_PI, 705/180*M_PI};
+  std::vector<float> acclimit {3.0, 3.0, 3.0, 6.0, 6.0, 6.0};
+  std::vector<std::string> joint_name {"j0", "j1", "j2", "j3", "j4", "j5"};
+  for (auto& joints: joint_group) {
+    waypoints.positions.assign(joints.begin(), joints.end());
+    waypoints.velocities.assign(vlimit.begin(), vlimit.end());
+    waypoints.accelerations.assign(acclimit.begin(), acclimit.end());
+    req.waypoints.points.push_back(waypoints);
+  }
+
+
+  req.waypoints.joint_names.assign(joint_name.begin(), joint_name.end());
+  req.sampling_frequency = 100.0;
+  req.n_gridpoints = 500;
+  req.plot = ifSave;
+
+  if (toppra_ros_client_.call(req, res)) {
+    if (res.success) {
+      for (auto &waypoint:res.trajectory.points) {
+        toppra_pos_.assign(waypoint.positions.begin(), waypoint.positions.end());
+        toppra_vel_.assign(waypoint.velocities.begin(), waypoint.velocities.end());
+        toppra_acc_.assign(waypoint.accelerations.begin(), waypoint.accelerations.end());
+        toppra_t_.push_back(waypoint.time_from_start.toSec());
+      }
+      return true;
+    }
+  }
+
+  return false;
+
 }
 
 void JPSPlanner::visualizeTree(const octomap::OcTree &tree) 
@@ -1047,7 +1088,7 @@ void JPSPlanner::visualizeVoxel(const octomap::point3d &point)
   msg.color.g            = 0.0;
   msg.color.b            = 0.5;
   msg.color.a            = 1.0;
-
+  obs_iter_id_++;
   voxel_publisher_.publish(msg);
 }
 

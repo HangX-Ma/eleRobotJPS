@@ -230,18 +230,18 @@ void moveRobot(std::vector<double> &position, std::vector<double> &velocity, std
       for (auto &pos : curr_angles)
       {
         // outfile_pos << "JOINT_CONFIGS:" << std::endl;
-        for (size_t i = 0; i < pos.size(); i++) {
-          outfile_pos << pos.at(i) << " ";
-        }
-        outfile_pos << std::endl;
+        outfile_pos << pos.at(0)/180*M_PI << " " << std::endl;
+        outfile_pos << pos.at(1)/180*M_PI << " " << std::endl;
+        outfile_pos << pos.at(2)/180*M_PI << " " << std::endl;
+        outfile_pos << pos.at(3)/180*M_PI << " " << std::endl;
+        outfile_pos << pos.at(4)/180*M_PI << " " << std::endl;
+        outfile_pos << pos.at(5)/180*M_PI << " " << std::endl;
       }
       outfile_pos.close();
     } 
     else {
       printf(ANSI_COLOR_YELLOW "[position]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
     }
-
-  
 }
 
 
@@ -251,7 +251,7 @@ int main(int argc, char **argv)
   ros::NodeHandle nh("~");
 
   std::string path_prefix_ = "/home/contour/ws_catkin_elephant/src/elephant/rokae_arm_toppra/share/";
-  std::string folder_name1 = "1650109358";
+  std::string folder_name1 = "1650283488";
 
   std::vector<double> position_m, velocity_m, acceleration_m, time_m;
   std::vector<std::string> cfgconfig_stage1 {path_prefix_ + folder_name1 + "/toppra_joints_pos_" + folder_name1 + ".txt",

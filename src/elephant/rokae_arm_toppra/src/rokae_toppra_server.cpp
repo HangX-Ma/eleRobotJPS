@@ -212,7 +212,7 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
   const int   nDof           = 6;
   const int   joint_set_size = req.joint_configs_on_way.size() / nDof;
   const float start_t        = 0.0;
-  const float end_t          = 10.0;
+  const float end_t          = 1.0;
   int         counter        = 0;
   int         show_time      = 1;
 
@@ -273,11 +273,11 @@ bool toppraCallback(rokae_arm_toppra::ToppRa_srv::Request &req, rokae_arm_toppra
 
   std::shared_ptr<toppra::parametrizer::ConstAccel> ca = std::make_shared<toppra::parametrizer::ConstAccel>(path, gridpoints, vsquared);
   toppra::Bound  path_interval = ca->pathInterval();
-  int            length2       = 8*(path_interval(1) - path_interval(0));
-  // int            length2       = 120;
-  if (length2 >= MAX_TIME_INTERVAL) {
-    length2 = MAX_TIME_INTERVAL;
-  }
+  // int            length2       = 8*(path_interval(1) - path_interval(0));
+  int            length2       = 100;
+  // if (length2 >= MAX_TIME_INTERVAL) {
+  //   length2 = MAX_TIME_INTERVAL;
+  // }
 
   toppra::Vector times2        = toppra::Vector::LinSpaced(length2, path_interval(0), path_interval(1));
 

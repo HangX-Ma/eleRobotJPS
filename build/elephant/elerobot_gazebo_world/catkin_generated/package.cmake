@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "elerobot_gazebo_world")
-set(elerobot_gazebo_world_VERSION "0.0.0")
-set(elerobot_gazebo_world_MAINTAINER "contour <contour@todo.todo>")
+set(elerobot_gazebo_world_VERSION "1.0.0")
+set(elerobot_gazebo_world_MAINTAINER "MContour <m-contour@qq.com>")
 set(elerobot_gazebo_world_PACKAGE_FORMAT "2")
 set(elerobot_gazebo_world_BUILD_DEPENDS )
 set(elerobot_gazebo_world_BUILD_EXPORT_DEPENDS )
