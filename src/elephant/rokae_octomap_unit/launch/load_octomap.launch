@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="path" default="$(find rokae_octomap_unit)/share/mapfile_obstacle_2banks.bt"/>
-  <!-- <arg name="path" default="$(find rokae_octomap_unit)/share/mapfile_obstacle.bt"/> -->
+  <!-- <arg name="path" default="$(find rokae_octomap_unit)/share/mapfile_obstacle_2banks.bt"/> -->
+  <arg name="path" default="$(find rokae_octomap_unit)/share/mapfile_obstacle.bt"/>
 
   <node pkg="octomap_server" name="octomap_talker" type="octomap_server_node"  output="screen" args="$(arg path)" />
 

@@ -16,7 +16,7 @@ planning:
   potential_radius: 5            # [increment of key value]
   potential_weight: 0.5          # [potential field gain]
   # heu_type: Manhattan          # heuristic type
-  # heu_type: Euclidean          # heuristic type (Failed)
+  # heu_type: Euclidean          # heuristic type
   heu_type: Diagonal           # heuristic type
 
 visualization:

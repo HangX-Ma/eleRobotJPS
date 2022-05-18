@@ -1456,8 +1456,47 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
   /usr/include/c++/7/bits/unordered_map.h \
   /usr/include/c++/7/unordered_set \
   /usr/include/c++/7/bits/unordered_set.h \
-  /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/include/JPS_Basis/rokae_jps_basis.hpp
+  /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/include/JPS_Basis/rokae_jps_basis.hpp \
+  /usr/include/boost/filesystem.hpp \
+  /usr/include/boost/filesystem/config.hpp \
+  /usr/include/boost/system/api_config.hpp \
+  /usr/include/boost/config/auto_link.hpp \
+  /usr/include/boost/filesystem/path.hpp \
+  /usr/include/boost/filesystem/path_traits.hpp \
+  /usr/include/boost/type_traits/decay.hpp \
+  /usr/include/boost/type_traits/remove_bounds.hpp \
+  /usr/include/boost/type_traits/remove_extent.hpp \
+  /usr/include/boost/system/error_code.hpp \
+  /usr/include/boost/system/config.hpp \
+  /usr/include/boost/cerrno.hpp \
+  /usr/include/boost/config/abi_prefix.hpp \
+  /usr/include/boost/config/abi_suffix.hpp \
+  /usr/include/boost/system/system_error.hpp \
+  /usr/include/boost/io/detail/quoted_manip.hpp \
+  /usr/include/boost/io/ios_state.hpp \
+  /usr/include/boost/io_fwd.hpp \
+  /usr/include/boost/functional/hash_fwd.hpp \
+  /usr/include/boost/functional/hash/hash_fwd.hpp \
+  /usr/include/boost/filesystem/operations.hpp \
+  /usr/include/boost/detail/scoped_enum_emulation.hpp \
+  /usr/include/boost/core/scoped_enum.hpp \
+  /usr/include/boost/detail/bitmask.hpp \
+  /usr/include/boost/filesystem/convenience.hpp \
+  /usr/include/boost/filesystem/string_file.hpp \
+  /usr/include/boost/filesystem/fstream.hpp
 
+
+/usr/include/boost/filesystem/string_file.hpp:
+
+/usr/include/boost/io/detail/quoted_manip.hpp:
+
+/usr/include/boost/system/system_error.hpp:
+
+/usr/include/boost/config/abi_prefix.hpp:
+
+/usr/include/boost/filesystem/path_traits.hpp:
+
+/usr/include/boost/filesystem.hpp:
 
 /usr/include/c++/7/bits/hashtable_policy.h:
 
@@ -1494,6 +1533,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/prismatic_joint_model.h:
 
 /home/contour/ws_moveit/src/moveit/moveit_core/robot_model/include/moveit/robot_model/fixed_joint_model.h:
+
+/usr/include/boost/filesystem/operations.hpp:
 
 /home/contour/ws_moveit/devel/.private/moveit_core/include/moveit/moveit_kinematics_base_export.h:
 
@@ -1569,6 +1610,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/eigen3/Eigen/src/Core/Block.h:
 
+/usr/include/boost/cerrno.hpp:
+
 /usr/include/eigen3/Eigen/src/Core/Ref.h:
 
 /usr/include/eigen3/Eigen/src/Core/MapBase.h:
@@ -1643,6 +1686,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/random/variate_generator.hpp:
 
+/usr/include/boost/type_traits/remove_extent.hpp:
+
 /usr/include/boost/random/uniform_int.hpp:
 
 /usr/include/boost/random/detail/polynomial.hpp:
@@ -1661,6 +1706,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/random/detail/integer_log2.hpp:
 
+/usr/include/boost/detail/scoped_enum_emulation.hpp:
+
 /usr/include/boost/random/traits.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h:
@@ -1678,6 +1725,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /opt/ros/melodic/include/urdf/visibility_control.hpp:
 
 /opt/ros/melodic/include/ros/topic.h:
+
+/usr/include/boost/detail/bitmask.hpp:
 
 /opt/ros/melodic/include/ros/param.h:
 
@@ -1767,6 +1816,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/preprocessor/logical/not.hpp:
 
+/usr/include/boost/io/ios_state.hpp:
+
 /usr/include/boost/preprocessor/comparison/less_equal.hpp:
 
 /usr/include/boost/preprocessor/arithmetic/detail/div_base.hpp:
@@ -1774,6 +1825,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/eigen3/Eigen/src/Geometry/Translation.h:
 
 /usr/include/boost/preprocessor/seq/transform.hpp:
+
+/usr/include/boost/config/abi_suffix.hpp:
 
 /usr/include/boost/utility/binary.hpp:
 
@@ -1784,6 +1837,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/range/detail/has_member_size.hpp:
 
 /usr/include/boost/type_traits/is_unsigned.hpp:
+
+/usr/include/boost/core/scoped_enum.hpp:
 
 /usr/include/boost/type_traits/is_signed.hpp:
 
@@ -1820,6 +1875,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/range/detail/common.hpp:
 
 /usr/include/boost/range/detail/implementation_help.hpp:
+
+/usr/include/boost/system/config.hpp:
 
 /usr/include/boost/lexical_cast/detail/inf_nan.hpp:
 
@@ -1986,6 +2043,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/smart_ptr/make_shared_array.hpp:
 
 /usr/include/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp:
+
+/usr/include/boost/io_fwd.hpp:
 
 /usr/include/boost/type_traits/is_member_function_pointer.hpp:
 
@@ -2581,6 +2640,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /opt/ros/melodic/include/octomap/OcTreeKey.h:
 
+/usr/include/boost/type_traits/remove_bounds.hpp:
+
 /usr/include/boost/predef/compiler/diab.h:
 
 /usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h:
@@ -2625,6 +2686,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/assert.h:
 
+/usr/include/boost/functional/hash/hash_fwd.hpp:
+
 /usr/include/boost/mpl/plus.hpp:
 
 /usr/include/boost/numeric/conversion/detail/bounds.hpp:
@@ -2656,6 +2719,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /opt/ros/melodic/include/ros/message_operations.h:
 
 /opt/ros/melodic/include/octomap/Pointcloud.h:
+
+/usr/include/boost/functional/hash_fwd.hpp:
 
 /usr/include/boost/smart_ptr/weak_ptr.hpp:
 
@@ -2749,6 +2814,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/c++/7/bits/vector.tcc:
 
+/usr/include/boost/filesystem/fstream.hpp:
+
 /usr/include/boost/random/detail/seed.hpp:
 
 /usr/include/boost/mpl/comparison.hpp:
@@ -2798,6 +2865,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/c++/7/mutex:
 
 /opt/ros/melodic/include/octomap/octomap_types.h:
+
+/usr/include/boost/filesystem/path.hpp:
 
 /usr/include/boost/predef/compiler/borland.h:
 
@@ -2893,6 +2962,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/preprocessor/list/fold_left.hpp:
 
+/usr/include/boost/filesystem/config.hpp:
+
 /usr/include/boost/type_traits/add_const.hpp:
 
 /usr/include/c++/7/bits/nested_exception.h:
@@ -2908,6 +2979,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/math.h:
 
 /usr/include/c++/7/bits/exception_ptr.h:
+
+/usr/include/boost/type_traits/decay.hpp:
 
 /usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp:
 
@@ -3325,6 +3398,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
+/usr/include/boost/config/auto_link.hpp:
+
 /home/contour/ws_moveit/src/moveit/moveit_core/macros/include/moveit/macros/class_forward.h:
 
 /usr/include/boost/preprocessor/facilities/overload.hpp:
@@ -3654,6 +3729,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/boost/range/detail/extract_optional_type.hpp:
 
 /usr/include/boost/predef/os/macos.h:
+
+/usr/include/boost/system/api_config.hpp:
 
 /usr/include/strings.h:
 
@@ -4139,6 +4216,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 
 /usr/include/boost/preprocessor/array/elem.hpp:
 
+/usr/include/boost/filesystem/convenience.hpp:
+
 /usr/include/boost/mpl/lambda.hpp:
 
 /usr/include/boost/preprocessor/array/size.hpp:
@@ -4246,6 +4325,8 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
 /usr/include/x86_64-linux-gnu/c++/7/bits/gthr-default.h:
 
 /usr/include/boost/mpl/aux_/iter_fold_if_impl.hpp:
+
+/usr/include/boost/system/error_code.hpp:
 
 /home/contour/ws_catkin_elephant/devel/include/topp_ros/GenerateTrajectoryResponse.h:
 

@@ -1458,4 +1458,31 @@ elephant/rokae_jps_navigation/CMakeFiles/rokae_jps_planner.dir/src/JPS_Planner/r
  /usr/include/c++/7/unordered_set
  /usr/include/c++/7/bits/unordered_set.h
  /home/contour/ws_catkin_elephant/src/elephant/rokae_jps_navigation/include/JPS_Basis/rokae_jps_basis.hpp
+ /usr/include/boost/filesystem.hpp
+ /usr/include/boost/filesystem/config.hpp
+ /usr/include/boost/system/api_config.hpp
+ /usr/include/boost/config/auto_link.hpp
+ /usr/include/boost/filesystem/path.hpp
+ /usr/include/boost/filesystem/path_traits.hpp
+ /usr/include/boost/type_traits/decay.hpp
+ /usr/include/boost/type_traits/remove_bounds.hpp
+ /usr/include/boost/type_traits/remove_extent.hpp
+ /usr/include/boost/system/error_code.hpp
+ /usr/include/boost/system/config.hpp
+ /usr/include/boost/cerrno.hpp
+ /usr/include/boost/config/abi_prefix.hpp
+ /usr/include/boost/config/abi_suffix.hpp
+ /usr/include/boost/system/system_error.hpp
+ /usr/include/boost/io/detail/quoted_manip.hpp
+ /usr/include/boost/io/ios_state.hpp
+ /usr/include/boost/io_fwd.hpp
+ /usr/include/boost/functional/hash_fwd.hpp
+ /usr/include/boost/functional/hash/hash_fwd.hpp
+ /usr/include/boost/filesystem/operations.hpp
+ /usr/include/boost/detail/scoped_enum_emulation.hpp
+ /usr/include/boost/core/scoped_enum.hpp
+ /usr/include/boost/detail/bitmask.hpp
+ /usr/include/boost/filesystem/convenience.hpp
+ /usr/include/boost/filesystem/string_file.hpp
+ /usr/include/boost/filesystem/fstream.hpp
 

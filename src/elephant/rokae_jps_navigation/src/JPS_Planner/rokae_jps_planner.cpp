@@ -21,7 +21,9 @@
  * limitations under the License.
  */
 #include "JPS_Planner/rokae_jps_planner.hpp"
-
+#include <boost/filesystem.hpp>
+#include <iostream>
+#include <fstream>
 
 JPSPlanner::JPSPlanner(ros::NodeHandle* nodehandle):nh_(*nodehandle)
 {
@@ -504,6 +506,134 @@ bool JPSPlanner::gotoCallback(rokae_jps_navigation::Goto::Request &req, rokae_jp
     res.pz.push_back(p.z());
   }
 
+  // ------------------------------------ DATA SAVER -----------------------------------------    
+  if (true) 
+  {
+    // time stamp
+    auto now = std::chrono::system_clock::now();
+    auto UTC = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
+
+    auto in_time_t = std::chrono::system_clock::to_time_t(now);
+    std::stringstream datetime;
+    datetime << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
+
+    std::string UTC_string = std::to_string(UTC);
+
+    // mkdir
+    std::string dir_path = "/home/contour/ws_catkin_elephant/src/elephant/toppra_res/" + UTC_string;
+    if (!boost::filesystem::is_directory(dir_path))
+    {
+      printf(ANSI_COLOR_MAGENTA "begin create path: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());
+      if (!boost::filesystem::create_directory(dir_path))
+      {
+        printf(ANSI_COLOR_RED "create_directories failed: %s" ANSI_COLOR_RESET "\n",dir_path.c_str());
+        return true;
+      }
+    } else {
+      printf(ANSI_COLOR_RED "%s already exist" ANSI_COLOR_RESET "\n", dir_path .c_str());
+    }
+
+
+    // pos saver
+    std::ofstream outfile_pos;
+    std::string output_pos_path = dir_path + "/toppra_joints_pos_" + UTC_string + ".txt";
+    outfile_pos.open (output_pos_path, std::ios::out | std::ios::binary);
+    
+    if (outfile_pos.is_open())
+    {
+      outfile_pos.flush();
+      printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Position intformation recorder has been created." ANSI_COLOR_RESET "\n");
+      std::vector<double> positions = getToppraPos();
+      int counter = 0;
+      for (auto &pos : positions)
+      {
+        // outfile_pos << "JOINT_CONFIGS:" << std::endl;
+        outfile_pos << pos << " ";
+        counter++;
+        if (counter == 6) {
+          counter = 0;
+          outfile_pos << std::endl;
+        }
+      }
+      outfile_pos.close();
+    } else {
+      printf(ANSI_COLOR_YELLOW "[position]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
+    }
+
+    // vel saver
+    std::ofstream outfile_vel;
+    std::string output_vel_path = dir_path + "/toppra_joints_vel_" + UTC_string + ".txt";
+    outfile_vel.open (output_vel_path, std::ios::out | std::ios::binary);
+
+    if (outfile_vel.is_open())
+    {
+      outfile_vel.flush();
+      printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Velocity intformation recorder has been created." ANSI_COLOR_RESET "\n");
+      std::vector<double> velocities = getToppraVel();
+      int counter = 0;
+      for (auto &vel : velocities)
+      {
+        // outfile_vel << "JOINT_VELOCITY:" << std::endl;
+        outfile_vel << vel << " ";
+        counter++;
+        if (counter == 6) {
+          counter = 0;
+          outfile_vel << std::endl;
+        }
+      }
+      outfile_vel.close();
+    } else {
+      printf(ANSI_COLOR_YELLOW "[velocity]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
+    }
+
+    // acc saver
+    std::ofstream outfile_acc;
+    std::string output_acc_path = dir_path + "/toppra_joints_acc_" + UTC_string + ".txt";
+    outfile_acc.open (output_acc_path, std::ios::out | std::ios::binary);
+
+    if (outfile_acc.is_open())
+    {
+      outfile_acc.flush();
+      printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Acceleration intformation recorder has been created." ANSI_COLOR_RESET "\n");
+      std::vector<double> accelerations = getToppraAcc();
+      int counter = 0;
+      for (auto &acc : accelerations)
+      {
+        // outfile_acc << "JOINT_ACCELERATION:" << std::endl;
+        outfile_acc << acc << " ";
+        counter++;
+        if (counter == 6) {
+          counter = 0;
+          outfile_acc << std::endl;
+        }
+      }
+      outfile_acc.close();
+    } else {
+      printf(ANSI_COLOR_YELLOW "[acceleration]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
+    }
+
+    // t saver
+    std::ofstream outfile_t;
+    std::string output_t_path = dir_path + "/toppra_joints_t_" + UTC_string + ".txt";
+    outfile_t.open (output_t_path, std::ios::out | std::ios::binary);
+
+    if (outfile_t.is_open())
+    {
+      outfile_t.flush();
+      printf(ANSI_COLOR_MAGENTA "[rokae_toppra_server]: Joint Times intformation recorder has been created." ANSI_COLOR_RESET "\n" );
+      // outfile_t << "JOINT_TIME:" << std::endl;
+      std::vector<double> times = getToppraT();
+      for (size_t i = 0; i < times.size(); i++) {
+        outfile_t << times.at(i) << " ";
+      }
+      outfile_t << std::endl;
+      outfile_t.close();
+    } else {
+      printf(ANSI_COLOR_YELLOW "[time]: trajectory output file can not be opened." ANSI_COLOR_RESET "\n");
+    }
+  }
+
+
   return true;
 
 }
@@ -855,6 +985,10 @@ bool JPSPlanner::toppra_client(std::vector<std::vector<float>> &joint_group, boo
 
 
 bool JPSPlanner::toppra_ros_client(std::vector<std::vector<float>> &joint_group, bool ifSave) {
+  toppra_pos_.clear();
+  toppra_vel_.clear();
+  toppra_acc_.clear();
+  toppra_t_.clear();
   const std::string TOPPRA_CLIENT_STR = "generate_toppra_trajectory";
   ros::service::waitForService(TOPPRA_CLIENT_STR);
   toppra_ros_client_ = nh_.serviceClient<topp_ros::GenerateTrajectory>(TOPPRA_CLIENT_STR);
@@ -864,28 +998,32 @@ bool JPSPlanner::toppra_ros_client(std::vector<std::vector<float>> &joint_group,
 
   trajectory_msgs::JointTrajectoryPoint waypoints;
   std::vector<float> vlimit {355/180*M_PI, 355/180*M_PI, 355/180*M_PI, 480/180*M_PI, 450/180*M_PI, 705/180*M_PI};
-  std::vector<float> acclimit {3.0, 3.0, 3.0, 6.0, 6.0, 6.0};
+  std::vector<float> acclimit {1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
   std::vector<std::string> joint_name {"j0", "j1", "j2", "j3", "j4", "j5"};
+  bool flag = false;
   for (auto& joints: joint_group) {
     waypoints.positions.assign(joints.begin(), joints.end());
-    waypoints.velocities.assign(vlimit.begin(), vlimit.end());
-    waypoints.accelerations.assign(acclimit.begin(), acclimit.end());
+    if (!flag) {
+      waypoints.accelerations.assign(acclimit.begin(), acclimit.end());
+      waypoints.velocities.assign(vlimit.begin(), vlimit.end());
+      flag = true;
+    }
     req.waypoints.points.push_back(waypoints);
   }
 
 
   req.waypoints.joint_names.assign(joint_name.begin(), joint_name.end());
-  req.sampling_frequency = 100.0;
-  req.n_gridpoints = 500;
+  req.sampling_frequency = 10.0;
+  req.n_gridpoints = joint_group.size() * 3;
   req.plot = ifSave;
 
   if (toppra_ros_client_.call(req, res)) {
     if (res.success) {
       for (auto &waypoint:res.trajectory.points) {
-        toppra_pos_.assign(waypoint.positions.begin(), waypoint.positions.end());
-        toppra_vel_.assign(waypoint.velocities.begin(), waypoint.velocities.end());
-        toppra_acc_.assign(waypoint.accelerations.begin(), waypoint.accelerations.end());
-        toppra_t_.push_back(waypoint.time_from_start.toSec());
+        toppra_pos_.insert(toppra_pos_.end(), waypoint.positions.begin(), waypoint.positions.end());
+        toppra_vel_.insert(toppra_vel_.end(), waypoint.velocities.begin(), waypoint.velocities.end());
+        toppra_acc_.insert(toppra_acc_.end(), waypoint.accelerations.begin(), waypoint.accelerations.end());
+        toppra_t_.push_back(static_cast<double>(waypoint.time_from_start.toSec()));
       }
       return true;
     }
