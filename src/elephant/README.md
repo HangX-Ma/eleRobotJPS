@@ -84,7 +84,7 @@ Bear in mind if you want to use the world out of debugging conditions, the world
 
 ## 3. IKFast
 
-The tutorial [IKFast Kinematics Solver](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/ikfast/ikfast_tutorial.html) written for ROS Melodic Moveit1 will help you understand the function of IKFast and know how to install it. But you have to install the necessary modules introduced in [Master-sx](https://github.com/Master-sx)/[ROKAE-deficient-dof-manipulator](https://github.com/Master-sx/ROKAE-deficient-dof-manipulator). I just write how I create a IKFast solver for `Elephant Robot Panda P3`. 
+The tutorial [IKFast Kinematics Solver](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/ikfast/ikfast_tutorial.html) written for ROS Melodic Moveit1 will help you understand the function of IKFast and know how to install it. But you have to install the necessary modules introduced in [HangX-Ma](https://github.com/HangX-Ma)/[ROKAE-deficient-dof-manipulator](https://github.com/HangX-Ma/ROKAE-deficient-dof-manipulator). I just write how I create a IKFast solver for `Elephant Robot Panda P3`. 
 
 **IKFast** will create `IKFast Solver` according to your description in `xacro` file. The initial state, the joints limitations and other elements will all be taken into consideration. Pleas check your `xacro` file again to guarantee all those parameters correct.
 
