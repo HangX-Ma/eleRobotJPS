@@ -2,7 +2,7 @@
 
 ![ubuntu18.04](https://img.shields.io/badge/platform-ubuntu18.04-green) ![ros](https://img.shields.io/badge/ros-melodic-green) ![release date](https://img.shields.io/badge/release%20date-Aprial%202022-orange) ![build](https://img.shields.io/badge/build-passing-blue?logo=github) 
 
-This is a repository that guides you to use the `JPS` path planning module, you can get the original files from [Master-sx](https://github.com/Master-sx)/[ROKAE-deficient-dof-manipulator](https://github.com/Master-sx/ROKAE-deficient-dof-manipulator.git).
+This is a repository that guides you to use the `JPS` path planning module, you can get the original files from [HangX-Ma](https://github.com/HangX-Ma)/[ROKAE-deficient-dof-manipulator](https://github.com/HangX-Ma/ROKAE-deficient-dof-manipulator.git).
 
 This project runs on `ubuntu18.04` machine. **Elephant** manipulator `Panda3` `6-DOF` manipulator model is used. If you want to run this project on your machine, you need to install the necessary packages.
 
