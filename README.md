@@ -56,7 +56,7 @@ You need to install `Moviet` from source. The following build instructions suppo
   mkdir ~/ws_moveit
   cd ~/ws_moveit
   ```
-  Next, source your ROS workspace to load the necessary environment variables, depending on what version of ROS you installed.
+  Next, source your ROS workspace to load the necessary environment variables, depending on which version of ROS you installed.
   ```shell
   source /opt/ros/melodic/setup.bash
   ```
